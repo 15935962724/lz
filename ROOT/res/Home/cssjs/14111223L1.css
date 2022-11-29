@@ -1,0 +1,15 @@
+.personalCenter .personalNav li.li01{background:#fff;}
+.personalCenter .personalNav li.li01 a{color:#00A1E7;font-weight:bold;display:block;background:url(/res/Home/structure/14110087.gif) no-repeat 98px center;}
+
+
+/* 索要发票 */
+.personalCon{padding:20px 0px;}
+.PassWordtable{}
+.PassWordtable td{padding:5px;font-size:12px;}
+.PassWordtable td input{border:1px solid #ccc;height:25px;width:187px;}
+.PassWordtable td input.btn{border: 0px;font-size: 12px;font-weight: bold;color: fff;
+background: #0079D2;height: 25px;text-align:center;line-height:25px;width: 70px;color:#fff;float:left;margin-right:5px
+}
+
+/*.personalCenter .personalNav li.li05{background:#fff;}
+.personalCenter .personalNav li.li05 a{color:#00A1E7;font-weight:bold;display:block;background:url(/res/Home/structure/14110087.gif) no-repeat 98px center;}*/

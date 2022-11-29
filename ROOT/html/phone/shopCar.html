@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.Spinner.js"></script>
+    <script>
+        $(function(){
+            $(".Spinner").Spinner({value:"1", min:1, len:3, max:"1000"});
+        });
+    </script>
+    <style>
+        body{background:#f9f9f9;}
+    </style>
+</head>
+<body>
+    <div id="Body">
+        <div id="Header">
+            <header class="flex">
+                <div class="logo"><img src="http://www.brachysolution.com/res/Home/structure/14112579.png" /></div>
+                <div class="head-r flex">
+                    <div class="search"></div>
+                    <nav>
+                        <em></em>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div id="Content">
+            <div class="shopCar flex">
+                <div class="box flex">
+                    <label class="flex"><input type="checkbox" />治疗计划系统《TPS》</label>
+                    <div class="product flex">
+                        <span class="pic flex"><img src="http://www.brachysolution.com/res/Home/structure/19061406.png" /></span>
+                        <span class="nr flex">
+                            <span class="tit">治疗计划系统TPS</span>
+                            <span class="version"><em>软件大小</em>301M</span>
+                            <span class="version"><em>软件版本</em>V2.03</span>
+                            <span class="buyType">
+                                <em>购买方式</em>
+
+                                <select>
+                                    <option>按时用次数购买</option>
+                                </select>
+                            </span>
+                            <span class="buyType">
+                                <em>　　　　</em>
+                                <select>
+                                    <option>按时用次数购买</option>
+                                </select>
+
+                            </span>
+                            <span class="tit" style="margin:0.1rem 0rem;">￥2000</span>
+
+                        </span>
+                    </div>
+                    <input type="text" class="remark" placeholder="备注:按时用次数购买" />
+
+                </div>
+
+                <div class="box flex">
+                    <label class="flex"><input type="checkbox" />设备/耗材</label>
+                    <div class="product product2 flex">
+                        <label class="flex"><input type="checkbox" /></label>
+                        <span class="pic flex"><img src="http://www.brachysolution.com/res/Home/structure/19061406.png" /></span>
+                        <span class="nr flex">
+                            <span class="tit">准用植入导航模板</span>
+                            <span class="tit">￥2000</span>
+                            <span class="num flex">
+                                <div class="Spinner"></div>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="product product2 flex">
+                        <label class="flex"><input type="checkbox" /></label>
+                        <span class="pic flex"><img src="http://www.brachysolution.com/res/Home/structure/19061406.png" /></span>
+                        <span class="nr flex">
+                            <span class="tit">准用植入导航模板</span>
+                            <span class="tit">￥2000</span>
+                            <span class="num flex">
+                                <div class="Spinner"></div>
+                            </span>
+                        </span>
+                    </div>
+                    <input type="text" class="remark" placeholder="备注:按时用次数购买" />
+
+                </div>
+
+                <div class="total flex">
+                    <label class="flex"><input type="checkbox" />全选</label>
+                    <a href="javascript:;" class="clean">清空</a>
+                    <span class="flex">
+                        <em>结算总额</em>
+                        ￥2000
+                    </span>
+                    <input type="button" class="settle" value="结算" />
+                </div>
+            </div>
+        </div>
+        <footer>
+            ®Copyright 中国同福股份有限公司   京ICP备14058279号
+        </footer>
+    </div>
+<script>
+    $(function(){
+
+    })
+</script>
+</body>
+</html>

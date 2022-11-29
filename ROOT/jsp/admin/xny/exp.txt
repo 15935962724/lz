@@ -1,0 +1,16 @@
+TRUNCATE TABLE Dynamic;
+go
+TRUNCATE TABLE DynamicLayer;
+go
+TRUNCATE TABLE DynamicType;
+go
+TRUNCATE TABLE DynamicTypeLayer;
+go
+TRUNCATE TABLE Flow;
+go
+TRUNCATE TABLE FlowLayer;
+go
+TRUNCATE TABLE Flowprocess;
+go
+TRUNCATE TABLE FlowprocessLayer;
+go

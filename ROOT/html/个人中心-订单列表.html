@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单列表</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/superslide.2.1.js"></script>
+</head>
+<body>
+    <div id="Header"></div>
+    <div id="Content">
+        <div class="con-left">
+            <h4 class="con-left-list">
+                <a>粒子订单</a>
+                <em></em>
+            </h4>
+            <ul class="bd h-line4-ul">
+                <li><a>粒子订单</a></li>
+                <li><a>我的退货</a></li>
+                <li><a>发票管理</a></li>
+                <li><a>回款管理</a></li>
+                <li><a>通知单</a></li>
+                <li><a>催缴记录</a></li>
+            </ul>
+            <h4 class="con-left-list">
+                <a>TPS订单管理</a>
+            </h4>
+            <ul class="bd h-line4-ul"></ul>
+            <h4 class="con-left-list">
+                <a>设备/耗材订单</a>
+            </h4>
+            <ul class="bd h-line4-ul"></ul>
+            <h4 class="con-left-list">
+                <a>我的积分</a>
+            </h4>
+            <ul class="bd h-line4-ul"></ul>
+            <h4 class="con-left-list">
+                <a>医院管理</a>
+            </h4>
+            <ul class="bd h-line4-ul"></ul>
+            <h4 class="con-left-list">
+                <a>帐户管理</a>
+                <em></em>
+            </h4>
+            <ul class="bd h-line4-ul">
+                <li><a>基本信息</a></li>
+                <li><a>收货地址</a></li>
+                <li><a>安全设置</a></li>
+            </ul>
+        </div>
+        <div class="con-right">
+            <div class="con-right-box">
+                <div class="right-line1">
+                    <p>
+                        <span>医&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院：</span>
+                        <select name="" id="" class="right-box-yy">
+                            <option value="">医院1</option>
+                            <option value="">医院2</option>
+                        </select>
+                        <span class="right-box-tit">订单编号：</span>
+                        <input type="text" class="right-box-inp">
+                    </p>
+                    <p>
+                        <span>订单时间：</span>
+                        <input type="text" class="right-box-data">
+                        <span style="padding:0 8px">至</span>
+                        <input type="text" class="right-box-data">
+                        <span class="right-box-tit">厂&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商：</span>
+                        <input type="text" class="right-box-inp">
+                    </p>
+                </div>
+                <input type="button" class="right-search" value="查询">
+            </div>
+            <div class="right-list">
+                <ul class="right-list-zt">
+                    <li>全部订单<em>1</em></li>
+                    <li>待付款<em>1</em></li>
+                    <li>待发货<em>1</em></li>
+                    <li>待收货<em>1</em></li>
+                    <li>已完成<em>1</em></li>
+                    <li>已取消<em>1</em></li>
+                    <li>已退货<em>1</em></li>
+
+                </ul>
+                <table class="right-tab" border="1" cellspacing="0">
+                    <tr>
+                        <th class="th2">序号</th>
+                        <th>订单编号</th>
+                        <th>医院</th>
+                        <th class="th1">厂商</th>
+                        <th class="th1">数量</th>
+                        <th>开票单位</th>
+                        <th class="th1">已开票数量</th>
+                        <th class="th1">未开票数量</th>
+                        <th>下单时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>P1234341</td>
+                        <td>成都医学院第一附属医院</td>
+                        <td>新科</td>
+                        <td>200</td>
+                        <td>新科</td>
+                        <td>100</td>
+                        <td>100</td>
+                        <td>2019-01-01 13:00</td>
+                        <td>待发货</td>
+                        <td>
+                            <a href="">查看</a>
+                            <a href="">取消订单</a>
+                            <a href="">打印发货交接单</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>P1234341</td>
+                        <td>成都医学院第一附属医院</td>
+                        <td>新科</td>
+                        <td>200</td>
+                        <td>新科</td>
+                        <td>100</td>
+                        <td>100</td>
+                        <td>2019-01-01 13:00</td>
+                        <td>待发货</td>
+                        <td>
+                            <a href="">查看</a>
+                            <a href="">取消订单</a>
+                            <a href="">打印发货交接单</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="Footer"></div>
+</body>
+<script>
+$(function () {
+    $(".h-line4-ul li").click(function () {
+        $('.h-line4-ul li').removeClass('h-line4-liac');
+        $(this).addClass("h-line4-liac").siblings().removeClass("h-line4-liac");
+    })
+})
+jQuery(".con-left").slide({titCell:"h4", targetCell:"ul",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click",defaultPlay:false});
+</script>
+</html>

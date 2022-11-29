@@ -1,0 +1,6 @@
+﻿/*按钮样式*/
+input{background:#E5E5E5;border-left:1px solid #D7D7D7;border-top:1px solid #D7D7D7;border-right:1px solid #4C4C4C;border-bottom:1px solid #4C4C4C;color:#4d4d4d;}
+#input02,#input002{background:#F2F2F2;border:1px solid #a2a2a2;}
+#f_file{background:#F2F2F2;border:1px solid #a2a2a2;}
+#submit_img{background:url(/tea/image/eyp/images/080527317.gif) no-repeat;border:0px;width:66px;height:25px;cursor:pointer;}
+

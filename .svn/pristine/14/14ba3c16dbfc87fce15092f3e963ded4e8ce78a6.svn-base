@@ -1,0 +1,42 @@
+#
+InvalidLowTemp=Invalid low temperature
+InvalidHighTemp=Invali high temperature
+Wind=Wind Direction and power
+Legend=Lengend
+
+1170051131477=Domestic City Forcast
+1170051146211=International City Forcast
+1170051216602=City
+1170051362789=The Node is Invalid(Does not belong to this section or does not exist)
+
+1170053139821=Today
+1170053150680=Tomorrow
+1170053157211=The Day After Tomorrow
+
+Pollute1=Pollution Index-Air Quality Level
+Pollute2=Pollution Index-Air Quality Level
+Ultraviolet1=Infra Ray Index- Infra Ray Level
+Ultraviolet2=Infra Ray Index -Precaution 
+Comfort1=Comfort Index-Comfort Level
+Comfort2=Comfort Index-Comfort Condition
+Feel1=Body Feeling Index-Body Feeling lowest Temperature
+Feel2=Body Feeling Index-Body Feeling highest Temperature
+Ac1=Air Condition Index - Air Condition Operation Level
+Ac2=Air Condition Index - Air Condition Operation Status
+Carwash1=Car Wash Index - Air Condition Operation Level
+Carwash2=Car Wash Index - Air Condition Operation Status
+Cold1=Cold Index -Level
+Cold2=Cold Index -Description
+Cold3=Code Index -Suggestion
+Sunscreen1=Sun Burn Index-Level
+Sunscreen2=Sun Burn Index-Description
+Sunscreen3=Sun Burn Index-Suggestion
+Calenture1=Sun Burn Index-Level
+Calenture2=Sun Burn Index-Description
+Calenture3=Sun Burn Index-Suggestion
+Dressing1=Clothing Index Index-Level
+Dressing2=Clothing Index-Description
+Dressing3=Clothing Index-Suggestion
+Angling1=Fishing Index-Level
+Angling2=Fishing Index-Description
+Angling3=Fishing Index-Suggestion

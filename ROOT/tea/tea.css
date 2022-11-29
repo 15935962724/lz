@@ -1,0 +1,70 @@
+.submenu a
+{
+line-height:200%;
+display:block;
+
+text-decoration:none;
+color:#000;
+padding-left:30px;
+outline:none;
+}
+
+.submenu a:hover
+{
+text-decoration:none;
+background-color:#E0EDFE;
+}
+#fm1{width:100%;}
+
+
+
+
+
+#son_2177207{width:245px;}
+#lj{text-align:left; vertical-align:middle;overflow:hidden;}
+#EditTop{background:#fff;}
+#EditTop td{font-size:12px;white-space:nowrap;word-break:keep-all;}
+.edn_dtable{height:63px;}
+#edn_pic{height:37px;background-image:url(/tea/image/editpage/080945722.jpg);background-repeat:no-repeat;background-position:left 0px;width:240px;}
+.edn_sectr td{border-top:3px solid #67A7E3;background:#D6E9F8;height:23px;}
+#edn_ssystem,#edn_scommunity,#edn_sstructure,#edn_screate,#edn_sedit,#edn_shelp{display:block;height:23px;line-height:23px;float:left;padding:0px 7px;}
+.menu {height:10px;color: black; text-align: center;font-size:9pt;}
+.show{height:10;color:#fff; text-align: center;font-size:9pt;background-color:#67A7E3;}
+.submenu{position:absolute;z-index:99;top:60;border:1px solid #ccc;border-right:1px solid #676767;border-bottom:1px solid #676767;background:#fff;text-align: left;font-size:9pt;width:140px;}
+.submenu label{line-height:150%;display:block;width:100%;}
+.nsubmenu1 label{display:block;width:100%;}
+.gManage{background:url(/tea/image/editpage/080923194.gif) no-repeat;border:0;width:66px;height:21px;text-align:center;line-height:21px;color:#000;}
+.dline{border-bottom:1px solid #ccc;height:23px;display:block;}
+.submenu1{background-color:#E0EDFE;text-align:left;display:block;width:100%;height:19px;font-size:9pt;color:#000;}
+.submenu label{display:block;padding:2px 5px;width:100%;height:15px;*height:19px;}
+.submenu2{border-bottom:1px solid #ccc;background-color:#E0EDFE;color:#000;text-align:left;width:100%;height:19px;font-size:9pt}
+.cen{width:100%;height:19px;font-size:9pt;text-align:left;}
+.cenc{background-color:#E0EDFE;width:100%;text-align:left;height:19px;font-size:9pt;color:#000;}
+.thcorn{background-image:url(/tea/image/editpage/080913032.gif);background-repeat:no-repeat;background-position:90% 50%;height19px;width:100%;font-size:9pt;}
+.Nsubmenu1{background-color:#E0EDFE;text-align:left;display:block;width:100%;height:19px;font-size:9pt;color:#000;background-image:url(/tea/image/editpage/080913032.gif);background-repeat:no-repeat;background-position:90% 50%;}
+#CBClone{background-image:url(/tea/image/editpage/28.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBClone{background-image:url(/tea/image/editpage/28.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBMove{background-image:url(/tea/image/editpage/02.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#del{background-image:url(/tea/image/editpage/14.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBOrganizingCommunities{background-image:url(/tea/image/editpage/24.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#Logout{background-image:url(/tea/image/editpage/01.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#edn_dhelp #help{background-image:url(/tea/image/editpage/17.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBSubscribers{background-image:url(/tea/image/editpage/21.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBNewFolder{background-image:url(/tea/image/editpage/36.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#editt{background-image:url(/tea/image/editpage/38.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBOrganizers{background-image:url(/tea/image/editpage/37.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBNewSection{background-image:url(/tea/image/editpage/41.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBNewListing{background-image:url(/tea/image/editpage/40.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBSections{background-image:url(/tea/image/editpage/29.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBListings{background-image:url(/tea/image/editpage/07.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBNewCSS{background-image:url(/tea/image/editpage/42.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBCSS{background-image:url(/tea/image/editpage/43.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBSetVisible{background-image:url(/tea/image/editpage/44.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBNewCategory{background-image:url(/tea/image/editpage/45.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBReplaceCreator{background-image:url(/tea/image/editpage/46.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBEditCommunity{background-image:url(/tea/image/editpage/26.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#EditLicense{background-image:url(/tea/image/editpage/48.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#CBTypeAliases{background-image:url(/tea/image/editpage/47.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#MemberOverview{background-image:url(/tea/image/editpage/49.gif);background-repeat:no-repeat;background-position:7px 5px;}
+#Template{background-image:url(/tea/image/editpage/50.gif);background-repeat:no-repeat;background-position:7px 5px;}
+.submenu span{display:block;line-height:23px;padding-left:5px;cursor:pointer;}

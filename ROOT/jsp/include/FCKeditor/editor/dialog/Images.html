@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+</head>
+<body>
+<script type="text/javascript" src="/tea/mt.js"></script>
+
+<form action="../upload.jsp?">
+<input type="button" id="browse" value="浏览文件"/><br/>
+<input type="checkbox" id="fck_scale" onclick="mt.fck()"/><label for="fck_scale">自动缩小</label><br/>
+<input type="checkbox" id="fck_watermark" onclick="mt.fck()"/><label for="fck_watermark">添加水印</label><br/>
+</form>
+提示：<br/>
+1.选择的文件大小不超过5M，支持jpg、gif、png；<br/>
+2.只能为尺寸大于300×300的jpg文件添加水印。<br/>
+3.使用mac操作系统的网友，如您在上传过程中遇到问题，请重新安装flash后再试，<a href="http://get.adobe.com/flashplayer/" target="_blank">免费下载</a>
+
+<div id="list"></div>
+
+<script type="text/javascript">
+var place,line=9,imgs;//移动
+
+var up=new Upload($('browse'),{fileSizeLimit:'20 MB',filePostName:'NewFile',fileTypes:'*.jpg;*.gif;*.png;*.bmp'});
+up.fileQueued=function(f)
+{
+  var d=document.createElement("DIV");
+  d.id=f.id;
+  d.setAttribute("alt",f.name.substring(0,f.name.lastIndexOf('.')));
+  d.onmouseover=function(){this.style.border="1px solid #51BD2F";};
+  d.onmouseout=function(){this.style.border="1px solid #CCCCCC";};
+  d.style.cssText="width:50px; height:50px; border:1px solid #CCCCCC;margin:2px;float:left;";
+  d.title="名称:"+f.name+"\r\n大小:"+(f.size/1024).toFixed(1)+" K";
+  d.innerHTML+="<img style='float:right' onclick='up.remove(this)' src='/tea/image/public/del2.gif'><div><div>0%</div><div style='border:1px solid #CCCCCC; padding:1px;'><div style='background:#00f;width:0%;height:2px;font-size:0px;'></div></div></div>";
+  $('list').appendChild(d);
+
+  //调整顺序
+  d.onmousedown=function(ev)
+  {
+    if(ev)window.event=ev;
+    var e=event.srcElement||event.target;
+    if(event.button>1||e.tagName!="DIV")return;
+    this.x=event.offsetX||event.layerX-e.offsetLeft;
+    this.y=event.offsetY||event.layerY-e.offsetTop;
+    this.down=true;
+    this.setCapture();
+    //
+    imgs=$('list').getElementsByTagName("DIV");
+    for(var j=0;j<imgs.length;j++)
+    {
+      imgs[j].locx=(mt.left(imgs[j])+imgs[j].offsetWidth/2);
+    }
+    //创建占位符
+    place=document.createElement("SPAN");
+    place.innerHTML="&nbsp;"
+    place.style.cssText=this.style.cssText+";border:1px solid #FF0000;background:none;display:block";
+    this.parentNode.insertBefore(place,this);
+    //
+    this.style.position="absolute";
+    this.onmousemove();
+    return false;
+  };
+  d.onmousemove=function(ev)
+  {
+    if(ev)window.event=ev;
+    if(!this.down)return;
+    var x=event.clientX+document.body.scrollLeft;
+    if(x<0)x=0;
+    var y=event.clientY+document.body.scrollTop;
+    if(y<0)y=0;
+    this.style.left=x-this.x+'px';
+    this.style.top=y-this.y+'px';
+    //210第二行的高度
+    var loc=y>210?line:0;
+    while(imgs[loc]&&imgs[loc].locx<x)loc++;
+    if(y>210)
+    {
+      if(loc<=line)loc=line+1;
+    }else if(loc>line)loc=line;
+    if(place.loc==loc)return;
+    place.loc=loc;
+    this.parentNode.insertBefore(place,imgs[loc]||null);
+  }
+  d.onmouseup=function(event)
+  {
+    if(!this.down)return;
+    this.releaseCapture();
+    this.down=false;
+    this.style.position="";
+    this.parentNode.replaceChild(this,place);
+    this.onmouseout();
+  }
+};
+up.fileDialogComplete=function(i)
+{
+  if(i<1)return;
+  this.start();
+};
+up.uploadProgress=function(f,b,t)
+{
+  if(!t)return;
+  var tmp=$(f.id).childNodes[1].childNodes;
+  tmp[0].innerHTML=tmp[1].firstChild.style.width=parseInt(b*100/f.size)+"%";
+};
+up.uploadSuccess=function(f,u)
+{
+  var d=$(f.id);
+  d.url=u;
+  d.style.background="#ffffff url(../upload.jsp?act=scale&url="+encodeURIComponent(d.url).replace('(','%28').replace(')','%29')+") no-repeat 50% 50%";
+  d.removeChild(d.childNodes[1]);
+};
+up.remove=function(a)
+{
+  var d=a.parentNode;
+  d.parentNode.removeChild(d);
+  mt.send("../upload.jsp?act=del&url="+encodeURIComponent(d.url));
+};
+
+
+//保存修改设置
+$('fck_scale').checked=cookie.get('fck_scale','true')=='true';
+$('fck_watermark').checked=cookie.get('fck_watermark','false')=='true';
+mt.fck=function()
+{
+  var scale=$('fck_scale').checked,watermark=$('fck_watermark').checked;
+  cookie.set('fck_scale',scale);
+  cookie.set('fck_watermark',watermark);
+
+  up.resize=scale?550:0;//PICC要求：550
+
+  //up.set('postParams',{'watermark':watermark,'resize':up.resize});
+  up.uploadURL=up.uploadURL.replace(/&(resize|watermark)=[^&]+/g,'')+'&resize='+up.resize+'&watermark='+watermark;
+  up.set('uploadURL',up.uploadURL);
+};
+
+var finter=setInterval(function()
+{
+  if(up.swf.PercentLoaded()!=100)return;
+  clearInterval(finter);
+
+  mt.fck();
+},500);
+
+
+
+
+var oEditor		= window.parent.InnerDialogLoaded();
+var FCK			= oEditor.FCK ;
+window.parent.SetOkButton( true ) ;
+function Ok()
+{
+  var is=$('list').childNodes;
+  for(var i=0;i<is.length;i++)
+  {
+    var img=FCK.CreateElement('IMG');
+    img.src=is[i].url;
+    img.alt=is[i].getAttribute("alt");
+    if(i>0)
+    {
+      var nbsp=FCK.EditorDocument.createTextNode(" ");
+      img.parentNode.insertBefore(nbsp,img);
+    }
+  }
+  return true;
+}
+</script>
+
+</body>
+</html>

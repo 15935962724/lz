@@ -1,0 +1,16 @@
+﻿#
+InvalidLicecnse=无效执照
+InvalidWebSite=非法网站
+InvalidWebName=无效网站名
+InvalidWebMaster=非法管理用户名
+InvalidWebSupport=非法支持E-MAIL
+InvalidSmtpServer=非法SMTP主机
+AlertConnection=与 {0} 的连接中断, 稍后将自动核对准用权。
+InfWebOptionsSet=网页选项
+SerialNumber=S/N 系列号
+RegistrationDate=注册日期
+ExpirationDate=到期日期
+NumberOfCommunity=授权社区数目
+LocalHost=本机IP地址
+EditLicense=编辑执照
+Sitemap=地图域名

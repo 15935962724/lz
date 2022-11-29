@@ -1,0 +1,10 @@
+<html>
+<head></head>
+<body bgcolor="red">
+
+<textarea name="pagecontent" id="content" rows="1" cols="1" style="display:none">表单的内容</textarea>
+<iframe id="myiframe" src="Edit/editor.htm?id=content&ReadCookie=0" frameborder="0" scrolling="no" width="621" height="200"></iframe>
+
+ 
+</body>
+</html> 

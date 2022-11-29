@@ -1,0 +1,466 @@
+package tea.entity.member;
+
+import java.util.*;
+
+import tea.db.*;
+import tea.entity.*;
+import java.sql.SQLException;
+
+public class Educate extends Entity
+{
+	private static Cache _cache = new Cache();
+	public static final String ANZKL_TYPE[][] = { { "013", "年数" }, { "012", "月份" }, { "011", "周数" }, { "010", "天数" }, { "002", "分钟" }, { "001", "时数" } };
+	public static final String ZZXXXS_TYPE[][] = { { "01", "正规高等院校" }, { "02", "高等教育自学考试" }, { "03", "夜大学" }, { "04", "职工大学" }, { "05", "电视大学" }, { "06", "业余大学" }, { "07", "函授" }, { "08", "研修班" }, { "09", "高等学校进修班" }, { "10", "网络大学" }, { "11", "培训" }, { "12", "正规中专" }, { "13", "业余中专" }, { "99", "其他" } };
+	private int node;
+	private Date starttime;
+	private Date stoptime;
+	private int majorCategory;
+	private String city;
+	private String content;
+	private String degree;
+	private String school;
+	private String majorName;
+	private int language;
+	private boolean exists;
+	private int id;
+	private String sland;
+	private int anzkl;
+	private String anzeh;
+	private boolean zzjylx;
+	private String zzzymc2;
+	private String zzxlbh; // 学位
+	private Date zzxwsj;
+	private String zzjgdz;
+	private String zzxxxs;
+	private boolean zzzgxl;
+	private boolean zzzgxw;
+	private boolean zzbsh;
+	private String zzxlbh2; // 学历证书编号
+
+	public Educate()
+	{
+	}
+
+	public static Educate find(int id) throws SQLException
+	{
+		Educate obj = (Educate) _cache.get(new Integer(id));
+		if (obj == null)
+		{
+			obj = new Educate(id);
+			_cache.put(new Integer(id), obj);
+		}
+		return obj;
+	}
+
+	public static java.util.Enumeration find(int node, int language) throws SQLException
+	{
+		java.util.Vector vector = new java.util.Vector();
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT id from Educate where node=" + (node) + " and language=" + language + " ORDER BY starttime");
+			while (db.next())
+			{
+				vector.addElement(new Integer(db.getInt(1)));
+			}
+		} finally
+		{
+			db.close();
+		}
+		return vector.elements();
+	}
+
+	public Educate(int id) throws SQLException
+	{
+		this.id = id;
+		loadBasic();
+	}
+
+	public boolean isExists() throws SQLException
+	{
+		return exists;
+	}
+
+	public void set() throws SQLException
+	{
+
+		if (this.isExists())
+		{
+			DbAdapter db = new DbAdapter();
+			try
+			{
+				// db.executeUpdate("EducateEdit " + id + "," + (node) + "," + DbAdapter.cite(starttime) + "," +
+				// DbAdapter.cite(stoptime) + "," + DbAdapter.cite(school) + "," + DbAdapter.cite(city) + "," +
+				// (majorCategory) + "," + DbAdapter.cite(majorName) + "," + DbAdapter.cite(degree) + "," +
+				// DbAdapter.cite(content) + "," + language + "," +
+				// / DbAdapter.cite(sland) + "," + anzkl + "," + DbAdapter.cite(anzeh) + "
+				// ," + (zzjylx ? "1" : "0") + "," + DbAdapter.cite(zzzymc2) + "," + DbAdapter.cite(zzxlbh) + ","
+				// + DbAdapter.cite(zzxwsj) + "," + DbAdapter.cite(zzjgdz) + "," + DbAdapter.cite(zzxxxs) + ","
+				// + (zzzgxl ? "1" : "0") + "," + (zzzgxw ? "1" : "0") + "," + (zzbsh ? "1" : "0") + ","
+				// + DbAdapter.cite(zzxlbh2));
+				db.executeUpdate("UPDATE Educate SET	node =" + node + ", 	 language=" + language + ",starttime =" + DbAdapter.cite(starttime) + "	,	stoptime =" + DbAdapter.cite(stoptime) + ",	school=" + DbAdapter.cite(school) + ",	city =" + DbAdapter.cite(city) + ",	majorcategory =" + (majorCategory) + ",	majorname =" + DbAdapter.cite(majorName) + ",	degree =" + DbAdapter.cite(degree) + ",	content=" + DbAdapter.cite(content) + ",sland  =" + DbAdapter.cite(sland) + " ,anzkl  =" + anzkl + " ,anzeh  ="
+						+ DbAdapter.cite(anzeh) + " ,zzjylx =" + (zzjylx ? "1" : "0") + " ,zzzymc2=" + DbAdapter.cite(zzzymc2) + ",zzxlbh =" + DbAdapter.cite(zzxlbh) + " ,zzxwsj =" + DbAdapter.cite(zzxwsj) + " ,zzjgdz =" + DbAdapter.cite(zzjgdz) + " ,zzxxxs =" + DbAdapter.cite(zzxxxs) + ",zzzgxl=" + (zzzgxl ? "1" : "0") + ",zzzgxw=" + (zzzgxw ? "1" : "0") + ",zzbsh=" + (zzbsh ? "1" : "0") + ",zzxlbh2=" + DbAdapter.cite(zzxlbh2) + " WHERE  id=" + id);
+			}  finally
+			{
+				db.close();
+			}
+		} else
+		{
+			create();
+		}
+		_cache.remove(new Integer(id));
+	}
+
+	public void create() throws SQLException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			// db.executeUpdate("EducateCreate " + (node) + "," + DbAdapter.cite(starttime) + "," + DbAdapter.cite(stoptime) + "," + DbAdapter.cite(school) + "," + DbAdapter.cite(city) + "," + (majorCategory) + "," + DbAdapter.cite(majorName) + "," + DbAdapter.cite(degree) + "," + DbAdapter.cite(content) + "," + language + "," +
+			// DbAdapter.cite(sland) + "," + anzkl + "," + DbAdapter.cite(anzeh) + "," + (zzjylx ? "1" : "0") + "," + DbAdapter.cite(zzzymc2) + "," + DbAdapter.cite(zzxlbh) + "," + DbAdapter.cite(zzxwsj) + "," + DbAdapter.cite(zzjgdz) + "," + DbAdapter.cite(zzxxxs) + "," + (zzzgxl ? "1" : "0") + "," + (zzzgxw ? "1" : "0") + "," + (zzbsh ? "1" : "0") + "," +
+			// DbAdapter.cite(zzxlbh2));
+			db.executeUpdate("INSERT INTO Educate(node,starttime,stoptime,school,city,majorcategory,majorname,degree,content,language, sland, anzkl , anzeh , zzjylx , zzzymc2, zzxlbh, zzxwsj, zzjgdz, zzxxxs,zzzgxl,zzzgxw,zzbsh,zzxlbh2)VALUES(" + node + "," + DbAdapter.cite(starttime) + "," + DbAdapter.cite(stoptime) + "," + DbAdapter.cite(school) + "," + DbAdapter.cite(city) + "," + (majorCategory) + "," + DbAdapter.cite(majorName) + "," + DbAdapter.cite(degree) + "," + DbAdapter.cite(content) + ","
+					+ language + ", " + DbAdapter.cite(sland) + "," + anzkl + " , " + DbAdapter.cite(anzeh) + " , " + (zzjylx ? "1" : "0") + " , " + DbAdapter.cite(zzzymc2) + ", " + DbAdapter.cite(zzxlbh) + ", " + DbAdapter.cite(zzxwsj) + ", " + DbAdapter.cite(zzjgdz) + ", " + DbAdapter.cite(zzxxxs) + "," + (zzzgxl ? "1" : "0") + "," + (zzzgxw ? "1" : "0") + "," + (zzbsh ? "1" : "0") + "," + DbAdapter.cite(zzxlbh2) + ")");
+		}  finally
+		{
+			db.close();
+		}
+	}
+
+	private void loadBasic() throws SQLException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT starttime, stoptime, school, city, majorcategory, majorname, degree,content,sland ,anzkl ,anzeh ,zzjylx ,zzzymc2 ,zzxlbh ,zzxwsj ,zzjgdz ,zzxxxs,node,zzzgxl,zzzgxw,zzbsh,zzxlbh2  FROM Educate  WHERE id=" + this.id);
+			if (db.next())
+			{
+				starttime = db.getDate(1);
+				;
+				stoptime = db.getDate(2);
+				school = db.getVarchar(1, language, 3);
+				city = db.getVarchar(1, language, 4);
+				majorCategory = db.getInt(5);
+				majorName = db.getVarchar(1, language, 6);
+				degree = db.getString(7);
+				content = db.getText(1, language, 8);
+				sland = db.getString(9);
+				anzkl = db.getInt(10);
+				anzeh = db.getString(11);
+				zzjylx = db.getInt(12) != 0;
+				zzzymc2 = db.getVarchar(1, language, 13);
+				zzxlbh = db.getString(14);
+				zzxwsj = db.getDate(15);
+				zzjgdz = db.getVarchar(1, language, 16);
+				zzxxxs = db.getString(17);
+				node = db.getInt(18);
+				zzzgxl = db.getInt(19) != 0;
+				zzzgxw = db.getInt(20) != 0;
+				zzbsh = db.getInt(21) != 0;
+				zzxlbh2 = db.getVarchar(1, language, 22);
+				exists = true;
+			} else
+			{
+				exists = false;
+				zzjgdz = zzzymc2 = school = city = majorName = content = zzxlbh2 = "";
+			}
+		}  finally
+		{
+			db.close();
+		}
+
+	}
+
+	public void setNode(int node)
+	{
+
+		this.node = node;
+	}
+
+	public void setStart(Date starttime)
+	{
+		this.starttime = starttime;
+	}
+
+	public void setStop(Date stoptime)
+	{
+		this.stoptime = stoptime;
+	}
+
+	public void setMajorCategory(int majorCategory)
+	{
+
+		this.majorCategory = majorCategory;
+	}
+
+	public void setCity(String city)
+	{
+		this.city = city;
+	}
+
+	public void setComment(String content)
+	{
+
+		this.content = content;
+	}
+
+	public void setDegree(String degree)
+	{
+
+		this.degree = degree;
+	}
+
+	public void setSchool(String school)
+	{
+
+		this.school = school;
+	}
+
+	public void setMajorName(String majorName)
+	{
+
+		this.majorName = majorName;
+	}
+
+	public void setLanguage(int language)
+	{
+		this.language = language;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
+	}
+
+	public void setSland(String sland)
+	{
+		this.sland = sland;
+	}
+
+	public void setAnzkl(int anzkl)
+	{
+		this.anzkl = anzkl;
+	}
+
+	public void setAnzeh(String anzeh)
+	{
+		this.anzeh = anzeh;
+	}
+
+	public void setZzjylx(boolean zzjylx)
+	{
+		this.zzjylx = zzjylx;
+	}
+
+	public void setZzzymc2(String zzzymc2)
+	{
+		this.zzzymc2 = zzzymc2;
+	}
+
+	public void setZzxlbh(String zzxlbh)
+	{
+		this.zzxlbh = zzxlbh;
+	}
+
+	public void setZzxwsj(Date zzxwsj)
+	{
+		this.zzxwsj = zzxwsj;
+	}
+
+	public void setZzjgdz(String zzjgdz)
+	{
+		this.zzjgdz = zzjgdz;
+	}
+
+	public void setZzxxxs(String zzxxxs)
+	{
+		this.zzxxxs = zzxxxs;
+	}
+
+	public void setZzzgxl(boolean zzzgxl)
+	{
+		this.zzzgxl = zzzgxl;
+	}
+
+	public void setZzzgxw(boolean zzzgxw)
+	{
+		this.zzzgxw = zzzgxw;
+	}
+
+	public void setZzbsh(boolean zzbsh)
+	{
+		this.zzbsh = zzbsh;
+	}
+
+	public void setZzxlbh2(String zzxlbh2)
+	{
+		this.zzxlbh2 = zzxlbh2;
+	}
+
+	public int getNode()
+	{
+
+		return node;
+	}
+
+	public Date getStart()
+	{
+		return starttime;
+	}
+
+	public String getStart(String patterm)
+	{
+		if (starttime == null)
+		{
+			return "";
+		}
+		return (new java.text.SimpleDateFormat(patterm)).format(starttime);
+	}
+
+	public Date getStop()
+	{
+		return stoptime;
+	}
+
+	public void delete()
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("DELETE FROM Educate WHERE id=" + this.id);
+		} catch (SQLException ex)
+		{
+			ex.printStackTrace();
+		} finally
+		{
+			db.close();
+		}
+		_cache.remove(new Integer(id));
+	}
+
+	public String getStop(String patterm)
+	{
+		if (stoptime == null)
+		{
+			return "";
+		}
+		if ((new java.text.SimpleDateFormat("yyyy")).format(stoptime).equals("3000"))
+		{
+			return "至今";
+		}
+		return (new java.text.SimpleDateFormat(patterm)).format(stoptime);
+	}
+
+	public int getMajorCategory()
+	{
+		return majorCategory;
+	}
+
+	public String getCity()
+	{
+		return city;
+	}
+
+	public String getComment()
+	{
+
+		return content;
+	}
+
+	public String getDegree()
+	{
+		return degree;
+	}
+
+	public String getDegree(int language)
+	{
+		return tea.htmlx.DegreeSelection.getDegree(degree);
+	}
+
+	public String getSchool()
+	{
+
+		return school;
+	}
+
+	public String getMajorName()
+	{
+
+		return majorName;
+	}
+
+	public int getLanguage()
+	{
+		return language;
+	}
+
+	public int getId()
+	{
+		return id;
+	}
+
+	public String getSland()
+	{
+		return sland;
+	}
+
+	public int getAnzkl()
+	{
+		return anzkl;
+	}
+
+	public String getAnzeh()
+	{
+		return anzeh;
+	}
+
+	public boolean isZzjylx()
+	{
+		return zzjylx;
+	}
+
+	public String getZzzymc2()
+	{
+		return zzzymc2;
+	}
+
+	public String getZzxlbh()
+	{
+		return zzxlbh;
+	}
+
+	public Date getZzxwsj()
+	{
+		return zzxwsj;
+	}
+
+	public String getZzjgdz()
+	{
+		return zzjgdz;
+	}
+
+	public String getZzxxxs()
+	{
+		return zzxxxs;
+	}
+
+	public boolean isZzzgxl()
+	{
+		return zzzgxl;
+	}
+
+	public boolean isZzzgxw()
+	{
+		return zzzgxw;
+	}
+
+	public boolean isZzbsh()
+	{
+		return zzbsh;
+	}
+
+	public String getZzxlbh2()
+	{
+		return zzxlbh2;
+	}
+}

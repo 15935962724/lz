@@ -1,0 +1,363 @@
+package tea.entity.yl.shop;
+
+import tea.db.DbAdapter;
+import tea.entity.Cache;
+import tea.entity.Database;
+import tea.entity.Seq;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+
+/**
+ * 订单-详细
+ * @author guodh
+ * */
+public class ShopOrderData {
+
+	protected static Cache c = new Cache(50);
+	
+	private int id;				
+	private String orderId;			//订单编号
+	private int productId;			//产品ID
+	private Double unit;			//单价 医院开票价
+	private int quantity;			//数量
+	private Double amount;			//金额 医院开票金额
+	private Date calibrationDate;	//粒子的校准时间
+	private Double activity;        //粒子具体活度
+	
+	private float agent_price_s;	//服务商显示价
+	private float agent_price;		//服务商开票价
+	private float agent_amount;		//服务商开票金额
+	
+	private Date expectedDelivery;//预期发货日期
+	private Double expectedActivity;//粒子具体活度
+	private int getJihuo;           //是否获取激活码成功   1成功，2失败
+	private String ncPuidCode;      //nc商品编码    在订单推送CRM的时候存起来  发票推送的时候可以直接使用
+	private String crmOrderId;      //CRM的订单id   发票推送使用
+
+	public ShopOrderData(int id){
+		this.id = id;
+	}
+	
+	public static ShopOrderData find(int id){
+		ShopOrderData aShopPackage = (ShopOrderData)c.get(id);
+		if(aShopPackage == null){
+			ArrayList<ShopOrderData> list = find(" AND id = " + id, 0, 1);
+			aShopPackage = list.size() < 1 ? new ShopOrderData(id):list.get(0);
+		}
+		return aShopPackage;
+	}
+	
+	public static ArrayList<ShopOrderData> find(String sql,int pos,int size){
+		ArrayList<ShopOrderData> list = new ArrayList<ShopOrderData>();
+		DbAdapter db = new DbAdapter();
+		String QSql = "select id,order_id,product_id,unit,quantity,amount,calibrationdate,activity,agent_price,agent_amount,agent_price_s,expectedDelivery,expectedActivity,getJihuo,ncPuidCode,crmOrderId from shopOrderData where 1=1 " + sql;
+		try {
+
+			ResultSet rs = db.executeQuery(QSql, pos, size);
+			while(rs.next()){
+				int i = 1;
+				ShopOrderData so = new ShopOrderData(rs.getInt(i++));
+				so.setOrderId(rs.getString(i++));
+				so.setProductId(rs.getInt(i++));
+				so.setUnit(rs.getDouble(i++));
+				so.setQuantity(rs.getInt(i++));
+				so.setAmount(rs.getDouble(i++));
+				so.setCalibrationDate(rs.getDate(i++));
+				so.setActivity(rs.getDouble(i++));
+				so.setAgent_price(rs.getFloat(i++));
+				so.setAgent_amount(rs.getFloat(i++));
+				so.setAgent_price_s(rs.getFloat(i++));
+				so.setExpectedDelivery(rs.getDate(i++));
+				so.setExpectedActivity(rs.getDouble(i++));
+				so.setGetJihuo(rs.getInt(i++));
+				so.setNcPuidCode(rs.getString(i++));
+				so.setCrmOrderId(rs.getString(i++));
+				c.put(so.id, so);
+				list.add(so);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			db.close();
+		}
+		return list;
+	}
+	
+	//更新数据
+	public static ArrayList<ShopOrderData> find2(String sql,int pos,int size){
+		ArrayList<ShopOrderData> list = new ArrayList<ShopOrderData>();
+		DbAdapter db = new DbAdapter();
+		String QSql = "select da.id,da.order_id,da.product_id,da.unit,da.quantity,da.amount,da.calibrationdate,da.activity,da.agent_price,da.agent_amount,da.agent_price_s,da.getJihuo,da.ncPuidCode,da.crmOrderId from shopOrderData da " + sql;
+		try {
+			ResultSet rs = db.executeQuery(QSql, pos, size);
+			while(rs.next()){
+				int i = 1;
+				ShopOrderData so = new ShopOrderData(rs.getInt(i++));
+				so.setOrderId(rs.getString(i++));
+				so.setProductId(rs.getInt(i++));
+				so.setUnit(rs.getDouble(i++));
+				so.setQuantity(rs.getInt(i++));
+				so.setAmount(rs.getDouble(i++));
+				so.setCalibrationDate(rs.getDate(i++));
+				so.setActivity(rs.getDouble(i++));
+				so.setAgent_price(rs.getFloat(i++));
+				so.setAgent_amount(rs.getFloat(i++));
+				so.setAgent_price_s(rs.getFloat(i++));
+				so.setGetJihuo(rs.getInt(i++));
+				so.setNcPuidCode(rs.getString(i++));
+				so.setCrmOrderId(rs.getString(i++));
+				
+				c.put(so.id, so);
+				list.add(so);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			db.close();
+		}
+		return list;
+	}
+	
+	public static int count(String sql) throws SQLException{
+		return DbAdapter.execute("select count(0) from shopOrderData sdo "+tab(sql)+" where 1=1 " + sql);
+	}
+	/**
+	 * 查询总数量
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
+	public static int sumquantity(String sql) throws SQLException{
+		return DbAdapter.execute("select sum(quantity) from shopOrderData sdo "+tab(sql)+" where 1 = 1 " + sql);
+	}
+	
+	
+	/**
+	 * 查询总账款
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
+	public static float sumamount(String sql) throws SQLException{
+		return DbAdapter.execute("select sum(convert(real,agent_amount)) from shopOrderData sdo "+tab(sql)+" where 1 = 1  " + sql);
+	}
+	
+	public void set() throws SQLException{
+		String sql = "";
+		if(this.id < 1){
+			sql = "insert into shopOrderData(id,order_id,product_id,unit,quantity,amount,calibrationdate,activity,agent_price,agent_amount,agent_price_s,expectedDelivery,expectedActivity,getJihuo,ncPuidCode,crmOrderId) values("
+				+ (this.id = Seq.get()) + "," + DbAdapter.cite(this.orderId) + "," + this.productId + "," + this.unit + "," + this.quantity + "," + this.amount + "," + DbAdapter.cite(this.calibrationDate) + "," + this.activity + "," + this.agent_price + "," + this.agent_amount+ "," + this.agent_price_s + ","+Database.cite(expectedDelivery)+","+expectedActivity+","+getJihuo+","+Database.cite(ncPuidCode)+","+Database.cite(crmOrderId)+")";
+		}else{
+			sql = "update shopOrderData set order_id="+ DbAdapter.cite(this.orderId) +",product_id="+this.productId+",unit="+this.unit+",quantity="+this.quantity+",amount="+this.amount+",calibrationdate="+DbAdapter.cite(this.calibrationDate)+",activity="+this.activity+",agent_price="+this.agent_price+",agent_amount="+this.agent_amount+",agent_price_s="+this.agent_price_s+ ",expectedDelivery="+Database.cite(expectedDelivery)+",expectedActivity="+expectedActivity+", getJihuo="+getJihuo+",ncPuidCode="+Database.cite(ncPuidCode)+",crmOrderId="+Database.cite(crmOrderId)+" where id=" + this.id;
+		}
+		DbAdapter db = new DbAdapter();
+		try {
+			db.executeUpdate(this.id, sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			db.close();
+		}
+		c.remove(this.id);
+	}
+	
+	public void delete(){
+		DbAdapter db = new DbAdapter();
+		try {
+			db.executeUpdate(this.id,"delete from shopOrderData where id= " + this.id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			db.close();
+		}
+		c.remove(this.id);
+	}
+	
+	public void set(String column,String value){
+		DbAdapter db = new DbAdapter();
+		try {
+			db.executeUpdate(this.id, "update shopOrderData set " + column + "=" + DbAdapter.cite(value) + " where id=" + this.id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			db.close();
+		}
+		c.remove(this.id);
+	}
+	
+	static String tab(String sql){
+		StringBuffer sb = new StringBuffer();
+		if(sql.contains(" AND sp.")){
+			sb.append(" inner join shopproduct sp on sp.product = sdo.product_id ");
+		}
+		return sb.toString();
+	}
+	
+	/**
+	 * 通过订单号查看订单商品厂商
+	 * @param orderid
+	 * @return
+	 */
+	public static int findPuid(String orderid){
+		int puid = 0;
+		ShopOrderData aShopPackage = null;
+		ArrayList<ShopOrderData> list = find(" AND order_id = " + Database.cite(orderid), 0, 1);
+		aShopPackage = list.size() < 1 ? new ShopOrderData(0):list.get(0);
+		
+		if(aShopPackage.getId()!=0) {
+			try {
+				ShopProduct sp = ShopProduct.find(aShopPackage.getProductId());
+				
+				puid = sp.puid;
+			}catch (Exception e) {
+
+			}
+			
+			
+		}
+		return puid;
+	}
+
+
+	public static ShopOrderData findShopOrderData(String orderid){
+		ShopOrderData aShopPackage = null;
+		ArrayList<ShopOrderData> list = find(" AND order_id = " + Database.cite(orderid), 0, 1);
+		aShopPackage = list.size() < 1 ? new ShopOrderData(0):list.get(0);
+		return aShopPackage;
+
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public Double getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Double unit) {
+		this.unit = unit;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public Date getCalibrationDate() {
+		return calibrationDate;
+	}
+
+	public void setCalibrationDate(Date calibrationDate) {
+		this.calibrationDate = calibrationDate;
+	}
+
+	public Double getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Double activity) {
+		this.activity = activity;
+	}
+
+	public float getAgent_price() {
+		return agent_price;
+	}
+
+	public void setAgent_price(float agentPrice) {
+		agent_price = agentPrice;
+	}
+
+	public float getAgent_amount() {
+		return agent_amount;
+	}
+
+	public void setAgent_amount(float agentAmount) {
+		agent_amount = agentAmount;
+	}
+
+	public float getAgent_price_s() {
+		return agent_price_s;
+	}
+
+	public void setAgent_price_s(float agentPriceS) {
+		agent_price_s = agentPriceS;
+	}
+
+	public Date getExpectedDelivery() {
+		return expectedDelivery;
+	}
+
+	public void setExpectedDelivery(Date expectedDelivery) {
+		this.expectedDelivery = expectedDelivery;
+	}
+
+	public Double getExpectedActivity() {
+		return expectedActivity;
+	}
+
+	public void setExpectedActivity(Double expectedActivity) {
+		this.expectedActivity = expectedActivity;
+	}
+
+	public int getGetJihuo() {
+		return getJihuo;
+	}
+
+	public void setGetJihuo(int getJihuo) {
+		this.getJihuo = getJihuo;
+	}
+
+	public String getNcPuidCode() {
+		return ncPuidCode;
+	}
+
+	public void setNcPuidCode(String ncPuidCode) {
+		this.ncPuidCode = ncPuidCode;
+	}
+
+	public String getCrmOrderId() {
+		return crmOrderId;
+	}
+
+	public void setCrmOrderId(String crmOrderId) {
+		this.crmOrderId = crmOrderId;
+	}
+}

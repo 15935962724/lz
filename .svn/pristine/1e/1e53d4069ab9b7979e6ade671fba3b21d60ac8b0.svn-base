@@ -1,0 +1,34 @@
+#
+UserManage=User Management
+AddUser=Add User
+Dept=Department
+Role=Role
+SelectRole=Select Role
+StandbyRole=Backup Role
+Add=Add
+ConfirmClearPassword=Confirm Clear Password
+ClearPassword=Clear Password
+PersonnelList=Personnel List
+SelectBrand=Select Brand
+StandbyBrand=Backup Brand
+SuperHost=Board Master
+BBS=Forum
+SelectBBS=Select Forum
+StandbyBBS=Backup Forum
+NoDept=No Department
+
+SelectCompany=Select Company
+StandbyCompany=Backup Company
+
+CBRegEdit=Add or Update
+CBAddMember=Add Exist Member
+
+
+1169018015265=No
+1169018023296=Local Department
+1169018028562=All Departments
+1169018539109=Rank
+
+1169525543109=User already Exist
+
+1176693988281=Recover Default Desktop

@@ -1,0 +1,96 @@
+
+<script src="/tea/album/comm_min.v1.0.0.js"></script>
+<link href="/tea/album/hdPic_new_v1.0.2.css" rel="stylesheet" type="text/css" media="screen"/>
+
+
+<div id="photo-warp" style="background:url(/tea/album/ajax-loader.gif) no-repeat center center">
+<div class="photo-warp-inner" id="photo-warp-inner" style="visibility:hidden;">
+<a href="javascript:void(0)" id="PicWBzb"></a>
+<div class="mainArea" id="mainArea">
+
+<!--末页推荐广告位-->
+<div id="huandeng_F_pic" style="width:550px;height:320px;display:none;" class="l_qq_com"></div>
+
+<!--最后一页-->
+<div id="new-last-photo" style="display:none;width:100%;height:396px;background:#fff;position:absolute;left:0;top:0;z-index:999;">
+<div class="hd">
+<p><a href="#" id="picTitle"></a></p>
+<ul>
+  <li><a href="#" id="replayPic"><span></span><em></em>重新播放</a></li>
+  <li><a href="#" id="MIcblog"><span></span><em></em>转播到微博</a></li>
+</ul>
+</div>
+<div class="bd">
+<h3>你可能还喜欢</h3>
+<ul id="lastComend">
+<li><div><a href="#" class="img"></a><a href="#"></a></div></li>
+<li><div><a href="#" class="img"></a><a href="#"></a></div></li>
+<li><div><a href="#" class="img"></a><a href="#"></a></div></li>
+</ul>
+</div>
+</div>
+<!--最后一页 END-->
+		<div id="preArrow" title="上一张" class="contextDiv"></div><div id="nextArrow" title="下一张" class="contextDiv"></div>
+		<a href="javascript:void(0);" id="bigHref"><img src="/tea/album/ajax-loader.gif" id="Display" style="cursor:pointer;margin:0 auto;visibility:hidden;" title="点击浏览下一张"/></a>
+		<div id="loading" style="display:none"></div>
+		<div class="picTips picTips_png" id="picTips" style="display:none">
+			<div class="titleArea" id="titleArea">
+
+
+			</div>
+		</div>
+		<div href="javascript:void(0);" class="buttonArea" id="buttonArea" title="隐藏图片注释">隐藏</div>
+		<div class="openTips" style="display:none" id="openTips" title="打开图片注释">查看图注</div>
+		</div>
+		<div class="blank" style="background:#fff"></div>
+		<div class="photoList-wrap">
+
+		<a href="javascript:void(0)" class="photo-Up"  id="Up"  onfocus='this.blur()' title="向前"></a>
+
+                <div class="photo-List" id="photo-List">
+                	<ul id="smallPhoto"></ul>
+					<div id="noDiv"></div>
+                </div>
+		<a href="javascript:void(0)" class="photo-Down" id="Down"  onfocus='this.blur()' title = "向后"></a>
+		</div>
+<div id="scrollbar"><a href="javascript:void(0)" id="scrollbar-in" title="拖动工具条以快速查看图片"></a></div>
+	</div>
+
+</div>
+<div id="flashCff"></div>
+<div id="contTxt"></div>
+<div id="PGViframe"></div>
+<!--模拟右键菜单-->
+<div id="cmenu" style="position:absolute;display:none;top:0px;left:0px;width:100px;z-index:10000;">
+ <ul>
+     <li id="prop">查看原图</li>
+ </ul>
+</div>
+
+
+
+<script>
+var GroupjsUrl = "/tea/album/hd_min_v1.2.6.js";
+
+var photoJson = new Array();
+function doit()
+{
+  var arrMe = eval("(" + arguments[0] + ")");
+  var length = arrMe.Children[0].Children[0].Children[0].Content;//长度
+  for(var i=0;i<length;i++)
+  {
+    photoJson.push({showtit:''+arrMe.Children[0].Children[1].Children[i].Children[0].Children[0].Content+'', showtxt:''+arrMe.Children[0].Children[1].Children[i].Children[3].Children[0].Content+'', smallpic:''+arrMe.Children[0].Children[1].Children[i].Children[1].Children[0].Content+'', 'bigpic':''+arrMe.Children[0].Children[1].Children[i].Children[2].Children[0].Content+''});
+  }
+  mt.script(GroupjsUrl,function()
+  {creatIF();
+  picShow.Picsite="";
+  picShow.lastUrl="/";
+  picShow.defatLink = "/";
+  picShow.SiteName = "news";
+  picShow.setTit();
+  picShow.Loader();
+  picShow.$("photo-warp-inner").style.visibility = "visible";
+  });
+};
+mt.send("/res/"+node.community+"/album/"+parseInt(a_node/10000)+"/N_"+a_node+".js?time="+Math.random(),doit);
+</script>

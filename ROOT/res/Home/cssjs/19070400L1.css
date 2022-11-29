@@ -1,0 +1,75 @@
+#Content{width:100% !important;}
+.con-login{
+        margin:0px auto;
+        padding:0px;
+    }
+    .con-login .logo{
+        margin-top:60px;
+    }
+    .con-login .form-horizontal{
+        width:422px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        background:#fff;
+        margin:40px auto;
+        padding:5px 0px 0px;
+    }
+    .con-login .form-control{
+        border:none;
+        border-bottom:1px #e4e4e4 solid;
+        box-shadow:none;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+    }
+    .con-login .form-group{
+        padding:0px 20px;
+    }
+    .con-login h1{
+        text-align:center;
+        line-height: 200%;
+        font-size:24px;
+        margin-top:10px;
+    }
+    .con-login .form-control{
+        height:44px;
+        padding-left:40px;
+    }
+    .con-login .form-control:focus{
+        outline: none;
+        box-shadow: none;
+    }
+    .con-login .form-control::-webkit-input-placeholder{
+        font-size:16px;
+    }
+    .con-login .btn{
+        background:#044694;
+    }
+    .con-login .go{
+        height:46px;
+        margin-top:5px;
+        background:#f6f6f6;
+        color:#999;
+        line-height:46px;
+        text-align:center;
+        -webkit-border-radius: 0px 0px 8px 8px;
+        -moz-border-radius: 0px 0px 8px 8px;
+        border-radius: 0px 0px 8px  8px;
+    }
+    .con-login .go a{
+        color:#265b9e;cursor:pointer;
+    }
+    .con-login .col-sm-12{
+        position: relative;
+    }
+    .con-login .icon{
+        position: absolute;
+        left:20px;
+        top:6px;
+    }
+    .con-login .icon:before{
+        font-size:22px;
+        color:#7b7b7b;
+    }
+.con-login p a{cursor:pointer;}

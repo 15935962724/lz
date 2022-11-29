@@ -1,0 +1,124 @@
+<table width=545 border=1 cellpadding=0 cellspacing=0>
+  <tr> 
+                <td width=541 height=22  style='padding-left:10px;'><a href=### >个人信息</a>&nbsp;<a href=### >密码修复</a>&nbsp;<a href=### >电话簿</a>&nbsp;<a href=### >移动梦网-我的短信</a>&nbsp;<a href=### >注销账号</a>&nbsp;<a href=### >退出登录</a></td>
+              </tr>
+              <tr> 
+                <td height=52 style='padding-left:10px;' >您的号码：13501369877</td>
+              </tr>
+            </table>
+			<br>
+
+<form name=selectgroup method=post action=>
+	  
+  <table width=545 border=1 cellpadding=0 cellspacing=0>
+    <tr>
+	      <td colspan=3 height=26 valign=bottom ><b>我的电话簿</b></td>
+	    </tr>
+	    <tr>
+	      <td width=121 height=30 align=center >[<a href=javascript:selectall(); >全选</a>]&nbsp;[<a href=javascript:judge(); >删除</a>]</td>
+	      
+      <td width=103><div align="center">
+          <input type="submit" name="Submit" value="添加号码">
+        </div></td>
+	      
+	      <td width=313 align=right style='padding-right:8px;' >选择组&nbsp;<select name=group size=1 onchange="changegroup(selectgroup)">
+                       <option value=0>所有组</option>
+2<option value=269191>朋友</option><option value=-1>其他</option>                     </select>
+                       </td>
+	    </tr>
+	  </table>
+	  
+  <br>
+  <table width=545 border=1 cellpadding=0 cellspacing=0>
+    <tr> 
+      <td width=35 height=30><br></td>
+	      <td width=50 align=center >姓名</td>
+	      <td width=85 align=center >手机</td>
+	      <td width=90 align=center >固定电话</td>
+	      <td width=60 align=center >组名</td>
+	      <td width=165 align=center  style='font-family:arial'>E-mail</td>
+	      <td width=60 align=center >管理</td>
+	    </tr>
+	    
+	    <tr>
+	      <td height=28 align=center><input  id=CHECKBOX type="CHECKBOX" name=id[] value='781890'></td><td  align=center>zll</td><td  align=center>13910784577</td><td  align=center>dfffffff</td><td  align=center>朋友</td><td  align=center >dfdf</td><td  align=center><a href=###>修改</a></td>
+	    </tr>
+	  
+	    <tr>
+	      <td height=28 align=center><input  id=CHECKBOX type="CHECKBOX" name=id[] value='781901'></td><td  align=center>ygt</td><td  align=center>13501369877</td>
+      <td  align=center>fdf</td>
+      <td  align=center>朋友</td>
+      <td  align=center >fdf</td>
+      <td  align=center><a href='###' >修改</a></td>
+	    </tr>
+	  
+	  </table>
+	  
+  <br>
+  <table width=545 border=1 cellpadding=0 cellspacing=0>
+    <tr> 
+      <td width=119 align=center height=30 >[<a href=javascript:selectall(); >全选</a>]&nbsp;[<a href=javascript:judge(); >删除</a>]</td>
+	      <td width=420 align=right style='padding-right:10px;' 5><font >首页 | 上页 | 下页 | 末页 |  共2条 第1/1页</font></td>
+	    </tr>
+	  </table>
+	  </form>
+	  
+	  
+	  
+	  
+	   
+<p>实现功能：选择组：显示所选组成员的列表</p>
+<p><a href="newnumber.htm">点添加号码</a></p>
+<p><a href="updatefrinfo.htm">点修改</a></p>
+<p>
+  <script language=JavaScript type="text/javascript"> 
+ function judge(id,name){
+   if (confirm("是否要从电话本中删除这些联系人?"))
+   {
+     document.forms["selectgroup"].submit();
+   }
+ }
+ function CheckValue(myform)
+ {
+    if(myform.pname.value=="")
+    {
+       alert("请输入姓名！");
+       return false;
+    }
+    if(myform.mobile.value=="")
+    {
+       alert("请输入手机号码！");
+       return false;
+    }
+/*    if(myform.gid.value==0)
+    {
+       alert("请选择组！");
+       return false;
+    }
+*/
+    return true;
+ }
+ function changegroup(form){
+  
+   for(var i=0;i<form.group.options.length;i++){
+     if (form.group.options[i].selected){
+       window.location="index.php?group="+form.group.options[i].value;
+     }
+   }
+ }
+ function notice()
+ {
+    
+ }
+ function selectall()
+{
+   var myform=document.forms["selectgroup"];
+   var i;
+   for(i=0;i<myform.elements.length;i++)
+   {
+      if(myform.elements[i].name=='id[]') myform.elements[i].checked=true;
+   }
+}
+</script>
+</p>
+

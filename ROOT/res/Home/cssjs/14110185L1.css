@@ -1,0 +1,13 @@
+.query {padding-top:5px;}
+.query #tablecenter td{padding:5px;}
+.query #tablecenter td input{border:1px solid #7F9DB9;color:#AAAAAA;}
+.query #tablecenter td input.button{font-weight:bold;color:#fff;border:0px;width:42px;height:21px;background:#00A2E8;cursor:pointer;}
+.results #tablecenter{width:100%;margin-top:10px;border-collapse:collapse;}
+.results #tablecenter td{border:1px solid #DDDDDD;padding:10px 5px;text-align:center;}
+.results #tablecenter td a{color:#0000FF;}
+.switch{padding:10px 10px 0px 10px;}
+.switch:after{content: ".";display:block;height:0;clear:both;visibility: hidden;} 
+.switch a{float:left;color:#00A1E7;font-weight:bold;margin-right:10px;}
+.switch a.current{color:#F00;}
+.results #tablecenter .orderId{color:#0078C3;}
+.results #tablecenter .amount{font-weight:bold;}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="m-style.css">
+    <title>申请发票</title>
+</head>
+<body>
+    <div class="body body-bot">
+        <div class="order-sea">
+            <div class="order-sea-left fl-left">
+                <p>
+                    <span class="ft14 order-l-span">医院：</span>
+                    <select name="" id="">
+                        <option value=""></option>
+                    </select>
+                </p>
+                <p>
+                    <span class="ft14 order-l-span">索票时间：</span>
+                    <input type="text">
+                </p>
+            </div>
+            <input type="button" class="fl-right order-cxb order-cxb3 ft14" value="查询">
+        </div>
+        <div class="order-list order-list2">
+            <p class="inv-inp ft14">
+                <span>申请开票总数：</span>
+                <input class="inv-bor" type="text" placeholder="请输入申请开票数量">
+                <span class="inv-qd inv-qd1 fl-right">确定</span>
+            </p>
+            <p class="inv-inp ft14">
+                <span>申请开票总额：</span>
+                <input class="inv-bor" type="text"  placeholder="请输入申请开票金额">
+                <span class="inv-qd inv-qd2 fl-right">确定</span>
+
+            </p>
+        </div>
+        <div class="order-lx order-lx4">
+            <ul>
+                <li class="ft14 fl-left on">未完成开票<span>(27)</span></li>
+                <li class="ft14 fl-left">已完成开票<span>(27)</span></li>
+            </ul>
+        </div>
+        <div class="order-list">
+            <p class="order-line1 ft14 inv-p">
+                <input type="checkbox" class="inv-che fl-left">
+                <img src="img/icon14.png" alt="" class="inv-bimg">
+                <span class="fl-left inv-tit order-tit">甘肃金川集团有限公司职工医院</span>
+                <span class="fl-right order-zt">已开具</span>
+            </p>
+            <ul class="ft14">
+                <li>
+                    <span class="list-spanr3 fl-left">订单编号：</span>
+                    <span class="list-spanr fl-left">P01904240117</span>
+                </li>
+                <li>
+                    <span class="list-spanr3 fl-left">开票单位：</span>
+                    <span class="list-spanr fl-left">甘肃金川集团有限公司职工医院公司</span>
+                </li>
+                <li>
+                    <span class="list-spanr3 fl-left">下单时间：</span>
+                    <span class="list-spanr fl-left" >上海欣科医药有限公司</span>
+                </li>
+                <li>
+                    <span class="list-spanr3 fl-left">数量：</span>
+                    <span class="list-spanr fl-left">2018.06.23 15:23:45</span>
+                </li>
+                <li>
+                    <span class="list-spanr3 fl-left">未开数量：</span>
+                    <span class="list-spanr fl-left">0</span>
+                </li>
+                <li>
+                    <span class="list-spanr3 fl-left">开票金额：</span>
+                    <span class="list-spanr fl-left">0</span>
+                </li>
+            </ul>
+            <div class="order-btnt">
+                <p class="fl-left">
+                    <span class="ft14">申请开票数量：</span>
+                    <input type="text">
+                </p>
+                <p class="fl-left">
+                    <span class="ft14">申请开票金额：</span>
+                    <input type="text" >
+                </p>
+            </div>
+        </div>
+        <div class="order-list order-list2 order-list11">
+            <p class="order-line1 ft14 inv-p">
+                <input type="checkbox" class="inv-che fl-left">
+                <img src="img/icon14.png" alt="" class="inv-bimg">
+                <span class="fl-left inv-tit order-tit">开滦总医院</span>
+                <span class="fl-right order-zt">未开具</span>
+            </p>
+            <ul class="ft14">
+                <li>
+                    <span class="list-spanr3 fl-left">回款编号：</span>
+                    <span class="list-spanr fl-left">P01904240117</span>
+                </li>
+                <li>
+                    <span class="list-spanr3 fl-left">类型：</span>
+                    <span class="list-spanr fl-left">甘肃金川集团有限公司职工医院公司</span></li>
+                <li>
+                    <span class="list-spanr3 fl-left">回款时间：</span>
+                    <span class="list-spanr fl-left" >上海欣科医药有限公司</span>
+                </li>
+                <li>
+                    <span class="list-spanr3 fl-left">回款金额：</span>
+                    <span class="list-spanr fl-left">2018.06.23 15:23:45</span>
+                </li>
+                <li>
+                    <span class="list-spanr3 fl-left">收款单位：</span>
+                    <span class="list-spanr fl-left">0</span>
+                </li>
+            </ul>
+            <div class="order-btnt">
+                <p class="fl-left">
+                    <span class="ft14">申请开票数量：</span>
+                    <input type="text">
+                </p>
+                <p class="fl-left">
+                    <span class="ft14">申请开票金额：</span>
+                    <input type="text" >
+                </p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="button" value="索要发票" class="inv-f-btn ft16">
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+    var inp_z=0;
+    var inp_z2=0;
+    $('.inv-qd1').click(function(){
+        if(inp_z==0){
+            $(this).prev().removeClass('inv-bor').attr('disabled',true);
+            $(this).html('修改');
+            inp_z=1;
+        }else{
+            $(this).html('确定');
+            $(this).prev().addClass('inv-bor').attr('disabled',false);
+            inp_z=0;
+        }
+    })
+    $('.inv-qd2').click(function(){
+        if(inp_z2==0){
+            $(this).prev().removeClass('inv-bor').attr('disabled',true);
+            $(this).html('修改');
+            inp_z2=1;
+        }else{
+            $(this).html('确定');
+            $(this).prev().addClass('inv-bor').attr('disabled',false);
+            inp_z2=0;
+        }
+    })
+    $(".inv-che").click(function(){
+　　    if(this.checked){
+　　　　    $(this).next(".inv-bimg").attr("src","img/icon15.png");
+        }else{
+            $(this).next(".inv-bimg").attr("src","img/icon14.png");
+        }
+    })
+</script>
+</html>

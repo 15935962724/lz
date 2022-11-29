@@ -1,0 +1,14 @@
+#
+InvalidStartTerm=Invalid start term
+InvalidStopTerm=Invalid stop term
+RCreator=主创者
+VCreator=助手
+NodeStyle=节点类型
+Self=自已
+Father=父亲
+Son=儿子
+GrandSon=孙子
+Real=自身
+Virtual=助手
+Both=两者
+CurrentMember=当前会员

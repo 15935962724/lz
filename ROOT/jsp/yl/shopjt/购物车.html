@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.Spinner.js"></script>
+    <script>
+        $(function(){
+            $(".Spinner").Spinner({value:"1", min:1, len:3, max:"1000"});
+        });
+    </script>
+</head>
+<body>
+<div class="container pd0 shopCar">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h1 class="table animate-box" data-animate-effect="fadeInLeft">治疗计划系统TPS</h1>
+            <table class="table table-hover animate-box" data-animate-effect="fadeInLeft">
+                <thead>
+                    <tr class="animate-box" data-animate-effect="fadeInLeft">
+                        <th><input type="checkbox" /></th>
+                        <th class="text-l">商品图片</th>
+                        <th class="text-l">商品名称</th>
+                        <th>软件大小</th>
+                        <th>软件版本</th>
+                        <th>购买方式</th>
+                        <th>商品单价</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="first animate-box" data-animate-effect="fadeInLeft">
+                        <td><input type="checkbox" /></td>
+                        <td class="text-l"><span class="pic"><img src="http://www.brachysolution.com/res/Home/structure/19061406.png" /></span></td>
+                        <td class="text-l">治疗计划系统《TPS》</td>
+                        <td>301M</td>
+                        <td>V2.03</td>
+                        <td>
+                            <select name="" id="">
+                                <option>按时用次数购买</option>
+                            </select>
+                            <select name="" id="">
+                                <option>1个病例授权</option>
+                            </select>
+                        </td>
+                        <td>￥1000</td>
+                    </tr>
+
+                    <tr class="animate-box" data-animate-effect="fadeInLeft">
+                        <td><input type="checkbox" /></td>
+                        <td class="text-l"><span class="pic"><img src="http://www.brachysolution.com/res/Home/structure/19061406.png" /></span></td>
+                        <td class="text-l">治疗计划系统《TPS》</td>
+                        <td>301M</td>
+                        <td>V2.03</td>
+                        <td>
+                            <select name="" id="">
+                                <option>按时用次数购买</option>
+                            </select>
+                            <select name="" id="">
+                                <option>1个病例授权</option>
+                            </select>
+                        </td>
+                        <td>￥1000</td>
+                    </tr>
+
+                    <tr class="last animate-box" data-animate-effect="fadeInLeft">
+                        <td>备注</td>
+                        <td colspan="5"><input type="text" class="form-control w100" /> </td>
+                        <td>应付总额: <b>￥1000</b></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h1 class="table animate-box" data-animate-effect="fadeInLeft">设备/耗材</h1>
+            <table class="table table-hover animate-box" data-animate-effect="fadeInLeft">
+                <thead>
+                    <tr class="animate-box" data-animate-effect="fadeInLeft">
+                        <th width="60"><input type="checkbox" /></th>
+                        <th class="text-l">商品图片</th>
+                        <th class="text-l">商品名称</th>
+                        <th>单价</th>
+                        <th width="400">数量</th>
+                        <th>小计</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="first animate-box" data-animate-effect="fadeInLeft">
+                        <td width="60"><input type="checkbox" /></td>
+                        <td class="text-l"><span class="pic"><img src="http://www.brachysolution.com/res/Home/structure/19061406.png" /></span></td>
+                        <td class="text-l">治疗计划系统《TPS》</td>
+                        <td>￥1000</td>
+                        <td>
+                            <div class="Spinner">
+
+                            </div>
+                        </td>
+                        <td>￥1000</td>
+                    </tr>
+
+                    <tr class="animate-box" data-animate-effect="fadeInLeft">
+                        <td><input type="checkbox" /></td>
+                        <td class="text-l"><span class="pic"><img src="http://www.brachysolution.com/res/Home/structure/19061406.png" /></span></td>
+                        <td class="text-l">治疗计划系统《TPS》</td>
+                        <td>￥1000</td>
+                        <td>
+                            <div  class="Spinner">
+
+                            </div>
+                        </td>
+                        <td>￥1000</td>
+                    </tr>
+
+                    <tr class="last animate-box" data-animate-effect="fadeInLeft">
+                        <td>备注</td>
+                        <td colspan="4"><input type="text" class="form-control w100" /> </td>
+                        <td>应付总额: <b>￥1000</b></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-js animate-box mt15" data-animate-effect="fadeInLeft">
+                <thead>
+                    <tr class="animate-box" data-animate-effect="fadeInLeft">
+                        <td width="110" class="text-l"><label><input type="checkbox" />&nbsp;&nbsp;全选</label></td>
+                        <td>
+                            <a href="">删除选中的商品</a>&nbsp;&nbsp;
+                            <a href="">清空购物车</a>
+                        </td>
+                        <td class="text-r">
+                            结算总额: <b>￥1000</b>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-default">去结算</button>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

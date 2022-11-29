@@ -1,0 +1,11 @@
+#
+InvalidInventory=Invalid inventory
+InvalidMinQuantity=Invalid min quantity
+InvalidMaxQuantity=Invalid max quantity
+InvalidDelta=Invalid delta
+Supplier=Supplier
+Weight=Weight
+Volume=Volume
+gram=gram
+cm3=cm3
+BuyOFreeShipping=Free shipping & handling

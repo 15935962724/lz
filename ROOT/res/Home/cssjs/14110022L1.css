@@ -1,0 +1,97 @@
+body{text-align:center;}
+.Mytop{height:33px;background-color:#FFF2E6;margin-bottom:px;border:1px solid #FFDEBF;line-height:33px;padding:0 10px}
+.Mytop span{float:left;margin-right:20px;}
+
+
+.personalCenter{border:#DDDDDD solid 1px;background:url(/res/Home/structure/14110033.jpg) repeat-y left top #fff;}
+.personalCenterDiv{border:1px solid #fff;min-height:220px;clear:both;}
+.personalCenter:after,.personalCenterDiv:after{content: ".";display:block;height:0;clear:both;visibility: hidden;} 
+.personalCenter .personalNav{float:left;width:150px;}
+.personalCenter .personalNav li{height:44px;line-height:44px;padding-left:15px;background:url(/res/Home/structure/14110032.jpg) no-repeat left bottom}
+.personalCon{float:right;width:750px;margin-right:20px;text-align:center;}
+.personalCon #CurrentlyText{width:730px;}
+.personalCon #CurrentlyText table{width:730px;}
+td,th{margin:auto;padding:auto}
+
+
+/*,,,,,, */
+
+
+.query {padding-top:5px;}
+.query #tablecenter{/*border:solid 1px #ccc*/}
+.query #tablecenter td{padding:10px 5px;}
+/*.query #tablecenter td input{border:1px solid #7F9DB9;color:#AAAAAA;}*/
+.query #tablecenter td input.button{font-weight:bold;color:#fff;border:0px;width:42px;height:21px;background:#00A2E8;cursor:pointer;}
+.results #tablecenter{width:100%;margin-top:10px;border-collapse:collapse;}
+.results #tablecenter #tableonetr td{background:#eee;}
+.results #tablecenter td{border-bottom:1px solid #DDDDDD;padding:10px 5px;text-align:center;}
+.results #tablecenter td a{color:#0000FF;}
+.switch{padding:10px 10px 0px 10px;}
+.switch:after{content: ".";display:block;height:0;clear:both;visibility: hidden;} 
+.switch a{float:left;color:#00A1E7;font-weight:bold;margin-right:10px;}
+.switch a.current{color:#F00;}
+.results #tablecenter .orderId{color:#0078C3;}
+.results #tablecenter .amount{font-weight:bold;}
+
+
+
+
+
+.tabbox {text-align:left;margin:20px auto 0 auto;width:951px; border-collapse:collapse;
+}
+.tabbox td{ border-collapse:collapse; vertical-align:top;padding:10px 0 0 15px ;line-height:180%;white-space: nowrap;}
+.tabbox .trd{background-color:#666666;height:30px;line-height:30px;}
+.tabbox .trd th{color:#fff;padding:0 0px 0 15px; border-collapse:collapse;}
+.tabbox .trd img{vertical-align:middle;}
+.tabbox td a{color:#454545}
+
+.lofoter {padding:10px 0 20px;margin-top:40px;margin-left:auto;margin-right:auto;width:951px;background:#E7E7E7;border-top:solid 1px #ccc;text-align:center;line-height:180%}
+
+
+ .query #tablecenter td input#hospitalsel,#invoicebutton1,#invoicebutton2{
+    font-weight: bold;
+    color: #fff;
+    border: 0px;
+    padding:0 10px;
+    height: 22px;line-height:22px;
+    background: #00A2E8;
+    cursor: pointer;
+}
+.listtop td {padding:5px 0;}
+.listtop td input{border: 1px solid #7F9DB9;
+    color: #AAAAAA;margin-right:5px;}
+
+#tablecenter input[name='invoicenum']{width:50px;}
+#tablecenter #tableonetr .td1{width:50px;}
+#tablecenter .fenye a{  height: 18px;
+    line-height: 18px;
+    border-radius: 2px;
+    display: inline-block;
+    background-color: #f7f7f7;
+   font-size: 12px;
+    color: #333 !important;
+    padding: 4px 1em;
+    border: 1px solid #ddd;
+    margin-left: 3px;
+    vertical-align: middle;}
+#tablecenter .fenye a:hover {
+    text-decoration: none;
+    color: #e33b3d;}
+#tablecenter .fenye span{color: #e33b3d;
+    font-weight: 700;
+    border: 0;
+    cursor: default;
+    background: #fff;padding: 4px 1em;}
+.mt15 #invoicetotal,.mt15 #invoicenum{height:30px;line-height:30px;font-weight: 600;
+    font-size: 14px;}
+
+.mt15 button#getinvoice{
+    font-weight: bold;border-radius: 2px;
+    color: #fff;
+    border: 0px;
+    padding: 0px 25px;
+    height: 30px;
+    line-height: 30px;
+    background: #00A2E8;
+    cursor: pointer;margin:5px auto;
+}

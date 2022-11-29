@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<TITLE>New Document</TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+table{
+	font-size:12px;
+}
+body{
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
+	padding-top:1px;
+}
+</style>
+</head>
+<BODY>
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+    <td width="80" height="26">链接地址:</td>
+    <td width="124"><input id="wordEditer_Link_ADS" value="http://"></td>
+  </tr>
+  <tr>
+    <td height="26">链接文字:</td>
+    <td><input id="wordEditer_Link_TEXT"></td>
+  </tr>
+  <tr align="center">
+    <td height="30" colspan="2"><input value="确定" type="button"  onclick="insertLink();" >&nbsp;&nbsp;<input value="取消" type="button" onclick="_cancel();"></td>
+  </tr>
+</table>
+<script type="text/javascript">
+function _cancel() {
+	window.close();
+}
+var oRTE = dialogArguments.getFrameNode(dialogArguments.sRTE);
+function insertLink() {
+	var t = "_blank";
+	var a = document.getElementById("wordEditer_Link_ADS").value;
+	var v = document.getElementById("wordEditer_Link_TEXT").value;
+	if(a == "") return;
+	if(v == "") v = a;
+	var html = "<a href='" + a + "' target=\"" + t + "\">" + v + "</a>";
+	if(window.Event){
+		var oRTE = opener.getFrameNode(opener.sRTE);
+		oRTE.document.execCommand('insertHTML', false, html);
+	}
+	else {
+		var oRTE = dialogArguments.getFrameNode(dialogArguments.sRTE);
+		oRTE.focus();
+		var oRng = oRTE.document.selection.createRange();
+		oRng.pasteHTML(html);
+		oRng.collapse(false);
+		oRng.select();
+	}
+
+	window.close();
+}
+function init()
+{
+	if (document.all) 
+	{
+		var selection = oRTE.document.selection;
+		if (selection != null) 
+		{
+			rng = selection.createRange();
+		}
+	}else 
+	{
+		var selection = oRTE.getSelection();
+		rng = selection.getRangeAt(selection.rangeCount - 1).cloneRange();
+		rng.text = rng.toString();
+	}
+	/*
+	for (var property in rng)
+	{
+		alert(property + " : " + rng[property]);
+	}
+	*/
+	document.getElementById('wordEditer_Link_TEXT').value = rng.text;
+}
+init();
+</script>
+</BODY>
+</html>
+

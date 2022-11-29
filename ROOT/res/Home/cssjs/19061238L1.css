@@ -1,0 +1,170 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, pre, em, strong, b, i, dl, dt, dd, ol, ul, li, fieldset, form, th, td,input {margin: 0;padding: 0;vertical-align: baseline;}
+html{overflow-y:scroll;}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%}
+body {margin: 0 auto;padding: 0;text-align: left;font-family: '微软雅黑 bold', Arial, "Times New Roman", Times, serif;font-size:12px;}
+img {border: 0px;}
+ul, li, form {list-style: none;padding: 0;margin: 0;}
+a {text-decoration: none;color:#0079D2}
+a:hover {color: #FF8E40;text-decoration: none;}
+table, td {border-collapse: collapse;border-collapse: collapse;border-spacing: 0}
+map {height: 0px;}
+img {-ms-interpolation-mode: bicubic;border:none}
+textarea {resize: vertical
+}
+body{width:100%;margin:auto;background:#fff;}
+#Content{}
+
+#Content1{}
+#Content2{}
+#Content3{}
+#Footer{width:100%;background:#044694;}
+
+.w100{width:100% !Important}
+.fr{float:right !Important;}
+
+.banner{width:100%;height:274px;position:relative;overflow:hidden;background:url(/res/Home/structure/19061650.jpg) center no-repeat;}
+.banner span{width:850px;display:block;margin:0px auto;line-height:224px;text-align:left;font-size:34px;font-weight:bold;color:#fff;}
+
+.jiathis_style{display:none;}
+     .news_detail{
+        width:1200px;
+        margin:0px auto;
+    }
+    .news_detail #ReportIDname{
+        padding:30px 40px 0px;
+        font-size:24px;
+        line-height:200%;
+    }
+    .news_detail .ly{
+        text-align:center;
+        padding:15px 40px;
+        height:auto;
+        border-bottom:1px #e2e2e2 solid;
+        color:#929292;
+    }
+    .news_detail .nr{
+        padding:15px 40px;
+    }
+    .news_detail #flie{
+        padding:15px 40px;
+    }
+    .news_detail #ReportIDIssueTime{
+        display: inline-block;
+    }
+
+.node-info{
+        padding:0px 40px;
+    }
+    .node-info h1{
+        font-size:24px;
+        text-align:center;
+        line-height:200%;
+        padding:0px 0px 20px;
+    }
+    .node-info .info{
+        line-height: 200%;
+        color: #6e6e6e;
+        font-size: 16px;
+    }
+.news-list{
+        width:100%;
+        padding:20px 50px;
+        position: relative;
+    }
+    .news-list ul{
+        padding:10px 0px;
+    }
+    .news-list ul li{
+        width:535px;
+        float:left;
+        height:65px;
+        margin:18px 15px;
+    }
+    .news-list .pic{
+        width:85px;
+        height:65px;
+        float:left;
+        display:block;
+        margin-right:20px;
+    }
+    .news-list .pic img{
+        width:85px;
+        height:65px;
+    }
+    .news-list .tit{
+        line-height:170%;
+        height:49px;
+        display: inherit;
+    }
+    .news-list li a{
+        font-size:17px;
+        color:#303030;
+    }
+    .news-list .ptime{
+        line-height:20px;
+        color:#a0a0a0;
+        text-align:left;
+    }
+    .news-list #ReportIDIssueTime{
+        margin-right:50px;
+    }
+    #PageNum{
+        width:100%;
+        color:#000;
+        font-weight: bold;
+        font-size: 14px;
+        text-align:center;
+        height:auto;
+    }
+    #PageNum #go{
+        display: none;
+    }
+    #PageNum a{
+        font-size:12px;
+        color:#a0a0a0;
+        padding:0px 10px;
+        font-weight: 400;
+    }
+    #PageNum #CBLast,#PageNum #CBFirst{
+        display:none;
+    }
+    .news-list .prev{
+        width:50px;
+        height:50px;
+        position: absolute;
+        z-index: 1;
+        display: inline-block;
+        top:50%;
+        left:0px;
+        margin-top:-25px;
+    }
+    .news-list .next{
+        width:50px;
+        height:50px;
+        position: absolute;
+        z-index: 1;
+        display: inline-block;
+
+        top:50%;
+        right:0px;
+        margin-top:-25px;
+    }
+    .news-list .next a,.news-list .prev a{
+        display:block;
+        width:50px;
+        height:50px;
+    }
+    .news-list .next a{
+        background:url(/res/Home/structure/19061742.png) right center no-repeat;
+    }
+    .news-list .prev a{
+        background:url(/res/Home/structure/19061743.png) left center no-repeat;
+    }
+    .news-list .next a[href=""],.news-list .prev a[href=""]{
+        opacity: 0.1;
+    }
+
+.section{min-width:1200px;}
+
+.policy ul li .pic{background:url(/res/Home/structure/14112579.png) center no-repeat;background-size:100% auto;}

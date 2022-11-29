@@ -1,0 +1,233 @@
+﻿/* CSS Document */
+body{background:#fff;color:#4C4C4C;}
+a{color:#0C419A;}
+
+
+/*头部*/
+#header_top{color:#0C419A;background:#fff;}
+#header_logo{border:1px solid #84C2A5;background:#fff;}
+#nav{border:1px solid #89C29E;color:#000;background:url(/tea/image/eyp/images/style2_008.jpg) repeat-x left top;}
+#nav a{color:#000;}
+#banner_top{background:url(/tea/image/eyp/images/style2_007.jpg) no-repeat;}
+#header_logo_td04{background:url(/tea/image/eyp/images/style2_006.jpg) no-repeat 43% 69%;}
+/*公告板*/
+#Notice{background:#fff;}
+#Notice td{border:1px solid #8BC392;}
+#Notice #Notice_l{border:1px solid #2B884C;color:#fff;background:url(/tea/image/eyp/images/style2_009.jpg) repeat-x left top;}
+
+
+/*焦点图*/
+#flash{border:1px solid #84C2A6;background:#fff;}
+#NEW_OUT_DIV{color:#0C419A;}
+#DAOHANG_OUT_DIV{border-bottom:1px #808080 solid;border-left:1px #808080 solid;border-right:1px #808080 solid;}
+.oneNewStyle {COLOR: #ffffff; BACKGROUND-COLOR: #a7a7a7;border-right:1px #FFFFFF solid;}
+.selectedNewStyle{COLOR: #ffffff; BACKGROUND-COLOR: #ce0609;border-right:1px #FFFFFF solid;}
+.daohangNewStyle{COLOR: #ffffff; BACKGROUND-COLOR: #a7a7a7;}
+
+
+/*企业名片*/
+#Business{border:1px solid #84C2A6;background:#fff;}
+#Business_WAI  TD a{color:#4d4d4d;}
+#Business_lt{background:url(/tea/image/eyp/images/080527279.gif) no-repeat center 50%;}
+#Business_th{background:url(/tea/image/eyp/images/080527280.gif) no-repeat center 50%;}
+#Business_bottom{border-top:1px solid #4E9F4F;background:#D9ECCE;}
+#Business_bottom font{color:#0C419A;}
+#Business_qy{background:url(/tea/image/eyp/images/080527278.gif) no-repeat center 50%;}
+
+/*搜索*/
+#Search_k{border:1px solid #84C2A5;background:#FFFFFF;color:#0C419A;}
+#Search_b{background:url(/tea/image/eyp/images/style2_010.jpg) no-repeat;color:#fff;}
+
+/*在线招聘*/
+#Recruitment{border:1px solid #7CC087;background:#E9F2DD;}
+#Recruitment_top{background:url(/tea/image/eyp/images/style2_011.jpg) no-repeat center 1px;}
+#Recruitment table{background:url(/tea/image/eyp/images/style2_012.jpg) repeat-x left 22px;}
+
+
+/*广告位*/
+
+
+/*近期更新第一站*/
+#Latest{border:1px solid #84C2A5;background:#fff;}
+#Latest_con{background:#E9F2DD;}
+#Latest_con_top{border-bottom:1px solid #C2DEB6;}
+#Latest_con ul li{background:url(/tea/image/eyp/images/style2_006.jpg) no-repeat 5px 5px;}
+
+
+/*最近访客*/
+#Visitors{border:1px solid #84C2A5;background:#E9F2DD;}
+#Visitors_top{background:url(/tea/image/eyp/images/style2_013.jpg) repeat-x left top;}
+#Visitors_td_right{color:#aeaeae;;}
+
+/*公司简介*/
+#content3_top{border:1px solid #84C2A5;color:#4d4d4d;background:#fff;}
+#content3_top ul li span{background:url(/tea/image/eyp/images/style2_page02.gif);}
+#content3_top ul li .onClick_After{color:#ffffff;background:url(/tea/image/eyp/images/style2_page01.gif);}
+#content3_top ul li .onClick_Ago{color:#4d4d4d;background:url(/tea/image/eyp/images/style2_page02.gif);}
+
+/*公司新闻*/
+#content3_news{border:1px solid #84C2A5;background:#fff;}
+#content3_news ul li span{background:url(/tea/image/eyp/images/style2_page02.gif) no-repeat;}
+#gongs_gk_con_right{color:#4d4d4d;}
+#content3_news ul li .onClick_Ago{color:#4d4d4d;background:url(/tea/image/eyp/images/style2_page02.gif);}
+#content3_news ul li .onClick_After{color:#ffffff;background:url(/tea/image/eyp/images/style2_page01.gif);}
+/*产品服务*/
+#Products{border:1px solid #84C2A5;background:#fff;}
+#Products_top span{background:url(/tea/image/eyp/images/style2_page02.gif) no-repeat;}
+/*合作伙伴*/
+#Links{border:1px solid #84C2A5;background:#fff;}
+#Links_top{background:url(/tea/image/eyp/images/style2_page03.gif) no-repeat 718px 7px;}
+
+/*页脚信息*/
+#footer_nav{border:1px solid #88C398;background:#fff;}
+#footer_nav_nei{background:url(/tea/image/eyp/images/style2_014.jpg) repeat-x left bottom;}
+#footer_nav_table #footer_nav_td_right{color:#4d4d4d;}
+#footer_nav_table #footer_nav_td_right_01{color:#0C419A;}
+
+/*二级页*/
+#page2{background:url(/tea/image/eyp/images/page206s10.gif) repeat-y;}
+#page2_wai_left{border-top:1px solid #89C29E;}
+#page2_wai_right{border-top:1px solid #89C29E;}
+#page2_left{background:url(/tea/image/eyp/images/page207s10.gif) repeat-x;}
+#page2_left_top{color:#000;}
+#page2_right_top{background:url(/tea/image/eyp/images/page208s10.gif) repeat-x left top;}
+#page2_right_top font{color:#0C419A;}
+#page2_right_top font a{color:#4C4C4C;}
+#page2_bottom{background:url(/tea/image/eyp/images/page209s10.gif) no-repeat left top;}
+
+
+/*==================一级目录===================*/
+#page2_left a {color:#4d4d4d;
+	/*Width(一定要)，否则下面的Li会变形*/
+}
+
+#page2_left ul li {
+	background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom; /*一级目录的背景色*/
+}
+#page2_left ul li a{background:url(/tea/image/eyp/images/080527266s10.jpg) no-repeat 8px 5px;}
+
+
+/*==================二级目录===================*/
+#page2_left ul li ul {
+background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left top; 
+}
+#page2_left ul li ul li{	
+	background:none;
+}
+
+#page2_left ul li ul a{
+		 background:no-repeat;
+	/* padding-left二级目录中文字向右移动，但Width必须重新设置=(总宽度-padding-left)*/
+}
+
+/*下面是二级目录的链接样式*/
+
+#page2_left ul li ul a:link  {
+	color:#4d4d4d;
+}
+#page2_left ul li ul a:visited  {
+	color:#4d4d4d;
+}
+#page2_left ul li ul a:hover {
+	color:#0C419A;
+
+}
+
+/*产品二级页*/
+#page2_r_b_title{border-bottom:1px solid #4C4C4C;}
+#Products_li li{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+#Products_li_table td font{color:#f00;}
+#Products_li_t_img{border:1px solid #a3a3a3;}
+#Products_li_t_03 input{background:url(/tea/image/eyp/images/button01.gif) no-repeat;color:#4c4c4c;}
+#Paging{color:#0C419A;}
+#Paging a{color:#4c4c4c;}
+#nav td #Special{color:#0C419A;}
+/*产品内容页*/
+#Products_con_title{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+#Products_con_Details li font{color:#0C419A;}
+#Products_con_M_td02 input{border:1px solid #4C4C4C;}
+#Products_con_M_td02 textarea{border:1px solid #4C4C4C;}
+#Products_con_submit{background:url(/tea/image/eyp/images/080527317.gif) no-repeat;}
+
+/*公司简介*/
+#page2_right_bottom_img{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+/*联系我们*/
+#page2_r_b_table td font{color:#0C419A;}
+#page2_r_b_td01{color:#0C419A;}
+/*在线招聘*/
+#page2_r_b_table2 #page2_r_b_td01{color:#4C4C4C;}
+#page2_r_b_line{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left 50%;}
+/*新闻*/
+#page2_left_ul2 td{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+#page2_right_bottom_img2{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+/*售后服务*/
+#page2_left_ul3{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+#page2_left_ul3 td{background:url(/tea/image/eyp/images/080527289.jpg) no-repeat 7px 6px;}
+#page2_left_ul3 td div{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+#page2_r_b_table3{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+#page2_r_b_table3_tr{background:#F2F2F2;color:#0C419A;}
+#page2_r_b_table3_tr td{border-right:1px solid #a3a3a3;}
+#page2_r_b_table3_tr #page2_r_b_table3_td1{border-left:1px solid #a3a3a3;}
+#page2_r_b_table4_input input{border:1px solid #A5A5A5;color:#B7B7B7;}
+#page2_r_b_table4_textarea textarea{border:1px solid #A5A5A5;color:#B7B7B7;}
+#page2_r_b_table4_submit input{background:url(/tea/image/eyp/images/080527317.gif) no-repeat;}
+
+
+/*编辑模式下的样式*/
+/*二级页*/
+#edit_page2{background:url(/tea/image/eyp/images/page201s10.gif) repeat-y;}
+#edit_page2_wai_left{border-top:1px solid #89C29E;}
+#edit_page2_wai_right{border-top:1px solid #89C29E;}
+#edit_page2_left{background:url(/tea/image/eyp/images/page202s10.gif) repeat-x;}
+#edit_page2_right{background:url(/tea/image/eyp/images/page202s10.gif) repeat-x left top;}
+#edit_page2_bottom{background:url(/tea/image/eyp/images/page203s10.gif) no-repeat left top;}
+#edit_page2_left table td{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+#edit_page2_left table #li_te{color:#FF1300;}
+#edit_page2_left table td a{color:#4d4d4d;background:none;}
+#edit_page2_right span{color:#FF1300;}
+
+/*产品服务管理2级页产品类别*/
+#page2_w_r_e_Products{border-left:1px solid #89C29E;border-right:1px solid #89C29E;}
+#page2_w_r_e_Products #page2_w_r_e_p_tr td{background:url(/tea/image/eyp/images/page213s10.gif) repeat-x left top;border:1px solid #89C29E;}
+#page2_w_r_e_Products #page2_w_r_e_p_bottom{border-bottom:1px solid #89C29E;}
+#page2_w_r_e_Products #page2_w_r_e_p_page{color:#0C419A;}
+#page2_w_r_e_Products #page2_w_r_e_p_page a{color:#4c4c4c;}
+/*产品服务管理2级页自定义类别*/
+#page2_w_r_e_p_style{background:url(/tea/image/eyp/images/page213s10.gif) repeat-x left top;border:1px solid #89C29E;}
+#page2_w_r_e_p_s_top_input01{border:1px solid #A7A7A7;background:#fff;}
+#page2_w_r_e_p_s_top_input02{background:url(/tea/image/eyp/images/page216.gif) no-repeat;}
+#page2_w_r_e_P_t_tr01 td{background:#E5E5E5;border-bottom:1px solid #4D4D4D;color:#000;}
+#page2_w_r_e_P_t_page{border-top:1px solid #89C29E;color:#0C419A;}
+#page2_w_r_e_P_t_page a{color:#4c4c4c;}
+/*产品服务管理2级页产品服务*/
+#page2_w_r_e_P_table2 td #input_text{border:1px solid #A7A7A7;background:#fff;}
+#page2_w_r_e_P_table2 td textarea{border:1px solid #A7A7A7;}
+#page2_w_r_e_P_div{background:#ccc;}
+#page2_w_r_e_P_table3  #del2{background:url(/tea/image/eyp/images/page204s10.gif) repeat-x left bottom;}
+#page2_w_r_e_P_table4 td{border:1px solid #737373;background:#fff;}
+#textarea01 textarea{color:#4c4c4c;}
+#page2_r_b_table4_submit2 input{background:url(/tea/image/eyp/images/080527317.gif) no-repeat;}
+/*添加公告*/
+#page2_w_r_e_Notice td #input001{border:1px solid #A7A7A7;background:#fff;}
+#page2_w_r_e_Notice td textarea{border:1px solid #A7A7A7;}
+/*公司概况*/
+#page2_w_r_e_Overview td textarea{border:1px solid #A7A7A7;}
+#page2_w_r_e_Overview td #text{border:1px solid #A7A7A7;background:#fff;}
+
+/*公司资质管理*/
+#page2_w_r_e_Overview td #text2{border:1px solid #A7A7A7;background:#fff;}
+/*企业文化管理*/
+#page2_w_r_e_Culture td #text5{border:1px solid #A7A7A7;background:#fff;}
+#page2_w_r_e_Culture td textarea{border:1px solid #A7A7A7;background:#fff;}
+/*添加合作伙伴*/
+#page2_w_r_e_Cooperation td #text3{border:1px solid #A7A7A7;background:#fff;}
+/*联系我们*/
+#page2_w_r_e_Contact td #text4{border:1px solid #A7A7A7;background:#fff;}
+/*发布服务支持*/
+#page2_w_r_e_P_Services td #text6{border:1px solid #A7A7A7;background:#fff;}
+#page2_w_r_e_P_Services td textarea{border:1px solid #A7A7A7;background:#fff;}
+/*发布职位*/
+#page2_w_r_e_Posts td #text7{border:1px solid #A7A7A7;background:#fff;}
+#page2_w_r_e_Posts td textarea{border:1px solid #A7A7A7;background:#fff;}
+#page2_w_r_e_Posts td #year{border:1px solid #A7A7A7;background:#fff;}
+#page2_w_r_e_Posts td #month,#page2_w_r_e_Posts td #day{border:1px solid #A7A7A7;background:#fff;}

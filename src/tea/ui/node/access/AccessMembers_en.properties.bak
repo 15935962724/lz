@@ -1,0 +1,7 @@
+AccessMembers=Access members
+AccessMembersUsageNote=usage note:  you can define access right and access member list for all nodes under this node. <br>1. If you want to clear 'Access member only' option and access member list for all nodes under this node,  unselect all access members and 'Access member only' option, click Apply To This Tree button; <br>2. If you want to keep all the access member lists of all nodes under this node, but want to add some extra access members to those nodes, select the members you want to add and check the 'Access member only' option, click Apply To This Tree button; <br>3. If you only want to clear 'Access member only' option but keep access member lists of all nodes under this node, unselect 'Access member only' option and select at least one of the access members, click Apply To This Tree button. The selected members will not be added to the access member lists of all nodes under this node.
+ConfirmApplySelectedMembersToThisTree=Confirm apply to this tree?
+UsageNote=说明
+Close=关闭
+ConfirmApplyToThisTree=重置所有子对象的权限并允许传播可继承权限
+InheritPurview=允许将来自父系的可继承权限传播给该对象

@@ -1,0 +1,309 @@
+package tea.entity.node;
+
+import java.util.*;
+import java.sql.SQLException;
+import tea.db.*;
+import tea.entity.*;
+
+public class Professional
+{
+    private static Cache _cache = new Cache();
+
+    private int node;
+    private int language;
+
+    private boolean exists;
+    public static final String ZRZJB_TYPE[] =
+            {"国际认证", "国家认证", "地方认证", "总公司级认证", "二级公司级认证"};
+    public static final String ZZGLB_TYPE[][] =
+            {
+            {"01", "职称类"},
+            {"02", "技能类"}
+    };
+    public static final String ZQDZGTJ_TYPE[][] =
+            {
+            {"01", "考试"},
+            {"02", "评审"},
+            {"03", "内部培训"},
+            {"04", "外部培训"},
+            {"99", "其他"}
+    };
+    public static final String ZZGDM1_TYPE[][] =
+            {
+            {"0001", "高级技师-操作类"},
+            {"0002", "技师-操作类"},
+            {"0003", "高级工-操作类"},
+            {"0004", "中级工-操作类"},
+            {"0005", "低级工-操作类"}
+    };
+
+    public static final String ZZGDM2_TYPE[][] =
+            {
+            {"0001", "高级工程师（正） - 工程技术人员"},
+            {"0002", "高级工程师  - 工程技术人员"},
+            {"0003", "工程师  - 工程技术人员"},
+            {"0004", "助理工程师  - 工程技术人员"},
+            {"0005", "技术员 - 工程技术人员"},
+            {"0006", "高级经济师  - 经济专业人员"},
+            {"0007", "经济师  - 经济专业人员"},
+            {"0008", "助理经济师  - 经济专业人员"},
+            {"0009", "经济员  - 经济专业人员"},
+            {"0010", "高级会计师  - 会计人员"},
+            {"0011", "会计师  - 会计人员"},
+            {"0012", "助理会计师  - 会计人员"},
+            {"0013", "会计员  - 会计人员"},
+            {"0014", "高级统计师  - 统计人员"},
+            {"0015", "统计师  - 统计人员"},
+            {"0016", "助理统计师  - 统计人员"},
+            {"0017", "统计员  - 统计人员"},
+            {"0018", "高级审计师  - 审计专业人员"},
+            {"0019", "审计师  - 审计专业人员"},
+            {"0020", "助理审计师  - 审计专业人员"},
+            {"0021", "审计员  - 审计专业人员"},
+            {"0022", "译审 - 翻译人员"},
+            {"0023", "副译审  - 翻译人员"},
+            {"0024", "翻译 - 翻译人员"},
+            {"0025", "助理翻译 - 翻译人员"},
+            {"0026", "高级记者  - 新闻专业人员（记者）"},
+            {"0027", "主任记者  - 新闻专业人员（记者）"},
+            {"0029", "记者  - 新闻专业人员（记者）"},
+            {"0030", "助理记者  - 新闻专业人员（记者）"},
+            {"0031", "高级编辑 - 新闻专业人员（记者）"},
+            {"0032", "主任编辑 - 新闻专业人员（编辑）"},
+            {"0033", "编辑 - 新闻专业人员（编辑）"},
+            {"0034", "助理编辑 - 新闻专业人员（编辑）"},
+            {"0035", "高级政工师  - 新闻专业人员（编辑）"},
+            {"0036", "政工师  - 政工人员"},
+            {"0037", "助理政工师  - 政工人员"},
+            {"0038", "政工员  - 政工人员"},
+            {"0039", "一级律师  - 政工人员"},
+            {"0040", "二级律师 - 律师"},
+            {"0041", "三级律师 - 律师"},
+            {"0042", "四级律师 - 律师"},
+            {"0043", "律师助理 - 律师"},
+            {"0044", "研究馆员 - 律师"},
+            {"0045", "副研究馆员  - 档案、图书管理人员 "},
+            {"0046", "馆员 - 档案、图书管理人员 "},
+            {"0047", "助理馆员 - 档案、图书管理人员 "},
+            {"0048", "管理员  - 档案、图书管理人员 "},
+            {"0049", "高级船长 - 档案、图书管理人员 "},
+            {"0050", "大副 - 船舶技术人员（驾驶）"},
+            {"0051", "二副 - 船舶技术人员（驾驶）"},
+            {"0052", "三副 - 船舶技术人员（驾驶）"},
+            {"0053", "高级轮机长  - 船舶技术人员（驾驶）"},
+            {"0054", "大管轮  - 船舶技术人员（轮机）"},
+            {"0055", "二管轮  - 船舶技术人员（轮机）"},
+            {"0056", "三管轮  - 船舶技术人员（轮机）"},
+            {"0057", "高级电机员  - 船舶技术人员（轮机）"},
+            {"0058", "通用电机员（一等电机员）  - 船舶技术人员（电机）"},
+            {"0059", "二等电机员  - 船舶技术人员（电机）"},
+            {"0060", "高级报务员  - 船舶技术人员（电机）"},
+            {"0061", "通用报务员（一等报务员）  - 船舶技术人员（报务）"},
+            {"0062", "二等报务员  - 船舶技术人员（报务）"},
+            {"0063", "限用报务员  - 船舶技术人员（报务）"},
+            {"0064", "研究员  - 船舶技术人员（报务）"},
+            {"0065", "副研究员 - 科学研究人员"},
+            {"0066", "助理研究员  - 科学研究人员"},
+            {"0067", "其他正高级  - 科学研究人员"},
+            {"0068", "其他高级 - 其他人员"},
+            {"0069", "其他中级 - 其他人员"},
+            {"0070", "其他助理级  - 其他人员"},
+            {"0071", "其他员级 - 其他人员"}
+    };
+
+    private int professional;
+    private Date begda;
+    private Date endda;
+    private String zzglb;
+    private int zrzjb;
+    private String zzgdm;
+    private String zfzdw;
+    private Date zqzsj;
+    private String zzsbh;
+    private String zjddw;
+    private String zqtbz;
+    private String zqdzgtj;
+    public Professional(int professional) throws SQLException
+    {
+        this.professional = professional;
+        load();
+    }
+
+    public static Professional find(int professional) throws SQLException
+    {
+        Professional obj = (Professional) _cache.get(new Integer(professional));
+        if (obj == null)
+        {
+            obj = new Professional(professional);
+            _cache.put(new Integer(professional), obj);
+        }
+        return obj;
+    }
+
+    private void load() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT node,language,begda,endda,zzglb,zrzjb,zzgdm,zfzdw,zqzsj,zzsbh,zjddw,zqtbz,zqdzgtj FROM Professional WHERE professional=" + professional);
+            if (db.next())
+            {
+                node = db.getInt(1);
+                language = db.getInt(2);
+                begda = db.getDate(3);
+                endda = db.getDate(4);
+                zzglb = db.getVarchar(1, language, 5);
+                zrzjb = db.getInt(6);
+                zzgdm = db.getVarchar(1, language, 7);
+                zfzdw = db.getVarchar(1, language, 8);
+                zqzsj = db.getDate(9);
+                zzsbh = db.getVarchar(1, language, 10);
+                zjddw = db.getVarchar(1, language, 11);
+                zqtbz = db.getVarchar(1, language, 12);
+                zqdzgtj = db.getVarchar(1, language, 13);
+                exists = true;
+            } else
+            {
+                exists = false;
+            }
+	} finally
+        {
+            db.close();
+        }
+    }
+
+    public static void create(int node, int language, Date begda, Date endda, String zzglb, int zrzjb, String zzgdm, String zfzdw, Date zqzsj, String zzsbh, String zjddw, String zqtbz, String zqdzgtj) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("INSERT INTO Professional(node,language,begda,endda,zzglb,zrzjb,zzgdm,zfzdw,zqzsj,zzsbh,zjddw,zqtbz,zqdzgtj)VALUES(" +
+                                    node + "," + language + "," + DbAdapter.cite(begda) + "," + DbAdapter.cite(endda) + "," + DbAdapter.cite(zzglb) + "," + (zrzjb) + "," + DbAdapter.cite(zzgdm) + "," + DbAdapter.cite(zfzdw) + "," + DbAdapter.cite(zqzsj) + "," + DbAdapter.cite(zzsbh) + "," + DbAdapter.cite(zjddw) + "," + DbAdapter.cite(zqtbz) + "," + DbAdapter.cite(zqdzgtj) + ")");
+	} finally
+        {
+            db.close();
+        }
+//        _cache.remove(new Integer(professional));
+    }
+
+    public void set(Date begda, Date endda, String zzglb, int zrzjb, String zzgdm, String zfzdw, Date zqzsj, String zzsbh, String zjddw, String zqtbz, String zqdzgtj) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("UPDATE  Professional SET begda=" + DbAdapter.cite(begda) + ",endda=" + DbAdapter.cite(endda) + ",zzglb=" + DbAdapter.cite(zzglb) + ",zrzjb=" + zrzjb + ",zzgdm=" + DbAdapter.cite(zzgdm) + ",zfzdw=" + DbAdapter.cite(zfzdw) + ",zqzsj=" + DbAdapter.cite(zqzsj) + ",zzsbh=" + DbAdapter.cite(zzsbh) + ",zjddw=" + DbAdapter.cite(zjddw) + ",zqtbz=" +
+                                    DbAdapter.cite(zqtbz) + ",zqdzgtj=" + DbAdapter.cite(zqdzgtj) + " WHERE professional=" + professional);
+	} finally
+        {
+            db.close();
+        }
+        _cache.remove(new Integer(professional));
+    }
+
+    public static java.util.Enumeration find(int node, int language) throws SQLException
+    {
+        Vector vector = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT professional FROM Professional WHERE node=" + node + " AND language=" + language);
+            while (db.next())
+            {
+                vector.addElement(new Integer(db.getInt(1)));
+            }
+	} finally
+        {
+            db.close();
+        }
+        return vector.elements();
+    }
+
+    public void delete() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM Professional WHERE professional=" + professional);
+	} finally
+        {
+            db.close();
+        }
+        _cache.remove(new Integer(professional));
+    }
+
+
+    public int getNode()
+    {
+        return node;
+    }
+
+    public int getLanguage()
+    {
+        return language;
+    }
+
+    public int getProfessional()
+    {
+        return professional;
+    }
+
+    public Date getBegda()
+    {
+        return begda;
+    }
+
+    public Date getEndda()
+    {
+        return endda;
+    }
+
+    public String getZzglb()
+    {
+        return zzglb;
+    }
+
+    public int getZrzjb()
+    {
+        return zrzjb;
+    }
+
+    public String getZzgdm()
+    {
+        return zzgdm;
+    }
+
+    public String getZfzdw()
+    {
+        return zfzdw;
+    }
+
+    public Date getZqzsj()
+    {
+        return zqzsj;
+    }
+
+    public String getZzsbh()
+    {
+        return zzsbh;
+    }
+
+    public String getZjddw()
+    {
+        return zjddw;
+    }
+
+    public String getZqtbz()
+    {
+        return zqtbz;
+    }
+
+    public String getZqdzgtj()
+    {
+        return zqdzgtj;
+    }
+
+    public boolean isExists()
+    {
+        return exists;
+    }
+}

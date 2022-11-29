@@ -1,0 +1,1 @@
+var h="<option value='0'>-------------------------";function media(name,dv){  document.write("<select name='"+name+"'>"); document.write(h); document.write("</select>");  document.all(name).value=dv;}

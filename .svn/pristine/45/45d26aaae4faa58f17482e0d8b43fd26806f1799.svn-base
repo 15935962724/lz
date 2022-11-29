@@ -1,0 +1,21 @@
+Private=Private
+ProtectedI(ReadOnly)=Protected (Level I, subscribers can only read the newsletter folder)
+ProtectedII(AddLetter)=Protected (Level II, subscribers can contribute to the newsletter folder)
+Public(AddDeleteLetter)=Public (subscribers can contribute to and delete from the newsletter folder)
+
+PutInFolder=Put in folder
+DeleteOriginal=Delete original
+
+UseAsMyOwnMessageFolder=Subscribe to this newsletter folder
+
+
+InvalidMessageFolder=Invalid message folder
+OpenSubscriberList=Subscribers can view the subscriber list
+MessageFolderSubscribers=Message folder subscriber list
+
+Attachment=Attachment
+
+Invite=Invite
+InviteSubscription=Your are invited to join the letter folder, please check the link below
+
+ManageFolders=Manage Mail Folder

@@ -1,0 +1,158 @@
+﻿==============修改shoporder表表结构================
+
+//确认退货时间、原订单id、未开票数量、未开票金额、已开票数量、已开票金额
+
+alter table shoporder add returntime datetime;
+
+alter table shoporder add oldorderid varchar(50);
+
+alter table shoporder add noinvoicenum int;
+
+alter table shoporder add noinvoiceamount real;
+
+alter table shoporder add isinvoicenum int;
+
+alter table shoporder add isinvoiceamount real;
+
+=============修改profile表=========================
+
+//服务商公司名称  进项税返还政策 服务费公式
+
+alter table profile add company varchar(200);
+alter table profile add tax int;
+
+移除member的主键，添加到profile上。
+
+alter table profile add formula int;
+
+===========修改ShopHospital表=========================
+
+//20天以前有无未签收订单设置
+
+alter table ShopHospital add issign int;
+
+===========发票表=========================================
+
+//序号、发票号、状态、索要人、医院id、医院、收票人、收票地址、收票人电话、索要发票时间、开票数量、开票金额、备注
+//索要人名字、快递单号、开票日期、内部备注、票面备注、拒绝原因、退回原因、退回快递单号
+
+create table invoice(
+id int primary key,
+invoiceid nvarchar(200),
+status int,
+member int,
+hospitalid int,
+hospital nvarchar(100),
+consigness nvarchar(100),
+address nvarchar(200),
+telphone nvarchar(100),
+createdate datetime,
+num int,
+amount real,
+remark ntext
+)
+alter table invoice add membername nvarchar(100);
+
+alter table invoice add courierno nvarchar(100);
+alter table invoice add makeoutdate datetime;
+alter table invoice add internalremark ntext;
+alter table invoice add nominalremark ntext;
+
+alter table invoice add reason ntext;
+
+alter table invoice add backreason ntext;
+alter table invoice add backcourierno nvarchar(100);
+
+alter table invoice add nobackreason ntext;
+
+alter table invoice add ismatch int;
+
+sp_rename 'invoice.ismatch','matchstatus','column'
+===========发票附加表=====================================
+
+//序号、主表id，订单id，开票数量、开票金额
+
+create table invoicedata(
+id int primary key,
+invoiceid int,
+orderid nvarchar(100),
+num int,
+amount real
+)
+alter table invoicedata add status int;
+
+=========回款管理============================================
+
+CREATE TABLE ReplyMoney(
+	[id] [int] NULL,
+	[hid] [int] NULL,
+	[replyTime] [datetime] NULL,
+	[replyPrice] [float] NULL,
+	[context] [ntext] NULL,
+	[status] [int] NULL,
+	[returnStr] [nvarchar](500) NULL,
+	[member] [int] NULL,
+	[time] [datetime] NULL,
+	[statusmember] [int] NULL,
+	[memberReturnStr] [int] NULL,
+	[code] [nvarchar](100) NULL,
+	[type] [int] NULL
+)
+alter table replymoney add profile int;  //服务商id
+
+=========回款匹配发票============================================
+
+//序号、服务商id、医院id、匹配时间、回款编号、发票编号、挂款id、状态
+//回款金额、挂款金额、匹配金额、未通过审核原因、申请服务费状态
+
+create table backinvoice(
+id int primary key,
+member int,
+hospitalid int,
+createdate datetime,
+replyid ntext,
+invoiceid ntext,
+hangid int,
+status int
+)
+
+alter table backinvoice add replyamount real;
+alter table backinvoice add hangamount real;
+alter table backinvoice add matchamount real;
+alter table backinvoice add nobackreason ntext;
+
+alter table backinvoice add chargestatus int;
+==========服务费===================================================
+//序号、服务商id、医院id、backinvoice表id、应付服务费、进项税返还、总和、状态、申请服务费时间
+//服务费编号 、发票总金额、 发票总数量 、审核不通过原因
+create table charge(
+id int primary key,
+member int,
+hospitalid int,
+backid int,
+payable real,
+inputtax real,
+total real,
+status int,
+createdate datetime
+)
+alter table charge alter column backid ntext;
+
+alter table charge add chargecode nvarchar(100);
+
+alter table charge add invoiceamount float;
+
+alter table charge add invoicenum int;
+
+alter table charge add nobackreason ntext;
+
+
+=================修改shophospital表表结构=================================
+
+alter table shophospital add noreplywarn real;
+
+alter table shophospital add noreplyalarm real;
+
+alter table shophospital add noinvoicewarn int;
+
+alter table shophospital add noinvoicealarm int;

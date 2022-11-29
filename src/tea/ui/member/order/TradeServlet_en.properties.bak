@@ -1,0 +1,16 @@
+LastUpdate=Last update
+TradeDataOutputMethodDefault=-1
+DataOutput=Data Output
+Invoice=Invoice
+TradeInvoiceFormatDefault=0
+Balance=Balance
+
+PaymentReceived=Paid
+PaymentUnpaid=Unpaid
+ConfirmPayment=Confirm
+
+OrderSplit=Order splitted
+SplitOrder=Split order
+
+TradeOShipToBilling=发货到付款地址
+TradeOUpdateProfile=更新注册地址

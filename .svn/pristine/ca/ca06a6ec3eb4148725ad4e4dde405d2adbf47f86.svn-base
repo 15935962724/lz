@@ -1,0 +1,17 @@
+#
+Title=名称
+AccountTitle=帐户名称
+PasswordTitle=密码名称
+OtherIDTitle=其它识别名称
+
+GetPoints=换取积分
+InvalidAccount=无效帐号
+InvalidTitle=无效抬头
+AccountHasBeenConverted=您已换取此积分点
+
+InputPoints=输入交易记录
+AccountHasBeenExpired=已过期
+
+TradeIncludeExpiration=数据含有效期
+
+NewCommodity=创建新品种

@@ -1,0 +1,17 @@
+.mypagination{
+	height:30px;
+	border:1px solid blue;
+	background-image:url(/tea/jquery_pager/images/tb-bg.gif);
+	
+}
+.mypagination span{
+	font-size:12px;
+}
+.page-first,.page-prev,.page-next,.page-last,.page-wait{
+	padding:4px;
+	border:0;
+}
+.page-num{
+	width:30px;
+	border:1px solid #ccc;
+}

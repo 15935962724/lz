@@ -1,0 +1,16 @@
+Title=Title
+AccountTitle=Account Name
+PasswordTitle=Password Name
+OtherIDTitle=Other Identifier Name
+
+GetPoints=Get Points
+InvalidAccount=Invalid Account
+InvalidTitle=Invalid Title
+AccountHasBeenConverted=Point has been converted
+
+InputPoints=Input Points
+AccountHasBeenExpired=Account expired
+
+TradeIncludeExpiration=Data include expiration
+
+NewCommodity=Create products

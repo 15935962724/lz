@@ -1,0 +1,2123 @@
+// Decompiled by DJ v2.9.9.60 Copyright 2000 Atanas Neshkov  Date: 2003-5-10 16:40:45
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   Listing.java
+
+package tea.entity.node;
+
+import java.io.PrintStream;
+import java.util.*;
+import tea.db.DbAdapter;
+import tea.entity.*;
+import tea.htmlx.TimeSelection;
+import tea.ui.TeaSession;
+
+// Referenced classes of package tea.entity.node:
+//            Report, Node, PickFrom, PickNode, 
+//            PickNews, Category
+
+public class Listing extends Entity
+{
+    class Layer
+    {
+
+        public String _strName;
+        public String _strMore;
+        public String _strTalkbacks;
+        public String _strEditTalkback;
+        public String _strChatRoom;
+        public String _strForwardNode;
+        public String _strReplyNode;
+        public byte _abBeforeItemPicture[];
+        public String _strBeforeItem;
+        public String _strAfterItem;
+        public String _strBeforeDetail;
+        public String _strSeparatorDetail;
+        public String _strAfterDetail;
+        public String _strBeforeChild;
+        public String _strAfterChild;
+        public String _strBeforeChildDetail;
+        public String _strSeparatorChildDetail;
+        public String _strAfterChildDetail;
+        public String _strBeforeListing;
+        public int _nPicturePosition;
+        public byte _abPicture[];
+        public String _strClickUrl;
+        public String _strAlt;
+        public int _nAlign;
+        public String _strAfterListing;
+
+        Layer()
+        {
+        }
+    }
+
+
+    public int getSequence()
+        throws EntityException
+    {
+        loadBasic();
+        return _nSequence;
+    }
+
+    public int getBeforeItemPictureLen(int i)
+        throws EntityException
+    {
+        byte abyte0[] = getBeforeItemPicture(i);
+        if(abyte0 != null)
+            return abyte0.length;
+        else
+            return 0;
+    }
+
+    public int countItems(RV rv, int i)
+        throws EntityException
+    {
+        int j = 0;
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            j = dbadapter.getInt("SELECT COUNT(n.node) " + getItemsSql(rv, i, new StringBuilder()));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return j;
+    }
+
+    public int getStyle()
+        throws EntityException
+    {
+        loadBasic();
+        return _nStyle;
+    }
+
+    public static int countNodes(RV rv)
+        throws EntityException
+    {
+        int i = 0;
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            i = dbadapter.getInt("SELECT COUNT(DISTINCT l.node) " + getNodesSql(rv));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return i;
+    }
+
+    public int getPicturePosition(int i)
+        throws EntityException
+    {
+        return getLayer(i)._nPicturePosition;
+    }
+
+    public int getUpdateGap()
+        throws EntityException
+    {
+        loadBasic();
+        return _nUpdateGap;
+    }
+
+    public byte[] getBeforeItemPicture(int i)
+        throws EntityException
+    {
+        return getLayer(i)._abBeforeItemPicture;
+    }
+
+    public String getBeforeChild(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strBeforeChild;
+    }
+
+    public int getColumns()
+        throws EntityException
+    {
+        loadBasic();
+        return _nColumns;
+    }
+
+    public int getPick()
+        throws EntityException
+    {
+        loadBasic();
+        return _nPick;
+    }
+
+    public static int clone(int i, int j)
+        throws EntityException
+    {
+        int k = 0;
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            k = dbadapter.getInt("ListingClone " + i + ", " + j);
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return k;
+    }
+
+    public String getBeforeListing(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strBeforeListing;
+    }
+
+    public static Enumeration findManualListing(int i)
+        throws EntityException
+    {
+        Node node = Node.find(i);
+        String s = node.getCommunity();
+        int j = node.getType();
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeQuery("SELECT DISTINCT l.listing  FROM Listing l, PickManual p  WHERE l.pick=0 AND l.listing=p.listing  AND (p.community=" + DbAdapter.cite(s) + " OR p.community=" + DbAdapter.cite("") + ") " + " AND (p.type=" + j + " OR p.type=" + 255 + ") ");
+            for(; dbadapter.next(); vector.addElement(new Integer(dbadapter.getInt(1))));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector.elements();
+    }
+
+    public static int create(int i, int j, int k, int l, int i1, int j1, int k1, int l1, 
+            int i2, int j2, int k2, int l2, int i3, int j3, int k3, 
+            int l3, String s, String s1, String s2, String s3, String s4, String s5, 
+            String s6, byte abyte0[], String s7, String s8, String s9, String s10, String s11, 
+            String s12, String s13, String s14, String s15, String s16, String s17, int i4, 
+            byte abyte1[], String s18, String s19, int j4, String s20)
+        throws EntityException
+    {
+        int k4 = 0;
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            k4 = dbadapter.getInt("ListingCreate " + i + ", " + j + ", " + k + ", " + l + "," + i1 + ", " + j1 + ", " + k1 + ", " + l1 + ", " + i2 + ", " + j2 + ", " + k2 + ", " + l2 + ", " + i3 + ", " + j3 + ", " + k3 + ", " + l3 + ", " + DbAdapter.cite(s) + ", " + DbAdapter.cite(s1) + ", " + DbAdapter.cite(s2) + ", " + DbAdapter.cite(s3) + ", " + DbAdapter.cite(s4) + ", " + DbAdapter.cite(s5) + ", " + DbAdapter.cite(s6) + ", " + DbAdapter.cite(abyte0) + ", " + DbAdapter.cite(s7) + ", " + DbAdapter.cite(s8) + ", " + DbAdapter.cite(s9) + ", " + DbAdapter.cite(s10) + ", " + DbAdapter.cite(s11) + ", " + DbAdapter.cite(s12) + ", " + DbAdapter.cite(s13) + ", " + DbAdapter.cite(s14) + ", " + DbAdapter.cite(s15) + ", " + DbAdapter.cite(s16) + ", " + DbAdapter.cite(s17) + ", " + i4 + ", " + DbAdapter.cite(abyte1) + ", " + DbAdapter.cite(s18) + ", " + DbAdapter.cite(s19) + ", " + j4 + ", " + DbAdapter.cite(s20));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return k4;
+    }
+  public static int create(int i, int j, int k, int l, int i1, int j1, int k1, int l1, 
+            int i2, int j2, int k2, int l2, int i3, int j3, int k3, 
+            int l3, String s, String s1, String s2, String s3, String s4, String s5, 
+            String s6, byte abyte0[], String s7, String s8, String s9, String s10, String s11, 
+            String s12, String s13, String s14, String s15, String s16, String s17, int i4, 
+            byte abyte1[], String s18, String s19, int j4, String s20,Date date4)
+        throws EntityException
+    {
+        int k4 = 0;
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            k4 = dbadapter.getInt("ListingCreate " + i + ", " + j + ", " + k + ", " + l + "," + i1 + ", " + j1 + ", " + k1 + ", " + l1 + ", " + i2 + ", " + j2 + ", " + k2 + ", " + l2 + ", " + i3 + ", " + j3 + ", " + k3 + ", " + l3 + ", " + DbAdapter.cite(s) + ", " + DbAdapter.cite(s1) + ", " + DbAdapter.cite(s2) + ", " + DbAdapter.cite(s3) + ", " + DbAdapter.cite(s4) + ", " + DbAdapter.cite(s5) + ", " + DbAdapter.cite(s6) + ", " + DbAdapter.cite(abyte0) + ", " + DbAdapter.cite(s7) + ", " + DbAdapter.cite(s8) + ", " + DbAdapter.cite(s9) + ", " + DbAdapter.cite(s10) + ", " + DbAdapter.cite(s11) + ", " + DbAdapter.cite(s12) + ", " + DbAdapter.cite(s13) + ", " + DbAdapter.cite(s14) + ", " + DbAdapter.cite(s15) + ", " + DbAdapter.cite(s16) + ", " + DbAdapter.cite(s17) + ", " + i4 + ", " + DbAdapter.cite(abyte1) + ", " + DbAdapter.cite(s18) + ", " + DbAdapter.cite(s19) + ", " + j4 + ", " + DbAdapter.cite(s20)+","+ DbAdapter.cite(date4));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return k4;
+    }
+    public boolean getPictureFlag()
+        throws EntityException
+    {
+        loadBasic();
+        return _blPictureFlag;
+    }
+
+    public boolean getBeforeItemPictureFlag()
+        throws EntityException
+    {
+        loadBasic();
+        return _blBeforeItemPictureFlag;
+    }
+
+    public String getTalkbacks(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strTalkbacks;
+    }
+
+    public String getMore(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strMore;
+    }
+
+    public int getSortDir()
+        throws EntityException
+    {
+        loadBasic();
+        return _nSortDir;
+    }
+
+    public String getClickUrl(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strClickUrl;
+    }
+
+    private String getItemsSqlReport(RV rv, int i, StringBuilder stringbuffer)
+        throws EntityException
+    {
+        loadBasic();
+        long l = System.currentTimeMillis();
+        StringBuilder stringbuffer1 = new StringBuilder(" FROM Node as n left join Report as r on n.node=r.node ");
+        StringBuilder stringbuffer2 = new StringBuilder(" WHERE n.hidden=0 ");
+        stringbuffer.append(" ORDER BY ");
+        if(_nType == 1 || _nPick == 0 || PickFrom.countByListing(_nListing) + PickNode.countByListing(_nListing) == 0)
+        {
+            stringbuffer1.append(" , Listed l ");
+            stringbuffer2.append(" AND l.listing=" + _nListing + " AND n.node=l.node ");
+        } else
+        {
+            boolean flag = false;
+            StringBuilder stringbuffer3 = new StringBuilder();
+            stringbuffer3.append(" and (");
+			int ij=0;
+            Enumeration enumeration = PickFrom.findByListing(_nListing);
+            while(enumeration.hasMoreElements())
+            {
+                int j = ((Integer)enumeration.nextElement()).intValue();
+                PickFrom pickfrom = PickFrom.find(j);
+                int k = pickfrom.getFromStyle();
+				if (ij >0)
+				{
+					stringbuffer3.append(" or ");
+				}
+				ij++;
+                 stringbuffer3.append(" (");
+                if(k == 0)
+                    stringbuffer3.append(" n.community=" + DbAdapter.cite(pickfrom.getFromCommunity()));
+                else
+                if(k == 2)
+                {
+                    int j1 = (_nOptions & 0x10) == 0 ? pickfrom.getFromNode() : i;
+                    stringbuffer3.append(" n.father=" + j1);
+                    flag = true;
+                } else
+                if(k == 3)
+                {
+                    int k1 = (_nOptions & 0x10) == 0 ? pickfrom.getFromNode() : i;
+                    stringbuffer3.append(" n.community=" + DbAdapter.cite(pickfrom.getFromCommunity()) + " AND n.path LIKE " + DbAdapter.cite(Node.find(k1).getPath() + "% "));
+                }
+               stringbuffer3.append(" ) ");
+            }
+             stringbuffer3.append(" ) ");
+            StringBuilder stringbuffer4 = new StringBuilder();
+            for(Enumeration enumeration1 = PickNode.findByListing(_nListing); enumeration1.hasMoreElements();)
+            {
+                int i1 = ((Integer)enumeration1.nextElement()).intValue();
+                PickNode picknode = PickNode.find(i1);
+                int l1 = picknode.getNodeStyle();
+                int i2 = picknode.getType();
+                picknode.getStartStyle();
+                picknode.getStartTerm();
+                int k2 = picknode.getStopStyle();
+                int l2 = picknode.getStopTerm();
+                int j3 = picknode.getCreatorStyle();
+                String s = picknode.getRCreator();
+                String s1 = picknode.getVCreator();
+                if(s.length() == 0 && s1.length() == 0 && rv != null)
+                {
+                    s = rv._strR;
+                    s1 = rv._strV;
+                }
+                StringBuilder stringbuffer7 = new StringBuilder();
+                if(i2 != 255)
+                {
+                    stringbuffer7.append(" AND n.type=" + i2);
+                    stringbuffer7.append(" AND n.typealias=" + picknode.getTypeAlias());
+                }
+                if(k2 == 1)
+                    stringbuffer7.append(" AND n.stoptime<" + DbAdapter.cite(new Date(l + (long)(l2 * 60 * 60) * 1000L)));
+                else
+                if(k2 == 2)
+                    stringbuffer7.append(" AND n.stoptime>" + DbAdapter.cite(new Date(l + (long)(l2 * 60 * 60) * 1000L)));
+                if(j3 == 1)
+                    stringbuffer7.append(" AND n.rcreator=" + DbAdapter.cite(s));
+                else
+                if(j3 == 2)
+                    stringbuffer7.append(" AND n.vcreator=" + DbAdapter.cite(s1));
+                else
+                if(j3 == 3)
+                    stringbuffer7.append(" AND n.rcreator=" + DbAdapter.cite(s) + " AND n.vcreator=" + DbAdapter.cite(s1));
+                if(l1 == 0)
+                    stringbuffer4.append(stringbuffer7);
+                else
+                if(l1 == 1)
+                    stringbuffer4.append(" AND n.father IN  (SELECT n.node  FROM Node n  WHERE n.hidden=0 " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+                else
+                if(l1 == 2)
+                    stringbuffer4.append(" AND n.node IN  (SELECT f.node  FROM Node n, Node f  WHERE n.hidden=0  AND n.father=f.node " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+                else
+                if(l1 == 3)
+                    stringbuffer4.append(" AND n.node IN  (SELECT gf.node  FROM Node n, Node f, Node gf  WHERE n.hidden=0 AND n.father=f.node  AND f.father=gf.node " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+            }
+
+            StringBuilder stringbuffer5 = new StringBuilder();
+            StringBuilder stringbuffer6 = new StringBuilder();
+            Enumeration enumeration2 = PickNews.findByListing(_nListing);
+            if(enumeration2.hasMoreElements())
+            {
+                int j2 = ((Integer)enumeration2.nextElement()).intValue();
+                PickNews picknews = PickNews.find(j2);
+                stringbuffer5.append(", News ne ");
+                stringbuffer6.append(" AND n.node=ne.node ");
+                int i3 = picknews.getIssueTerm();
+                if(i3 != 0)
+                    stringbuffer6.append(" AND ne.issuetime>=" + DbAdapter.cite(new Date(l - (long)(i3 * 60 * 60) * 1000L)));
+            }
+            stringbuffer2.append(stringbuffer3);
+            stringbuffer2.append(stringbuffer4);
+            stringbuffer1.append(stringbuffer5);
+            stringbuffer2.append(stringbuffer6);
+        }
+        stringbuffer1.append(" , NodeLayer nl");
+        stringbuffer2.append(" AND n.node=nl.node ");
+        //stringbuffer1.append(" , Report r  ");
+        //stringbuffer2.append(" and r.node=n.node ");
+       // stringbuffer1.append(" , media m  ");
+        //stringbuffer2.append(" and m.media_id=r.media_id ");
+        if(_nSortType == 0)
+            stringbuffer.append(" n.time ");
+        else
+        if(_nSortType == 1)
+        {
+            stringbuffer1.append(" , ViewCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 2)
+        {
+            stringbuffer1.append(" , TalkbackCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 3)
+        {
+            stringbuffer1.append(" , PollCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 4)
+        {
+            stringbuffer1.append(" , BuyCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 5)
+        {
+            stringbuffer1.append(" , BidCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 6)
+        {
+            stringbuffer1.append(" , BargainCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 7)
+        {
+            stringbuffer1.append(" , ChatCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 8)
+            stringbuffer.append(" r.issuetime ");
+        else
+        if(_nSortType == 9)
+            stringbuffer.append(" n.sequence ");
+        stringbuffer.append(SQL_SORTDIR[_nSortDir]);
+        return stringbuffer1.append(stringbuffer2).toString();
+    }
+    
+
+   private String getItemsSql(RV rv, int i, StringBuilder stringbuffer)
+        throws EntityException
+    {
+        loadBasic();
+        long l = System.currentTimeMillis();
+        StringBuilder stringbuffer1 = new StringBuilder(" From ");
+        StringBuilder stringbuffer2 = new StringBuilder(" WHERE n.hidden=0 ");
+      //  stringbuffer1.append("  NodeLayer nl");
+       // stringbuffer2.append(" AND n.node=nl.node ");
+        stringbuffer1.append(" Node n ");
+        stringbuffer.append(" ORDER BY ");
+        if(_nType == 1 || _nPick == 0 || PickFrom.countByListing(_nListing) + PickNode.countByListing(_nListing) == 0)
+        {
+            stringbuffer1.append(" , Listed l ");
+            stringbuffer2.append(" AND l.listing=" + _nListing + " AND n.node=l.node ");
+        } else
+        {
+              boolean flag = false;
+            StringBuilder stringbuffer3 = new StringBuilder();
+            stringbuffer3.append(" and (");
+			int ij=0;
+            Enumeration enumeration = PickFrom.findByListing(_nListing);
+            while(enumeration.hasMoreElements())
+            {
+                int j = ((Integer)enumeration.nextElement()).intValue();
+                PickFrom pickfrom = PickFrom.find(j);
+                int k = pickfrom.getFromStyle();
+				if (ij >0)
+				{
+					stringbuffer3.append(" or ");
+				}
+				ij++;
+                 stringbuffer3.append(" (");
+                if(k == 0)
+                    stringbuffer3.append(" n.community=" + DbAdapter.cite(pickfrom.getFromCommunity()));
+                else
+                if(k == 2)
+                {
+                    int j1 = (_nOptions & 0x10) == 0 ? pickfrom.getFromNode() : i;
+                    stringbuffer3.append(" n.father=" + j1);
+                    flag = true;
+                } else
+                if(k == 3)
+                {
+                    int k1 = (_nOptions & 0x10) == 0 ? pickfrom.getFromNode() : i;
+                    stringbuffer3.append(" n.community=" + DbAdapter.cite(pickfrom.getFromCommunity()) + " AND n.path LIKE " + DbAdapter.cite(Node.find(k1).getPath() + "% "));
+                }
+               stringbuffer3.append(" ) ");
+            }
+             stringbuffer3.append(" ) ");
+            StringBuilder stringbuffer4 = new StringBuilder();
+            for(Enumeration enumeration1 = PickNode.findByListing(_nListing); enumeration1.hasMoreElements();)
+            {
+                int i1 = ((Integer)enumeration1.nextElement()).intValue();
+                PickNode picknode = PickNode.find(i1);
+                int l1 = picknode.getNodeStyle();
+                int i2 = picknode.getType();
+                picknode.getStartStyle();
+                picknode.getStartTerm();
+                int k2 = picknode.getStopStyle();
+                int l2 = picknode.getStopTerm();
+                int j3 = picknode.getCreatorStyle();
+                String s = picknode.getRCreator();
+                String s1 = picknode.getVCreator();
+                if(s.length() == 0 && s1.length() == 0 && rv != null)
+                {
+                    s = rv._strR;
+                    s1 = rv._strV;
+                }
+                StringBuilder stringbuffer7 = new StringBuilder();
+                if(i2 != 255)
+                {
+                    stringbuffer7.append(" AND n.type=" + i2);
+                    stringbuffer7.append(" AND n.typealias=" + picknode.getTypeAlias());
+                }
+                if(k2 == 1)
+                    stringbuffer7.append(" AND n.stoptime<" + DbAdapter.cite(new Date(l + (long)(l2 * 60 * 60) * 1000L)));
+                else
+                if(k2 == 2)
+                    stringbuffer7.append(" AND n.stoptime>" + DbAdapter.cite(new Date(l + (long)(l2 * 60 * 60) * 1000L)));
+                if(j3 == 1)
+                    stringbuffer7.append(" AND n.rcreator=" + DbAdapter.cite(s));
+                else
+                if(j3 == 2)
+                    stringbuffer7.append(" AND n.vcreator=" + DbAdapter.cite(s1));
+                else
+                if(j3 == 3)
+                    stringbuffer7.append(" AND n.rcreator=" + DbAdapter.cite(s) + " AND n.vcreator=" + DbAdapter.cite(s1));
+                if(l1 == 0)
+                    stringbuffer4.append(stringbuffer7);
+                else
+                if(l1 == 1)
+                    stringbuffer4.append(" AND n.father IN  (SELECT n.node  FROM Node n  WHERE n.hidden=0 " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+                else
+                if(l1 == 2)
+                    stringbuffer4.append(" AND n.node IN  (SELECT f.node  FROM Node n, Node f  WHERE n.hidden=0  AND n.father=f.node " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+                else
+                if(l1 == 3)
+                    stringbuffer4.append(" AND n.node IN  (SELECT gf.node  FROM Node n, Node f, Node gf  WHERE n.hidden=0 AND n.father=f.node  AND f.father=gf.node " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+            }
+
+            StringBuilder stringbuffer5 = new StringBuilder();
+            StringBuilder stringbuffer6 = new StringBuilder();
+            Enumeration enumeration2 = PickNews.findByListing(_nListing);
+            if(enumeration2.hasMoreElements())
+            {
+                int j2 = ((Integer)enumeration2.nextElement()).intValue();
+                PickNews picknews = PickNews.find(j2);
+                stringbuffer5.append(", News ne ");
+                stringbuffer6.append(" AND n.node=ne.node ");
+                int i3 = picknews.getIssueTerm();
+                if(i3 != 0)
+                    stringbuffer6.append(" AND ne.issuetime>=" + DbAdapter.cite(new Date(l - (long)(i3 * 60 * 60) * 1000L)));
+            }
+            stringbuffer2.append(stringbuffer3);
+            stringbuffer2.append(stringbuffer4);
+            stringbuffer1.append(stringbuffer5);
+            stringbuffer2.append(stringbuffer6);
+        }
+        if(_nSortType == 0)
+            stringbuffer.append("n.time ");
+        else
+        if(_nSortType == 1)
+        {
+            stringbuffer1.append(" , ViewCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 2)
+        {
+            stringbuffer1.append(" , TalkbackCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 3)
+        {
+            stringbuffer1.append(" , PollCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 4)
+        {
+            stringbuffer1.append(" , BuyCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 5)
+        {
+            stringbuffer1.append(" , BidCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 6)
+        {
+            stringbuffer1.append(" , BargainCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 7)
+        {
+            stringbuffer1.append(" , ChatCounter c ");
+            stringbuffer2.append(" AND n.node=c.node ");
+            stringbuffer.append(" c.counter ");
+        } else
+        if(_nSortType == 8)
+		{
+		 stringbuffer1.append(" , Report r ");
+         stringbuffer2.append(" AND n.node=r.node ");
+         stringbuffer.append(" r.issuetime ");
+        }
+		else
+        if(_nSortType == 9)
+            stringbuffer.append(" n.sequence ");
+        stringbuffer.append(SQL_SORTDIR[_nSortDir]);
+        return stringbuffer1.append(stringbuffer2).toString();
+    }
+ private String getItemsSqlFile(RV rv, int i, StringBuilder stringbuffer)
+        throws EntityException
+    {
+        loadBasic();
+        long l = System.currentTimeMillis();
+        StringBuilder stringbuffer1 = new StringBuilder(" From ");
+        StringBuilder stringbuffer2 = new StringBuilder(" WHERE n.hidden=0 and n.node=p.node ");
+        stringbuffer1.append(" Node n,filesave p ");
+        stringbuffer.append(" ORDER BY ");
+        if(_nType == 1 || _nPick == 0 || PickFrom.countByListing(_nListing) + PickNode.countByListing(_nListing) == 0)
+        {
+            stringbuffer1.append(" , Listed l ");
+            stringbuffer2.append(" AND l.listing=" + _nListing + " AND n.node=l.node ");
+        } else
+        {
+            boolean flag = false;
+            StringBuilder stringbuffer3 = new StringBuilder();
+            Enumeration enumeration = PickFrom.findByListing(_nListing);
+            if(enumeration.hasMoreElements())
+            {
+                int j = ((Integer)enumeration.nextElement()).intValue();
+                PickFrom pickfrom = PickFrom.find(j);
+                int k = pickfrom.getFromStyle();
+                if(k == 0)
+                    stringbuffer3.append(" AND n.community=" + DbAdapter.cite(pickfrom.getFromCommunity()));
+                else
+                if(k == 2)
+                {
+                    int j1 = (_nOptions & 0x10) == 0 ? pickfrom.getFromNode() : i;
+                    stringbuffer3.append(" AND n.father=" + j1);
+                    flag = true;
+                } else
+                if(k == 3)
+                {
+                    int k1 = (_nOptions & 0x10) == 0 ? pickfrom.getFromNode() : i;
+                    stringbuffer3.append(" AND n.community=" + DbAdapter.cite(pickfrom.getFromCommunity()) + " AND n.path LIKE " + DbAdapter.cite(Node.find(k1).getPath() + "%"));
+                }
+            }
+            StringBuilder stringbuffer4 = new StringBuilder();
+            for(Enumeration enumeration1 = PickNode.findByListing(_nListing); enumeration1.hasMoreElements();)
+            {
+                int i1 = ((Integer)enumeration1.nextElement()).intValue();
+                PickNode picknode = PickNode.find(i1);
+                int l1 = picknode.getNodeStyle();
+                int i2 = picknode.getType();
+                picknode.getStartStyle();
+                picknode.getStartTerm();
+                int k2 = picknode.getStopStyle();
+                int l2 = picknode.getStopTerm();
+                int j3 = picknode.getCreatorStyle();
+                String s = picknode.getRCreator();
+                String s1 = picknode.getVCreator();
+                if(s.length() == 0 && s1.length() == 0 && rv != null)
+                {
+                    s = rv._strR;
+                    s1 = rv._strV;
+                }
+                StringBuilder stringbuffer7 = new StringBuilder();
+                if(i2 != 255)
+                {
+                    stringbuffer7.append(" AND n.type=" + i2);
+                    stringbuffer7.append(" AND n.typealias=" + picknode.getTypeAlias());
+                }
+                if(k2 == 1)
+                    stringbuffer7.append(" AND n.stoptime<" + DbAdapter.cite(new Date(l + (long)(l2 * 60 * 60) * 1000L)));
+                else
+                if(k2 == 2)
+                    stringbuffer7.append(" AND n.stoptime>" + DbAdapter.cite(new Date(l + (long)(l2 * 60 * 60) * 1000L)));
+                if(j3 == 1)
+                    stringbuffer7.append(" AND n.rcreator=" + DbAdapter.cite(s));
+                else
+                if(j3 == 2)
+                    stringbuffer7.append(" AND n.vcreator=" + DbAdapter.cite(s1));
+                else
+                if(j3 == 3)
+                    stringbuffer7.append(" AND n.rcreator=" + DbAdapter.cite(s) + " AND n.vcreator=" + DbAdapter.cite(s1));
+                if(l1 == 0)
+                    stringbuffer4.append(stringbuffer7);
+                else
+                if(l1 == 1)
+                    stringbuffer4.append(" AND n.father IN  (SELECT n.node  FROM Node n  WHERE n.hidden=0 " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+                else
+                if(l1 == 2)
+                    stringbuffer4.append(" AND n.node IN  (SELECT f.node  FROM Node n, Node f  WHERE n.hidden=0  AND n.father=f.node " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+                else
+                if(l1 == 3)
+                    stringbuffer4.append(" AND n.node IN  (SELECT gf.node  FROM Node n, Node f, Node gf  WHERE n.hidden=0 AND n.father=f.node  AND f.father=gf.node " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+            }
+
+            StringBuilder stringbuffer5 = new StringBuilder();
+            StringBuilder stringbuffer6 = new StringBuilder();
+            stringbuffer2.append(stringbuffer3);
+            stringbuffer2.append(stringbuffer4);
+            stringbuffer1.append(stringbuffer5);
+            stringbuffer2.append(stringbuffer6);
+        }
+      
+          stringbuffer.append(" p.date ");
+		  stringbuffer.append(SQL_SORTDIR[_nSortDir]);
+        return stringbuffer1.append(stringbuffer2).toString();
+    }
+	 private String getItemsSqlPicture(RV rv, int i, StringBuilder stringbuffer)
+        throws EntityException
+    {
+        loadBasic();
+        long l = System.currentTimeMillis();
+        StringBuilder stringbuffer1 = new StringBuilder(" From ");
+        StringBuilder stringbuffer2 = new StringBuilder(" WHERE n.hidden=0 and n.node=p.node ");
+        stringbuffer1.append(" Node n,Picture p ");
+        stringbuffer.append(" ORDER BY ");
+        if(_nType == 1 || _nPick == 0 || PickFrom.countByListing(_nListing) + PickNode.countByListing(_nListing) == 0)
+        {
+            stringbuffer1.append(" , Listed l ");
+            stringbuffer2.append(" AND l.listing=" + _nListing + " AND n.node=l.node ");
+        } else
+        {
+            boolean flag = false;
+            StringBuilder stringbuffer3 = new StringBuilder();
+            Enumeration enumeration = PickFrom.findByListing(_nListing);
+            if(enumeration.hasMoreElements())
+            {
+                int j = ((Integer)enumeration.nextElement()).intValue();
+                PickFrom pickfrom = PickFrom.find(j);
+                int k = pickfrom.getFromStyle();
+                if(k == 0)
+                    stringbuffer3.append(" AND n.community=" + DbAdapter.cite(pickfrom.getFromCommunity()));
+                else
+                if(k == 2)
+                {
+                    int j1 = (_nOptions & 0x10) == 0 ? pickfrom.getFromNode() : i;
+                    stringbuffer3.append(" AND n.father=" + j1);
+                    flag = true;
+                } else
+                if(k == 3)
+                {
+                    int k1 = (_nOptions & 0x10) == 0 ? pickfrom.getFromNode() : i;
+                    stringbuffer3.append(" AND n.community=" + DbAdapter.cite(pickfrom.getFromCommunity()) + " AND n.path LIKE " + DbAdapter.cite(Node.find(k1).getPath() + "%"));
+                }
+            }
+            StringBuilder stringbuffer4 = new StringBuilder();
+            for(Enumeration enumeration1 = PickNode.findByListing(_nListing); enumeration1.hasMoreElements();)
+            {
+                int i1 = ((Integer)enumeration1.nextElement()).intValue();
+                PickNode picknode = PickNode.find(i1);
+                int l1 = picknode.getNodeStyle();
+                int i2 = picknode.getType();
+                picknode.getStartStyle();
+                picknode.getStartTerm();
+                int k2 = picknode.getStopStyle();
+                int l2 = picknode.getStopTerm();
+                int j3 = picknode.getCreatorStyle();
+                String s = picknode.getRCreator();
+                String s1 = picknode.getVCreator();
+                if(s.length() == 0 && s1.length() == 0 && rv != null)
+                {
+                    s = rv._strR;
+                    s1 = rv._strV;
+                }
+                StringBuilder stringbuffer7 = new StringBuilder();
+                if(i2 != 255)
+                {
+                    stringbuffer7.append(" AND n.type=" + i2);
+                    stringbuffer7.append(" AND n.typealias=" + picknode.getTypeAlias());
+                }
+                if(k2 == 1)
+                    stringbuffer7.append(" AND n.stoptime<" + DbAdapter.cite(new Date(l + (long)(l2 * 60 * 60) * 1000L)));
+                else
+                if(k2 == 2)
+                    stringbuffer7.append(" AND n.stoptime>" + DbAdapter.cite(new Date(l + (long)(l2 * 60 * 60) * 1000L)));
+                if(j3 == 1)
+                    stringbuffer7.append(" AND n.rcreator=" + DbAdapter.cite(s));
+                else
+                if(j3 == 2)
+                    stringbuffer7.append(" AND n.vcreator=" + DbAdapter.cite(s1));
+                else
+                if(j3 == 3)
+                    stringbuffer7.append(" AND n.rcreator=" + DbAdapter.cite(s) + " AND n.vcreator=" + DbAdapter.cite(s1));
+                if(l1 == 0)
+                    stringbuffer4.append(stringbuffer7);
+                else
+                if(l1 == 1)
+                    stringbuffer4.append(" AND n.father IN  (SELECT n.node  FROM Node n  WHERE n.hidden=0 " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+                else
+                if(l1 == 2)
+                    stringbuffer4.append(" AND n.node IN  (SELECT f.node  FROM Node n, Node f  WHERE n.hidden=0  AND n.father=f.node " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+                else
+                if(l1 == 3)
+                    stringbuffer4.append(" AND n.node IN  (SELECT gf.node  FROM Node n, Node f, Node gf  WHERE n.hidden=0 AND n.father=f.node  AND f.father=gf.node " + (flag ? "" : stringbuffer3.toString()) + stringbuffer7 + ") ");
+            }
+
+            StringBuilder stringbuffer5 = new StringBuilder();
+            StringBuilder stringbuffer6 = new StringBuilder();
+            stringbuffer2.append(stringbuffer3);
+            stringbuffer2.append(stringbuffer4);
+            stringbuffer1.append(stringbuffer5);
+            stringbuffer2.append(stringbuffer6);
+        }
+      
+          stringbuffer.append(" p.date ");
+		  stringbuffer.append(SQL_SORTDIR[_nSortDir]);
+        return stringbuffer1.append(stringbuffer2).toString();
+    }
+    private static String getBriefcaseSql(RV rv)
+    {
+        return " FROM Listing l, Node n  WHERE l.node=n.node  AND l.type=1 AND n.rcreator=" + DbAdapter.cite(rv._strR);
+    }
+
+    private static String getBriefcaseSql(int i)
+    {
+        return " FROM Listing   WHERE type=1 AND node=" + i;
+    }
+
+    public Vector findItems(RV rv, int i, int j, int k)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            StringBuilder stringbuffer = new StringBuilder();
+            String s = getItemsSql(rv, i, stringbuffer);
+            dbadapter.executeQuery("SELECT n.node " + s + stringbuffer);
+            for(int l = 0; l < j + k && dbadapter.next(); l++)
+                if(l >= j)
+                    vector.addElement(new Integer(dbadapter.getInt(1)));
+
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector;
+    }
+
+    public Vector findItems(RV rv, TeaSession teasession, int i, int j, int k)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        String s = teasession.getParameter("keyword");
+        try
+        {
+            StringBuilder stringbuffer = new StringBuilder();
+            String s1 = getItemsSqlReport(rv, i, stringbuffer);
+            if(s != null)
+                s1 = s1 + " and nl.subject like '%" + s + "%' ";
+            dbadapter.executeQuery("SELECT distinct(n.node) " + s1 + stringbuffer);
+            for(int l = 0; l < j + k && dbadapter.next(); l++)
+                if(l >= j)
+                    vector.addElement(new Integer(dbadapter.getInt(1)));
+
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector;
+    }
+
+    public Vector findItems(RV rv, TeaSession teasession, int i, int j)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        String s = teasession.getParameter("keyword");
+        String s1 = teasession.getParameter("radiobutton");
+        String s2 = teasession.getParameter("IssueMonth");
+        boolean flag = false;
+        try
+        {
+            StringBuilder stringbuffer = new StringBuilder();
+            String s3 = getItemsSql(rv, i, stringbuffer);
+            s3 = s3 + " and nl.language= " + teasession._nLanguage + "  ";
+            if(s != null)
+            {
+                s3 = s3 + " and (nl.subject like " + DbAdapter.cite("%" + s + "%") + " ";
+                if(s1.equals("1"))
+                    s3 = s3 + " or nl.text like " + DbAdapter.cite("%" + s + "%") + ") ";
+                else
+                    s3 = s3 + ") ";
+            }
+            if(s2 != null)
+            {
+                int k = Integer.parseInt(s2);
+                Calendar calendar = Calendar.getInstance();
+                Date date = new Date(calendar.getTime().getTime());
+                calendar.set(5, (5 - k) + 10);
+                Date date1 = new Date(calendar.getTime().getTime());
+                s3 = s3 + " and n.time < " + DbAdapter.cite(date) + " and n.time > " + DbAdapter.cite(date1);
+            }
+			System.out.println("SELECT n.node " + s3 + stringbuffer);
+           
+			dbadapter.executeQuery("SELECT n.node " + s3 + stringbuffer);
+            for(int l = 0; l < j && dbadapter.next(); l++)
+                vector.addElement(new Integer(dbadapter.getInt(1)));
+
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector;
+    }
+
+    public int countItems(RV rv, TeaSession teasession, int i)
+        throws EntityException
+    {
+        int j = 0;
+        DbAdapter dbadapter = new DbAdapter();
+        String s = teasession.getParameter("keyword");
+        String s1 = teasession.getParameter("radiobutton");
+        String s2 = teasession.getParameter("IssueMonth");
+        boolean flag = false;
+        String s3 = getItemsSql(rv, i, new StringBuilder());
+        s3 = s3 + " and nl.language= " + teasession._nLanguage + "  ";
+        if(s != null)
+        {
+            s3 = s3 + " and (nl.subject like " + DbAdapter.cite("%" + s + "%") + " ";
+            if(s1.equals("1"))
+                s3 = s3 + " or nl.text like " + DbAdapter.cite("%" + s + "%") + ") ";
+            else
+                s3 = s3 + ") ";
+        }
+        if(s2 != null)
+        {
+            int k = Integer.parseInt(s2);
+            Calendar calendar = Calendar.getInstance();
+            Date date = new Date(calendar.getTime().getTime());
+            calendar.set(5, (5 - k) + 10);
+            Date date1 = new Date(calendar.getTime().getTime());
+            s3 = s3 + " and n.time < " + DbAdapter.cite(date) + " and n.time > " + DbAdapter.cite(date1);
+        }
+        try
+        {
+            j = dbadapter.getInt("SELECT COUNT(n.node) " + s3);
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return j;
+    }
+
+    public Vector findReportItems(RV rv, TeaSession teasession, int i, int j)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        String s_f = teasession.getParameter("Listing");
+        String s = teasession.getParameter("keyword");
+        String s1 = teasession.getParameter("media");
+        String s2 = teasession.getParameter("radiobutton");
+        Date date = TimeSelection.makeTime(teasession.getParameter("BeginYear"), teasession.getParameter("BeginMonth"), "0");
+        Date date1 = TimeSelection.makeTime(teasession.getParameter("EndYear"), teasession.getParameter("EndMonth"), "30");
+        String s3 = teasession.getParameter("IssueMonth");
+        boolean flag = false;
+        String s4 = null;
+        StringBuilder stringbuffer = new StringBuilder();
+        if(s_f != null)
+            s4 = getItemsSqlReport(rv, i, stringbuffer);
+        else
+            s4 = getItemsSql(rv, i, stringbuffer);
+        if(s != null)
+        {
+            s4 = s4 + " and (nl.subject like " + DbAdapter.cite("%" + s + "%") + " ";
+            if(s2 != null && s2.equals("1"))
+            {
+                s4 = s4 + " or nl.text like " + DbAdapter.cite("%" + s + "%") + " ";
+                //if(s1 != null)
+                // s4 = s4 + " or m.mname like " + DbAdapter.cite("%" + s + "%") + ") ";
+                //else
+                    s4 = s4 + ") ";
+            } else
+            {
+                s4 = s4 + ") ";
+            }
+        }
+       // if(s1 != null)
+           // s4 = s4 + " and m.mname like " + DbAdapter.cite("%" + s1 + "%") + " ";
+        if(teasession.getParameter("BeginYear") != null)
+            s4 = s4 + " and r.issuetime < " + DbAdapter.cite(date1) + " and r.issuetime > " + DbAdapter.cite(date);
+        if(s3 != null)
+        {
+            int k = Integer.parseInt(s3);
+            Calendar calendar = Calendar.getInstance();
+            Date date2 = new Date(calendar.getTime().getTime());
+            calendar.set(5, 5 - k);
+            Date date3 = new Date(calendar.getTime().getTime());
+            s4 = s4 + " and n.time < " + DbAdapter.cite(date2) + " and n.time > " + DbAdapter.cite(date3);
+        }
+        try
+        {	
+			if (s_f!=null)
+			{
+
+			dbadapter.executeQuery("SELECT distinct(n.node),n.time ,r.issuetime " + s4 + stringbuffer);
+			//System.out.println("SELECT distinct(n.node),n.time ,r.issuetime " + s4 + stringbuffer);
+
+			}
+			else
+			{
+        	dbadapter.executeQuery("SELECT  n.node " + s4 + stringbuffer);
+		
+			}
+		
+          	for(int l = 0; l < j && dbadapter.next(); l++)
+                vector.addElement(new Integer(dbadapter.getInt(1)));
+
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector;
+    }
+
+    public int countReportItems(RV rv, TeaSession teasession, int i)
+        throws EntityException
+    {
+        int j = 0;
+        DbAdapter dbadapter = new DbAdapter();
+        String s_f = teasession.getParameter("Listing");
+        String s = teasession.getParameter("keyword");
+        String s1 = teasession.getParameter("media");
+        String s2 = teasession.getParameter("radiobutton");
+        Date date = TimeSelection.makeTime(teasession.getParameter("BeginYear"), teasession.getParameter("BeginMonth"), "0");
+        Date date1 = TimeSelection.makeTime(teasession.getParameter("EndYear"), teasession.getParameter("EndMonth"), "30");
+        String s3 = teasession.getParameter("IssueMonth");
+        boolean flag = false;
+        String s4 = null;
+       if(s_f != null)
+            s4 = getItemsSqlReport(rv, i, new StringBuilder());
+        else
+            s4 = getItemsSql(rv, i, new StringBuilder());
+        if(s != null)
+        {
+            s4 = s4 + " and (nl.subject like " + DbAdapter.cite("%" + s + "%") + " ";
+            if(s2 != null && s2.equals("1"))
+            {
+                s4 = s4 + " or nl.text like " + DbAdapter.cite("%" + s + "%") + " ";
+                if(s1 != null)
+                    s4 = s4 + " or m.mname like " + DbAdapter.cite("%" + s + "%") + ") ";
+                else
+                    s4 = s4 + ") ";
+            } else
+            {
+                s4 = s4 + ") ";
+            }
+        }
+        if(s1 != null)
+            s4 = s4 + " and m.mname like " + DbAdapter.cite("%" + s1 + "%") + " ";
+        if(teasession.getParameter("BeginYear") != null)
+            s4 = s4 + " and r.issuetime < " + DbAdapter.cite(date1) + " and r.issuetime > " + DbAdapter.cite(date);
+        if(s3 != null)
+        {
+            int k = Integer.parseInt(s3);
+            Calendar calendar = Calendar.getInstance();
+            Date date2 = new Date(calendar.getTime().getTime());
+            calendar.set(5, 5 - k);
+            Date date3 = new Date(calendar.getTime().getTime());
+            s4 = s4 + " and n.time < " + DbAdapter.cite(date2) + " and n.time > " + DbAdapter.cite(date3);
+        }
+        try
+        { //System.out.println("SELECT COUNT(distinct(n.node)) " + s4);
+          	System.out.println("SELECT n.node " + s4);
+
+			j = dbadapter.getInt("SELECT COUNT(distinct(n.node)) " + s4);
+       
+        }
+
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return j;
+    }
+	 public Vector findPictureItems(RV rv, TeaSession teasession, int i, int j)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        String s = teasession.getParameter("keyword");
+        String s1 = teasession.getParameter("classes");
+		String s2 = teasession.getParameter("radiobutton");
+        boolean flag = false;
+        String s4 = null;
+        StringBuilder stringbuffer = new StringBuilder();
+        s4 = getItemsSqlPicture(rv, i, stringbuffer);
+        s4 = s4 + " and (p.name like " + DbAdapter.cite("%" + s + "%") + " ";
+
+		 if(s2 != null && s2.equals("1"))
+            {
+                 s4 = s4 + " or p.text like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.note like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.address like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.savepic like " + DbAdapter.cite("%" + s + "%") + " ";
+				s4 = s4 + " or p.code like " + DbAdapter.cite("%" + s + "%") + ") ";
+            } else
+            {
+                s4 = s4 + ") ";
+            }
+			if (s1!=null)
+			{   
+			s4 = s4 + " and (p.class like " + DbAdapter.cite("%" + s1 + "%") + ")";
+
+			}
+        try
+        {	
+			dbadapter.executeQuery("SELECT n.node " + s4 + stringbuffer);
+       //     System.out.println("SELECT n.node " + s4 + stringbuffer);
+
+			for(int l = 0; l < j && dbadapter.next(); l++)
+            vector.addElement(new Integer(dbadapter.getInt(1)));
+
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector;
+    }
+
+    public int countPictureItems(RV rv, TeaSession teasession, int i)
+        throws EntityException
+    {
+        int j = 0;
+       Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        String s = teasession.getParameter("keyword");
+          String s1 = teasession.getParameter("classes");
+ 		String s2 = teasession.getParameter("radiobutton");
+        boolean flag = false;
+        String s4 = null;
+        StringBuilder stringbuffer = new StringBuilder();
+        s4 = getItemsSqlPicture(rv, i, stringbuffer);
+        s4 = s4 + " and (p.name like " + DbAdapter.cite("%" + s + "%") + " ";
+
+		 if(s2 != null && s2.equals("1"))
+            {
+                s4 = s4 + " or p.text like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.note like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.address like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.savepic like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.code like " + DbAdapter.cite("%" + s + "%") + ") ";
+
+            } else
+            {
+                s4 = s4 + ") ";
+            }
+				if (s1!=null)
+			{   
+			s4 = s4 + " and (p.class like " + DbAdapter.cite("%" + s1 + "%") + ")";
+
+			}
+        try
+        {	
+			j = dbadapter.getInt("SELECT COUNT(distinct(n.node)) " + s4);
+         
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return j;
+    }
+ public Vector findFileItems(RV rv, TeaSession teasession, int i, int j)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        String s = teasession.getParameter("keyword");
+        String s1 = teasession.getParameter("classes");
+		String s2 = teasession.getParameter("radiobutton");
+        boolean flag = false;
+        String s4 = null;
+        StringBuilder stringbuffer = new StringBuilder();
+        s4 = getItemsSqlFile(rv, i, stringbuffer);
+        s4 = s4 + " and (p.name like " + DbAdapter.cite("%" + s + "%") + " ";
+
+		 if(s2 != null && s2.equals("1"))
+            {
+                 s4 = s4 + " or p.text like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.note like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.address like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.savepic like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.code like " + DbAdapter.cite("%" + s + "%") + ") ";
+            } else
+            {
+                s4 = s4 + ") ";
+            }
+			if (s1!=null)
+			{   
+			s4 = s4 + " and (p.class like " + DbAdapter.cite("%" + s1 + "%") + ")";
+
+			}
+        try
+        {	
+			dbadapter.executeQuery("SELECT n.node " + s4 + stringbuffer);
+
+			for(int l = 0; l < j && dbadapter.next(); l++)
+            vector.addElement(new Integer(dbadapter.getInt(1)));
+
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector;
+    }
+
+    public int countFileItems(RV rv, TeaSession teasession, int i)
+        throws EntityException
+    {
+        int j = 0;
+       Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        String s = teasession.getParameter("keyword");
+          String s1 = teasession.getParameter("classes");
+ 		String s2 = teasession.getParameter("radiobutton");
+        boolean flag = false;
+        String s4 = null;
+        StringBuilder stringbuffer = new StringBuilder();
+        s4 = getItemsSqlFile(rv, i, stringbuffer);
+        s4 = s4 + " and (p.name like " + DbAdapter.cite("%" + s + "%") + " ";
+
+		 if(s2 != null && s2.equals("1"))
+            {
+                s4 = s4 + " or p.text like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.note like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.address like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.savepic like " + DbAdapter.cite("%" + s + "%") + " ";
+                s4 = s4 + " or p.code like " + DbAdapter.cite("%" + s + "%") + ") ";
+
+            } else
+            {
+                s4 = s4 + ") ";
+            }
+				if (s1!=null)
+			{   
+			s4 = s4 + " and (p.class like " + DbAdapter.cite("%" + s1 + "%") + ")";
+
+			}
+        try
+        {	         j = dbadapter.getInt("SELECT COUNT(distinct(n.node)) " + s4);
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return j;
+    }
+
+
+
+    public Vector findItems(TeaSession teasession, int i)
+        throws EntityException
+    {
+        int j = teasession._nNode;
+        Report report = new Report(j);
+        int k = report.getClasses();
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeQuery("SELECT node from Report where class_id = " + k);
+            for(int l = 0; l < i && dbadapter.next(); l++)
+                vector.addElement(new Integer(dbadapter.getInt(1)));
+
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector;
+    }
+
+    public Vector findItems(RV rv, int i, int j)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            StringBuilder stringbuffer = new StringBuilder();
+            String s = getItemsSql(rv, i, stringbuffer);
+            dbadapter.executeQuery("SELECT n.node " + s + stringbuffer);
+            for(int k = 0; k < j && dbadapter.next(); k++)
+                vector.addElement(new Integer(dbadapter.getInt(1)));
+
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector;
+    }
+
+    public String getSeparatorChildDetail(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strSeparatorChildDetail;
+    }
+
+    public String getAfterChildDetail(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strAfterChildDetail;
+    }
+
+    public static Enumeration findNodes(RV rv, int i, int j)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeQuery("SELECT DISTINCT l.node " + getNodesSql(rv));
+            for(int k = 0; k < i + j && dbadapter.next(); k++)
+                if(k >= i)
+                    vector.addElement(new Integer(dbadapter.getInt(1)));
+
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector.elements();
+    }
+
+    public int getPosition()
+        throws EntityException
+    {
+        loadBasic();
+        return _nPosition;
+    }
+
+    public static Listing find(int i)
+    {
+        Listing listing = (Listing)_cache.get(new Integer(i));
+        if(listing == null)
+        {
+            listing = new Listing(i);
+            _cache.put(new Integer(i), listing);
+        }
+        return listing;
+    }
+
+    public static Enumeration find(int i, int j)
+        throws EntityException
+    {
+        Node node = Node.find(i);
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+		StringBuilder stringbuffer =new StringBuilder();
+	 try
+        {
+		   stringbuffer.append("SELECT distinct(listing), l.time FROM Listing as l left join Node as n on l.node=n.node , Category c WHERE ((l.position=" + j + " AND l.style=" + 6+")");
+           int k = node.getType();
+		   Category category = Category.find(i);
+            if(k == 1)
+            {
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 5 +  " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND c.node=n.node " + " AND c.category=" + category.getCategory() + " AND c.typealias=" + category.getTypeAlias()+")");
+            } else
+            {
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 5 +  " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias()+")");
+            }
+           stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 4 + " AND n.community=" + DbAdapter.cite(node.getCommunity())+")");
+            if(k == 1)
+            {
+           stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 3 +  " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND n.community=" + DbAdapter.cite(node.getCommunity()) + " AND c.node=n.node " + " AND c.category=" + category.getCategory() + " AND c.typealias=" + category.getTypeAlias()+")");
+            } else
+            {
+           stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 3 + " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND n.community=" + DbAdapter.cite(node.getCommunity())+")");
+            }
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 2+  " AND n.community=" + DbAdapter.cite(node.getCommunity()) + " AND " + DbAdapter.cite(node.getPath()) + " LIKE n.path+'%' )");
+            if(k == 1)
+            {
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 1 + " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND n.community=" + DbAdapter.cite(node.getCommunity()) + " AND " + DbAdapter.cite(node.getPath()) + " LIKE n.path+'%' " + " AND c.node=n.node " + " AND c.category=" + category.getCategory() + " AND c.typealias=" + category.getTypeAlias()+")");
+            } else
+            {
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 1 +  " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND n.community=" + DbAdapter.cite(node.getCommunity()) + " AND " + DbAdapter.cite(node.getPath()) + " LIKE n.path+'%' " + ")");
+            }
+           stringbuffer.append(" or(position=" + j + " AND l.style=" + 0 + " AND l.node=" + i + ")) ");
+           stringbuffer.append(" and  l.listing not in (select distinct l.listing from Listing l, listinghide lh ,Node n where  l.listing=lh.listing  and n.node=lh.node and "+" (( lh.hiden=0 and " + DbAdapter.cite(node.getPath()) + " LIKE n.path+'%' ) "+ " or (lh.hiden=2 and " + DbAdapter.cite(node.getPath()) + " LIKE n.path ) "+" or ( lh.hiden=1 and (" + DbAdapter.cite(node.getPath()) + " LIKE n.path+'%' ) and ( "+DbAdapter.cite(node.getPath()) + " NOT LIKE n.path)))) ");		   
+		   stringbuffer.append(" order by l.time asc ");
+		
+		 dbadapter.executeQuery(stringbuffer.toString());
+
+
+         for(; dbadapter.next(); vector.addElement(new Integer(dbadapter.getInt(1))));
+	   }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector.elements();
+    }
+ public static Enumeration findall(int i, int j)
+        throws EntityException
+    {
+        Node node = Node.find(i);
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+		StringBuilder stringbuffer =new StringBuilder();
+	 try
+        {
+		   stringbuffer.append("SELECT distinct(listing), l.time FROM Listing as l left join Node as n on l.node=n.node , Category c WHERE ((l.position=" + j + " AND l.style=" + 6+")");
+           int k = node.getType();
+		   Category category = Category.find(i);
+            if(k == 1)
+            {
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 5 +  " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND c.node=n.node " + " AND c.category=" + category.getCategory() + " AND c.typealias=" + category.getTypeAlias()+")");
+            } else
+            {
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 5 +  " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias()+")");
+            }
+           stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 4 + " AND n.community=" + DbAdapter.cite(node.getCommunity())+")");
+            if(k == 1)
+            {
+           stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 3 +  " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND n.community=" + DbAdapter.cite(node.getCommunity()) + " AND c.node=n.node " + " AND c.category=" + category.getCategory() + " AND c.typealias=" + category.getTypeAlias()+")");
+            } else
+            {
+           stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 3 + " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND n.community=" + DbAdapter.cite(node.getCommunity())+")");
+            }
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 2+  " AND n.community=" + DbAdapter.cite(node.getCommunity()) + " AND " + DbAdapter.cite(node.getPath()) + " LIKE n.path+'%' )");
+            if(k == 1)
+            {
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 1 + " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND n.community=" + DbAdapter.cite(node.getCommunity()) + " AND " + DbAdapter.cite(node.getPath()) + " LIKE n.path+'%' " + " AND c.node=n.node " + " AND c.category=" + category.getCategory() + " AND c.typealias=" + category.getTypeAlias()+")");
+            } else
+            {
+            stringbuffer.append(" or(l.position=" + j + " AND l.style=" + 1 +  " AND n.type=" + node.getType() + " AND n.typealias=" + node.getTypeAlias() + " AND n.community=" + DbAdapter.cite(node.getCommunity()) + " AND " + DbAdapter.cite(node.getPath()) + " LIKE n.path+'%' " + ")");
+            }
+           stringbuffer.append(" or(position=" + j + " AND l.style=" + 0 + " AND l.node=" + i + ")) ");
+		   stringbuffer.append(" order by l.time asc ");
+		
+		 dbadapter.executeQuery(stringbuffer.toString());
+         for(; dbadapter.next(); vector.addElement(new Integer(dbadapter.getInt(1))));
+	   }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector.elements();
+    }
+
+    public String getSeparatorDetail(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strSeparatorDetail;
+    }
+
+    public String getAfterDetail(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strAfterDetail;
+    }
+
+    public String getBeforeChildDetail(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strBeforeChildDetail;
+    }
+
+    public String getAlt(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strAlt;
+    }
+
+    public static Enumeration findBriefcase(RV rv)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeQuery("SELECT listing " + getBriefcaseSql(rv));
+            for(; dbadapter.next(); vector.addElement(new Integer(dbadapter.getInt(1))));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector.elements();
+    }
+
+    public static Enumeration findBriefcase(int i)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeQuery("SELECT listing " + getBriefcaseSql(i));
+            for(; dbadapter.next(); vector.addElement(new Integer(dbadapter.getInt(1))));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector.elements();
+    }
+
+    public String getEditTalkback(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strEditTalkback;
+    }
+
+    public static Enumeration findByNode(int i)
+        throws EntityException
+    {
+        Vector vector = new Vector();
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeQuery("SELECT listing FROM Listing  WHERE node=" + i + " AND style=" + 2);
+            for(; dbadapter.next(); vector.addElement(new Integer(dbadapter.getInt(1))));
+            dbadapter.executeQuery("SELECT listing FROM Listing  WHERE node=" + i + " AND style=" + 1);
+            for(; dbadapter.next(); vector.addElement(new Integer(dbadapter.getInt(1))));
+            dbadapter.executeQuery("SELECT listing FROM Listing  WHERE node=" + i + " AND style=" + 0);
+            for(; dbadapter.next(); vector.addElement(new Integer(dbadapter.getInt(1))));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return vector.elements();
+    }
+
+    public int getNode()
+        throws EntityException
+    {
+        loadBasic();
+        return _nNode;
+    }
+
+    public String getAfterItem(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strAfterItem;
+    }
+
+    public int getAccess()
+        throws EntityException
+    {
+        loadBasic();
+        return _nAccess;
+    }
+
+    public int getOptions()
+        throws EntityException
+    {
+        loadBasic();
+        return _nOptions;
+    }
+
+    public int getAlign(int i)
+        throws EntityException
+    {
+        return getLayer(i)._nAlign;
+    }
+
+    private void loadBasic()
+        throws EntityException
+    {
+        if(!_blLoaded)
+        {
+            DbAdapter dbadapter = new DbAdapter();
+            try
+            {
+                dbadapter.executeQuery("SELECT type, pick, style, node,  sequence, position, access,  quantity, sonquantity, columns,  options, sorttype, sortdir, updategap,detailoptions,time  FROM Listing  WHERE listing=" + _nListing);
+                if(dbadapter.next())
+                {
+                    _nType = dbadapter.getInt(1);
+                    _nPick = dbadapter.getInt(2);
+                    _nStyle = dbadapter.getInt(3);
+                    _nNode = dbadapter.getInt(4);
+                    _nSequence = dbadapter.getInt(5);
+                    _nPosition = dbadapter.getInt(6);
+                    _nAccess = dbadapter.getInt(7);
+                    _nQuantity = dbadapter.getInt(8);
+                    _nSonQuantity = dbadapter.getInt(9);
+                    _nColumns = dbadapter.getInt(10);
+                    _nOptions = dbadapter.getInt(11);
+                    _nSortType = dbadapter.getInt(12);
+                    _nSortDir = dbadapter.getInt(13);
+                    _nUpdateGap = dbadapter.getInt(14);
+                    _nDetailOptions = dbadapter.getInt(15);
+					_nTime=dbadapter.getDate(16);
+                }
+                dbadapter.executeQuery("SELECT listing  FROM ListingLayer  WHERE listing=" + _nListing + " AND beforeitempicture IS NOT NULL ");
+                _blBeforeItemPictureFlag = dbadapter.next();
+                dbadapter.executeQuery("SELECT listing  FROM ListingLayer  WHERE listing=" + _nListing + " AND picture IS NOT NULL ");
+                _blPictureFlag = dbadapter.next();
+            }
+            catch(Exception exception)
+            {
+                throw new EntityException(exception.toString());
+            }
+            finally
+            {
+                dbadapter.close();
+            }
+            _blLoaded = true;
+        }
+    }
+
+    public int getType()
+        throws EntityException
+    {
+        loadBasic();
+        return _nType;
+    }
+
+    public int getDetailOptions()
+        throws EntityException
+    {
+        loadBasic();
+        return _nDetailOptions;
+    }
+
+    public String getName(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strName;
+    }
+
+    private Layer getLayer(int i)
+        throws EntityException
+    {
+        Layer layer = (Layer)_htLayer.get(new Integer(i));
+        if(layer == null)
+        {
+            layer = new Layer();
+            DbAdapter dbadapter = new DbAdapter();
+            try
+            {
+                int j = dbadapter.getInt("ListingGetLanguage " + _nListing + ", " + i);
+                dbadapter.executeQuery("SELECT name, more, talkbacks, edittalkback,  chatroom, forwardnode, replynode,  DATALENGTH(beforeitem), beforeitem,  DATALENGTH(afteritem), afteritem,  DATALENGTH(beforedetail), beforedetail,  DATALENGTH(separatordetail), separatordetail,  DATALENGTH(afterdetail), afterdetail,  DATALENGTH(beforechild), beforechild,  DATALENGTH(afterchild), afterchild,  DATALENGTH(beforechilddetail), beforechilddetail,  DATALENGTH(separatorchilddetail), separatorchilddetail,  DATALENGTH(afterchilddetail), afterchilddetail,  DATALENGTH(beforelisting), beforelisting,  DATALENGTH(afterlisting), afterlisting  FROM ListingLayer  WHERE listing=" + _nListing + " AND language=" + j);
+                if(dbadapter.next())
+                {
+                    layer._strName = dbadapter.getVarchar(j, i, 1);
+                    layer._strMore = dbadapter.getVarchar(j, i, 2);
+                    layer._strTalkbacks = dbadapter.getVarchar(j, i, 3);
+                    layer._strEditTalkback = dbadapter.getVarchar(j, i, 4);
+                    layer._strChatRoom = dbadapter.getVarchar(j, i, 5);
+                    layer._strForwardNode = dbadapter.getVarchar(j, i, 6);
+                    layer._strReplyNode = dbadapter.getVarchar(j, i, 7);
+                    layer._strBeforeItem = dbadapter.getText(j, i, 8);
+                    layer._strAfterItem = dbadapter.getText(j, i, 10);
+                    layer._strBeforeDetail = dbadapter.getText(j, i, 12);
+                    layer._strSeparatorDetail = dbadapter.getText(j, i, 14);
+                    layer._strAfterDetail = dbadapter.getText(j, i, 16);
+                    layer._strBeforeChild = dbadapter.getText(j, i, 18);
+                    layer._strAfterChild = dbadapter.getText(j, i, 20);
+                    layer._strBeforeChildDetail = dbadapter.getText(j, i, 22);
+                    layer._strSeparatorChildDetail = dbadapter.getText(j, i, 24);
+                    layer._strAfterChildDetail = dbadapter.getText(j, i, 26);
+                    layer._strBeforeListing = dbadapter.getText(j, i, 28);
+                    layer._strAfterListing = dbadapter.getText(j, i, 30);
+                }
+                dbadapter.executeQuery("SELECT DATALENGTH(beforeitempicture), beforeitempicture  FROM ListingLayer  WHERE listing=" + _nListing + " AND language=" + dbadapter.getInt("ListingGetBeforeItemPictureLanguage " + _nListing + ", " + i));
+                if(dbadapter.next())
+                    layer._abBeforeItemPicture = dbadapter.getImage(1);
+                dbadapter.executeQuery("SELECT pictureposition,  DATALENGTH(picture), picture,  clickurl, alt, align  FROM ListingLayer  WHERE listing=" + _nListing + " AND language=" + dbadapter.getInt("ListingGetPictureLanguage " + _nListing + ", " + i));
+                if(dbadapter.next())
+                {
+                    layer._nPicturePosition = dbadapter.getInt(1);
+                    layer._abPicture = dbadapter.getImage(2);
+                    layer._strClickUrl = dbadapter.getString(4);
+                    layer._strAlt = dbadapter.getString(5);
+                    layer._nAlign = dbadapter.getInt(6);
+                }
+            }
+            catch(Exception exception)
+            {
+                throw new EntityException(exception.toString());
+            }
+            finally
+            {
+                dbadapter.close();
+            }
+            _htLayer.put(new Integer(i), layer);
+        }
+        return layer;
+    }
+
+    private static String getNodesSql(RV rv)
+    {
+        return " FROM Listing l, Node n  WHERE l.node=n.node  AND n.rcreator=" + DbAdapter.cite(rv._strR);
+    }
+
+    public String getBeforeDetail(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strBeforeDetail;
+    }
+
+    public String getChatRoom(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strChatRoom;
+    }
+
+    public void set(int i, int j, int k, int l, int i1, int j1, int k1, 
+            int l1, int i2, int j2, int k2, int l2, int i3, int j3, 
+            int k3, String s, String s1, String s2, String s3, String s4, String s5, 
+            String s6, boolean flag, byte abyte0[], String s7, String s8, String s9, String s10, 
+            String s11, String s12, String s13, String s14, String s15, String s16, String s17, 
+            int l3, boolean flag1, byte abyte1[], String s18, String s19, int i4, String s20)
+        throws EntityException
+    {
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeUpdate("ListingEdit " + _nListing + ", " + i + ", " + j + ", " + k + "," + l + ", " + i1 + ", " + j1 + ", " + k1 + ", " + l1 + ", " + i2 + ", " + j2 + ", " + k2 + ", " + l2 + ", " + i3 + ", " + j3 + ", " + k3 + ", " + DbAdapter.cite(s) + ", " + DbAdapter.cite(s1) + ", " + DbAdapter.cite(s2) + ", " + DbAdapter.cite(s3) + ", " + DbAdapter.cite(s4) + ", " + DbAdapter.cite(s5) + ", " + DbAdapter.cite(s6) + ", " + (flag ? "1" : "0") + ", " + DbAdapter.cite(abyte0) + ", " + DbAdapter.cite(s7) + ", " + DbAdapter.cite(s8) + ", " + DbAdapter.cite(s9) + ", " + DbAdapter.cite(s10) + ", " + DbAdapter.cite(s11) + ", " + DbAdapter.cite(s12) + ", " + DbAdapter.cite(s13) + ", " + DbAdapter.cite(s14) + ", " + DbAdapter.cite(s15) + ", " + DbAdapter.cite(s16) + ", " + DbAdapter.cite(s17) + ", " + l3 + ", " + (flag1 ? "1" : "0") + ", " + DbAdapter.cite(abyte1) + ", " + DbAdapter.cite(s18) + ", " + DbAdapter.cite(s19) + ", " + i4 + ", " + DbAdapter.cite(s20));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        _cache.remove(new Integer(_nListing));
+    }
+  public void set(int i, int j, int k, int l, int i1, int j1, int k1, 
+            int l1, int i2, int j2, int k2, int l2, int i3, int j3, 
+            int k3, String s, String s1, String s2, String s3, String s4, String s5, 
+            String s6, boolean flag, byte abyte0[], String s7, String s8, String s9, String s10, 
+            String s11, String s12, String s13, String s14, String s15, String s16, String s17, 
+            int l3, boolean flag1, byte abyte1[], String s18, String s19, int i4, String s20,Date date4)
+        throws EntityException
+    {
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeUpdate("ListingEdit " + _nListing + ", " + i + ", " + j + ", " + k + "," + l + ", " + i1 + ", " + j1 + ", " + k1 + ", " + l1 + ", " + i2 + ", " + j2 + ", " + k2 + ", " + l2 + ", " + i3 + ", " + j3 + ", " + k3 + ", " + DbAdapter.cite(s) + ", " + DbAdapter.cite(s1) + ", " + DbAdapter.cite(s2) + ", " + DbAdapter.cite(s3) + ", " + DbAdapter.cite(s4) + ", " + DbAdapter.cite(s5) + ", " + DbAdapter.cite(s6) + ", " + (flag ? "1" : "0") + ", " + DbAdapter.cite(abyte0) + ", " + DbAdapter.cite(s7) + ", " + DbAdapter.cite(s8) + ", " + DbAdapter.cite(s9) + ", " + DbAdapter.cite(s10) + ", " + DbAdapter.cite(s11) + ", " + DbAdapter.cite(s12) + ", " + DbAdapter.cite(s13) + ", " + DbAdapter.cite(s14) + ", " + DbAdapter.cite(s15) + ", " + DbAdapter.cite(s16) + ", " + DbAdapter.cite(s17) + ", " + l3 + ", " + (flag1 ? "1" : "0") + ", " + DbAdapter.cite(abyte1) + ", " + DbAdapter.cite(s18) + ", " + DbAdapter.cite(s19) + ", " + i4 + ", " + DbAdapter.cite(s20)+","+DbAdapter.cite(date4));
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        _cache.remove(new Integer(_nListing));
+    }
+	 public static void hiden(int i, int j, int k)
+        throws EntityException
+    {
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeUpdate("ListingHiden " +  i + ", " + j + ", " + k );
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        
+	}
+    public int getPictureLen(int i)
+        throws EntityException
+    {
+        byte abyte0[] = getPicture(i);
+        if(abyte0 != null)
+            return abyte0.length;
+        else
+            return 0;
+    }
+	public Date getTime()
+        throws EntityException
+    {
+        loadBasic();
+        return _nTime;
+    }
+
+    private Listing(int i)
+    {
+        _nListing = i;
+        _blLoaded = false;
+        _htLayer = new Hashtable();
+        _htCacheLayer = new Hashtable();
+    }
+
+    public static boolean isBriefcaseExisted(RV rv)
+        throws EntityException
+    {
+        boolean flag = false;
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeQuery("SELECT TOP 1 listing " + getBriefcaseSql(rv));
+            flag = dbadapter.next();
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return flag;
+    }
+
+    public boolean isLayerExisted(int i)
+        throws EntityException
+    {
+        boolean flag = false;
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeQuery("SELECT listing  FROM ListingLayer  WHERE listing=" + _nListing + " AND language=" + i);
+            flag = dbadapter.next();
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        return flag;
+    }
+
+    public String getReplyNode(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strReplyNode;
+    }
+
+    public byte[] getPicture(int i)
+        throws EntityException
+    {
+        return getLayer(i)._abPicture;
+    }
+
+    public String getAfterChild(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strAfterChild;
+    }
+
+    public int getQuantity()
+        throws EntityException
+    {
+        loadBasic();
+        return _nQuantity;
+    }
+
+    public int getSonQuantity()
+        throws EntityException
+    {
+        loadBasic();
+        return _nSonQuantity;
+    }
+
+    public String getBeforeItem(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strBeforeItem;
+    }
+
+    public String getAfterListing(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strAfterListing;
+    }
+
+    public String getForwardNode(int i)
+        throws EntityException
+    {
+        return getLayer(i)._strForwardNode;
+    }
+
+    public void delete(int i)
+        throws EntityException
+    {
+        DbAdapter dbadapter = new DbAdapter();
+        try
+        {
+            dbadapter.executeUpdate("ListingDeleteLayer " + _nListing + ", " + i);
+        }
+        catch(Exception exception)
+        {
+            throw new EntityException(exception.toString());
+        }
+        finally
+        {
+            dbadapter.close();
+        }
+        _cache.remove(new Integer(_nListing));
+    }
+
+    public int getSortType()
+        throws EntityException
+    {
+        loadBasic();
+        return _nSortType;
+    }
+
+    public Listing()
+    {
+    }
+
+    public static final String ALLCOMMS = "";
+    public static final int ALLTYPES = 255;
+    public static final String LISTING_TYPE[] = {
+        "Listing", "Briefcase"
+    };
+    public static final int LISTINGT_LISTING = 0;
+    public static final int LISTINGT_BRIEFCASE = 1;
+    public static final int LISTINGI_MANUAL = 0;
+    public static final int LISTINGI_AUTOMATIC = 1;
+    public static final String LISTING_POSITION[] = {
+        "BodyLeft", "Body", "BodyRight", "AdLeft", "AdRight", "Header1", "Header2"
+    };
+	 public static final String LISTING_HideSyle[] = {
+        "HidenAll", "HidenInSub", "HidenInLocation", "NoHiden"
+    };
+    public static final int LISTINGP_LEFT = 0;
+    public static final int LISTINGP_CENTER = 1;
+    public static final int LISTINGP_RIGHT = 2;
+    public static final int LISTINGP_ADLEFT = 3;
+    public static final int LISTINGP_ADRIGHT = 4;
+    public static final int LISTINGP_HEADER1 = 5;
+    public static final int LISTINGP_HEADER2 = 6;
+    public static final int LISTINGO_SHOWALWAYS = 1;
+    public static final int LISTINGO_NEWWINDOW = 2;
+    public static final int LISTINGO_SHOWNEWEST = 4;
+    public static final int LISTINGO_SHOWSONS = 8;
+    public static final int LISTINGO_CURRENTNODE = 16;
+    public static final int LISTINGO_NODEBRIEFING = 256;
+    public static final int LISTINGO_NODESUBJECT = 512;
+    public static final int LISTINGO_NODECREATOR = 1024;
+    public static final int LISTINGO_NODEDETAIL = 2048;
+    public static final int LISTINGO_SONBRIEFING = 0x10000;
+    public static final int LISTINGO_SONSUBJECT = 0x20000;
+    public static final int LISTINGO_SONCREATOR = 0x40000;
+    public static final int LISTINGO_SONDETAIL = 0x80000;
+    public static final String LISTING_SORTTYPE[] = {
+        "CreateTime", "ViewCount", "TalkbackCount", "PollCount", "BuyCount", "BidCount", "BargainCount", "ChatCount", "NewsIssueTime", "Sequence"
+    };
+    public static final int LISTINGS_CREATETIME = 0;
+    public static final int LISTINGS_VIEWCOUNT = 1;
+    public static final int LISTINGS_TALKBACKCOUNT = 2;
+    public static final int LISTINGS_POLLCOUNT = 3;
+    public static final int LISTINGS_BUYCOUNT = 4;
+    public static final int LISTINGS_BIDCOUNT = 5;
+    public static final int LISTINGS_BARGAINCOUNT = 6;
+    public static final int LISTINGS_CHATCOUNT = 7;
+    public static final int LISTINGS_NEWSISSUETIME = 8;
+    public static final int LISTINGS_SEQUENCE = 9;
+    public static final String LISTING_SORTDIR[] = {
+        "Ascending", "Descending"
+    };
+    public static final int LISTINGSD_ASCENDING = 0;
+    public static final int LISTINGSD_DESCENDIGN = 1;
+    public static final String SQL_SORTDIR[] = {
+        " ASC ", " DESC ", " ASC ", " DESC "
+    };
+    public static final String LISTING_PICTPOS[] = {
+        "TOP", "BOTTOM", "LEFT", "RIGHT"
+    };
+    public static final int LISTINGPP_TOP = 0;
+    public static final int LISTINGPP_BOTTOM = 1;
+    public static final int LISTINGPP_LEFT = 2;
+    public static final int LISTINGPP_RIGHT = 3;
+    private int _nListing;
+    private int _nType;
+    private int _nPick;
+    private int _nStyle;
+    private int _nNode;
+    private int _nPosition;
+    private int _nSequence;
+    private int _nAccess;
+    private int _nQuantity;
+    private int _nSonQuantity;
+    private int _nColumns;
+    private int _nOptions;
+    private int _nDetailOptions;
+    private int _nSortType;
+    private int _nSortDir;
+    private int _nUpdateGap;
+	private Date _nTime;
+    private boolean _blBeforeItemPictureFlag;
+    private boolean _blPictureFlag;
+    private boolean _blLoaded;
+    private Hashtable _htLayer;
+    private Hashtable _htCacheLayer;
+    private static Cache _cache = new Cache();
+
+}

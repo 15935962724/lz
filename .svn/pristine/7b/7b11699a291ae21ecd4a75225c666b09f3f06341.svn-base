@@ -1,0 +1,81 @@
+
+/*对话框*/
+#dialog{background:#fff;font-size:13px;filter:iebug;}
+#dialog_header{background:#0079D2;padding:5px;cursor:move;font-weight:bold;color:#FFFFFF;text-align:left;}
+#dialog_header a{background:url(/tea/mt/close.gif);width:18px;height:17px;float:right;padding:0}
+#dialog_content{border:1px solid #709CD2;border-top:0px;background:#ffffff;padding:30px;border-bottom:0px;text-align:left;line-height:200%;font-size:14px;}
+#dialog_content #icon{background:url(/tea/mt/info.gif);width:32px;height:32px;float:left;margin-right:8px}
+.dialog_content{border:1px solid #709CD2;border-top:0px;background:#ffffff;}
+#dialog_footer{background:#ffffff;border:1px solid #6C92AD;border-top:0px;text-align:center;padding:6px;}
+.dialog_all{background:#000;filter:alpha(opacity=20);-moz-opacity:0.4;opacity:0.4;position:absolute;top:4px;left:4px;width:100%;height:100%;z-index:-10;}
+#dialog_bg{position:absolute;left:0px;top:0px;width:100%;filter:alpha(opacity=50);opacity:0.5;background-color:#FFFFFF;z-index:99;}
+
+/*日期框*/
+.mt_data{position:absolute;border:1px solid #7FCAE2;background:#FFF;}
+.mt_data a{color:#cc0000;text-decoration:none;line-height:0}
+.mt_data input{width:28px}
+.mt_data table{text-align:center;margin:5px;font-size:13px;line-height:8px;}
+.mt_data th{background:#66CCFF;}
+.mt_data td{text-align:center;line-height:100%}
+
+#dl_ok,#dl_cancel{width:100px;height:30px;text-align:center;line-height:30px;color:#fff;background:#0079D2;border:none}
+
+/*更多 菜单*/
+.more a{display:block;padding:5px;line-height:10px;}
+.more a:visited{background:none;color:none;}
+#tablecenter .more a:hover{background:#3366CC;color:#FFFFFF;}
+
+/*右键菜单*/
+.cmenu{border:1px solid #BABABA; background:#FFFFFF; color:#A1A192; width:120px; position:absolute; z-index:999; text-align:left; padding:7 1;}
+.cmenu a{display:block;padding:7 16;color:#000000;text-decoration:none;font-size:12px;}
+.cmenu a:hover{background:#EFEFEF;color:#000000;text-decoration:none;cursor:default}
+
+
+/*仿 输入框*/
+.input,.file{border:1px solid #CCCCCC; background:#FFFFFF;padding:1px; width:200px; height:20px; float:left; overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/*仿 下拉菜单*/
+.select li{padding-left:5px}
+
+
+/*title*/
+#tip1{background:url(/tea/mt/tip1.gif);height:20px}
+#tip2{background:url(/tea/mt/tip2.gif);padding:0 10px;text-align:left}
+#tip3{background:url(/tea/mt/tip3.gif) no-repeat;height:13px}
+#tip4{background:url(/tea/mt/tip4.gif) no-repeat left bottom;height:13px}
+#tip5{background:url(/tea/mt/tip5.gif) no-repeat;height:20px}
+
+input.btn{    font-weight: bold;
+    color: #fff;
+    border: 0px;
+    padding:0 10px;
+    height: 22px;line-height: 22px;
+    background: #00A2E8;
+    cursor: pointer;}
+
+#searchmenu input{
+    height: 30px;
+    float: left;
+    -webkit-appearance: none;
+    border-radius: 0;
+    font-size: 15px;
+
+}
+#searchmenu .btn{
+    height: 30px;
+    border-radius: 0;
+    float: left;
+    background: #044694;
+    padding: 0 15px;
+    margin-bottom: 20px;
+    -webkit-appearance: none;
+
+}shopweb/productlistOther.jsp
+
+#searchsum,#ali{font-size:16px;}
+#searchdiv{margin-top:20px;}
+#searchsubject a,#ali a{color:#044694;}
+#searchdetail font{color:#a6a6a6;}
+#searchmenu .btn:hover{
+    color:#fff;
+}

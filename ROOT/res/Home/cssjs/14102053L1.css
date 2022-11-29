@@ -1,0 +1,51 @@
+#Content{width:960px;margin:0 auto}
+
+
+/*  首页焦点图 */
+.navbox{padding-bottom:10px;}
+.slideBox{width:950px;position:relative;height:450px;overflow:hidden; }
+.slideBox .bd{ position:relative; height:100%; z-index:0;   }
+.slideBox .bd li{ zoom:1; vertical-align:middle;position:relative }
+.slideBox .bd img{width:950px;/*height:335px*/}
+.slideBox #ReportIDname {display:block;position:absolute;left:0;line-height:120%;z-index:100000;background:url(/res/womenofchina/structure/14070147.png) repeat left top;padding:8px 0;width:100%;bottom:0}
+.slideBox #ReportIDname a{color:#fff;display:block;margin:0 5px;font-size:14px}
+
+.slideBox .prev,.slideBox .next{position:absolute;top:50%;margin-top:-20px;background:url(http://www.womenofchina.cn/res/womenofchina/structure/14091215.png) no-repeat;height:40px;cursor:pointer;width:22px;display:block;}
+.slideBox .prev{ left:0;background-position:left top;z-index:10000; }
+.slideBox .next{right:2px;background-position:left -45px;z-index:10000;}
+
+.slideBox .prev:hover{background-position:-28px 0; }
+.slideBox .next:hover{background-position:-28px -45px;}
+
+.slideBox .prevStop{ display:none;  }
+.slideBox .nextStop{ display:none;  }
+
+
+
+
+
+
+
+
+
+
+
+.ad{position:relative;height:465px;width:950px;z-index:10}
+.ad #DAOHANG_OUT_DIV{position:absolute;left:50%;top:310px}
+.ad #DAOHANG_OUT_DIV li{float:left;margin-right:10px;background:url(/res/Home/structure/14102124.png) no-repeat left top;width:10px;height:10px;text-indent:-9999em; cursor:pointer;}
+.ad #DAOHANG_OUT_DIV li.oneNewStyle{background:url(/res/Home/structure/14102122.png) no-repeat left top;}
+#NEW_OUT_DIV #ReportIDname,#NEW_OUT_DIV #VenuesIDSubject{display:none}
+#CONTENT_DIV{padding:20px 50px;line-height:200%;font-size:15px;font-family:"微软雅黑";text-align:left;height:90px}
+#PHOTO_OUT_DIV{height:335px;overflow:hidden;text-align:center}
+#PHOTO_OUT_DIV img{/*width:951px;height:335px*/}
+
+
+
+/* 左右广告*/
+ #Content{position:relative;}
+ #leftBan {position:absolute;left:-130px;z-index:100;top:0;background-color:#fff;width:120px;}
+
+
+ #rightBanner{position:absolute;right:-130px;z-index:100;top:0;background-color:#fff;width:120px;}
+
+ #leftBan img, #rightBanner img{width:120px}

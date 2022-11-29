@@ -1,0 +1,200 @@
+
+@media print
+{
+	body { 
+		padding: 0 0 0 0;
+		font-family : 宋体, "Lucida Grande", Verdana, Lucida, Arial, Helvetica, sans-serif; 
+	}
+	table
+	{
+		width: 100%;
+	}
+	input { 
+		display: none;
+	}
+	#PageHead1{
+		font-weight: normal;
+		font-size: 12px;
+		padding-left: 8px;
+		width: 68%;
+	}	
+	#PageLink{
+		font-weight: bold;
+		font-size: 14px;
+		padding-right: -10px;
+	}
+	#PagePrint{		
+		display: none;
+	}
+	.hrline {
+		color: black;
+		height:1px;
+		border-top:1px solid black;		
+		margin-top: -5px;
+	}
+	#title_div {
+		text-align: center;
+		font-weight: bold;
+		font-size: 24px;
+		padding: 5px 0px 0px 0px;
+	}
+	#author_div {
+		text-align: center;
+		font-weight: bold;
+		font-size: 14px;
+		padding: 10px 0px 20px 0px;
+	}
+	#author {
+		padding-right: 30px;
+	}	
+	#content_div {
+		font-size: 14px;		
+		line-height: 150%;
+	}	
+	#content_div a:after {
+		content: " <" attr(href) "> ";
+		font-family: courier, monospace;
+		font-style: italic;
+	}
+	#content_div a {
+		text-decoration: none;
+		color: black;
+	}
+	/*ubb标签*/
+	.vbbcss {margin:auto; width:80%; text-align:left; font: 12px Courier New; padding:8px;}
+	.vbbcss_div		{	border:1px #eeb solid; background:#ffc; margin:4px; padding:4px; }
+	.vbbcss_tag		{	color:#0000ff; }
+	.vbbcss_text	{	color:#000000; }
+	.vbbcss_coms1	{	color:#00a0a0; }
+	.vbbcss_coms2	{	color:#a0a0a0; }
+	.vbbcss_coms3	{	color:#66ddbb; }
+	.vbbcss_str1	{	color:#ff00ff; }
+	.vbbcss_str2	{	color:#80b0ff; }
+	.vbbcss_symss	{	color:#a08000; }
+	.vbbcss_syms1	{	color:#0000ff; }
+	.vbbcss_syms2	{	color:#0020A0; }
+	.vbbcss_keys1	{	color:#ff0000; }
+	.vbbcss_keys2	{	color:#007fff; }
+	.vbbcss_keys3	{	color:#800000; font-weight:bold;}
+	.vbbcss_keys4	{	color:#A04000; }
+	.vbbcss_keys5	{	color:#0080ff; }
+	.vbbcss_img1	{	color:#808000; padding-top:4px; height:16px; }
+	.vbbcss_cursor	{	cursor: pointer; cursor:hand; }
+	.vbbcss_quotetitle	{border:1px #a40 dashed; background:#d0d0d0; color:#a40; font: 12px Verdana; font-weight:bold; line-height:18px; }
+	.vbbcss_quotewinbg	{border:1px #ccc solid; background:#fff; color:#999; padding:4px;}
+	.vbbcss_codetitle	{border:1px #a40 dashed; background:#d0d0d0; color:#048; font: 12px Verdana; font-weight:bold; line-height:18px; }
+	.vbbcss_codewinbg	{border:1px #ccc solid; background:#ddd;}
+	.vbbcss_codebodyul	{margin:auto;padding:auto;background:#ffe; word-wrap:break-word; overflow: auto;}
+	.vbbcss_codebodyul li	{padding:0 4px; line-height:18px; }
+	.vbbcss_codetitle2	{margin:auto; text-align:left; font:11px Verdana; font-weight:bold; line-height:14px;}
+	.vbbcss_codewinbg2	{margin:auto; border:1px dashed; padding:4px; text-align:left; font:12px Verdana; line-height:16px;}
+	.vbbcss_codewinbg3	{margin:auto; text-align:left; padding:4px; font:12px Verdana; line-height:16px;}
+	.vbbcss_quotewinbg3	{margin:auto; text-align:left; padding:4px; font:12px; line-height:16px;}
+}
+@media screen
+{
+	body{
+		width: 750px;
+		text-align: center;
+		margin-right: auto;
+		margin-left: auto;
+		font-family : 宋体, "Lucida Grande", Verdana, Lucida, Arial, Helvetica, sans-serif; 
+	}
+	table {
+		width: 750px;
+	}
+	.hrline {
+		color: black;
+		height:1px;
+		border-top:1px solid black;
+		margin-top: -6px;
+	}
+	#PageHead1{
+		text-align: left;
+		width: 100%;
+		font-weight: normal;
+		font-size: 14px;
+		padding-left: 8px;
+	}
+	#PageLink{
+		display: none;
+	}
+	#PagePrint{	
+		float: right;
+		text-align: right;
+		font-size: 14px;
+		padding-right: 10px;
+		padding-left: 3px;
+	}
+	#title_div {
+		text-align: center;
+		font-weight: bold;
+		font-size: 24px;
+		padding: 5px 0px 0px 0px;
+	}
+	.ltitle
+    {
+        margin: 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+	#author_div {
+		text-align: center;
+		font-weight: bold;
+		font-size: 14px;
+		padding: 10px 0px 20px 0px;
+	}
+	#author {
+		padding-right: 30px;
+	}
+	#content_div {
+		font-size: 14px;
+		line-height: 150%;
+		text-align: left;
+	}
+	#content_div a:after {
+		content: " <" attr(href) "> ";
+		font-family: courier, monospace;
+		font-style: italic;
+	}
+	#content_div a {
+		color: black;
+		text-decoration: none;
+	}	
+	#content_div p {
+		line-height: 150%;
+	}	
+	#content_div br {
+		height: 100px;
+	}
+/* ubb标签 */
+.vbbcss {margin:auto; width:96%; text-align:left; font: 12px Courier New; padding:8px;}
+.vbbcss_div		{	border:1px #eeb solid; background:#ffc; margin:4px; padding:4px; }
+.vbbcss_tag		{	color:#0000ff; }
+.vbbcss_text	{	color:#000000; }
+.vbbcss_coms1	{	color:#00a0a0; }
+.vbbcss_coms2	{	color:#a0a0a0; }
+.vbbcss_coms3	{	color:#66ddbb; }
+.vbbcss_str1	{	color:#ff00ff; }
+.vbbcss_str2	{	color:#80b0ff; }
+.vbbcss_symss	{	color:#a08000; }
+.vbbcss_syms1	{	color:#0000ff; }
+.vbbcss_syms2	{	color:#0020A0; }
+.vbbcss_keys1	{	color:#ff0000; }
+.vbbcss_keys2	{	color:#007fff; }
+.vbbcss_keys3	{	color:#800000; font-weight:bold;}
+.vbbcss_keys4	{	color:#A04000; }
+.vbbcss_keys5	{	color:#0080ff; }
+.vbbcss_img1	{	color:#808000; padding-top:4px; height:16px; }
+.vbbcss_cursor	{	cursor: pointer; cursor:hand; }
+.vbbcss_quotetitle	{border:1px #a40 dashed; background:#d0d0d0; color:#a40; font: 12px Verdana; font-weight:bold; line-height:18px; }
+.vbbcss_quotewinbg	{border:1px #ccc solid; background:#fff; color:#999; padding:4px;}
+.vbbcss_codetitle	{border:1px #a40 dashed; background:#d0d0d0; color:#048; font: 12px Verdana; font-weight:bold; line-height:18px; word-wrap:break-word; overflow: auto; }
+.vbbcss_codewinbg	{border:1px #ccc solid; background:#ddd;}
+.vbbcss_codebodyul	{margin:auto;padding:auto;background:#ffe; word-wrap:break-word; overflow: auto;}
+.vbbcss_codebodyul li	{padding:0 4px; line-height:18px; }
+.vbbcss_codetitle2	{margin:auto; text-align:left; font:11px Verdana; font-weight:bold; line-height:14px;}
+.vbbcss_codewinbg2	{margin:auto; border:1px dashed; padding:4px; text-align:left; font:12px Verdana; line-height:16px; word-wrap:break-word;}
+.vbbcss_codewinbg3	{margin:auto; text-align:left; padding:4px; font:12px Verdana; line-height:16px;}
+.vbbcss_quotewinbg3	{margin:auto; text-align:left; padding:4px; font:12px; line-height:16px;}
+}

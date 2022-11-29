@@ -1,0 +1,23 @@
+#
+NewPickManual=New pick manual
+NewPickNode=New pick node
+NewPickNews=New pick news
+PickFrom=Pick from
+PickNode=Pick node
+PickNews=Pick news
+RCreator=Real creator
+VCreator=Virtual creator
+
+AllCommunities=All public communities
+ThisCommunity=This community
+ThisTree=This tree
+ThisNode=This node
+
+Self=Self
+Father=Father
+Son=Son
+GrandSon=Grandson
+
+Real=Real
+Virtual=Virtual
+Both=Both

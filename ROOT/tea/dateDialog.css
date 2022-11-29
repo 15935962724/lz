@@ -1,0 +1,51 @@
+.isTimeDisable{font-size: 12px;background-color: #F3F3F3;color: #888;}
+.isTimeDisable a{color: #B2B2B2;}
+.isTimeActive{background-color: #118EC8;}
+.isTimeActive a{color: #fff;}
+.selectDate{font-size: 14px;text-align: center;}
+.selectDate:active{background-color: #118EC8;color: #fff;}
+.dateListShow{padding:48px 0px 0px;}
+.table{
+	width: 100%;
+}
+.top_header h4 {
+  margin:0px;
+}
+.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  display: none;
+  overflow: auto;
+  overflow-y: scroll;
+}
+
+
+
+.modal-dialog {
+  position: relative;
+  z-index: 1050;
+  width: auto;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #999999;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+}
+

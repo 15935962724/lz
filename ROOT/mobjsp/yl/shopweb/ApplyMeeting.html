@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会议申请</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/tea/mobhtml/m-style.css">
+    <script src="/tea/jquery-1.3.1.min.js"></script>
+</head>
+<body>
+<div class="body">
+
+
+    <div class="Content">
+        <div class="person-con4 met-con met-con2">
+            <p class="per-con3-a bor-b">
+                <span class="fl-left ft16"><em>*</em>会议名称</span>
+                <input type="text"  class="per-add-inp ft16 ml-t15">
+            </p>
+            <p class="per-con3-a bor-b">
+                <span class="fl-left ft16 "><em>*</em>会议通知</span>
+                <label for="fileinp" onchange="file_click()">
+                    <span class="file-tit"></span>
+                    <input type="button" value="上传" class="inp-file ft14">
+                    <input type="file"  class="per-add-inp ft16" value="">
+                </label>
+
+            </p>
+            <p  class="per-con3-a bor-b">
+                <span class="fl-left ft16 "><em>*</em>招商函</span>
+
+                <label for="fileinp" onchange="file_click()">
+                    <span class="file-tit"></span>
+                    <input type="button" value="上传" class="inp-file ft14">
+                    <input type="file"  class="per-add-inp ft16" value="">
+                </label>
+            </p>
+            <p class="per-con3-a">
+                <span class="fl-left ft16 "><em>*</em>会议申请表</span>
+
+                <label for="fileinp" onchange="file_click()">
+                    <span class="file-tit"></span>
+                    <input type="button" value="上传" class="inp-file ft14">
+                    <input type="file"  class="per-add-inp ft16" value="">
+                </label>
+            </p>
+        </div>
+        <p style="margin-top:15px;">
+            <input type="button" value="提交审核" class="per-add-save ft14">
+        <p>
+
+    </div>
+
+</div>
+<script>
+    function file_click(){
+        var file_href=$(this).find('.per-add-inp').val();
+        console.log(file_href);
+        $(this).find('.file-tit').html(file_href);
+    }
+    // $("#fileinp").change(function () {
+    //     console.log($(".per-add-inp ").val());
+    //     $(".file-tit").html($(".per-add-inp ").val());
+    // })
+</script>
+</body>
+</html>

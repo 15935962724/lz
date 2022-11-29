@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/tea/mobhtml/m-style.css">
+    <title>收货地址</title>
+</head>
+<body>
+    <div class="body">
+        <!-- <div class="Header">
+            <p class="header-tit ft18"><a href="" class="head-back"></a>收货地址<img src="img/icon2.png" alt="" class="head-list"></p>
+        </div> -->
+        <div class="Content">
+            <div class="person-con4">
+                <div class="per-add-line1 bor-b">
+                    <p class="ft16 per-add-xm">
+                        <span>张三</span>
+                        <span>138****1234</span>
+                    </p>
+                    <p class="fl-left ft14 per-add-w">
+                        <em class="ft12">默认</em>
+                        北京市昌平区六环以内 平西府地铁站马连店7号 楼1单元1601室
+                    </p>
+                    <a href="/mobjsp/yl/shopweb/G-PersonalAddress.html" class="fl-right ft16 per-add-bj bor-l">编辑</a>
+                </div>
+                <!-- <div class="per-add-line1 bor-b">
+                    <p class="ft16 per-add-xm">
+                        <span>张三</span>
+                        <span>138****1234</span>
+                    </p>
+                    <p class="fl-left ft14 per-add-w">
+                        北京市昌平区六环以内 平西府地铁站马连店7号 楼1单元1601室
+                    </p>
+                    <a href="" class="fl-right ft16 per-add-bj bor-l">编辑</a>
+                </div>
+                <div class="per-add-line1 bor-b">
+                    <p class="ft16 per-add-xm">
+                        <span>张三</span>
+                        <span>138****1234</span>
+                    </p>
+                    <p class="fl-left ft14 per-add-w">
+                        北京市昌平区六环以内 平西府地铁站马连店7号 楼1单元1601室
+                    </p>
+                    <a href="" class="fl-right ft16 per-add-bj bor-l">编辑</a>
+                </div> -->
+            </div>
+        </div>
+        <!-- <div class="Footer bor-t">
+            <a href="" class="fl-left">
+                <img src="img/foot1-1.png" alt="">
+                <span class="ft14">首页</span>
+            </a>
+            <a href="" class="fl-left">
+                <img src="img/foot2-2.png" alt="">
+                <span class="ft14">产品</span>
+            </a>
+            <a href="" class="fl-left">
+                <img src="img/foot3-2.png" alt="">
+                <span class="ft14">我的</span>
+            </a>
+        </div> -->
+    </div>
+</body>
+</html>

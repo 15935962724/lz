@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />
+<script>
+var host=document.referrer;
+host=host.substring(0,host.indexOf('/',8));
+document.write("<base href='"+host+"' />");
+</script>
+</head>
+<body style="margin:0;" oncontextmenu="return false;" onresize="swf.height=document.body.offsetHeight-tb.offsetHeight+'px';setTimeout('if(fit)swf.fitWidth()',200);">
+
+<script>
+eval('d='+location.search.substring(1).replace(/%27/g,"'"));
+if(!d.node)
+{
+  var doc=parent.parent.document;
+  var flex=doc.getElementsByName("flex")[0];
+  flex.style.cssText=d.css;
+}else
+{
+  document.write("<link href=/tea/mt/flex.css rel='stylesheet' type='text/css' /><script type='text/javascript' src='/tea/mt.js'></scr"+"ipt><script type='text/javascript' src='/tea/mt/flex.js'></scr"+"ipt>");
+}
+</script>
+
+</body>
+</html>

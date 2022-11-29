@@ -1,0 +1,13 @@
+.card{
+	transition:all .3s .1s ease-out;
+}
+.card:not(.is-show){
+		opacity:0;
+		-webkit-transform:translate(-50%,-50%) rotateX(95deg);
+		        transform:translate(-50%,-50%) rotateX(95deg);
+	}
+.card.is-show{
+		opacity:1;
+		
+    z-index:5;
+	}

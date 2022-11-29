@@ -1,0 +1,27 @@
+# 
+InfSignUp=<P>Please note that member id and password are case-sensitive. Because we send your signup information (memberid, password, etc) to you by your email address, please guarantee your email address is a valid one.</P>
+AddressTPublic=List full information to others
+Validate=验证码
+VerificationCode=Your verification code
+EnterPassword=输入密码
+ConfirmPassword=确认密码
+Party=政治面貌
+Non-Party=群众
+CPC=党员
+League=团员
+OtherParty=民主党派
+IdentityCard=身份证
+Birth=出生日期
+RegMail=注册邮箱
+ValidateSucceed=验证成功. <A href=/ >回首页</A> <A href=javascript:window.opener=null;window.close();>关闭</A>
+CancelSucceed=取消成功. <A href=/ >回首页</A> <A href=javascript:window.opener=null;window.close();>关闭</A>
+EmailSend=邮件已发送
+EmailSendErr=邮件已发送失败
+1169607402250=该会员不存在或已经取消了验证. <A href=/ >回首页</A> <A href=javascript:window.opener=null;window.close();>关闭</A>
+1169607667296=该会员已经验证了,不能取消. <A href=/ >回首页</A> <A href=javascript:window.opener=null;window.close();>关闭</A>
+1169607769453=验证码错误. <A href=/ >回首页</A> <A href=javascript:window.opener=null;window.close();>关闭</A>
+1169607851484=该会员已经通过验证了,无需在此验证. <A href=/ >回首页</A> <A href=javascript:window.opener=null;window.close();>关闭</A>
+1169608574765=确认取消?
+1169608574766=确认
+1169608574767=关闭
+1169608574768=注册时间

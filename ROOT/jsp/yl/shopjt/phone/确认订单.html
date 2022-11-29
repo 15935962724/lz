@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <style>
+        .detail01{
+            border-bottom:0.02rem solid #dcdcdc;
+        }
+        .detail01 .pic{
+            height:1.8rem;
+            width:2.25rem;
+        }
+        .detail01 .nr{
+            justify-content: center;
+            align-items: left;
+        }
+        .detail01 .nr span{
+            margin:0 !important;
+            line-height:160% !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="Body">
+        <div id="Header">
+            <header class="flex">
+                <div class="logo"><img src="http://www.brachysolution.com/res/Home/structure/14112579.png" /></div>
+                <div class="head-r flex">
+                    <div class="search"></div>
+                    <nav>
+                        <em></em>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div id="Content" style="padding-bottom:1.2rem;">
+            <div class="sign flex">
+                <span class="bold">收货人:</span>
+                <select>
+                    <option>请选择收货人</option>
+                </select>
+                <input type="button" class="but" value="确定" />
+            </div>
+
+            <div class="address flex">
+                <span class="tit">
+                    张三　138****2469
+                    <a>修改收货人</a>
+                </span>
+                <span class="info">
+                    北京市昌平区六环以内 平西府地铁站马连店7号楼1单元1601室
+                </span>
+                <span class="info" style="color:#999">
+                    东南大学附属中大医院      肿瘤化疗与放射病科
+                </span>
+            </div>
+
+            <div class="pro-info flex">
+                <h2 class="h2 flex bold">商品清单</h2>
+                <div class="detail01 flex">
+                    <span class="pic flex">
+                        <img src="http://www.brachysolution.com/res/Home/structure/19061406.png" />
+                    </span>
+                        <span class="nr flex">
+                        <span class="tit bold">碘125粒子</span>
+                        <span class="version"><em>商品编号</em>LDR1102</span>
+                        <span class="version"><em>厂　　商</em>上海欣科医药有限公司</span>
+                        <span class="version"><em>购买数量</em>3</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="sign02 flex">
+                <p class="flex">
+                    <span class="sp1">粒子活度:</span>
+                    <input type="text" placeholder="请输入粒子活度" />
+                </p>
+                <p class="flex">
+                    <span class="sp1">校准时间:</span>
+                    <input type="text" placeholder="请选择校准时间" />
+                </p>
+            </div>
+
+            <div class="sign03 flex">
+                <textarea placeholder="备注说明:"></textarea>
+            </div>
+
+
+            <div class="detail04 flex">
+                <input type="submit" value="提交订单" class="" />
+            </div>
+        </div>
+
+    </div>
+<script>
+    $(function () {
+        $("em.flex i").click(function () {
+            $(this).addClass('cur').siblings("i").removeClass("cur");
+        });
+
+    })
+</script>
+</body>
+</html>

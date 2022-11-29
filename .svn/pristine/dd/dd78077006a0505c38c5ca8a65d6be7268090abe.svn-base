@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <style>
+        .detail01{
+            border-bottom:0.1rem solid #eef4fb;
+        }
+        .detail01 .pic{
+            height:1.8rem;
+            width:2.25rem;
+        }
+        .detail01 .nr{
+            justify-content: center;
+            align-items: left;
+        }
+        .detail01 .nr span{
+            margin:0 !important;
+            line-height:160% !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="Body">
+        <div id="Header">
+            <header class="flex">
+                <div class="logo"><img src="http://www.brachysolution.com/res/Home/structure/14112579.png" /></div>
+                <div class="head-r flex">
+                    <div class="search"></div>
+                    <nav>
+                        <em></em>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div id="Content">
+            <div class="detail01 flex">
+                <span class="pic flex">
+                    <img src="http://www.brachysolution.com/res/Home/structure/19061406.png" />
+                </span>
+                <span class="nr flex">
+                    <span class="tit">治疗计划《TPS》</span>
+                    <span class="version"><em>商品编号</em>LDR1102</span>
+                </span>
+            </div>
+
+            <div class="detail02 flex">
+                <h2 class="h2 flex bold" style="justify-content: left;line-height:0.66rem;font-size:0.30rem;margin-bottom:0.15rem;">购买方式</h2>
+                <div class="p flex">
+
+                    <select>
+                        <option>按时用时间购买</option>
+                    </select>
+                </div>
+                <div class="p flex" style="border-top:0.02rem #dcdcdc solid;padding-top:0.15rem;">
+
+                    <select>
+                        <option>1个病例授权</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="detail03 flex">
+                <span class="info">
+                    <p style="font-size:0.2rem;color:#df6c0a" class="p1">法定工作日8:30至16:30处理订单并安排发货(非法定假日的周六将在8:30至14:30处理订单并安排发货)，否则将顺延至下一工作区间处理。遇特殊节假日，将在网站首页通知接受订单及发货时间；</p>
+                </span>
+            </div>
+
+            <div class="detail04 flex">
+                <input type="submit" value="立即购买" class="but1" />
+            </div>
+        </div>
+
+    </div>
+<script>
+    $(function () {
+        $("em.flex i").click(function () {
+            $(this).addClass('cur').siblings("i").removeClass("cur");
+        });
+
+    })
+</script>
+</body>
+</html>

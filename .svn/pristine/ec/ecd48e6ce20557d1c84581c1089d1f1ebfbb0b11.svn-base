@@ -1,0 +1,60 @@
+.btn a{ width:48px; height:28px;background-repeat:no-repeat}
+.btn a:hover,.pmove{background-position:0 -34px}
+
+#btn0{background-image:url(btn0.gif)}
+#btn1{background-image:url(btn1.gif)}
+#menu{background-image:url(menu.gif);position:absolute;width:48px;height:190px;}
+#btn2{background-image:url(btn2.gif)}
+#btn3{background-image:url(btn3.gif)}
+#btn4{background-image:url(btn4.gif)}
+#btn5{background-image:url(btn5.gif)}
+
+
+#menu a{width:46px; height:20px;}
+#menu a:hover{background:url(bgm.gif);color:#FFF}
+
+
+#pview{text-align:center;width:940px;overflow:hidden;}
+#plist{text-align:center;}
+#plist a{width:192px; height:192px;  background-image:url(bglist.gif)}
+#plist a:hover{background-position:0 -204px}
+
+/* 左右箭头  */
+#blr0,#blr1
+{
+position:absolute;cursor:pointer;margin-top:-350px;
+}
+
+/* 小图列表 */
+#btn7,#btn8{ width:30px; height:30px;}
+#btn7{background-image:url(btn7.gif)}
+#btn8{background-image:url(btn8.gif)}
+.pdis{background-position:0 -34px}
+#ppage{overflow:hidden;width:550px;white-space:nowrap;}
+#ppage a:hover{border:2px solid #42A1ED}
+#ppage .cur{border:2px solid #42A1ED}
+
+
+.ptitle{float:left;width:650px;font-size:14px;display:block;padding-top:5px;height:35px;*height:40px;}
+.ptitle a{font-size:16px;font-weight:bold;}
+.btn{float:right;font-size:12px;width:250px;text-align:right;}
+.btn a{display:block;float:right;}
+#menu a:link{line-height:20px;text-align:left;display:block;padding-left:5px;width:42px;*width:48px;}
+#btn0{line-height:30px;text-align:left;display:block;padding-left:10px;width:38px;*width:48px;}
+.AlbumIDCon{clear:both;padding:5px;text-align:left;}
+.AlbumIDCon table td{height:627px; vertical-align:middle;}
+#psubject{font-size:14px;font-weight:bold;margin:20px 20px 0px 20px;border-top:1px solid #ccc;padding-top:10px;}
+#pcontent{font-weight:normal;font-size:14px;line-height:150%;margin:0px 20px 20px 20px;}
+#plist{display:block;*height:100px;min-height:100px;}
+#plist:after{content: ".";display:block;height:0;clear:both;visibility: hidden;}
+#plist a{display:block;float:left;width:192px;height:192px;text-align:center;}
+#plist a img{position:relative;top:25%;vertical-align:middle;}
+
+
+.pfooter{width:96%;}
+.pfooter td{font-size:12px;text-align:center;}
+.pfooter td .pic img{width:96px;height:66px;}
+.pfooter td .pic{border:1px solid #ccc;padding:2px;background:#fff;width:96px;height:66px;*width:100px;height:70px;margin-bottom:5px;}
+#btn7,#btn8{float:left;width:30px;margin-top:35px;}
+#ppage{display:block;float:left;white-space: nowrap;overflow-x:hidden;margin:0px 5px;padding:2px 5px;}
+#ppage a{border:1px solid #ccc;margin-right:5px;}

@@ -1,0 +1,232 @@
+package tea.ui.node.type.resume;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.util.*;
+import tea.entity.node.*;
+import tea.ui.*;
+import tea.entity.member.*;
+
+public class EditResume extends TeaServlet
+{
+
+    // Initialize global variables
+    public void init() throws ServletException
+    {
+    }
+
+    // Process the HTTP Get request
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        request.setCharacterEncoding("UTF-8");
+        try
+        { // {java.net.URL url=new java.net.URL(
+            TeaSession teasession = new TeaSession(request);
+            if (teasession._rv == null)
+            {
+                response.sendRedirect("/servlet/StartLogin?node=" + teasession._nNode + "&NextUrl=" + request.getRequestURI() + "?" + request.getQueryString());
+                return;
+            }
+            String action = teasession.getParameter("action");
+            if (request.getMethod().equals("GET"))
+            {
+                response.sendRedirect("/jsp/type/resume/EditResume.jsp?" + request.getQueryString());
+            } else if ("editresumeother".equals(action))
+            {
+                Node node = Node.find(teasession._nNode);
+                if (!node.isCreator(teasession._rv))
+                {
+                    response.sendError(403);
+                    return;
+                }
+                String selfvalue = teasession.getParameter("selfvalue");
+                if (selfvalue.length() > 200)
+                {
+                    selfvalue = selfvalue.substring(0, 200);
+                }
+                String selfaim = teasession.getParameter("selfaim");
+                if (selfaim.length() > 500)
+                {
+                    selfaim = selfvalue.substring(0, 500);
+                }
+                String other = teasession.getParameter("other");
+                if (other.length() > 200)
+                {
+                    other = other.substring(0, 200);
+                }
+                Resume obj = Resume.find(teasession._nNode, teasession._nLanguage);
+                obj.set(selfvalue, selfaim, other);
+            } else
+            {
+                Node node = Node.find(teasession._nNode);
+
+                String subject = teasession.getParameter("subject");
+                boolean newnode = teasession.getParameter("NewNode") != null;
+                if (newnode)
+                {
+                    int sequence = Node.getMaxSequence(teasession._nNode) + 10;
+                    int options = 0, options1 = 0;
+                    int typealias = 0;
+                    String community = node.getCommunity();
+                    try
+                    {
+                        typealias = Integer.parseInt(teasession.getParameter("TypeAlias"));
+                    } catch (Exception exception1)
+                    {
+                    }
+                    Category cat = Category.find(teasession._nNode); //52
+                    teasession._nNode = Node.create(teasession._nNode, sequence, community, teasession._rv, cat.getCategory(), false, options, options1, node.getDefaultLanguage(), null, null, new java.util.Date(), 0, 0, 0, 0, "", null, teasession._nLanguage, subject, "", "", null, "", 0, null, "", "", "", "", null, "");
+                    // node = Node.find(teasession._nNode);
+                } else
+                {
+                    AccessMember obj_am = AccessMember.find(node._nNode, teasession._rv._strV);
+                    if (!node.isCreator(teasession._rv) && obj_am.getPurview() < 2)
+                    {
+                        response.sendError(403);
+                        return;
+                    }
+                    node.setSubject(subject, teasession._nLanguage);
+                }
+                // 基本信息
+                Profile profile = Profile.find(teasession._rv._strR);
+                String firstname = teasession.getParameter("firstname");
+                String lastname = teasession.getParameter("lastname");
+                boolean sex = "true".equals(teasession.getParameter("sex"));
+                String email = teasession.getParameter("email");
+                String mobile = teasession.getParameter("mobile");
+                String telephone = teasession.getParameter("telephone");
+                java.util.Date birth = Node.sdf.parse(teasession.getParameter("birthYear") + "-" + teasession.getParameter("birthMonth") + "-" + teasession.getParameter("birthDay"));
+                String nationality = teasession.getParameter("nationality");
+                String gblnd = teasession.getParameter("gblnd");
+                String gbort = teasession.getParameter("gbort");
+                int famst = Integer.parseInt(teasession.getParameter("famst"));
+                java.util.Date famdt = Node.sdf.parse(teasession.getParameter("famdtYear") + "-" + teasession.getParameter("famdtMonth") + "-" + teasession.getParameter("famdtDay"));
+                int anzkd = Integer.parseInt(teasession.getParameter("anzkd"));
+                String zzhkszd = teasession.getParameter("zzhkszd");
+                boolean zzgatwj = "true".equals(teasession.getParameter("zzgatwj"));
+                boolean zznyhk = "true".equals(teasession.getParameter("zznyhk"));
+                String zzpridn = teasession.getParameter("zzpridn");
+                String zzfmbkg = teasession.getParameter("zzfmbkg");
+                String address = teasession.getParameter("address");
+                String zip = teasession.getParameter("zip");
+                String degree = teasession.getParameter("degree");
+                String school = teasession.getParameter("school");
+                int age = (int) (System.currentTimeMillis() - birth.getTime()) / (1000 * 60 * 60 * 24 * 30 * 12);
+                if (teasession.getParameter("clear") != null)
+                {
+                    profile.setPhotopath(null, teasession._nLanguage); // 清空照片
+                } else
+                {
+                    byte by[] = teasession.getBytesParameter("photo");
+                    if (by != null)
+                    {
+                        String photopath = profile.getPhotopath(teasession._nLanguage);
+                        java.io.File file;
+                        ServletContext application = this.getServletContext();
+                        String path = "/res/" + teasession._strCommunity + "/profile.photo/";
+                        if (photopath != null && photopath.startsWith(path))
+                        {
+                            file = new java.io.File(application.getRealPath(photopath));
+                        } else
+                        {
+                            java.io.File f = new java.io.File(application.getRealPath(path));
+                            if (!f.exists())
+                            {
+                                f.mkdirs();
+                            }
+                            file = java.io.File.createTempFile(teasession._rv._strV + "_" + teasession._nLanguage + "_", ".jpg", f);
+                            profile.setPhotopath(path + file.getName(), teasession._nLanguage);
+                        }
+                        java.io.FileOutputStream fos = new java.io.FileOutputStream(file);
+                        fos.write(by);
+                        fos.close();
+                    }
+                }
+                profile.setFirstName(firstname, teasession._nLanguage);
+                profile.setLastName(lastname, teasession._nLanguage);
+                profile.setSex(sex);
+                profile.setEmail(email);
+                profile.setMobile(mobile);
+                profile.setTelephone(telephone, teasession._nLanguage);
+                profile.setBirth(birth);
+                profile.setCountry(nationality, teasession._nLanguage); // profile.setState(nationality, teasession._nLanguage);
+                profile.setGblnd(gblnd, teasession._nLanguage);
+                profile.setGbort(gbort, teasession._nLanguage);
+                profile.setFamst(famst);
+                profile.setFamdt(famdt);
+                profile.setAnzkd(anzkd);
+                profile.setZzhkszd(zzhkszd, teasession._nLanguage);
+                profile.setZzgatwj(zzgatwj);
+                profile.setZznyhk(zznyhk);
+                profile.setZzpridn(zzpridn);
+                profile.setZzfmbkg(zzfmbkg);
+                profile.setAddress(address, teasession._nLanguage);
+                profile.setZip(zip, teasession._nLanguage);
+                profile.setDegree(degree, teasession._nLanguage);
+                profile.setSchool(school, teasession._nLanguage);
+                profile.setBirth(birth);
+
+                // //////////////职业概况/求职意向/////////////////////////////////
+                String joinu = teasession.getParameter("joinu");
+                String intr1 = teasession.getParameter("intr1");
+                String intr2 = teasession.getParameter("intr2");
+                String intr3 = teasession.getParameter("intr3");
+                String nowmaincareer = teasession.getParameter("nowmaincareer");
+                String zxrgs = teasession.getParameter("zxrgs");
+                String nowcareerlevel = teasession.getParameter("nowcareerlevel");
+                int experience = Integer.parseInt(teasession.getParameter("experience"));
+                boolean has_abroad = "true".equals(teasession.getParameter("has_abroad"));
+                java.math.BigDecimal salarysum = new java.math.BigDecimal(teasession.getParameter("salarysum"));
+                String zwaers_yx = teasession.getParameter("zwaers_yx");
+                int zqwgz = Integer.parseInt(teasession.getParameter("zqwgz"));
+                String expectcareer = teasession.getParameter("expectcareer_value");
+                String expectcity = teasession.getParameter("expectcity_value");
+                java.math.BigDecimal expectsalarysum = new java.math.BigDecimal(teasession.getParameter("expectsalarysum"));
+                String zwaers_qwyx = teasession.getParameter("zwaers_qwyx");
+                int joindatetype = Integer.parseInt(teasession.getParameter("joindatetype"));
+                Resume obj = Resume.find(teasession._nNode, teasession._nLanguage);
+                obj.set(joinu, intr1, intr2, intr3, nowmaincareer, zxrgs, nowcareerlevel, experience, has_abroad, salarysum, zwaers_yx, zqwgz, expectcareer, expectcity, expectsalarysum, zwaers_qwyx, joindatetype);
+
+                // delete(node);
+                node.finished(teasession._nNode);
+            }
+            String nexturl = teasession.getParameter("nexturl") + "&Node=" + teasession._nNode;
+            if (teasession.getParameter("educate") != null)
+            {
+                response.sendRedirect("/jsp/type/resume/EditEducate.jsp?node=" + teasession._nNode + "&nexturl=" + java.net.URLEncoder.encode(nexturl, "UTF-8"));
+            } else if (teasession.getParameter("inhabit") != null)
+            {
+                response.sendRedirect("/jsp/type/resume/EditInhabit.jsp?node=" + teasession._nNode + "&nexturl=" + java.net.URLEncoder.encode(nexturl, "UTF-8"));
+            } else if (teasession.getParameter("employment") != null)
+            {
+                response.sendRedirect("/jsp/type/resume/EditEmployment.jsp?node=" + teasession._nNode + "&nexturl=" + java.net.URLEncoder.encode(nexturl, "UTF-8"));
+            } else
+            {
+                if (teasession.getParameter("GoBack") != null)
+                {
+                    String parm = "";
+                    if (nexturl != null)
+                    {
+                        parm = "&nexturl=" + nexturl;
+                    }
+                    response.sendRedirect("EditNode?node=" + teasession._nNode + parm);
+                } else if (nexturl != null)
+                {
+                    response.sendRedirect(nexturl);
+                } else
+                {
+                    response.sendRedirect("Node?Edit=ON&Node=" + teasession._nNode);
+                }
+            }
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+    // Clean up resources
+    public void destroy()
+    {
+    }
+}

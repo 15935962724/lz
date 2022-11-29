@@ -1,0 +1,80 @@
+<%@page contentType="text/html;charset=UTF-8" %><%@page import="tea.entity.site.*" %><%@page import="tea.entity.admin.*" %><%@ page import="tea.db.DbAdapter" %><%@ page  import="tea.resource.Resource"  %><%@ page  import="tea.entity.node.*" %><%@ page  import="tea.entity.bbs.*" %><%@ page import="tea.ui.TeaSession" %><%
+request.setCharacterEncoding("UTF-8");
+
+TeaSession teasession=new TeaSession(request);
+if(teasession._rv==null)
+{
+  response.sendRedirect("/servlet/StartLogin?node="+teasession._nNode);
+  return;
+}
+
+Resource r=new Resource();
+StringBuffer sql=new StringBuffer();
+sql.append(" AND community=").append(DbAdapter.cite(teasession._strCommunity));
+sql.append(" AND type=57");
+
+
+//版块的下拉菜单
+tea.html.DropDown select=new tea.html.DropDown("forum",0);
+select.addOption("","----------------");
+AdminUsrRole aur_obj=AdminUsrRole.find(teasession._strCommunity,teasession._rv._strR);
+Communitybbs com_obj=Communitybbs.find(teasession._strCommunity);
+boolean _bCommunityMember=  teasession._rv._strR.equals(  com_obj.getSuperhost());
+sql.append(" AND (0!=0");
+DbAdapter db=new DbAdapter();
+try
+{
+  db.executeQuery("SELECT n.node FROM Node n INNER JOIN Category c ON n.node=c.node WHERE n.type=1 AND n.community="+db.cite(teasession._strCommunity)+" AND c.category=57");
+  while(db.next())
+  {
+    int id=db.getInt(1);
+    if(aur_obj.getBbsHost().indexOf("/"+id+"/")!=-1||aur_obj.getBbsExpert().indexOf("/"+id+"/")!=-1||_bCommunityMember)
+    {
+      select.addOption(id,Node.find(id).getSubject(teasession._nLanguage));
+      sql.append(" OR father="+id);
+    }
+  }
+}finally
+{
+  db.close();
+}
+sql.append(")");
+
+
+%><html>
+<head>
+<title>贴子移动</title>
+<link href="/res/<%=teasession._strCommunity%>/cssjs/community.css" rel="stylesheet" type="text/css">
+<script src="/tea/tea.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<h1>把贴子移动到...</h1>
+<div id="head6"><img height="6" src="about:blank"></div>
+<br>
+<form name="form1" action="?">
+<%=select.toString()%>
+<!-- 
+<select name="forum">
+<option value="">-----------------</option>
+<%
+java.util.Enumeration e=BBSForum.findByCommunity(teasession._strCommunity);
+for(int index=1;e.hasMoreElements();index++)
+{
+  int nid=((Integer)e.nextElement()).intValue();
+  Node n=Node.find(nid);
+  out.print("<option value="+nid+">"+n.getSubject(teasession._nLanguage));
+}
+%>
+</select>
+-->
+<br>
+<input type="button" value="<%=r.getString(teasession._nLanguage,"确定")%>" onClick="if(submitText(form1.forum,'无效选择!')){ window.returnValue=form1.forum.value; window.close(); }">
+<input type="button" value="<%=r.getString(teasession._nLanguage,"关闭")%>" onClick="window.close();">
+</form>
+
+<br>
+<div id="head6"><img height="6" src="about:blank"></div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<style>
+    body{
+        background:#f8fbff;
+    }
+</style>
+<body>
+    <div id="Header" class="animate-box" data-animate-effect="fadeInLeft"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="head-tit animate-box" data-animate-effect="fadeInLeft">填写资质信息</h1>
+                <div class="rate animate-box" data-animate-effect="fadeInLeft">
+                    <span class="active animate-box" data-animate-effect="fadeInLeft"><em>1</em><br>填写资质信息</span>
+                    <span class="animate-box last" data-animate-effect="fadeInLeft"><em>2</em><br>资质审核</span>
+                </div>
+                <div class="rate-fot animate-box">
+                    <p>1. 请严格按照相关证件信息进行正确填写</p>
+                    <p>2. 请上传最新版的证件原件的彩色扫描或彩色照片，复印件需加盖公司红章</p>
+                    <p>3. 请确保上传图片信息清晰可辨，支持格式：JPG BMP JPEG PNG大小不超过2M</p>
+                </div>
+                <h2 class="head-hd animate-box" data-animate-effect="fadeInLeft">资质信息</h2>
+                <div class="natural animate-box" data-animate-effect="fadeInLeft">
+                    <form class="form-horizontal">
+                        <div class="form-group animate-box" data-animate-effect="fadeInLeft">
+                            <label class="col-sm-2 control-label"><em>*</em>用户名</label>
+                            <div class="col-sm-10">
+                                <p>webmaster</p>
+                            </div>
+                        </div>
+                        <div class="form-group animate-box" data-animate-effect="fadeInLeft">
+                            <label class="col-sm-2 control-label"><em>*</em>手机</label>
+                            <div class="col-sm-10">
+                                <p>15464565656</p>
+                            </div>
+                        </div>
+                        <div class="form-group animate-box" data-animate-effect="fadeInLeft">
+                            <label for="email" class="col-sm-2 control-label">邮箱</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" placeholder="请输入邮箱地址">
+                            </div>
+                        </div>
+                        <div class="form-group animate-box" data-animate-effect="fadeInLeft">
+                            <label for="company" class="col-sm-2 control-label"><em>*</em>服务商公司名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="company" placeholder="请输入服务商公司名称">
+                            </div>
+                        </div>
+                        <div class="form-group animate-box" data-animate-effect="fadeInLeft">
+                            <label class="col-sm-2 control-label"><em>*</em>营业执照</label>
+                            <div class="col-sm-10">
+                                <input type="file" />
+                            </div>
+                        </div>
+                        <div class="form-group animate-box" data-animate-effect="fadeInLeft">
+                            <label class="col-sm-2 control-label"><em>*</em>开户许可证</label>
+                            <div class="col-sm-10">
+                                <input type="file" />
+                            </div>
+                        </div>
+                        <div class="form-group animate-box" data-animate-effect="fadeInLeft">
+                            <label class="col-sm-2 control-label"><em>*</em>其他材料</label>
+                            <div class="col-sm-10">
+                                <input type="file" />
+                            </div>
+                        </div>
+                        <div class="form-group animate-box" data-animate-effect="fadeInLeft">
+                            <div class="col-sm-offset-2 col-sm-10 ts">
+                                注:上传图片格式gif\jpg\png\bmp,大小不超过2M
+                            </div>
+                        </div>
+                        <div class="form-group animate-box" data-animate-effect="fadeInLeft">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">提交审核</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

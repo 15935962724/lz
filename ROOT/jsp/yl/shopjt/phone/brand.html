@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div id="Body">
+        <div id="Header">
+            <header class="flex">
+                <div class="logo"><img src="http://www.brachysolution.com/res/Home/structure/14112579.png" /></div>
+                <div class="head-r flex">
+                    <div class="search"></div>
+                    <nav>
+                        <em></em>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div id="Content">
+            <div class="banner flex">
+                <img src="img/banner01.jpg" />
+            </div>
+            <div class="detail flex">
+                <h2 class="h2 flex bold">公司简介</h2>
+                <div class="info flex">
+                    <p>作为目前国内基因测序领域的佼佼者，诺禾致源的业务覆盖生命科学基础科研服务、医学研究与技术服务、建库测序平台服务，为全球研究型大学、科研院所、医院、医药研发企业、农业企业等提供基因测序、质谱分析和生物信息技术支持等服务。</p>
+                    <p>自成立以来，诺禾致源先后获得国家高新技术企业、北京市科技研究开发机构、北京市专利试点单位、北京市企业技术中心及国家发改委基因检测技术应用示范中心等多项资质与荣誉，并建设有北京市工程实验室。</p>
+                </div>
+
+            </div>
+
+            <div class="course flex">
+                <h2 class="h2 flex bold">发展历程</h2>
+                <div class="info flex">
+                    <h3>2018</h3>
+                    <ul>
+                        <li><a href="">Novaseq6000进驻应该剑桥实验室</a></li>
+                        <li><a href="">药企事业部成立</a></li>
+                        <li><a href="">药企事业部成立</a></li>
+                        <li><a href="">药企事业部成立</a></li>
+                    </ul>
+                    <h3>2017</h3>
+                    <ul>
+                        <li><a href="">Novaseq6000进驻应该剑桥实验室</a></li>
+                        <li><a href="">药企事业部成立</a></li>
+                        <li><a href="">药企事业部成立</a></li>
+                        <li><a href="">药企事业部成立</a></li>
+                    </ul>
+                    <h3>2016</h3>
+                    <ul>
+                        <li><a href="">Novaseq6000进驻应该剑桥实验室</a></li>
+                        <li><a href="">药企事业部成立</a></li>
+                        <li><a href="">药企事业部成立</a></li>
+                        <li><a href="">药企事业部成立</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="expert flex">
+                <h2 class="h2 flex bold">专家</h2>
+                <div class="list">
+                    <ul>
+                        <li>
+                            <span class="pic"><img src="http://www.brachysolution.com/res/Home/report/19062132.jpg" /></span>
+                            <span class="tit"><a href="">张福君教授</a></span>
+                            <span class="info">粒子治疗前沿基础研究</span>
+                        </li>
+                        <li>
+                            <span class="pic"><img src="http://www.brachysolution.com/res/Home/report/19062132.jpg" /></span>
+                            <span class="tit"><a href="">张福君教授</a></span>
+                            <span class="info">粒子治疗前沿基础研究</span>
+                        </li>
+                        <li>
+                            <span class="pic"><img src="http://www.brachysolution.com/res/Home/report/19062132.jpg" /></span>
+                            <span class="tit"><a href="">张福君教授</a></span>
+                            <span class="info">粒子治疗前沿基础研究</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qual flex">
+                <h2 class="h2 flex bold">公司资质</h2>
+                <div class="list">
+                    <ul>
+                        <li><img src="http://www.brachysolution.com/res/Home/album/1906/S_19062156.jpg" alt=""></li>
+                        <li><img src="http://www.brachysolution.com/res/Home/album/1906/S_19062156.jpg" alt=""></li>
+                        <li><img src="http://www.brachysolution.com/res/Home/album/1906/S_19062156.jpg" alt=""></li>
+                        <li><img src="http://www.brachysolution.com/res/Home/album/1906/S_19062156.jpg" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer>
+            ®Copyright 中国同福股份有限公司   京ICP备14058279号
+        </footer>
+    </div>
+<script>
+    $(function(){
+        var l = 0;
+        $(".expert ul li").each(function(){
+            l += $(this).outerWidth(true);
+            l += 20;
+        });
+        $(".expert ul").width(l);
+    })
+</script>
+</body>
+</html>

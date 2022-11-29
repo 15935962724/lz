@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.Spinner.js"></script>
+    <script>
+        $(function(){
+            $(".Spinner").Spinner({value:"1", min:1, len:3, max:"1000"});
+        });
+    </script>
+    <style>
+        .detail01{
+            border-bottom:0.1rem solid #eef4fb;
+        }
+        .detail01 .pic{
+            height:1.8rem;
+            width:2.25rem;
+        }
+        .detail01 .nr{
+            justify-content: center;
+            align-items: left;
+        }
+        .detail01 .nr span{
+            margin:0 !important;
+            line-height:160% !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="Body">
+        <div id="Header">
+            <header class="flex">
+                <div class="logo"><img src="http://www.brachysolution.com/res/Home/structure/14112579.png" /></div>
+                <div class="head-r flex">
+                    <div class="search"></div>
+                    <nav>
+                        <em></em>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div id="Content">
+            <div class="detail01 flex">
+                <span class="pic flex">
+                    <img src="http://www.brachysolution.com/res/Home/structure/19061406.png" />
+                </span>
+                <span class="nr flex">
+                    <span class="tit">碘125粒子</span>
+                    <span class="version"><em>商品编号</em>LDR1102</span>
+                    <span class="tit" style="margin:0.2rem 0rem;color:#df6c0a">￥2000</span>
+
+                </span>
+            </div>
+
+            <div class="detail02 flex">
+                <div class="p flex">
+                    <span class="sp1">选择医院</span>
+                    <select>
+                        <option>郑大一附院</option>
+                    </select>
+                </div>
+                <div class="p flex">
+                    <span class="sp1">厂　　商</span>
+                    <select>
+                        <option>君安</option>
+                    </select>
+                </div>
+                <div class="p flex">
+                    <span class="sp1">粒子活度</span>
+                    <em class="flex">
+                        <i>0.3-0.8 mCi</i>
+                        <i>0.3-0.8 mCi</i>
+                        <i>0.3-0.8 mCi</i>
+                        <input type="text" placeholder="输入粒子活度" />
+                    </em>
+                </div>
+                <div class="p flex">
+                    <span class="sp1">购买数量</span>
+                    <div class="Spinner"></div>
+                </div>
+            </div>
+
+            <div class="detail03 flex">
+                <span class="info">
+                    <p style="font-size:0.2rem;color:#df6c0a" class="p1">法定工作日8:30至16:30处理订单并安排发货(非法定假日的周六将在8:30至14:30处理订单并安排发货)，否则将顺延至下一工作区间处理。遇特殊节假日，将在网站首页通知接受订单及发货时间；</p>
+                </span>
+            </div>
+
+            <div class="detail04 flex">
+                <input type="submit" value="立即购买" class="but1" />
+            </div>
+        </div>
+
+    </div>
+<script>
+    $(function () {
+        $("em.flex i").click(function () {
+            $(this).addClass('cur').siblings("i").removeClass("cur");
+        });
+
+    })
+</script>
+</body>
+</html>

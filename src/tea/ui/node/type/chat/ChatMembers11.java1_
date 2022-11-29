@@ -1,0 +1,111 @@
+// Decompiled by DJ v2.9.9.60 Copyright 2000 Atanas Neshkov  Date: 2004-9-30 16:08:33
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   ChatMembers.java
+
+package tea.ui.node.type.chat;
+
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.StringTokenizer;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import tea.entity.RV;
+import tea.entity.member.*;
+import tea.entity.node.Chat;
+import tea.entity.node.Node;
+import tea.html.*;
+import tea.http.RequestHelper;
+import tea.resource.Resource;
+import tea.ui.TeaServlet;
+import tea.ui.TeaSession;
+
+public class ChatMembers extends TeaServlet
+{
+
+    public ChatMembers()
+    {
+    }
+
+    public void service(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse)
+        throws ServletException, IOException
+    {
+        try
+        {
+            TeaSession teasession = new TeaSession(httpservletrequest);
+            if(teasession._rv == null)
+            {
+                outLogin(httpservletrequest, httpservletresponse, teasession);
+                return;
+            }
+            if(httpservletrequest.getMethod().equals("GET"))
+            {
+                Form form = new Form("foChatMembers");
+                DropDown dropdown = new DropDown("Member");
+                dropdown.addOption("", super.r.getString(teasession._nLanguage, "AllMembers"));
+                RV rv;
+                for(Enumeration enumeration = Chat.findMember(teasession._nNode); enumeration.hasMoreElements(); dropdown.addOption(rv._strR, rv._strV))
+                    rv = (RV)enumeration.nextElement();
+
+                form.add(dropdown);
+                DropDown dropdown1 = new DropDown("Action");
+                for(int i = 2; i < Chat.CHAT_ACTION.length; i++)
+                    dropdown1.addOption(Integer.toString(i), super.r.getString(teasession._nLanguage, Chat.CHAT_ACTION[i]));
+
+                form.add(dropdown1);
+                Form form1 = new Form("foInvite", "POST", "ChatMembers");
+                form1.setOnSubmit("this.Members.value=this.Buffer.value;this.Buffer.value='';return(true);");
+                form1.add(new HiddenField("Node", teasession._nNode));
+                form1.add(new HiddenField("Members"));
+                form1.add(new TextField("Buffer", "", 10));
+                boolean flag = false;
+                DropDown dropdown2 = new DropDown("CGroup");
+                dropdown2.addOption("", "----------");
+                for(Enumeration enumeration2 = CGroup.find(teasession._rv._strR); enumeration2.hasMoreElements();)
+                {
+                    String s4 = (String)enumeration2.nextElement();
+                    dropdown2.addOption(s4, s4);
+                    flag = true;
+                }
+
+                if(flag)
+                    form1.add(dropdown2);
+                form1.add(new Button(super.r.getString(teasession._nLanguage, "Invite")));
+                outText(httpservletresponse, teasession._nLanguage, form.toString() + form1.toString());
+            } else
+            {
+                Node node = Node.find(teasession._nNode);
+                String s = RequestHelper.format(super.r.getString(teasession._nLanguage, "InfInviteSubject"), node.getSubject(teasession._nLanguage));
+                String s1 = RequestHelper.format(super.r.getString(teasession._nLanguage, "InfInviteContent"), new Anchor("ChatFrameSet?Node=" + teasession._nNode, super.r.getString(teasession._nLanguage, "ClickHere")));
+                String s2 = Integer.toString(teasession._nNode);
+                RV rv1;
+                for(StringTokenizer stringtokenizer = new StringTokenizer(httpservletrequest.getParameter("Members"), ", "); stringtokenizer.hasMoreTokens(); Message.create(teasession._rv, null, rv1, null, null, null, 0, 0, 1, 0, 0, teasession._nLanguage, s, s1, null, null, null, null))
+                {
+                    rv1 = new RV(stringtokenizer.nextToken());
+                    Meeting.create(teasession._rv, rv1, 0, 0, s2, null, null, 0, null, null, null);
+                }
+
+                String s3 = httpservletrequest.getParameter("CGroup");
+                if(s3 != null && s3.length() != 0)
+                {
+                    Message.create(teasession._rv, null, null, null, null, s3, 0, 0, 5, 0, 0, teasession._nLanguage, s, s1, null, null, null, null);
+                    for(Enumeration enumeration1 = Contact.find(teasession._rv._strR, s3, 0, 100); enumeration1.hasMoreElements(); Meeting.create(teasession._rv, (RV)enumeration1.nextElement(), 0, 0, s2, null, null, 0, null, null, null));
+                }
+                httpservletresponse.sendError(204);
+            }
+        }
+        catch(Exception exception)
+        {
+            httpservletresponse.sendError(400, exception.toString());
+            exception.printStackTrace();
+        }
+    }
+
+    public void init(ServletConfig servletconfig)
+        throws ServletException
+    {
+        super.init(servletconfig);
+        super.r.add("tea/ui/node/type/chat/ChatMembers");
+    }
+}

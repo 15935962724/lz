@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="/tea/yl/jquery-1.7.js"></script>
+<script src="/tea/yl/mtDiag.js"></script>
+
+<title>mtDiag-示例</title>
+</head>
+<body>
+
+<a id="alert" href="javascript:;">带确认的信息框</a>
+<a id="alert2" href="javascript:;">带确认的信息框(修改标题)</a>
+<a id="alert3" href="javascript:;">带确认的信息框(点击操作)</a>
+<a id="alert4" href="javascript:;">带确认的信息框(跳转页面)</a>
+<a id="msg" href="javascript:;">不带确认的信息框</a>
+<a id="open" href="javascript:;">弹出层</a>
+<a id="confirm" href="javascript:;">询问框</a>
+<a id="load1" href="javascript:;">不带文字的加载层</a>
+<a id="load2" href="javascript:;">带文字的加载层</a>
+<script type="text/javascript">
+$(function(){
+	$("#alert").click(function(){
+		mtDiag.show("见到你真的很高兴");
+	});
+	
+	$("#alert2").click(function(){
+		mtDiag.show("见到你真的很高兴","alert","你好我的朋友");
+	});
+
+	$("#alert3").click(function(){
+		mtDiag.show("见到你真的很高兴","alert",null,function(index){
+			alert("点击确定后...");
+			mtDiag.close(index);
+		});
+	});
+
+	$("#alert4").click(function(){
+		mtDiag.show("见到你真的很高兴，点击确定后，会跳转到首页","alert",null,"/");//点击确定后，跳转到首页
+	});
+	
+	$("#msg").click(function(){
+		mtDiag.show("见到你真的很高兴","msg");
+	});
+	
+	$("#open").click(function(){
+		mtDiag.show("https://www.baidu.com","百度你好",['762px', '542px'],function(){
+			mtDiag.show("修改成功!");
+		});
+	});
+	
+	$("#confirm").click(function(){
+		mtDiag.show("您确定要删除该收货地址吗","confirm",function(){
+			//mtDiag.show("删除成功!");
+			mtDiag.show("删除成功!","msg");
+		},function(){
+			mtDiag.show("取消删除!");
+		});
+	});
+	
+	$("#load1").click(function(){
+		mtDiag.show(null,"load");
+		//此处演示关闭
+		setTimeout(function(){
+			mtDiag.close();
+		}, 1000);
+	});
+	$("#load2").click(function(){
+		mtDiag.show("拼命加载中","load");
+	});
+	$("#checkbtn").click(function(){
+		mtDiag.check($("#form1"))
+	});
+	
+});
+
+</script>
+</body>
+</html>

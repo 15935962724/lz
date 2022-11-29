@@ -1,0 +1,15 @@
+﻿#
+MessageBoard.node=留言板编号
+MessageBoard.email=邮箱
+MessageBoard.hint=提示符
+MessageBoard.mobile=手机号
+MessageBoard.name=姓名
+MessageBoard.phone=电话
+MessageBoard.nmark=顶与踩
+
+SameSendE-MAIL=同时按E-MAIL发送
+Reply=回复
+ReplyButton=回复按钮
+
+1395304322796=抱歉，“验证码”不正确！
+1395304377843=抱歉，不能重复留言！

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        .table-js span{
+            font-size:16px;
+            color:#000;
+
+        }
+        .table-js p{
+            font-size:14px;
+            color:#707070;
+        }
+        #tab2 thead{
+            padding:10px 0px;
+        }
+        #tab2 td{
+            padding:8px 5px;
+            color:#727272;
+        }
+    </style>
+</head>
+<body>
+<div class="container pd0 shopCar">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h1 class="table animate-box" data-animate-effect="fadeInLeft">收货人信息</h1>
+
+            <table id="tab1" class="table table-js animate-box mt15" data-animate-effect="fadeInLeft">
+                <thead>
+                    <tr class="animate-box" data-animate-effect="fadeInLeft">
+                        <td width="110"><b>沈志萍</b></td>
+                        <td class="text-l" style="line-height:240%;">
+                            <span style="margin-right:20px;">1533542626</span><span>江苏省南京市鼓楼区丁家桥87号住院部7楼介入血管外科手术室</span>
+                            <p style="margin-bottom:0px;">东南大学附属中大医院　　肿瘤化疗与放射病科</p>
+                        </td>
+                        <td class="text-r" style="vertical-align: top">
+                            <a href="javascript:;" onclick="myact('edit','0')" style="color:#044694;">修改收货人</a>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <table id="tab2" class="table table-js animate-box mt15" data-animate-effect="fadeInLeft" style="display: none">
+                <thead>
+                    <tr class="animate-box" data-animate-effect="fadeInLeft"><td colspan="4" style="padding:0px;">&nbsp;</td> </tr>
+                    <tr class="animate-box first" data-animate-effect="fadeInLeft">
+                        <td class="text-r" width="130">医院名称:</td>
+                        <td class="text-l" width="230">原子高科有限公司</td>
+                        <td class="text-r" width="50">科室:</td>
+                        <td class="text-l">无</td>
+                    </tr>
+                    <tr class="animate-box first" data-animate-effect="fadeInLeft">
+                        <td class="text-r">收货人:</td>
+                        <td colspan="3" class="text-l">
+                            <select name="" id="" style="padding:5px 15px;">
+                                <option value="">沈志萍</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="animate-box first" data-animate-effect="fadeInLeft">
+                        <td class="text-r">手机号:</td>
+                        <td colspan="3" class="text-l">15335452626</td>
+                    </tr>
+                    <tr class="animate-box first" data-animate-effect="fadeInLeft">
+                        <td class="text-r">详细地址:</td>
+                        <td colspan="3" class="text-l">江苏江苏省南京市鼓楼区丁家桥87号住院部7楼介入血管外科手术室</td>
+                    </tr>
+                    <tr class="animate-box first" data-animate-effect="fadeInLeft">
+                        <td class="text-r">&nbsp;</td>
+                        <td colspan="3" class="text-l"><button type="submit" class="btn btn-default btn-lz" style="width:auto;">保存收货人信息</button></td>
+                    </tr>
+                    <tr class="animate-box first" data-animate-effect="fadeInLeft"><td colspan="4" style="padding:0px;">&nbsp;</td></tr>
+                </thead>
+            </table>
+
+            <h1 class="table animate-box" data-animate-effect="fadeInLeft">商品清单</h1>
+            <table class="table table-hover animate-box" data-animate-effect="fadeInLeft">
+                <thead>
+                    <tr class="animate-box" data-animate-effect="fadeInLeft">
+
+                        <th class="text-l">商品图片</th>
+                        <th>厂商</th>
+                        <th>商品编号</th>
+                        <th class="text-l">商品名称</th>
+                        <th>粒子活度</th>
+                        <th>校准时间</th>
+                        <th>商品单价</th>
+                        <th>商品数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="first animate-box" data-animate-effect="fadeInLeft">
+                        <td class="text-l"><span class="pic"><img src="http://www.brachysolution.com/res/Home/structure/19061406.png" /></span></td>
+                        <td>欣科</td>
+                        <td>GMS-6711<0.8</td>
+                        <td>碘I-125密封籽源</td>
+                        <td><input type="text" value="0.6" class="form-control text-center" style="width:100px;" /></td>
+                        <td><input type="text" class="form-control text-center" value="" style="width:140px;" placeholder="请选择校准时间" /></td>
+                        <td>$1000</td>
+                        <td>3</td>
+                    </tr>
+
+
+                    <tr class="last animate-box" data-animate-effect="fadeInLeft">
+                        <td>备注</td>
+                        <td colspan="6"><input type="text" class="form-control w100" /> </td>
+                        <td>应付总额: <b>￥1000</b></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-r animate-box" style="margin:30px 0px;" data-animate-effect="fadeInLeft"><button type="submit" class="btn btn-default btn-lz">提交订单</button></div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    function myact(a,id){
+        if(a=="edit"){
+            $("#tab1").hide();
+            $("#tab2").show();
+        }
+    }
+</script>
+</body>
+</html>

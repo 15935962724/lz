@@ -1,0 +1,162 @@
+
+*{padding:0;margin:0;font-size:14px;}
+table,td,th{margin-top: -10px;border-collapse:collapse;}
+td{padding:10px;}
+.tabline th{border:1px solid #000;padding:12px;border-top-width:2px;}
+.tabline td{border:1px solid #000;height:24px;}
+
+.linediv{height:30px;line-height:30px;border-top:dashed 1px #333;border-bottom:dashed 1px  #333;margin:10px 0;padding:0 10px;}
+.linediv span{float:left;}
+.linediv address{float:right;font-style:normal}
+
+.tits{position:relative;text-align:center;margin-bottom:15px;}
+.tits h2{font-size:20px;text-align:center;font-weight:normal;margin:15px 0;}
+.cod {position:absolute;right:0;top:0;height: 80px;}
+.tits .h3{font-size:28px;padding-bottom: 15px;font-weight: bold;}
+.count{height:30px;line-height:30px;margin-top:5px;padding:0 10px;text-align: right;}
+.orderm ,.orderarr{height:30px;line-height:30px;border-top: dashed 1px #333;margin:5px 0;padding:0 10px;}
+
+
+/*��ť*/
+
+button {
+	overflow: visible;
+	text-transform: none;
+}
+.borderline{border:1px solid #000;padding:40px;border-top:none;}
+.borderline div{margin-bottom:40px;font-weight:bold;}
+.btn {
+	-moz-user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.2;
+	margin-bottom: 0;
+	padding: 6px 12px;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.btn-primary {
+	background-color: #428bca;
+	border-color: #357ebd;
+	color: #fff;
+}
+.texts p{margin-bottom:10px;line-height:180%;}
+.texts p.indent{text-indent:2em}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+	background-color: #3071a9;
+	border-color: #285e8e;
+	color: #fff;
+}
+.btn-link {
+	border-radius: 0;
+	color: #428bca;
+	border: none;
+	font-weight: 400;
+	padding: 0 1px;
+}
+.btn-link,
+.btn-link:active,
+.btn-link.active,
+.btn-link[disabled],
+fieldset[disabled] .btn-link {
+	background-color: transparent;
+	box-shadow: none;
+}
+.btn-link,
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active {
+	border-color: transparent;
+}
+.btn-link:hover,
+.btn-link:focus {
+	background-color: transparent;
+	color: #2a6496;
+	text-decoration: underline;
+}
+.btn-link[disabled]:hover,
+fieldset[disabled] .btn-link:hover,
+.btn-link[disabled]:focus,
+fieldset[disabled] .btn-link:focus {
+	color: #777;
+	text-decoration: none;
+}
+.btn-default {
+	background-color: #fff;
+	border-color: #ccc;
+	color: #333;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+	background-color: #e6e6e6;
+	border-color: #adadad;
+	color: #333;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+	background-image: none;
+}
+.btn-sm,
+.btn-group-sm > .btn {
+	border-radius: 3px;
+	font-size: 12px;
+	line-height: 1.5;
+	padding: 3px 6px;
+}
+.btn-xs,
+.btn-group-xs > .btn {
+	border-radius: 3px;
+	font-size: 12px;
+	line-height: 1.5;
+	padding: 1px 5px;
+}
+.badge {
+	background-color: #777;
+	border-radius: 10px;
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1;
+	min-width: 10px;
+	padding: 3px 7px;
+	text-align: center;
+	vertical-align: baseline;
+	white-space: nowrap;
+	margin-left: 5px
+}
+.mt_data td,
+.mt_data th {
+	padding: 3px
+}
+
+.center{text-align:center;width:95.4%;margin:0 auto}
+
+.mt15 {
+	margin-top: -60px
+}
+
+.pring_instruct th {
+	font-size: 17px;
+	font-weight: normal;
+}
+.pring_instruct td {
+	font-size: 17px;
+	text-align:center;
+}

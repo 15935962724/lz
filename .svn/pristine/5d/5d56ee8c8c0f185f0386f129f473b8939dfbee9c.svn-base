@@ -1,0 +1,5 @@
+﻿#page2_bottom{background:url(/tea/image/eyp/images/page2092s1.gif) no-repeat left top;}
+#page2{background:url(/tea/image/eyp/images/page2062s1.gif) repeat-y;}
+/*二级页*/
+#edit_page2{background:url(/tea/image/eyp/images/page201s01.gif) repeat-y;}
+#edit_page2_bottom{background:url(/tea/image/eyp/images/page203s01.gif) no-repeat left top;}

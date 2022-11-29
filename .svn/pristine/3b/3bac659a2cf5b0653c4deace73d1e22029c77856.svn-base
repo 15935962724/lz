@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="">
+function f_go(url)
+{
+  var v=url.value;
+  if(v.indexOf("://")==-1)
+  {
+    v="http://"+v;
+  }
+  if(v.indexOf("/",10)==-1)
+  {
+    v=v+"/";
+  }
+  url.value=v;
+}
+</script>
+</head>
+
+<body>
+<form action="proxy.jsp" target="proxy" onsubmit="f_go(this.url)">
+<input name="url" type="text" value="http://" size="80" />
+<input type="submit" value="GO" />
+</form>
+</body>
+</html>

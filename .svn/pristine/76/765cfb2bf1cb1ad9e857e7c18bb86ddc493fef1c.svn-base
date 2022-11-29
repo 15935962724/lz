@@ -1,0 +1,254 @@
+package tea.entity.site;
+
+import tea.db.DbAdapter;
+import tea.entity.*;
+import java.sql.SQLException;
+
+public class Communityjob
+{
+    private static Cache _cache = new Cache(100);
+    private String community;
+    private int resume;
+    private int job;
+    private int company;
+    private int maxsum; //一份简历最多申请的职位数.0表示:无限制
+    private int talkbacks;
+    private String jobmember;
+    private String logo;
+    private String applytable;
+    private String applytablename;
+    private String applytable2;
+    private String applytablename2;
+    private String applytable3;
+    private String applytablename3;
+    private String applytable4;
+    private String applytablename4;
+    /*
+     * 0x1 申请表是否邦定简历
+     */
+    private int options;
+    private boolean exists;
+    private int rolejob;
+    private int roleresume;
+    private int roleapp;
+    private int rolecom;
+
+    public static Communityjob find(String community) throws SQLException
+    {
+        Communityjob obj = (Communityjob) _cache.get(community);
+        if (obj == null)
+        {
+            obj = new Communityjob(community);
+            _cache.put(community, obj);
+        }
+        return obj;
+    }
+
+    public Communityjob(String community) throws SQLException
+    {
+        this.community = community;
+        load();
+    }
+
+    private void load() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT resume,job,company,maxsum,talkbacks,jobmember,logo,applytable,applytablename,applytable2,applytablename2,applytable3,applytablename3,applytable4,applytablename4,options,rolejob,roleresume,roleapp,rolecom FROM Communityjob WHERE community=" + DbAdapter.cite(community));
+            if (db.next())
+            {
+                resume = db.getInt(1);
+                job = db.getInt(2);
+                company = db.getInt(3);
+                maxsum = db.getInt(4);
+                talkbacks = db.getInt(5);
+                jobmember = db.getString(6);
+                logo = db.getString(7);
+                applytable = db.getString(8);
+                applytablename = db.getString(9);
+                applytable2 = db.getString(10);
+                applytablename2 = db.getString(11);
+                applytable3 = db.getString(12);
+                applytablename3 = db.getString(13);
+                applytable4 = db.getString(14);
+                applytablename4 = db.getString(15);
+                options = db.getInt(16);
+                rolejob = db.getInt(17);
+                roleresume = db.getInt(18);
+                roleapp = db.getInt(19);
+                rolecom = db.getInt(20);
+                exists = true;
+            } else
+            {
+                exists = false;
+            }
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public void set(int resume, int job, int company, int maxsum, int talkbacks, String jobmember, String logo, String applytable1, String applytablename1, String applytable2, String applytablename2, String applytable3, String applytablename3, String applytable4, String applytablename4, int options, int rolejob, int roleresume, int roleapp, int rolecom) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            int j = db.executeUpdate("UPDATE Communityjob SET resume  =" + (resume) + ",job =" + (job) + ",company  =" + (company) + ",maxsum=" + maxsum + ",talkbacks =" + (talkbacks) + ",jobmember =" + DbAdapter.cite(jobmember) + ",logo =" + DbAdapter.cite(logo) + "  ,applytable  =" + DbAdapter.cite(applytable1) + " ,applytablename =" + DbAdapter.cite(applytablename1) + " ,applytable2 =" + DbAdapter.cite(applytable2) + ",applytablename2=" + DbAdapter.cite(applytablename2)
+                                     + ",applytable3  =" + DbAdapter.cite(applytable3) + ",applytablename3=" + DbAdapter.cite(applytablename3) + ",applytable4  =" + DbAdapter.cite(applytable4) + "  ,applytablename4=" + DbAdapter.cite(applytablename4) + ",options  =" + options + ",rolejob=" + rolejob + " ,roleresume=" + roleresume + ",roleapp=" + roleapp + " ,	rolecom=" + rolecom + " WHERE community= " + DbAdapter.cite(community));
+            if (j < 1)
+            {
+                db.executeUpdate("INSERT INTO Communityjob(community,resume,job,company,maxsum ,talkbacks,jobmember ,logo   ,applytable,applytablename ,applytable2 ,applytablename2,applytable3  ,applytablename3,applytable4 ,applytablename4,options  ,rolejob,roleresume,roleapp,rolecom)VALUES(" + DbAdapter.cite(community) + "," + (resume) + "," + (job) + "  ," + (company) + "  ," + maxsum + " ," + (talkbacks) + " ," + DbAdapter.cite(jobmember) + " ," + DbAdapter.cite(logo) + "  ,"
+                                 + DbAdapter.cite(applytable1) + " ," + DbAdapter.cite(applytablename1) + " ," + DbAdapter.cite(applytable2) + "    ," + DbAdapter.cite(applytablename2) + "," + DbAdapter.cite(applytable3) + "  ," + DbAdapter.cite(applytablename3) + "," + DbAdapter.cite(applytable4) + "    ," + DbAdapter.cite(applytablename4) + "," + options + "," + rolejob + "," + roleresume + "," + roleapp + "," + rolecom + ")");
+            }
+        } finally
+        {
+            db.close();
+        }
+        exists = true;
+        this.resume = resume;
+        this.job = job;
+        this.company = company;
+        this.maxsum = maxsum;
+        this.talkbacks = talkbacks;
+        this.jobmember = jobmember;
+        this.logo = logo;
+        this.applytable = applytable1;
+        this.applytablename = applytablename1;
+        this.applytable2 = applytable2;
+        this.applytablename2 = applytablename2;
+        this.applytable3 = applytable3;
+        this.applytablename3 = applytablename3;
+        this.applytable4 = applytable4;
+        this.applytablename4 = applytablename4;
+        this.options = options;
+        this.rolejob = rolejob;
+        this.roleresume = roleresume;
+        this.roleapp = roleapp;
+        this.rolecom = rolecom;
+    }
+
+    public static void create(String community, int resume, int job, int company, int bg, int talkbacks, String jobmember, String logo, String applytable1, String applytablename1, String applytable2, String applytablename2, String applytable3, String applytablename3, String applytable4, String applytablename4, int options, int rolejob, int roleresume, int roleapp, int rolecom) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("INSERT INTO Communityjob(community,resume,job,company,bg ,talkbacks,jobmember ,logo   ,applytable,applytablename ,applytable2 ,applytablename2,applytable3  ,applytablename3,applytable4 ,applytablename4,options  ,rolejob,roleresume,roleapp,rolecom)VALUES(" + DbAdapter.cite(community) + "," + (resume) + "," + (job) + "  ," + (company) + "  ," + (bg) + " ," + (talkbacks) + " ," + DbAdapter.cite(jobmember) + " ," + DbAdapter.cite(logo) + "  ,"
+                             + DbAdapter.cite(applytable1) + " ," + DbAdapter.cite(applytablename1) + " ," + DbAdapter.cite(applytable2) + "    ," + DbAdapter.cite(applytablename2) + "," + DbAdapter.cite(applytable3) + "  ," + DbAdapter.cite(applytablename3) + "," + DbAdapter.cite(applytable4) + "    ," + DbAdapter.cite(applytablename4) + "," + options + "," + rolejob + "," + roleresume + "," + roleapp + "," + rolecom + ")");
+        } finally
+        {
+            db.close();
+        }
+        _cache.remove(community);
+    }
+
+    public String getCommunity()
+    {
+        return community;
+    }
+
+    public int getResume()
+    {
+        return resume;
+    }
+
+    public int getJob()
+    {
+        return job;
+    }
+
+    public int getCompany()
+    {
+        return company;
+    }
+
+    public int getMaxSum()
+    {
+        return maxsum;
+    }
+
+    public int getTalkbacks()
+    {
+        return talkbacks;
+    }
+
+    public String getJobmember()
+    {
+        return jobmember;
+    }
+
+    public String getLogo()
+    {
+        return logo;
+    }
+
+    public String getApplytable()
+    {
+        return applytable;
+    }
+
+    public String getApplytablename()
+    {
+        return applytablename;
+    }
+
+    public String getApplytable2()
+    {
+        return applytable2;
+    }
+
+    public String getApplytablename2()
+    {
+        return applytablename2;
+    }
+
+    public String getApplytable3()
+    {
+        return applytable3;
+    }
+
+    public String getApplytablename3()
+    {
+        return applytablename3;
+    }
+
+    public String getApplytable4()
+    {
+        return applytable4;
+    }
+
+    public String getApplytablename4()
+    {
+        return applytablename4;
+    }
+
+    public int getOptions()
+    {
+        return options;
+    }
+
+    public boolean isExists()
+    {
+        return exists;
+    }
+
+    public int getRolejob()
+    {
+        return rolejob;
+    }
+
+    public int getRoleresume()
+    {
+        return roleresume;
+    }
+
+    public int getRoleapp()
+    {
+        return roleapp;
+    }
+
+    public int getRolecom()
+    {
+        return rolecom;
+    }
+}

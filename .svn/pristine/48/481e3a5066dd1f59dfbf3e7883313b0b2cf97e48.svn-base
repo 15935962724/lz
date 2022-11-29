@@ -1,0 +1,63 @@
+// Decompiled by DJ v2.9.9.60 Copyright 2000 Atanas Neshkov  Date: 2003-4-2 11:41:44
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   EditSms.java
+
+package tea.ui.node.type.sms;
+
+import java.io.*;
+import java.util.Date;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import tea.db.DbAdapter;
+import tea.entity.RV;
+import tea.entity.node.*;
+import tea.entity.site.License;
+import tea.entity.site.TypeAlias;
+import tea.html.*;
+import tea.htmlx.*;
+import tea.http.MultipartRequest;
+import tea.resource.Common;
+import tea.resource.Resource;
+import tea.ui.TeaServlet;
+import tea.ui.TeaSession;
+
+public class EditSubscribe extends TeaServlet
+{
+
+    public EditSubscribe()
+    {
+    }
+
+    public void service(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse)
+        throws ServletException, IOException
+    {
+        try
+        {
+            TeaSession teasession = new TeaSession(httpservletrequest);
+            
+			String mobile = teasession.getParameter("mobile");
+			String password = teasession.getParameter("password");
+
+			int k2 = Integer.parseInt(teasession.getParameter("subcribe"));
+	
+			Sms Sms = new Sms();
+            Sms.SubscribeCreate(mobile,password,k2);
+	       
+        }
+        catch(Exception exception)
+        {
+            httpservletresponse.sendError(400, exception.toString());
+            exception.printStackTrace();
+        }
+    }
+
+    public void init(ServletConfig servletconfig)
+        throws ServletException
+    {
+        super.init(servletconfig);
+        super.r.add("tea/ui/node/type/sms/EditSubscribe");
+    }
+}

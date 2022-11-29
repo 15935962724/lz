@@ -1,0 +1,24 @@
+#Content3{width:960px;margin:0px auto;padding:25px 0px;}
+.denglu .reg{display:none;}/*注册隐藏*/
+.numLog{width:310px;padding:0px 60px 0px 0px;height:450px;float:right;text-align:left;color:#999999;}
+.logintit{font-size:30px;color:#00A1E7;font-family:'微软雅黑'}
+.logintit b{display:block;font-weight:normal;padding:0px 0px 0px 0px;line-height:50px;}
+.denglu .sp1{text-align:left;display:block;font-family: 宋体;line-height:30px;}
+.denglu .log{width:227px;height:30px;line-height:30px;color:#fff;font-size:16px;font-weight:bold;background:#FF7F27;border:0px;margin:10px 0px 0px 35px;cursor:pointer;}
+.denglu .texts{width:290px;height:30px;border:1px solid #CCCCCC;padding:0px 5px;line-height:30px;background:#fff;}
+.denglu .lo1{background:url(/res/Home/structure/14102346.jpg) no-repeat 98% center;}
+.denglu .lo2{background:url(/res/Home/structure/14102347.jpg) no-repeat 98% center;}
+.fort{font-size:12px;color:#418ED6;display:block;text-align:right;padding:0px 10px;}
+.denglu .a1{color:#418ED6;font-weight:bold;text-decoration:underline;}
+.denglu .reg{color:#7D7D7D;font-family: 宋体;margin:60px 0px 0px 100px;height:50px;line-height:50px;}
+.denglu ul{padding:20px 0px 20px 0px;float:left;width:310px}
+.denglu ul li{padding:5px 0px;margin-top:0px;/*float:left;*/}
+.denglu .p1{clear: left;padding: 10px 0px;line-height:13px;color: #333;}
+.denglu .p1 input{vertical-align: bottom;margin-right: 5px;}
+.denglu .p1 a{margin-left:0px;}
+.denglu .p2{clear:left;padding:20px 0px;color: #333;}
+.denglu .p2 .a1{margin-left:15px;}
+.denglu .p2 img{max-height:27px;vertical-align: middle;}
+.leftimg{padding:0px 0px 0px 0px;width:432px;height:422px;text-align:Center;float:left;}
+.leftimg img{width:432px;height:422px;}
+.denglu input[type="button"]{border-style:none;background:#00A1E7;width:100px;height:32px;color:#fff;margin-left:10px}

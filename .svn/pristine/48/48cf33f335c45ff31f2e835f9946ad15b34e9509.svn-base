@@ -1,0 +1,37 @@
+#
+Code=Code
+Name=Project Name
+Essence=Project Attribute
+Reside=Belonging Industry
+Area=Implementation Location
+Synopsis=Project Summary
+Future=Background Estimation
+AllMoney=Total Investment Amount
+FinancingMoney=Project Financing Amount
+InvestCallback=Investment Return Date
+Redound=Return Rate
+YearRestrict=Year Restriction
+Fashion=Corporation Type
+UnitName=Supplier Name
+UnitEssence=Nature of the Company
+UnitSynopsis=Company Summary
+Linkman=Contact Person Name
+Phone=Contact Person Telephone
+Fax=FAX Number
+Postalcode=Postal Code
+Year=Year
+IDCard=Identification Number
+Homeplace=Residential Place
+Website=Website Address
+Evolve=Project Progress
+
+
+Allmoney=Total Investment Amount
+Investcallback=Investment Return Time
+Yearrestrict=Corporation Year Restriction
+Unitname=Supplier Name 
+Unitessence=Company Nature
+Unitsynopsis=Company Summary
+Idcard=Identification Number
+
+InfoAuditing=The news can not be sent without being audited

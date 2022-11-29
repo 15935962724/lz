@@ -1,0 +1,16 @@
+WorkTableStatus=工作单流程状态
+ProjectName=项目名称
+Sender=发单人
+Manager=部门经理
+Reciever=接单人
+Status=状态
+PleaseWaitManagerDesign=请等待部门经理批示
+PleaseRecieverDesign=请接单人签字
+PleaseFillInCompleteDate=请接单人填写完成日期
+PleaseFillInCompleteStatus=请发单人填写完成情况
+Return=返回
+WorkTableComplete=工作单已完成
+ManagerNotAgree=部门经理不同意
+WorkTableSearch=工作单查询
+Result=查询结果
+IgnoreDate=忽略日期

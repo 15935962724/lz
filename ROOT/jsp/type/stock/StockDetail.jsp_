@@ -1,0 +1,384 @@
+<%@page contentType="text/html;charset=UTF-8" %>
+<%@include file="/jsp/Header.jsp"%>
+
+<%
+r.add("/tea/ui/node/type/stock/EditStock");
+int listing= Integer.parseInt(teasession.getParameter("Listing"));
+int iNode  = Listing.find(listing).getNode();
+if(!node.isCreator(teasession._rv)&&AccessMember.find(iNode,teasession._rv._strV).getPurview()<2)
+{
+  response.sendError(403);
+  return;
+}
+boolean flag=request.getParameter("PickNode")==null;
+
+ListingDetail ld=ListingDetail.find(listing,15,teasession._nLanguage);
+
+%>
+<html>
+<head>
+<link href="/res/<%=node.getCommunity()%>/cssjs/community.css" rel="stylesheet" type="text/css">
+<script src="/tea/tea.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<h1><%=r.getString(teasession._nLanguage, "StockDetail")%></h1>
+<div id="head6"><img height="6" src="about:blank"></div>
+<div id="pathdiv"><%=node.getAncestor(teasession._nLanguage)%></div>
+<FORM NAME=form1 METHOD=POST  action="/servlet/EditListingDetail">
+  <input type='hidden' name="Node" value="<%=iNode%>">
+  <input type="hidden" name="ListingType" value="15"/>
+  <%if(!flag){%>
+  <input type="hidden" name="PickNode" value="<%=request.getParameter("PickNode")%>"/>
+  <%        }else{%>
+  <input type='hidden' name="PickManual" value="<%=request.getParameter("PickManual")%>">
+  <%   }%>
+  <input type="hidden" name="Listing" value="<%=listing%>"/>
+  <TABLE border="0" cellspacing="0" cellpadding="0" id="tablecenter">
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Subject")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="subject" value="checkbox"  <%=getCheck(ld.getIstype("subject"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="subject_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("subject"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="subject_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("subject"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="subject_3" type="text" class="edit_input" value="<%=ld.getSequence("subject")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="subject_4"   <%=getCheck(ld.getAnchor("subject"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> <%=r.getString(teasession._nLanguage, "Quantity")%>:
+        <input name="subject_5" class="edit_input" type="text" value="<%=ld.getQuantity("subject")%>" maxlength="3" size="4">
+      </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "StockName")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="stockname" value="checkbox"  <%=getCheck(ld.getIstype("stockname"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="stockname_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("stockname"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="stockname_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("stockname"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="stockname_3" type="text" class="edit_input" value="<%=ld.getSequence("stockname")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="stockname_4"   <%=getCheck(ld.getAnchor("stockname"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Date")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="date" value="checkbox"  <%=getCheck(ld.getIstype("date"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="date_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("date"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="date_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("date"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="date_3" type="text" class="edit_input" value="<%=ld.getSequence("date")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="date_4"   <%=getCheck(ld.getAnchor("date"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Previous<br>Closing")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="datedata" value="checkbox"  <%=getCheck(ld.getIstype("datedata"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="datedata_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("datedata"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="datedata_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("datedata"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="datedata_3" type="text" class="edit_input" value="<%=ld.getSequence("datedata")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="datedata_4"   <%=getCheck(ld.getAnchor("datedata"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Opening<br>Price")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="openingprice" value="checkbox"  <%=getCheck(ld.getIstype("openingprice"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="openingprice_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("openingprice"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="openingprice_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("openingprice"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="openingprice_3" type="text" class="edit_input" value="<%=ld.getSequence("openingprice")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="openingprice_4"   <%=getCheck(ld.getAnchor("openingprice"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "High<br>price")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="high" value="checkbox"  <%=getCheck(ld.getIstype("high"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="high_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("high"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="high_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("high"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="high_3" type="text" class="edit_input" value="<%=ld.getSequence("high")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="high_4"   <%=getCheck(ld.getAnchor("high"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Low<br>price")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="low" value="checkbox"  <%=getCheck(ld.getIstype("low"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="low_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("low"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="low_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("low"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="low_3" type="text" class="edit_input" value="<%=ld.getSequence("low")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="low_4"   <%=getCheck(ld.getAnchor("low"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Closing<br>Price")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="closingprice" value="checkbox"  <%=getCheck(ld.getIstype("closingprice"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="closingprice_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("closingprice"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="closingprice_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("closingprice"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="closingprice_3" type="closingprice" class="edit_input" value="<%=ld.getSequence("closingprice")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="closingprice_4"   <%=getCheck(ld.getAnchor("closingprice"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "change")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="percentchange" value="checkbox"  <%=getCheck(ld.getIstype("percentchange"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="percentchange_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("percentchange"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="percentchange_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("percentchange"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="percentchange_3" type="text" class="edit_input" value="<%=ld.getSequence("percentchange")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="percentchange_4"   <%=getCheck(ld.getAnchor("percentchange"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <tr>
+    <td ><%=r.getString(teasession._nLanguage, "Volume")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="volume" value="checkbox"  <%=getCheck(ld.getIstype("volume"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="volume_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("volume"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="volume_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("volume"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="volume_3" type="text" class="edit_input" value="<%=ld.getSequence("volume")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="volume_4"   <%=getCheck(ld.getAnchor("volume"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <!--       /////////////////////////////////////////////////        ////////////////////////////////////////////////////////-->
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "StockName")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="stockname2" value="checkbox"  <%=getCheck(ld.getIstype("stockname2"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="stockname2_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("stockname2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="stockname2_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("stockname2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="stockname2_3" type="text" class="edit_input" value="<%=ld.getSequence("stockname2")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="stockname2_4"   <%=getCheck(ld.getAnchor("stockname2"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Previous<br>Closing")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="datedata2" value="checkbox"  <%=getCheck(ld.getIstype("datedata2"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="datedata2_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("datedata2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="datedata2_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("datedata2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="datedata2_3" type="text" class="edit_input" value="<%=ld.getSequence("datedata2")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="datedata2_4"   <%=getCheck(ld.getAnchor("datedata2"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Opening<br>Price")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="openingprice2" value="checkbox"  <%=getCheck(ld.getIstype("openingprice2"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="openingprice2_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("openingprice2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="openingprice2_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("openingprice2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="openingprice2_3" type="text" class="edit_input" value="<%=ld.getSequence("openingprice2")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="openingprice2_4"   <%=getCheck(ld.getAnchor("openingprice2"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "High<br>price")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="high2" value="checkbox"  <%=getCheck(ld.getIstype("high2"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="high2_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("high2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="high2_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("high2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="high2_3" type="text" class="edit_input" value="<%=ld.getSequence("high2")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="high2_4"   <%=getCheck(ld.getAnchor("high2"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Low<br>price")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="low2" value="checkbox"  <%=getCheck(ld.getIstype("low2"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="low2_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("low2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="low2_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("low2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="low2_3" type="text" class="edit_input" value="<%=ld.getSequence("low2")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="low2_4"   <%=getCheck(ld.getAnchor("low2"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "Closing<br>Price")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="closingprice2" value="checkbox"  <%=getCheck(ld.getIstype("closingprice2"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="closingprice2_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("closingprice2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="closingprice2_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("closingprice2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="closingprice2_3" type="closingprice2" class="edit_input" value="<%=ld.getSequence("closingprice2")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="closingprice2_4"   <%=getCheck(ld.getAnchor("closingprice2"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <TR>
+      <td ><%=r.getString(teasession._nLanguage, "change")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="percentchange2" value="checkbox"  <%=getCheck(ld.getIstype("percentchange2"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="percentchange2_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("percentchange2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="percentchange2_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("percentchange2"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="percentchange2_3" type="text" class="edit_input" value="<%=ld.getSequence("percentchange2")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="percentchange2_4"   <%=getCheck(ld.getAnchor("percentchange2"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <tr>
+      <td ><%=r.getString(teasession._nLanguage, "GraphWeek")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="graphweek" value="checkbox"  <%=getCheck(ld.getIstype("graphweek"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="graphweek_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("graphweek"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="graphweek_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("graphweek"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="graphweek_3" type="text" class="edit_input" value="<%=ld.getSequence("graphweek")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="graphweek_4"   <%=getCheck(ld.getAnchor("graphweek"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <tr>
+      <td ><%=r.getString(teasession._nLanguage, "GraphMonth")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="graphmonth" value="checkbox"  <%=getCheck(ld.getIstype("graphmonth"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="graphmonth_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("graphmonth"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="graphmonth_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("graphmonth"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="graphmonth_3" type="text" class="edit_input" value="<%=ld.getSequence("graphmonth")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="graphmonth_4"   <%=getCheck(ld.getAnchor("graphmonth"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <tr>
+      <td ><%=r.getString(teasession._nLanguage, "GraphYear")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="graphyear" value="checkbox"  <%=getCheck(ld.getIstype("graphyear"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="graphyear_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("graphyear"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="graphyear_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("graphyear"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="graphyear_3" type="text" class="edit_input" value="<%=ld.getSequence("graphyear")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="graphyear_4"   <%=getCheck(ld.getAnchor("graphyear"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <tr>
+      <td ><%=r.getString(teasession._nLanguage, "GraphYet")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="graphyet" value="checkbox"  <%=getCheck(ld.getIstype("graphyet"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="graphyet_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("graphyet"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="graphyet_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("graphyet"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="graphyet_3" type="text" class="edit_input" value="<%=ld.getSequence("graphyet")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="graphyet_4"   <%=getCheck(ld.getAnchor("graphyet"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <tr>
+      <td ><%=r.getString(teasession._nLanguage, "Search")%>:</TD>
+      <TD><input  id="CHECKBOX" type="CHECKBOX" name="search" value="checkbox"  <%=getCheck(ld.getIstype("search"))%>>
+        <%=r.getString(teasession._nLanguage, "Show")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input name="search_1" mask="max" value="<%=HtmlElement.htmlToText(ld.getBeforeItem("search"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input name="search_2" mask="max" value="<%=HtmlElement.htmlToText(ld.getAfterItem("search"))%>" type="text" class="edit_input">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:
+        <input name="search_3" type="text" class="edit_input" value="<%=ld.getSequence("search")%>" maxlength="3" size="4">
+        <input  id=CHECKBOX type="CHECKBOX" name="search_4"   <%=getCheck(ld.getAnchor("search"))%>>
+        <%=r.getString(teasession._nLanguage, "Anchor")%> </TD>
+    </TR>
+    <tr>
+      <td colspan="2"><hr size="1"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input  id="CHECKBOX" type="CHECKBOX" name="objshow" onclick="fshow()"  >
+        <%=r.getString(teasession._nLanguage, "SelectAll")%> <%=r.getString(teasession._nLanguage, "Before")%>
+        <input   class="edit_input" name="objbefore1"  mask="max" onfocus="fbefore()"  onchange="fbefore()" value="" type="text">
+        <%=r.getString(teasession._nLanguage, "After")%>
+        <input   class="edit_input" name="objafter2"  onfocus="fafter()"  mask="max" onchange="fafter()" value="" type="text">
+        <%=r.getString(teasession._nLanguage, "Sequence")%>:<a href="#" onclick="fsequ()"  ><%=r.getString(teasession._nLanguage, "Default")%></a>
+        <input  id="CHECKBOX" type="CHECKBOX" name="objanchor_4" onclick="fanchor()"  >
+        <%=r.getString(teasession._nLanguage, "SelectAll")%> </td>
+    </tr>
+  </table>
+  <center >
+    <input type=SUBMIT name="GoBack"  class="edit_button" value="<%=r.getString(teasession._nLanguage, "GoBack")%>">
+    <INPUT TYPE=SUBMIT name="GoFinish" ID="edit_GoFinish" class="edit_button" value="<%=r.getString(teasession._nLanguage, "Submit")%>">
+  </center>
+</form>
+<script>
+  function fshow()
+  {
+      for(var counter=0;counter<form1.elements.length;counter++)
+      {
+          if(form1.elements[counter].type=="checkbox"&&form1.elements[counter].name.substring(form1.elements[counter].name.length-2)!="_4")
+          {
+              form1.elements[counter].checked=form1.elements["objshow"].checked;
+          }
+      }
+  }function fafter()
+  {
+      for(var counter=0;counter<form1.elements.length;counter++)
+      {
+          if(form1.elements[counter].type=="text"&&form1.elements[counter].name.substring(form1.elements[counter].name.length-1)=="2")
+          {
+              form1.elements[counter].value=form1.elements["objafter2"].value;
+          }
+      }
+  }
+
+  function fbefore()
+  {
+      for(var counter=0;counter<form1.elements.length;counter++)
+      {
+          if(form1.elements[counter].type=="text"&&form1.elements[counter].name.substring(form1.elements[counter].name.length-1)=="1")
+          {
+              form1.elements[counter].value=form1.elements["objbefore1"].value;
+          }
+      }
+  }
+
+  function fanchor()
+  {
+      for(var counter=0;counter<form1.elements.length;counter++)
+      {
+          if(form1.elements[counter].type=="checkbox"&&form1.elements[counter].name.substring(form1.elements[counter].name.length-2)=="_4")
+          {
+              form1.elements[counter].checked=form1.elements["objanchor_4"].checked;
+          }
+      }
+  }
+  function fsequ()
+  {
+    var paramvalue=0;
+      for(var counter=0;counter<form1.elements.length;counter++)
+      {
+          if(form1.elements[counter].type=="text"&&form1.elements[counter].name.substring(form1.elements[counter].name.length-2)=="_3")
+          {
+              form1.elements[counter].value=++paramvalue*10;
+          }
+      }
+  }
+</script>
+<SCRIPT><%if(request.getParameter("edit")==null)out.println("fsequ();");%>document.form1.subject_1.focus();</SCRIPT>
+<div id="head6"><img height="6" src="about:blank"></div>
+<div id="language"><%=new Languages(teasession._nLanguage,request)%></div>
+</body>
+</html>
+

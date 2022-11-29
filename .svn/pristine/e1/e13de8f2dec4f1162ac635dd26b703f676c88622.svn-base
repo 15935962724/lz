@@ -1,0 +1,450 @@
+#访问统计
+1167441040171=Organization Structure
+1167441109218=Company Name
+1167441134359=Contact Person
+1167441166281=Fax
+1167441181656=Telephone
+1167441198859=Website
+1167441243500=Hiring Position
+
+#创建/编辑机构
+1167441430421=Create/Editing Organization
+
+#用户管理
+1167441852562=User Admin
+1167441890296=User ID
+1167441920125=Name
+1167441941562=Telephone
+1167441966390=Operation
+1167442056718=Create User
+1167442215187=Add/Edit User
+
+1167442262453=Select Existing User
+1167442294640=Must Fill In
+1167442318656=Name
+1167442343250=Belongings Organization
+1167442368500=Telephone
+1167442391078=Position
+1167442412359=Managing Agency
+1167442497062=The user can operate on Selected Organization Information 
+1167442525218=Authority
+1167442560656=Invalid Role for corresponding Position Management
+1167442583593= Invalid Role for corresponding Resume Management 
+1167442610953= Invalid Role for corresponding Hiring Management 
+1167442644125= Invalid Role for corresponding Company Configuration 
+1167442720218=3-20 digits，combination of Alphabet, number, digit and underline 
+1167442804484=3-12 digits1167443014593=select company
+1167443031671=backup company for selection
+1167443364859=User Already Exist
+1167443546984=Invalid Selection
+
+
+#职位管理
+1167443724812=Position Management
+
+
+1167443861406=Position Name
+1167443881765=Belonging Agency
+1167444505750=Announcing Time
+
+1167444537781=Cut Off Time
+1167444560546=Resume Number
+1167444584125=Applicant Resume
+1167445161546=Search
+1167445239875=Pause
+1167453509015=Announcing
+1167445331843=Not Announced Position
+1167445369281=Announced Position
+1167445399156=Input SAP Ad Position
+1167445438343=Search
+1167445759265=Select Position Template
+1167445800671=Using Position Template，No need to Input Duplicate Information
+1167445851734=Position Name
+1167445871781=Position Serial Number
+1167445897640=Advertisement Index
+1167445935359=Belonging Organization
+1167445992187=Position Nature
+1167446047937=Position Type
+1167446216531=Position Valid Period
+1167446243375=Hiring Number
+1167446271906=Monthly Salary Range
+1167446338531=Job Location
+1167446409328=If selected province or district， you can not select belonging city underneath the selection 
+1167446489828=Minimum Years of Working Experience
+1167446517671=Education
+1167446554265=Position Description and Requirement
+1167446614609=Maximal 3000 words. (<a id="linkObjectCN" href="javascript:alert(&quot;You have input &quot;+document.all['txtJobDuty'].value.length+&quot;words！&quot;);">calculate number</a>)
+1167446697781=Announce
+1167446722015=Save
+1167447115546=Full Time
+1167447133937=Part Time
+1167447161953=Temporary
+1167447180562=Intern
+Salary.0=Interview
+Salary.1000-=Under 1000 
+1167448558562=Less than one year
+1167448647531=Year
+1167449285390=Position Indexing
+1167449375109=From
+1167449395890=To
+1167449432921=Belonging Organization
+1167449457531=Position Index Number
+1167449482781=Position Keyword
+1167449503062=Status
+1167449522921=Hiring
+1167450232359=Not Announced
+
+1167453838140=SAP Data Input
+1167453870359=Upload File
+1167453938593=File Content
+1167453980171=Or
+
+
+1167454281062=Applicant Information Statistic
+1167454369765=Position Serial Number
+1167454389921=Position Name
+1167454444890=Belonging Organization
+1167454468531=Resume Database
+1167454487250=Useful Resume
+1167454504109=Resume Count
+1167454519796=Applicant Resume
+
+1167454679312=Resume Management
+1167454879453=Statistic
+1167454926218=Search not Announced
+1167454935437=Search Announced
+
+1167455172484=Hiring Position
+1167455197453=Sex
+1167455221093=Age
+1167457716218=School Graduated
+1167457757703=Current Occupation
+1167457783859=Working Experience
+1167457804750=Expected Position
+1167457831203=Major
+1167457856062=Application Date
+1167457951671=Male
+1167457972406=Female
+1167458160093=Convert to Talent Database
+1167458207343=Put selected option as valuable resume for the position 
+1167458288546=Sending message to selected option 
+1167458313718=Recommend applicant resume
+1167458350890=Export selection in Excel format
+1167462052203=Export selection
+1167458390031=Download Application Form
+1167458433125=Export selection in XML format for SAP system 
+1167458485203=Please select first
+1167458969578=Finish Sending
+1167459387343=Send
+
+1167459072609=Receiver
+
+1167459475187=Click Download button to download
+1167459509296=Click Send can send outputted file to any mail box
+
+1167460447781=Advanced Search/Resume Filtering 
+1167460500921=Hiring Organization
+1167460620765=Expected Position
+1167460801234=Expected Location
+1167460984843=--Not Limited--
+1167461082921=Political Status
+1167461155796=over 50
+1167461342281=Keyword
+
+1167461566906=Resume Management
+1167461675828=Location
+1167461717421=Expected Working Location
+1167461815640=Update Date
+
+1167463743062=Year
+1167464081718=Cell&nbsp;&nbsp;&nbsp;&nbsp;Phone
+1167464153921=Tele&nbsp;&nbsp;&nbsp;&nbsp;Phone
+1167464200421=Mailing Address
+1167464232843=Personal Web Page
+1167464302546=Nationality&nbsp;&nbsp;&nbsp;&nbsp;
+1167464346828=Education
+1167464377812=School Graduated
+1167464647828=Self Evaluation/Career Goal
+1167464711468=Self Evaluation
+1167464750687=Professional Goal
+1167464788390=Career Goal
+1167464827921=Salary Expectation（Before Tax）
+1167464858437=Yuan (Chinese Yuan)
+1167464954281=Current Position
+1167465006453=Job Nature Expectation
+1167465105562=Time Frame
+1167465150296=Day
+1167465192609=Current Salary（Before Tax）
+1167465473859=Company Info
+1167465522578=Working Location
+1167465545156=Job Duty and Responsibility
+1167465612453=Reason To Leave
+1167465882593=Training Received
+
+1167466317625=Search Engine Name
+1167466353828=Save to Search Engine
+1167466398578=Search Engine List
+1167466509953=Resume Search
+
+1167466843562=Member Registration
+1167466871093=Company Name
+1167466896625=Company Location
+1167466918531=Address
+1167466940000=Contact Phone Number
+1167467002937=Length: 3-20 word 
+1167467067343=Length: 3-20 word Format: Alphabet or Number
+
+1167467282578=Set for Approval Mode
+1167467312812=Set for Rejection Mode
+1167467330593=Send Email, then delete
+1167467364812=Not Audited
+1167467378593=Audited
+
+#我的职位夹
+1167467602203=My Job Folder
+1167467806578=The company does not exist anymore
+
+#简历
+1167468949281=Basic Information
+1167468982843=Resume Name
+1167469089515=Mobile Phone
+1167469191265=Size：90X120 pixels
+1167469217921=Nationality
+1167469238859=County of Birth
+1167469260593=Place of Birth
+1167469283875=Marital Status
+1167469309671=Current Marriage<BR> Date 
+1167469332703=Number of Children
+1167469359000=Residential Location
+1167469386031=Oversea Person
+1167469462734=If Farming Residential
+1167469499125=Identity
+1167469528031=Family Background
+1167469549906=Current Residential City/District
+1167469569609=Postal Code
+1167469587625=Education
+1167469640031=Career Summary
+1167469656937=Company Attended
+1167469680718=Agent
+1167469724250=Current Company Name
+1167469749625=Current Position Rank
+1167469776859=Fill in“Student”if currently in School
+1167469828781=Please fill in number，fill in 0 if has no experience
+1167469873421=If there was oversea working experience
+1167469987031=Current Salary Currency
+1167470009906=Yuan
+1167470028781=RMB
+1167470049078=US Dollar
+1167470089703=Job Nature Expected
+1167470204875=（Choose up to 5）
+1167470468515=Currency Code（Before Tax）
+1167470553578=Discuss during Interview
+1167470574390=Right now
+1167470598812=>1 Week
+1167470628140=>1 Month
+1167470662859=>1～3 Month
+1167470684484=>3 Month
+
+#教育背景
+1167470941156=Education Background
+1167471003140=School Name
+1167471030656=Major
+1167471168140=Starting Date
+1167471209125=Month
+1167471229125=Ending Date
+1167471250265=Until Now
+1167471303500=City
+1167471334046=Major Type
+1167471366546=Major or Research Specialty 
+1167471390328=Second Major Name
+1167471440203=Degree
+1167471490750=No Degree
+1167471534703=Bachelor Degree
+1167471550921=Double Bachelor Degree
+1167471586703=Master Degree
+1167471606109=Ph D Degree
+1167471660578=Diploma Number
+1167471683859=Country Code
+1167471711984=Curriculum Training
+1167471741812=Degree Type
+1167471761375=Full Time
+1167471781312=Part Time
+1167471804546=Degree Award Time
+1167471840109=Degree Awarding Institute
+1167471863140=Type of Learning
+1167471885171=Highest Education
+1167471940406=Highest Degree
+1167471964515=Post Doctor
+1167471992875=Major Description
+1167472040890=Please concentrate on Job Expectation, less than 800 words。
+1167472147515=<a href="javascript:alert(&quot;Has inputed &quot;+document.all['tbComment'].value.length+&quot;Words！&quot;);">Calculate Words</a>
+1167472179203=Save&amp;Newly Added Education Background
+1167472331375=No School Name
+1167472360500=Invalid Major Name
+1167472380640=Invalid Major Name or Research Speciality
+1167472396140=Invalid Curriculum Training
+1167472464640=Please input Resume Name
+1167472607828=Invalid-Mobile Phone Number
+1167472634203=Invalid-Birth Place 
+1167472652906=Invalid-Number of Child
+1167472674031=Invalid-Residential Location
+1167472695531=Invalid-Personal Rank
+1167472714734=Invalid-Family Background
+1167472739953=Invalid-Current Residential City/District
+1167472767562=Invalid-Postal Code 
+1167472804812=Invalid-Current Position Rank
+1167472824937=Invalid-Working Experience
+1167472852843=Invalid-Current Salary
+1167472880968=Invalid-Job Expectation
+1167472899796=Invalid-Expected Working Location
+1167472919984=Invalid-Expected Salary
+
+#工作经验
+1167473216078=Company Summary
+1167529384234=Please describe you current company。Ex：Domestic Machinery manufactory with 5000+ people（less than 300 words）
+1167529411593=Working Experience within the company－one position at a time，can fill in multi times 
+1167529473046=Department Worked
+1167529713687=Please select "Until Now" if currently working
+1167529767859=Industry Code
+1167529795828=Supervisor
+1167529833984=Supervisor Contact Information
+1167529870187=Working Experience Type
+1167529893359=Hiring Type
+1167529920218=Company Sponsored
+1167529942906=Company Sponsor Reason
+1167530025578=Type of Employment
+1167530123656=（less than 2000 word）
+1167530143921=Reason of Leave/transfer
+1167530185062=Reason of Transfer
+1167530223796=Save &amp; New Working Experience
+1167530359328=Invalid Company Name
+1167530380171=Invalid Working Location
+1167530406000=Invalid Position Name
+1167530423890=Invalid Working Responsibility and deeds
+
+#自我评价
+1167530814843=Invalid-Self Evaluation
+1167530983984=Please describe your strength（less than 200 word。 <a href="javascript:alert(&quot;Inputed&quot;+document.all['selfvalue'].value.length+&quot; words！&quot;);">Calcuate Word</a>）
+1167531049843=Let Hiring Company Know your Career Goal（Less than 500 words.<a href="javascript:alert(&quot;Inputed &quot;+document.all['selfaim'].value.length+&quot;words！&quot;);">Calculate Word</a>）
+1167531093609=Award and Other
+1167531136796=Please describe your award and your strength（less than 200 word <a href="javascript:alert(&quot;Inputed &quot;+document.all['other'].value.length+&quot;words！&quot;);">Calculate Word</a>）
+
+#地址列表
+1167531487375=Address List
+1167531590750=Address Record Type
+1167531748640=Invalid-Postal Code
+1167531770421=Invalid-District (State, Province, County)
+1167531886234=Street or Road Number
+1167531909234=City or District
+1167532428968=District (State, Province, County)
+
+
+#奖惩记录
+1167533365656=Award or Penalty Record
+1167533470218=Award or Penalty Name
+1167533489218=Award Level
+1167533519515=Approval Time
+1167536124250=Award or Penalty Company
+1167536155468=Award or Penalty Reason
+1167536182625=Award or Penalty Approval Time 
+1167536200968=Award or Penalty Document Number
+1167536432187=Invalid Award or Penalty Name
+1167536452343=Invalid Award or Penalty Company
+1167536475875=Invalid Award or Penalty Reason
+1167536512265=Invalid Award or Penalty Document Approval Number
+1167536547484=Invalid Memo
+
+#职业资格
+1167537038468=Professional Qualification
+1167537108875=Recognition Level
+1167537129406=Certificate Issuer
+1167537287453=Professional Qualification Type
+1167537342765=Professional Qualification Code
+1167537397406=Certification Pickup Date
+1167537435265=Certification Document Number
+1167537462265=Authentication Company
+1167537492531=Certification Path
+1167537583312=Invalid-Certification Company
+1167537607718=Invalid-Certification Document Number
+1167537626015=Invalid-Authentication Company 
+
+#语言能力
+1167538183812=Language Skill
+1167538234343=Language Type
+1167538271796=Language Listening Skill
+1167538291406=Speaking Skill
+1167538458312=Writing Skill
+1167538511671=Read Skill
+1167538536625=Skill Level
+
+#家庭成员
+1167538816203=Family Member
+1167538880937=Type
+1167538919937=Position
+1167539003406=Home Record Type
+1167539027875=Birth Date
+1167539174828=First Name
+1167539198562=Last Name
+1167539261734=Nationality
+1167539292375=Family Member Working Company
+1167539315546=Position Title
+1167539337750=Family Member Education Status
+1167539361265=Working Status
+1167539652328=Phone Number
+1167539695734=Invalid-First Name
+1167539723968=Invalid-Last Name
+1167539797843=Invalid-Nationality
+1167539831906=Invalid-Family Member Working Company
+1167539855312=Invalid-Position Title
+1167539911968=Invalid-Family Member Education Background
+1167539937625=Invalid-Phone Number
+#申请职位
+1167543721250=No Need for Application Form
+
+1167544889437=Application Successfully！The position has been saved into<A href='/jsp/type/job/AppHistory.jsp'>applied positions</A> record
+1167545046234=You have already applied for the position,not need to send again or you have applied for more than 3 positions.Search<a href='/jsp/type/job/AppHistory.jsp'>Application Records</a>
+1167545232593=Please create your resume first, click <A href=/jsp/type/resume/Resume.jsp >here</a>to create resume.
+1167545440578=Apply for the position
+
+1167545474640=The followings are applied position
+1167546232890=Please apply this position using selected resume
+
+#站点设置
+1167991129000=Hiring System Configuration
+1167991204484=Resume Type Node
+1167991240234=Position Type Node
+1167991267171=Company Type Node
+1167991286921=Backend Node
+1167991307156=Feedback Node
+1167991326609=Administrator
+1167991371578=Small Logo
+1167991442468=Weather the application attached with resume
+1167991470234=Position Role
+1167991489500=Resume Role
+1167991510859=Applicant Role
+1167991530375=Company Role
+1167992041937=Please select upward option
+1167992090609=Please select downward option
+1167992160078=Please select for update
+1167992187906=Invalid Serial Number
+1167992234750=Please select parent item
+1167992267125=Add Child
+1167992286421=Please select for deletion
+1167992358625=Working Area Configuration
+1168216894046=Serial Number already exist
+1168236735765=Serial Number
+1168304098453=Can not apply for the position with incomplete resume, continue?
+1167536241906=Memo
+1167532473640=Save& Add
+1167472219140=Last Step
+1167471137156=Add /Edit
+1167469410921=Yes
+1167469442484=No
+1167458013921=None
+1167458057468=Has
+1167446148625=Add
+1167443806359=Search
+1167443831593=List
+1167444621250=Search
+1167445122937=Select All
+1167446055140=Please press Ctrl for multi selection, up to 3 selections

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<TITLE>插入文件内容</TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style type="text/css">
+table{
+	font-size:12px;
+}
+
+body{
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
+	padding-top:1px;
+}
+</style>
+<script type="text/javascript">
+function _cancel()
+{
+  window.close();
+}
+
+function insetIMG(_sVal)
+{
+  if(_sVal == "") return;
+  if(window.Event)
+  {
+    var oRTE = opener.getFrameNode(opener.sRTE);
+    oRTE.document.execCommand('insertHTML', false, _sVal);
+  }else
+  {
+    var oRTE = dialogArguments.getFrameNode(dialogArguments.sRTE);
+    oRTE.focus();
+    var oRng = oRTE.document.selection.createRange();
+    oRng.pasteHTML(_sVal);
+    oRng.collapse(false);
+    oRng.select();
+  }
+  window.close();
+}
+
+function _submit()
+{
+  var obj=document.getElementById('wordEditer_IMG_SRC');
+  if(obj==null||obj.value.length<8)
+  {
+//    alert(d_file.document);
+    d_file.myform.submit();
+  }else
+  {
+    insetIMG(obj.value);
+  }
+  return false;
+}
+</script>
+</head>
+<BODY>
+
+<table border="0" cellpadding="0" cellspacing="8" align="center" width="90%">
+<!--
+  <tr>
+    <td nowrap>网络:<input id="wordEditer_IMG_SRC" name="wordEditer_IMG_SRC" value="http://" size="30"></td>
+  </tr>
+  -->
+  <tr>
+    <td nowrap >Word文件:<iframe id=d_file name="d_file" frameborder=0 src="Upload.jsp?type=word"   height="22" scrolling=no></iframe></td>
+  </tr>
+  <tr>
+    <td align="center"><input type=submit onClick="return _submit();" value=确定 >&nbsp;&nbsp;<input type=button onClick="_cancel();" value=取消 ></td>
+  </tr>
+</table>
+
+</BODY>
+</html>
+

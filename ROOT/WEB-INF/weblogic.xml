@@ -1,0 +1,12 @@
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" "weblogic810-web-jar.dtd">
+<!--修改后，必须重启才生效！-->
+<weblogic-web-app>
+  <!--上下文根-->
+  <context-root>/</context-root>
+  <jsp-descriptor>
+    <!--保存 JSP 生成的文件-->
+    <keepgenerated>true</keepgenerated>
+    <!--JSP 页面检查 (秒)-->
+    <page-check-seconds>1</page-check-seconds>
+  </jsp-descriptor>
+</weblogic-web-app>

@@ -1,0 +1,125 @@
+<%@page contentType="text/html; charset=UTF-8"%>
+<%@page import="tea.entity.Http"%>
+<%@ page import="tea.entity.member.Profile" %>
+<%
+    Http h=new Http(request,response);
+    if(h.member<1)
+    {
+        response.sendRedirect("/servlet/StartLogin?community="+h.community);
+        return;
+    }
+    Profile p1 = Profile.find(h.member);
+%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务商申请</title>
+    <link rel="stylesheet" href="../css/m-style.css">
+    <link rel="stylesheet" href="../css/xj-style.css">
+</head>
+<body>
+    <div class="body">
+<%--        <div class="Header">--%>
+<%--            <p class="header-tit ft18">--%>
+<%--                <img src="../img/icon1.png" alt="" class="fl-left m-head-logo">--%>
+<%--                <span>服务商申请</span>--%>
+<%--                <img src="../img/icon2.png" alt="" class="head-list fl-right">--%>
+<%--            </p>--%>
+<%--        </div>--%>
+<%--        <!-- 下拉 -->--%>
+<%--        <div class="head-dh-list">--%>
+<%--            <h3 class="bor-b ft16">首页</h3>--%>
+<%--            <h3 class="bor-b ft16 head-dh-y">--%>
+<%--                解决方案    --%>
+<%--                <img src="../img/icon12.png" class="fl-right" alt="">--%>
+<%--            </h3>--%>
+<%--            <ul>--%>
+<%--                <li class="ft16">近距离治疗药物</li>--%>
+<%--                <li class="ft16 head-ys-li">碘[<sup>125</sup>I]</li>--%>
+<%--                <li class="ft16 head-ys-li">钯[<sup>103</sup>Pd]</li>--%>
+<%--                <li class="ft16 head-ys-li">铱[<sup>90</sup>Y]</li>--%>
+<%--                <li class="ft16 head-ys-li">铯[<sup>131</sup>Cs]</li>--%>
+
+<%--                <li class="ft16">治疗计划系统TPS</li>--%>
+<%--                <li class="ft16">植入设备/器械</li>--%>
+<%--                <li class="ft16 head-ys-li">粒子植入设备与器械</li>--%>
+<%--                <li class="ft16 head-ys-li">计划导航系统</li>--%>
+<%--                <li class="ft16 head-ys-li">辐射检测与防护</li>--%>
+<%--                <li class="ft16">手术支持服务</li>--%>
+<%--                <li class="ft16 head-ys-li"> 前列腺设备支持服务</li>--%>
+<%--                <li class="ft16 head-ys-li">远程计划系统服务</li>--%>
+<%--            </ul>--%>
+<%--            <h3 class="bor-b ft16">--%>
+<%--                产品--%>
+<%--            </h3>--%>
+<%--            <h3 class="bor-b ft16 head-dh-y">--%>
+<%--                患者--%>
+<%--                <img src="../img/icon12.png" class="fl-right" alt="">--%>
+<%--            </h3>--%>
+<%--            <ul>--%>
+<%--                <li class="ft16">粒子治疗简介</li>--%>
+<%--                <li class="ft16 head-ys-li">治疗部位</li>--%>
+<%--                <li class="ft16 head-ys-li">适应症</li>--%>
+<%--                <li class="ft16 head-ys-li">禁忌症</li>--%>
+<%--                <li class="ft16">患者指南</li>--%>
+<%--                <li class="ft16 head-ys-li">专业术语</li>--%>
+<%--                <li class="ft16 head-ys-li">常见问题</li>--%>
+<%--                <li class="ft16 head-ys-li">病患防护</li>--%>
+<%--                <li class="ft16">招募计划</li>--%>
+<%--            </ul>--%>
+<%--            <h3 class="bor-b ft16 head-dh-y">--%>
+<%--                医生--%>
+<%--                <img src="../img/icon12.png" class="fl-right" alt="">--%>
+<%--            </h3>--%>
+<%--            <ul>--%>
+<%--                <li class="ft16">政策法规</li>--%>
+<%--                <li class="ft16">医院资质</li>--%>
+<%--                <li class="ft16">临床资料</li>--%>
+<%--                <li class="ft16 head-ys-li">PPT</li>--%>
+<%--                <li class="ft16 head-ys-li">文献</li>--%>
+<%--                <li class="ft16 head-ys-li">视频</li>--%>
+<%--                <li class="ft16">放射性同位素手册</li>--%>
+<%--                <li class="ft16">病患防护</li>--%>
+<%--            </ul>--%>
+<%--            <h3 class="bor-b ft16 head-dh-y">--%>
+<%--                活动资讯--%>
+<%--                <img src="../img/icon12.png" class="fl-right" alt="">--%>
+<%--            </h3>--%>
+<%--            <ul>--%>
+<%--                <li class="ft16">行业新闻</li>--%>
+<%--                <li class="ft16">会议活动</li>--%>
+<%--            </ul>--%>
+<%--            <h3 class="bor-b ft16 head-dh-y">--%>
+<%--                关于--%>
+<%--                <img src="../img/icon12.png" class="fl-right" alt="">--%>
+<%--            </h3>--%>
+<%--            <ul>--%>
+<%--                <li class="ft16">公司介绍</li>--%>
+<%--                <li class="ft16">联系我们</li>--%>
+<%--            </ul>--%>
+<%--        </div>--%>
+        <div class="Content" style="background: #fff;">
+            <p class="Header_tit2 ft18">服务商申请</p>
+            <!-- 进度条 -->
+            <div class="sop">
+                <p class="sop_tit">
+                    <span class="fl-left sop_tit_co">填写资质信息</span>
+                    <span class="fl-right">资质审核</span>
+                </p>
+                <div class="sop_jdt sop_jdt2">
+                    <p></p>
+                    <span></span>
+                </div>
+            </div>
+            <div class="spover">
+                <img src="../img/dui.png" alt="">
+                <span class="ft18">您的审核已通过</span>
+                <p>请到<span>账户管理-基本信息</span>上传技术服务协议及保证金凭证</p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/m-home.js"></script>
+</body>
+</html>

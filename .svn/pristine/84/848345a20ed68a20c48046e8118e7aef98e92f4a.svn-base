@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=0">
+    <title>Title</title>
+    <link rel="stylesheet" href="/mobjsp/yl/css/common.css">
+    <link rel="stylesheet" href="/mobjsp/yl/css/swiper.min.css">
+    <script src="/mobjsp/yl/js//swiper.min.js"></script>
+    <script src="/tea/mt.js" type="text/javascript"></script>
+    <script src="/tea/view.js" type="text/javascript"></script>
+    <script src='/tea/jquery-1.3.1.min.js'></script>
+    <script src="/mobjsp/yl/js/jquery.Spinner.js"></script>
+    <script>
+        $(function() {
+            $(".Spinner").Spinner({
+                value: "1",
+                min: 1,
+                len: 3,
+                max: "1000"
+            });
+        });
+    </script>
+    <style>
+        body {
+            background: #f9f9f9
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" name='form1'>
+        <input name='category' value='14102669' type="hidden" />
+        <input name='product' value='15010264' type="hidden" />
+        <input name='attribute' value='粒子活度' type="hidden" />
+        <input name='productstockcount' value='0' type="hidden" />
+
+
+
+
+        <div id="Body">
+            <div id="Header">
+                <header class="flex">
+                    <div class="logo"><img src="http://www.brachysolution.com/res/Home/structure/14112579.png" /></div>
+                    <div class="head-r flex">
+                        <div class="search"></div>
+                        <nav>
+                            <em></em>
+                        </nav>
+                    </div>
+                </header>
+            </div>
+            <div id="Content">
+                <div class="detail01 flex">
+                    <span class="pic flex">
+                    <img src="http://www.brachysolution.com/res/Home/structure/19061406.png" />
+                </span>
+                    <span class="nr flex">
+                    <span class="tit">碘 I-125密封籽源</span>
+                    <span class="version"><em>商品编号</em>GMS-6711-0.3-0.8</span>
+                    <span class='tit' style='margin:0.2rem 0rem;color:#df6c0a'>￥800.0</span>
+
+                    <a href="" class="upVip">申请VIP会员</a>
+                    </span>
+                </div>
+
+                <div class="detail02 flex">
+                    <div class="p flex">
+                        <span class="sp1">选择医院</span>
+                        <select onchange='changehos(this)' class='hosids' name='hosid'><option value='0'>请选择医院</option></select>
+                    </div>
+                    <div class="p flex">
+                        <span class="sp1">厂　　商</span>
+                        <select class='pusids' onchange='changepus(this)' name='pusid'><option value='0'>请选择厂商</option></select>
+                    </div>
+                    <div class="p flex">
+                        <span class="sp1">粒子活度</span>
+                        <div class="huod"><em class="flex"><i class="bgred"><a  target="_parent">0.3-0.8 mCi</a></i><i><a target="_parent">0.8-1.0 mCi</a></i></em></div>
+
+                    </div>
+                    <div class='p flex' style='margin-top: -0.15rem;'><span class='sp1'></span><input alt='粒子活度' placeholder='请输入粒子活度(范围0.3-0.8 )' title='粒子活度范围：0.3-0.8 ' style='width:140px;border:1px solid #dcdcdc;' class='activity' name='activity' value='' onkeyup="keyupActivity(this)" onblur="blurActivity(this,0.3,0.8)"
+                        /></div><input name='actcheck' value='1' type='hidden' />
+
+
+
+                    <div class="p flex">
+                        <span class="sp1">购买数量</span>
+                        <a href='###' onclick='numDec()' class='detail02-j'>-</a>
+                        <input type='text' class='detail02-inp' name='quantity' id='quantity' value='1' onkeyup='keyup()' />
+                        <a href='###' onclick='numAdd()' class='detail02-j'>+</a>
+                    </div>
+                    <!--<div class="p flex">
+				<span class="sp1">购买数量</span>
+				<div class="Spinner"></div>
+			</div>-->
+
+                </div>
+
+                <div class="detail03 flex">
+                    <h2 class="h2 flex bold">产品详情</h2>
+                    <span class="info">
+                    <p>法定工作日8:30至16:30处理订单并安排发货(非法定假日的周六将在8:30至14:30处理订单并安排发货)，否则将顺延至下一工作区间处理。遇特殊节假日，将在网站首页通知接受订单及发货时间；</p>
+                    <p><img src="http://www.brachysolution.com/res/Home/structure/19061406.png" /></p>
+                </span>
+                </div>
+
+                <div class="detail04 flex">
+                    <input type="button" class="gm-inp" value="立即购买" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <script>
+        $(function() {
+            $("em.flex i").click(function() {
+                $(this).addClass('cur').siblings("i").removeClass("cur");
+            });
+
+        })
+    </script>
+    <script>
+        var perce = '0.03';
+        var junan = '1';
+        /*zxForm.nexturl.value=location.pathname+location.search;
+    mt.act=function(act,t){
+        if("productbuy"==act){
+            location = "ShopProductBuyUnit.jsp?product="+t;
+        }
+
+    };*/
+
+        /*商品数量框输入*/
+        function keyup() {
+            var quantity = document.getElementById("quantity").value;
+            var re = /^[1-9]+[0-9]*]*$/;
+            if (!re.test(quantity) || parseInt(quantity) != quantity || parseInt(quantity) < 1) {
+                document.getElementById("quantity").value = 1;
+                return;
+            }
+            if (quantity >= 2000) {
+                document.getElementById("quantity").value = quantity.substring(0, quantity.length - 1);
+                mt.show("商品数量不能大于2000");
+            }
+        }
+
+        /*商品数量+1*/
+        function numAdd() {
+            var quantity = document.getElementById("quantity").value;
+            var num_add = parseInt(quantity) + 1;
+            if (quantity == "") {
+                num_add = 1;
+            }
+            if (num_add >= 2000) {
+                document.getElementById("quantity").value = num_add - 1;
+                mt.show("商品数量不能大于2000");
+            } else {
+                document.getElementById("quantity").value = num_add;
+            }
+        }
+
+        /*商品数量-1*/
+        function numDec() {
+            var quantity = document.getElementById("quantity").value;
+            var num_dec = parseInt(quantity) - 1;
+            if (num_dec > 0) {
+                document.getElementById("quantity").value = num_dec;
+            }
+        }
+
+
+
+        function submitZx() {
+            if (zxForm.product_id.value == '0') {
+                mt.show("请选择具体商品！");
+                return;
+            }
+            if (mt.check(zxForm)) {
+                var len = zxForm.depict.value.length;
+                if (len > 200)
+                    mt.show("最多只能输入200字！！！");
+                else
+                    zxForm.submit();
+            }
+
+        }
+
+        function showtab(num) {
+            jQuery("#myul li").hide();
+            jQuery("#myul li:eq(" + num + ")").show();
+            jQuery("#titul li").removeClass("fblue").addClass("tz");
+            jQuery("#titul li:eq(" + num + ")").removeClass("tz").addClass("fblue");
+        }
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            initshow();
+        });
+    </script>
+    <script>
+        mt.fit();
+
+
+        function addcar(product) {
+            if (form1.hosid.value == 0) {
+                mt.show("请选择医院！");
+                return;
+            }
+            if (form1.pusid.value == 0) {
+                mt.show("请选择厂商！");
+                return;
+            }
+            mysub();
+            //jQuery.cookie(product,form1.hosid.value, { expires: 30 });
+            //car.add(product,document.getElementById('quantity').value,'/html/folder/14110112-1.htm');
+            //console.log(jQuery.cookie(product)+"--");
+            //console.log(jQuery.cookie(product)+"==");
+        }
+
+        function initshow() {
+            if (form1.product.value == '0') {
+                inithos();
+            } else {
+                inithos('14110483');
+                initpus('14110483', '19041185');
+                findproduct(0, '19041185', '15010264');
+            }
+        }
+
+        function initpus(hosid, pusid) {
+            mt.send("/ShopHospitals.do?act=findpusids&hosid=" + hosid, function(data) {
+                data = eval('(' + data + ')');
+                if (data.type > 0) {
+                    if (data.type == 1) {
+                        //location = '/html/gf/index.html?nexturl='+encodeURIComponent(window.location.pathname+window.location.search);
+                        return;
+                    }
+                    mtDiag.close();
+                    mtDiag.show(data.mes);
+                    return;
+                } else {
+                    var ops = "<option value=0>请选择</option>";
+                    if (data.data_list != '') { //是否存在数据
+                        for (var i = 0; i < data.data_list.length; i++) {
+                            var proObj = data.data_list[i];
+                            ops += "<option " + (pusid == proObj.obj.puid ? "selected='selected'" : "") + " value='" + proObj.obj.puid + "'>" + proObj.obj.name + "</option>";
+                        }
+                    }
+                    jQuery(".pusids").html(ops);
+                }
+
+                //$(".hosids").html(ops);
+            });
+        }
+
+        function inithos(hosid) {
+            mt.send("/ShopHospitals.do?act=findhosids", function(data) {
+                data = eval('(' + data + ')');
+                if (data.type > 0) {
+                    if (data.type == 1) {
+                        //location = '/html/gf/index.html?nexturl='+encodeURIComponent(window.location.pathname+window.location.search);
+                        return;
+                    }
+                    mtDiag.close();
+                    mtDiag.show(data.mes);
+                    return;
+                } else {
+                    var ops = "<option value=0>请选择</option>";
+                    if (data.data_list != '') { //是否存在数据
+                        for (var i = 0; i < data.data_list.length; i++) {
+                            var proObj = data.data_list[i];
+                            ops += "<option " + (hosid == proObj.obj.id ? "selected='selected'" : "") + " value='" + proObj.obj.id + "'>" + proObj.obj.name + "</option>";
+                        }
+                    }
+                    jQuery(".hosids").html(ops);
+                }
+            });
+        }
+
+        function changehos(obj) {
+            var hosid = jQuery(obj).val();
+            initpus(hosid, 0);
+        }
+
+        function changepus(obj) {
+            var pusid = jQuery(obj).val();
+            findproduct(0, pusid, 0);
+        }
+
+
+        // function findproduct(hosid, pusid, productid) {
+        //     mt.send("/ShopHospitals.do?act=findproduct&hosid=" + hosid + "&pusid=" + pusid + "&category=" + form1.category.value, function(data) {
+        //         data = eval('(' + data + ')');
+        //         if (data.type > 0) {
+        //             if (data.type == 1) {
+        //                 //location = '/html/gf/index.html?nexturl='+encodeURIComponent(window.location.pathname+window.location.search);
+        //                 return;
+        //             }
+        //             mtDiag.close();
+        //             mtDiag.show(data.mes);
+        //             return;
+        //         } else {
+        //             var ops = "<em class='flex'>";
+        //             if (data.data_list != '') { //是否存在数据
+        //                 for (var i = 0; i < data.data_list.length; i++) {
+        //                     var proObj = data.data_list[i];
+        //                     ops += "<i " + (productid == proObj.product ? "class='bgred'" : "") + " ><a  onclick=findproductdes('" + proObj.product + "') target='_parent'>" + proObj.model + "</a></i>";
+        //                 }
+        //             }
+        //             if (ops == "") {
+        //                 ops = "<i>暂无规格</i>";
+        //             }
+        //             ops = ops + "</em>";
+
+        //             jQuery(".huod").html(ops);
+        //         }
+        //     });
+        // }
+
+        function findproductdes(proid) {
+            //19052204 test
+            //19060258 host
+            //location = '/html/folder/19052204-1.htm?product='+proid+"&hosid="+form1.hosid.value+"&pusid="+form1.pusid.value+"&category="+form1.category.value;
+            location = '/mobjsp/yl/shopweb/ShopProductBuyUnit.jsp?product=' + proid + "&hosid=" + form1.hosid.value + "&pusid=" + form1.pusid.value + "&category=" + form1.category.value;
+        }
+
+        var activityMinmy = '0.3';
+        var activityMaxmy = '0.8';
+
+        function mysub() {
+            //form1.action = '/html/folder/19041335-1.htm';
+            //form1.submit();
+            if (true) {
+                if (form1.activity.value == '') {
+                    mt.show("请输入购买活度!");
+                    return;
+                }
+                var obj = jQuery(".activity")[0];
+                //console.log(obj+"--"+obj.value);
+                //obj.value = activityMinmy;
+                if (form1.actcheck.value == 1) {
+                    if (obj.value != '' && (obj.value < activityMinmy || obj.value > activityMaxmy)) {
+                        mt.show("活度超出范围 " + activityMinmy + "-" + activityMaxmy + "！");
+                        //obj.value = activityMinmy;
+                        //console.log(activityMinmy);
+                        //jQuery(".activity").val(activityMinmy);
+                        //console.log(jQuery(".activity").val()+"==="+activityMinmy+"==="+jQuery(".activity").val());
+                        findProductStockCount();
+                        return;
+                    }
+                }
+            }
+
+            /* if(form1.quantity.value>form1.productstockcount.value){
+            mt.show("库存不足，是否同意调配？",2);
+            var mytype = 0;
+            mt.ok = function(){
+                mytype = 1;
+                parent.location = "/html/folder/19041335-1.htm?product="+form1.product.value+"&hosid="+form1.hosid.value+"&quantity="+form1.quantity.value+"&activity="+form1.activity.value+"&isallocate=1";
+                //console.log(123);
+            //console.log(mytype+"---");
+            }
+            mt.cancel = function(){
+                parent.location = "/html/folder/19041335-1.htm?product="+form1.product.value+"&hosid="+form1.hosid.value+"&quantity="+form1.quantity.value+"&activity="+form1.activity.value+"&isallocate=0";
+                //console.log(mytype+"---");
+            }
+        }else{
+            parent.location = "/html/folder/19041335-1.htm?product="+form1.product.value+"&hosid="+form1.hosid.value+"&quantity="+form1.quantity.value+"&activity="+form1.activity.value;
+        } */
+            //19041335 host
+            //14110150 test
+            //location = "/html/folder/14110150-1.htm?product="+form1.product.value+"&hosid="+form1.hosid.value+"&quantity="+form1.quantity.value+"&activity="+form1.activity.value;
+            location = "/mobjsp/yl/shopweb/ShopOrderFormUnit.jsp?product=" + form1.product.value + "&hosid=" + form1.hosid.value + "&quantity=" + form1.quantity.value + "&activity=" + form1.activity.value;
+            //return;
+        }
+
+        function blurActivity(obj, activityMin, activityMax) {
+            if (form1.actcheck.value == 1) {
+                if (obj.value != '' && (obj.value < activityMin || obj.value > activityMax)) {
+                    mt.show("活度超出范围 " + activityMin + "-" + activityMax + "！");
+                    obj.value = activityMin;
+                    findProductStockCount();
+                    //console.log(123);
+                }
+            }
+        }
+
+        function keyupActivity(obj) {
+            obj.value = obj.value.replace(/[^\d.]/g, ""); //清除"数字"和"."以外的字符
+            obj.value = obj.value.replace(/^\./g, ""); //验证第一个字符是数字而不是
+            obj.value = obj.value.replace(/^[2-9]/g, ""); //验证第一个字符是数字而不是
+            obj.value = obj.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的
+            obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+            obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); //只能输入两个小数
+            findProductStockCount();
+        }
+
+
+        function findProductStockCount() {
+            if (junan == 1) {
+                mt.send("/ProductStocks.do?act=findProductStockCount&activity=" + form1.activity.value + "&perce=" + perce, function(data) {
+                    data = eval('(' + data + ')');
+                    if (data.type > 0) {
+                        if (data.type == 1) {
+                            //location = '/html/gf/index.html?nexturl='+encodeURIComponent(window.location.pathname+window.location.search);
+                            return;
+                        }
+                        mtDiag.close();
+                        mtDiag.show(data.mes);
+                        return;
+                    } else {
+                        form1.productstockcount.value = data.count;
+                        jQuery(".productstockcount").html(data.count);
+                        //console.log(data);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

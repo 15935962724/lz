@@ -1,0 +1,23 @@
+﻿#
+Private=私人信箱
+ProtectedI(ReadOnly)=保护级I(订阅者仅可阅读信箱中信件)
+ProtectedII(AddLetter)=保护级II(订阅者可以往信箱中发表信件)
+Public(AddDeleteLetter)=公开级(订阅者可以在信箱中发表及删除信件)
+
+PutInFolder=放入邮件文件夹中
+DeleteOriginal=删除底稿
+
+UseAsMyOwnMessageFolder=订阅此信箱
+
+InvalidMessageFolder=无效信箱
+OpenSubscriberList=公开订阅者名单
+MessageFolderSubscribers=订阅者
+
+Attachment=附件
+
+Invite=邀请
+InviteSubscription=邀请订阅本信箱, 请点击链接
+
+
+ManageFolders=管理邮件文件夹
+

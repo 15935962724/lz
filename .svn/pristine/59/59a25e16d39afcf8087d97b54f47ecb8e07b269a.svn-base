@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+
+.switch{text-align:left;margin:0 auto;width:90%;margin-bottom:-10px;padding-left:0px;padding-top:10px;}
+.switch a{display:block;float:left;width:100px;height:24px;background:url(/jsp/custom/jjh/img/switch2.jpg) no-repeat left top;text-align:center;font-size:12px;font-weight:bold;color:#000;text-decoration:none;line-height:24px;margin-right:10px;}
+.switch a.current{background:url(/jsp/custom/jjh/img/switch1.jpg) no-repeat left top;}
+.switch a#a_tab21,.switch a#a_tab30,.switch a#a_tab31,.switch a#a_tab40,.switch a#a_tab41{margin-right:0px;width:90px;border-right:1px solid #DEDEDE;}
+.switch a#a_tab21.current,.switch a#a_tab30.current,.switch a#a_tab31.current,.switch a#a_tab40.current,.switch a#a_tab41.current{border-right:1px solid #6ED1E6}
+
+
+.tip
+{
+background:url(/tea/mt/msg.gif) no-repeat; padding-left:20px;
+border:1px solid #40B3FF;
+background-position:0 -150px;
+background-color:#E5F5FF;
+}
+.err
+{
+background:url(/tea/mt/msg.gif) no-repeat; padding-left:20px;
+border:1px solid #FF8080;
+background-color:#FFF2F2;
+}
+.ok
+{
+background:url(/tea/mt/msg.gif) no-repeat; padding-left:20px;
+background-position:0 -250px;
+} 

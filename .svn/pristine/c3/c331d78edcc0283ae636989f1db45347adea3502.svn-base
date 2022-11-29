@@ -1,0 +1,16 @@
+LastUpdate=Last update
+TradeDataOutputMethodDefault=-1
+DataOutput=Data Output
+Invoice=Invoice
+TradeInvoiceFormatDefault=0
+Balance=Balance
+
+PaymentReceived=Paid
+PaymentUnpaid=Unpaid
+ConfirmPayment=Confirm
+
+OrderSplit=Order splitted
+SplitOrder=Split order
+
+TradeOShipToBilling=Deliver to Payee Address
+TradeOUpdateProfile=Update Registration Address

@@ -1,0 +1,147 @@
+package tea.ui.node.listing;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import tea.entity.RV;
+import tea.entity.member.Profile;
+import tea.entity.node.*;
+import tea.entity.node.PickNode;
+import tea.html.*;
+import tea.htmlx.Languages;
+import tea.htmlx.TypeSelection;
+import tea.resource.Resource;
+import tea.ui.TeaServlet;
+import tea.ui.TeaSession;
+
+public class EditPickNodeDetail extends TeaServlet
+{
+
+    public EditPickNodeDetail()
+    {
+    }
+
+    public void service(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException
+    {
+        try
+        {
+            TeaSession teasession = new TeaSession(request);
+            if(teasession._rv == null)
+            {
+                outLogin(request, response, teasession);
+                return;
+            }
+            String s = request.getParameter("PickNode");
+            int i = PickNode.find(Integer.parseInt(s)).getListing();
+            int j = Listing.find(i).getNode();
+            Node node = Node.find(j);
+            if(!node.isCreator(teasession._rv))
+            {
+                response.sendError(403);
+                return;
+            }
+
+            if(request.getMethod().equals("GET"))
+            {
+                String param=request.getQueryString();
+                response.sendRedirect("/jsp/listing/EditPickNodeDetail.jsp?"+param);
+            } else
+            {
+                int detail  = 0;
+                if(teasession.getParameter("Name") != null)
+                    detail  |= 1;
+                if (teasession.getParameter("Logo") != null)
+                    detail  |= 2;
+                if (teasession.getParameter("ClassName") != null)
+                    detail  |= 4;
+               if (teasession.getParameter("IssueTime") != null)
+                    detail  |= 8;
+                /* if (teasession.getParameter("Divide") != null)
+                    detail  |= 16;
+                if (teasession.getParameter("stockinfo") != null)
+                    detail  |= 32;*/
+
+try{
+                PickNode picknode = PickNode.find(Integer.parseInt(s));
+               picknode.set(detail);
+
+test te=new test();
+System.out.println(                te.set(3));
+}catch(Exception e)
+{}
+
+
+/*
+
+                int l = Integer.parseInt(request.getParameter("NodeStyle"));
+                String s1 = request.getParameter("Type");
+                int k1 = TypeSelection.getType(s1);
+                int i2 = TypeSelection.getTypeAlias(s1);
+                int j2 = Integer.parseInt(request.getParameter("CreatorStyle"));
+                String s4 = request.getParameter("RCreator");
+                if(s4.length() != 0 && !Profile.isExisted(s4))
+                {
+                    outText(response, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidRCreator"));
+                    return;
+                }
+                String s5 = request.getParameter("VCreator");
+                if(s5.length() != 0 && !Profile.isExisted(s5))
+                {
+                    outText(response, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidVCreator"));
+                    return;
+                }
+                int i3 = Integer.parseInt(request.getParameter("StartStyle"));
+                int k3 = 0;
+                try
+                {
+                    k3 = Integer.parseInt(request.getParameter("StartTerm"));
+                }
+                catch(Exception exception1)
+                {
+                    outText(response, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidStartTerm"));
+                    return;
+                }
+                int i4 = Integer.parseInt(request.getParameter("StopStyle"));
+                int j4 = 0;
+                try
+                {
+                    j4 = Integer.parseInt(request.getParameter("StopTerm"));
+                }
+                catch(Exception exception2)
+                {
+                    outText(response, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidStopTerm"));
+                    return;
+                }
+                if(flag)
+                {
+                    PickNode.create(i, l, k1, i2, j2, s4, s5, i3, k3, i4, j4);
+                } else
+                {
+                    PickNode picknode1 = PickNode.find(Integer.parseInt(s));
+                    picknode1.set(l, k1, i2, j2, s4, s5, i3, k3, i4, j4);
+                }
+                ListingCache.expire(i);
+                if(request.getParameter("GoNext")!=null)
+                {   response.sendRedirect("Picks?Node=" + teasession._nNode + "&Listing=" + i);
+                    return;
+                }*/
+                response.sendRedirect("Picks?Node=" + teasession._nNode + "&Listing=" + i);
+            }
+        }
+        catch(Exception exception)
+        {
+            response.sendError(400, exception.toString());
+            exception.printStackTrace();
+        }
+    }
+
+    public void init(ServletConfig servletconfig)
+        throws ServletException
+    {
+        super.init(servletconfig);
+       // super.r.add("tea/ui/node/listing/EditPickNode").add("tea/ui/node/listing/Picks");
+    }
+}

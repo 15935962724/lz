@@ -1,0 +1,1765 @@
+package tea.entity.member;
+
+import java.math.BigDecimal;
+import java.util.*;
+import tea.db.DbAdapter;
+import tea.entity.*;
+import tea.entity.node.*;
+import tea.translator.Translator;
+
+public class Trade extends Entity
+{
+	public int getCurrency() throws EntityException
+	{
+		load();
+		return _nCurrency;
+	}
+
+	public BigDecimal getPayByPoint() throws EntityException
+	{
+		load();
+		return _bdPayByPoint;
+	}
+
+	public BigDecimal getRefundedPoint() throws EntityException
+	{
+		load();
+		return _bdRefundedPoint;
+	}
+
+	public BigDecimal getRefund() throws EntityException
+	{
+		load();
+		return _bdRefund;
+	}
+
+	public BigDecimal getConvertedPoint() throws EntityException
+	{
+		load();
+		return _bdConvertedPoint;
+	}
+
+	public String getCText(int i) throws EntityException
+	{
+		load();
+		if (_strCText == null)
+		{
+			DbAdapter db = new DbAdapter();
+			try
+			{
+				db.executeQuery("SELECT DATALENGTH(ctext), ctext  FROM Trade  WHERE trade=" + _nTrade);
+				if (db.next())
+				{
+					_strCText = db.getText(1);
+				}
+			} catch (Exception exception1)
+			{
+				throw new EntityException(exception1.toString());
+			} finally
+			{
+				db.close();
+			}
+		}
+		return Translator.getInstance().translate(_strCText, _nCLanguage, i);
+	}
+
+	public byte[] getCVoice() throws EntityException
+	{
+		load();
+		if (_blCVoiceFlag && _abCVoice == null)
+		{
+			DbAdapter db = new DbAdapter();
+			try
+			{
+				db.executeQuery("SELECT DATALENGTH(cvoice), cvoice  FROM Trade  WHERE trade=" + _nTrade);
+				if (db.next())
+				{
+					_abCVoice = db.getImage(1);
+				}
+			} catch (Exception exception1)
+			{
+				throw new EntityException(exception1.toString());
+			} finally
+			{
+				db.close();
+			}
+		}
+		return _abCVoice;
+	}
+
+	public int getOptions() throws EntityException
+	{
+		load();
+		return _nOptions;
+	}
+
+	public String getbCity(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strbCity, _nBLanguage, i);
+	}
+
+	public String getbEmail() throws EntityException
+	{
+		load();
+		return _strbEmail;
+	}
+
+	public void setOptions(int i) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade  SET options=" + i + " WHERE trade=" + _nTrade);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		_cache.clear();
+	}
+
+	public void customerRead() throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade  SET options=options|" + 1 + " WHERE trade=" + _nTrade);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	public boolean isVendor(RV rv) throws EntityException
+	{
+		load();
+		return rv.equals(_vendor) || rv._strR.equals(_vendor._strR) && rv.isAccountant();
+	}
+
+	public String getbCountry(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strbCountry, _nBLanguage, i);
+	}
+
+	public String getbAddress(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strbAddress, _nBLanguage, i);
+	}
+
+	public int getNext(boolean flag, RV rv, int i, int j, String community) throws EntityException
+	{
+		int k = 0;
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			k = db.getInt("SELECT trade " + getSql(flag, rv, i, j, community) + " AND trade>" + _nTrade + " ORDER BY trade ASC ");
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		return k;
+	}
+
+	public Date getTime() throws EntityException
+	{
+		load();
+		return _time;
+	}
+
+	public String getTimeToString() throws EntityException
+	{
+		load();
+		return sdf.format(_time);
+	}
+
+	public RV getCustomer() throws EntityException
+	{
+		load();
+		return _customer;
+	}
+
+	public String getbFirstName(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strbFirstName, _nBLanguage, i);
+	}
+
+	public String getVText(int i) throws EntityException
+	{
+		load();
+		if (_strVText == null)
+		{
+			DbAdapter db = new DbAdapter();
+			try
+			{
+				db.executeQuery("SELECT DATALENGTH(vtext), vtext  FROM Trade  WHERE trade=" + _nTrade);
+				if (db.next())
+				{
+					_strVText = db.getText(1);
+				}
+			} catch (Exception exception1)
+			{
+				throw new EntityException(exception1.toString());
+			} finally
+			{
+				db.close();
+			}
+		}
+		return Translator.getInstance().translate(_strVText, _nVLanguage, i);
+	}
+
+	public byte[] getVVoice() throws EntityException
+	{
+		load();
+		if (_blVVoiceFlag && _abVVoice == null)
+		{
+			DbAdapter db = new DbAdapter();
+			try
+			{
+				db.executeQuery("SELECT DATALENGTH(vvoice), vvoice  FROM Trade  WHERE trade=" + _nTrade);
+				if (db.next())
+				{
+					_abVVoice = db.getImage(1);
+				}
+			} catch (Exception exception1)
+			{
+				throw new EntityException(exception1.toString());
+			} finally
+			{
+				db.close();
+			}
+		}
+		return _abVVoice;
+	}
+
+	public String getbZip() throws EntityException
+	{
+		load();
+		return _strbZip;
+	}
+
+	public static int createByBuys(RV rv, RV rv1, Enumeration enumeration, boolean options, int language, String bemail, String bfirstname, String blastname, String borganization, String baddress,
+			String bcity, String bstate, String bzip, String bcountry, String btelephone, String bfax, String semail, String sfirstname, String slastname, String sorganization, String saddress,
+			String scity, String sstate, String szip, String scountry, String stelephone, String sfax, int currency, int _nShipping, BigDecimal sh, BigDecimal tax, int _nCoupon, BigDecimal discount,
+			int clanguage, String ctext, byte cvoice[], BigDecimal paybypoint, BigDecimal refundedpoint, BigDecimal refund, BigDecimal convertedpoint, int payType, String community)
+			throws EntityException
+	{
+		String shippingtext = null;
+		if (_nShipping != 0)
+		{
+			Shipping shipping = Shipping.find(_nShipping);
+			shippingtext = shipping.getText(language);
+		}
+		String coupontext = null;
+		if (_nCoupon != 0)
+		{
+			Coupon coupon = Coupon.find(_nCoupon);
+			coupontext = coupon.getText(language);
+		}
+		int j1 = 0;
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.setAutoCommit(false);
+			db
+					.executeUpdate(" INSERT INTO Trade  (rvendor, vvendor, rcustomer, vcustomer, time, type, status, options,  blanguage,  bemail, bfirstname, blastname, borganization, baddress, bcity, bstate, bzip, bcountry, btelephone, bfax,  semail, sfirstname, slastname, sorganization, saddress, scity, sstate, szip, scountry, stelephone, sfax,  currency,  shipping, shippingtext, sh, tax,  coupon, coupontext, discount,  clanguage, ctext, cvoice, paybypoint, refundedpoint, refund, convertedpoint,paytype,community)  VALUES( "
+							+ DbAdapter.cite(rv._strR)
+							+ ", "
+							+ DbAdapter.cite(rv._strV)
+							+ ", "
+							+ DbAdapter.cite(rv1._strR)
+							+ ", "
+							+ DbAdapter.cite(rv1._strV)
+							+ ", "
+							+ DbAdapter.citeCurTime()
+							+ ", "
+							+ 1
+							+ ", "
+							+ 0
+							+ ", "
+							+ (options ? 4 : 0)
+							+ ", "
+							+ language
+							+ ", "
+							+ DbAdapter.cite(bemail)
+							+ ", "
+							+ DbAdapter.cite(bfirstname)
+							+ ", "
+							+ DbAdapter.cite(blastname)
+							+ ", "
+							+ DbAdapter.cite(borganization)
+							+ ", "
+							+ DbAdapter.cite(baddress)
+							+ ", "
+							+ DbAdapter.cite(bcity)
+							+ ", "
+							+ DbAdapter.cite(bstate)
+							+ ", "
+							+ DbAdapter.cite(bzip)
+							+ ", "
+							+ DbAdapter.cite(bcountry)
+							+ ", "
+							+ DbAdapter.cite(btelephone)
+							+ ", "
+							+ DbAdapter.cite(bfax)
+							+ ", "
+							+ DbAdapter.cite(semail)
+							+ ", "
+							+ DbAdapter.cite(sfirstname)
+							+ ", "
+							+ DbAdapter.cite(slastname)
+							+ ", "
+							+ DbAdapter.cite(sorganization)
+							+ ", "
+							+ DbAdapter.cite(saddress)
+							+ ", "
+							+ DbAdapter.cite(scity)
+							+ ", "
+							+ DbAdapter.cite(sstate)
+							+ ", "
+							+ DbAdapter.cite(szip)
+							+ ", "
+							+ DbAdapter.cite(scountry)
+							+ ", "
+							+ DbAdapter.cite(stelephone)
+							+ ", "
+							+ DbAdapter.cite(sfax)
+							+ ", "
+							+ currency
+							+ ", "
+							+ _nShipping
+							+ ", "
+							+ DbAdapter.cite(shippingtext)
+							+ ", "
+							+ sh
+							+ ", "
+							+ tax
+							+ ", "
+							+ _nCoupon
+							+ ", "
+							+ DbAdapter.cite(coupontext)
+							+ ", "
+							+ discount
+							+ ", "
+							+ clanguage
+							+ ", "
+							+ DbAdapter.cite(ctext)
+							+ ", "
+							+ DbAdapter.cite(cvoice)
+							+ ", "
+							+ paybypoint
+							+ ", "
+							+ refundedpoint
+							+ ", "
+							+ refund
+							+ ", "
+							+ convertedpoint
+							+ ", "
+							+ payType
+							+ ", "
+							+ DbAdapter.cite(community) + ") ");
+			j1 = db.getInt("SELECT @@IDENTITY");
+			if (j1 != 0)
+			{
+				int k1;
+				for (; enumeration.hasMoreElements(); db.executeUpdate(" UPDATE Buy  SET status=" + 2 + " WHERE buy =" + k1))
+				{
+					k1 = ((Integer) enumeration.nextElement()).intValue();
+					Buy buy = Buy.find(k1);
+					int commodity = buy.getCommodity();
+					BuyPrice bp_obj = BuyPrice.find(commodity, buy.getCurrency());
+					int l1 = buy.getNode();
+					int i2 = buy.getNodex();
+					BigDecimal bigdecimal7 = buy.getPrice();
+					BigDecimal agent3 = bigdecimal7.subtract(bp_obj.getPrice3());
+					BigDecimal agent2 = bp_obj.getPrice3().subtract(bp_obj.getPrice2());
+					BigDecimal agent1 = bp_obj.getPrice2().subtract(bp_obj.getPrice1());
+					BigDecimal agent0 = bp_obj.getPrice1().subtract(bp_obj.getSupply());
+					if (agent3.compareTo(BigDecimal.ZERO) < 0)
+					{
+						agent3 = BigDecimal.ZERO;
+					}
+					if (agent2.compareTo(BigDecimal.ZERO) < 0)
+					{
+						agent2 = BigDecimal.ZERO;
+					}
+					if (agent1.compareTo(BigDecimal.ZERO) < 0)
+					{
+						agent1 = BigDecimal.ZERO;
+					}
+					int j2 = buy.getQuantity();
+					db.executeUpdate("INSERT INTO TradeItem(trade, subject, price, oquantity, squantity, subjectx,agent0,agent1,agent2,agent3 )  VALUES( " + j1 + ", " + l1 + ", " + bigdecimal7 + ","
+							+ j2 + ", " + j2 + ", " + i2 + ", " + agent0 + ", " + agent1 + ", " + agent2 + ", " + agent3 + ") ");
+					// 更改购买表中的总量
+					db.executeUpdate(" UPDATE Commodity  SET inventory=inventory-" + j2 + " WHERE goods=" + l1);
+				}
+			}
+			db.commit();
+		} catch (Exception exception1)
+		{
+			try
+			{
+				db.rollback();
+			} catch (Exception _ex)
+			{
+			}
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			try
+			{
+				db.setAutoCommit(true);
+			} catch (Exception _ex)
+			{
+			}
+			db.close();
+		}
+		return j1;
+	}
+
+	public BigDecimal getSh() throws EntityException
+	{
+		load();
+		return _bdSh;
+	}
+
+	public BigDecimal getDiscount() throws EntityException
+	{
+		load();
+		return _bdDiscount;
+	}
+
+	private void load() throws EntityException
+	{
+		// ////////////////////////////////////////////////////// if (!_blLoaded)
+		{
+			DbAdapter db = new DbAdapter();
+			try
+			{
+				db
+						.executeQuery("SELECT rvendor,vvendor, rcustomer, vcustomer,  time,  type, status, options, blanguage,  bemail, bfirstname, blastname, borganization, baddress, bcity, bstate, bzip, bcountry, btelephone, bfax,  semail, sfirstname, slastname, sorganization, saddress, scity, sstate, szip, scountry, stelephone, sfax,  currency,  shipping, sh, tax,  coupon, discount,  clanguage,"+db.length("cvoice")+",  vlanguage,"+db.length("vvoice")+", paybypoint, refundedpoint, refund, convertedpoint,paytype,express,unshipped,come,estimate,gathering,community,"+db.length("explained")+",explained  FROM Trade  WHERE trade="
+								+ _nTrade);
+				if (db.next())
+				{
+					_vendor = new RV(db.getString(1), db.getString(2));
+					_customer = new RV(db.getString(3), db.getString(4));
+					_time = db.getDate(5);
+					_nType = db.getInt(6);
+					_nStatus = db.getInt(7);
+					_nOptions = db.getInt(8);
+					_nBLanguage = db.getInt(9);
+					_strbEmail = db.getString(10);
+					_strbFirstName = db.getVarchar(_nBLanguage, 1, 11); // db.getString(11);
+					_strbLastName = db.getVarchar(_nBLanguage, 1, 12); // db.getString(12);
+					_strbOrganization = db.getVarchar(_nBLanguage, 1, 13); // db.getString(13);
+					_strbAddress = db.getVarchar(_nBLanguage, 1, 14); // db.getString(14);
+					_strbCity = db.getVarchar(_nBLanguage, 1, 15); // db.getString(15);
+					_strbState = db.getVarchar(_nBLanguage, 1, 16); // db.getString(16);
+					_strbZip = db.getString(17);
+					_strbCountry = db.getVarchar(_nBLanguage, 1, 18); // db.getString(18);
+					_strbTelephone = db.getString(19);
+					_strbFax = db.getString(20);
+					_strsEmail = db.getString(21);
+					_strsFirstName = db.getVarchar(_nBLanguage, 1, 22); // db.getString(22);
+					_strsLastName = db.getVarchar(_nBLanguage, 1, 23); // db.getString(23);
+					_strsOrganization = db.getVarchar(_nBLanguage, 1, 24); // db.getString(24);
+					_strsAddress = db.getVarchar(_nBLanguage, 1, 25); // db.getString(25);
+					_strsCity = db.getVarchar(_nBLanguage, 1, 26); // db.getString(26);
+					_strsState = db.getVarchar(_nBLanguage, 1, 27); // db.getString(27);
+					_strsZip = db.getString(28);
+					_strsCountry = db.getVarchar(_nBLanguage, 1, 29); // db.getString(29);
+					_strsTelephone = db.getString(30);
+					_strsFax = db.getString(31);
+					_nCurrency = db.getInt(32);
+					_nShipping = db.getInt(33);
+					_bdSh = db.getBigDecimal(34, 2);
+					_bdTax = db.getBigDecimal(35, 2);
+					_nCoupon = db.getInt(36);
+					_bdDiscount = db.getBigDecimal(37, 2);
+					_nCLanguage = db.getInt(38);
+					_blCVoiceFlag = db.getInt(39) != 0;
+					_nVLanguage = db.getInt(40);
+					_blVVoiceFlag = db.getInt(41) != 0;
+					_bdPayByPoint = db.getBigDecimal(42, 2);
+					_bdRefundedPoint = db.getBigDecimal(43, 2);
+					_bdRefund = db.getBigDecimal(44, 2);
+					_bdConvertedPoint = db.getBigDecimal(45, 2);
+					payType = db.getInt(46);
+					express = db.getInt(47);
+					unshipped = db.getDate(48);
+					come = db.getDate(49);
+					estimate = db.getDate(50);
+					gathering = db.getBigDecimal(51, 4);
+					community = db.getString(52);
+					explained = db.getText(_nBLanguage, 1, 53);
+				}
+			} catch (Exception exception1)
+			{
+				throw new EntityException(exception1.toString());
+			} finally
+			{
+				db.close();
+			}
+			_strCText = null;
+			_strVText = null;
+			_blLoaded = true;
+		}
+	}
+
+	public int getPrev(boolean flag, RV rv, int i, int j, String community) throws EntityException
+	{
+		int k = 0;
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			k = db.getInt("SELECT  trade " + getSql(flag, rv, i, j, community) + " AND trade<" + _nTrade + " ORDER BY trade DESC ");
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		return k;
+	}
+
+	public String getsFax(int i) throws EntityException
+	{
+		load();
+		return _strsFax;
+	}
+
+	public int getStatus() throws EntityException
+	{
+		load();
+		return _nStatus;
+	}
+
+	public int getType() throws EntityException
+	{
+		load();
+		return _nType;
+	}
+
+	public String getsFirstName(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strsFirstName, _nBLanguage, i);
+	}
+
+	public String getbTelephone(int i) throws EntityException
+	{
+		load();
+		return _strbTelephone;
+	}
+
+	public void vendorRead() throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade  SET options=options|" + 2 + " WHERE trade=" + _nTrade);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	private static String getSql(boolean flag, RV rv, int type, String community)
+	{
+		if (flag)
+		{
+			return " FROM Trade  WHERE rcustomer=" + DbAdapter.cite(rv._strR) + " AND trade IN (SELECT trade FROM TradeItem) " + " AND type=" + type + " AND community=" + DbAdapter.cite(community);
+		} else
+		{
+			return " FROM Trade  WHERE rvendor=" + DbAdapter.cite(rv._strR) + " AND trade IN (SELECT trade FROM TradeItem) " + " AND type=" + type + " AND community=" + DbAdapter.cite(community);
+		}
+	}
+
+	private static String getSql(boolean flag, RV rv, int type, int status, String community)
+	{
+		return getSql(flag, rv, type, community) + " AND status=" + status;
+	}
+
+	public RV getVendor() throws EntityException
+	{
+		load();
+		return _vendor;
+	}
+
+	public String getbFax(int i) throws EntityException
+	{
+		load();
+		return _strbFax;
+	}
+
+	public String getbOrganization(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strbOrganization, _nBLanguage, i);
+	}
+
+	public int getCoupon() throws EntityException
+	{
+		load();
+		return _nCoupon;
+	}
+
+	public void set(int i, int j, String s, String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8, String s9, String s10, String s11, String s12, String s13,
+			String s14, String s15, String s16, String s17, String s18, String s19, String s20, String s21, BigDecimal bigdecimal, BigDecimal bigdecimal1, BigDecimal bigdecimal2, int k, String s22,
+			boolean flag, byte abyte0[]) throws EntityException
+	{
+		Date date = new Date(System.currentTimeMillis());
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade  SET status=" + i + ", " + " time=" + DbAdapter.cite(date) + ", " + " blanguage=" + j + ", " + " bemail=" + DbAdapter.cite(s) + ", " + " bfirstname="
+					+ DbAdapter.cite(s1) + ", " + " blastname=" + DbAdapter.cite(s2) + ", " + " borganization=" + DbAdapter.cite(s3) + ", " + " baddress=" + DbAdapter.cite(s4) + ", " + " bcity="
+					+ DbAdapter.cite(s5) + ", " + " bstate=" + DbAdapter.cite(s6) + ", " + " bzip=" + DbAdapter.cite(s7) + ", " + " bcountry=" + DbAdapter.cite(s8) + ", " + " btelephone="
+					+ DbAdapter.cite(s9) + ", " + " bfax=" + DbAdapter.cite(s10) + ", " + " semail=" + DbAdapter.cite(s11) + ", " + " sfirstname=" + DbAdapter.cite(s12) + ", " + " slastname="
+					+ DbAdapter.cite(s13) + ", " + " sorganization=" + DbAdapter.cite(s14) + ", " + " saddress=" + DbAdapter.cite(s15) + ", " + " scity=" + DbAdapter.cite(s16) + ", " + " sstate="
+					+ DbAdapter.cite(s17) + ", " + " szip=" + DbAdapter.cite(s18) + ", " + " scountry=" + DbAdapter.cite(s19) + ", " + " stelephone=" + DbAdapter.cite(s20) + ", " + " sfax="
+					+ DbAdapter.cite(s21) + ", " + " sh=" + bigdecimal + ", " + " tax=" + bigdecimal1 + ", " + " discount=" + bigdecimal2 + ", " + " clanguage=" + k + ", " + " ctext="
+					+ DbAdapter.cite(s22) + (flag ? ", cvoice=null " : abyte0 == null ? "" : ", cvoice=" + DbAdapter.cite(abyte0)) + " WHERE trade=" + _nTrade + " AND status=" + _nStatus);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		_blLoaded = false;
+	}
+
+	public void set(int i, int j, String s, String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8, String s9, String s10, String s11, String s12, String s13,
+			String s14, String s15, String s16, String s17, String s18, String s19, String s20, String s21, int k, String s22, boolean flag, byte abyte0[], String explained) throws EntityException // ,
+																																																		// int
+	// payType
+	{
+		Date date = new Date(System.currentTimeMillis());
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade  SET status=" + i + ", " + " time=" + DbAdapter.cite(date) + ", " + " blanguage=" + j + ", " + " bemail=" + DbAdapter.cite(s) + ", " + " bfirstname="
+					+ DbAdapter.cite(s1) + ", " + " blastname=" + DbAdapter.cite(s2) + ", " + " borganization=" + DbAdapter.cite(s3) + ", " + " baddress=" + DbAdapter.cite(s4) + ", " + " bcity="
+					+ DbAdapter.cite(s5) + ", " + " bstate=" + DbAdapter.cite(s6) + ", " + " bzip=" + DbAdapter.cite(s7) + ", " + " bcountry=" + DbAdapter.cite(s8) + ", " + " btelephone="
+					+ DbAdapter.cite(s9) + ", " + " bfax=" + DbAdapter.cite(s10) + ", " + " semail=" + DbAdapter.cite(s11) + ", " + " sfirstname=" + DbAdapter.cite(s12) + ", " + " slastname="
+					+ DbAdapter.cite(s13) + ", " + " sorganization=" + DbAdapter.cite(s14) + ", " + " saddress=" + DbAdapter.cite(s15) + ", " + " scity=" + DbAdapter.cite(s16) + ", " + " sstate="
+					+ DbAdapter.cite(s17) + ", " + " szip=" + DbAdapter.cite(s18) + ", " + " scountry=" + DbAdapter.cite(s19) + ", " + " stelephone=" + DbAdapter.cite(s20) + ", " + " sfax="
+					+ DbAdapter.cite(s21) + ", " + " clanguage=" + k + ", " + " ctext=" + DbAdapter.cite(s22) + (flag ? ", cvoice=null " : abyte0 == null ? "" : ", cvoice=" + DbAdapter.cite(abyte0))
+					+ ",explained=" + DbAdapter.cite(explained) + " WHERE trade=" + _nTrade + " AND status=" + _nStatus); // ", paytype=" + payType +
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		_blLoaded = false;
+	}
+
+	public void set(int status, int vlanguage, String vtext, boolean flag, byte abyte0[]) throws EntityException
+	{
+		load();
+		Date date = new Date(System.currentTimeMillis());
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade  SET status=" + status + ", " + " time=" + DbAdapter.cite(date) + ", " + " vlanguage=" + vlanguage + ", " + " vtext=" + DbAdapter.cite(vtext)
+					+ (flag ? ", vvoice=null " : abyte0 == null ? "" : ", vvoice=" + DbAdapter.cite(abyte0)) + " WHERE trade=" + _nTrade + " AND status=" + _nStatus);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		_blLoaded = false;
+	}
+
+	public void setExpress(int express) throws EntityException
+	{
+		// load();
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade  SET express=" + express + " WHERE trade=" + _nTrade + " AND status=" + _nStatus);
+			this.express = express;
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		// _blLoaded = false;
+	}
+
+	public void setTime(Date time) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade SET time=" + DbAdapter.cite(time) + " WHERE trade=" + _nTrade);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		this._time = time;
+	}
+
+	// 快递公司
+	public int getExpress() throws EntityException
+	{
+		load();
+		return express;
+	}
+
+	// 支付方式
+	public void setPayType(int payType) throws EntityException
+	{
+		load();
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade  SET paytype=" + payType + " WHERE trade=" + _nTrade + " AND status=" + _nStatus);
+			this.payType = payType;
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	// 发货时间
+	public void setUnshipped(Date unshipped) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade SET unshipped=" + DbAdapter.cite(unshipped) + " WHERE trade=" + _nTrade);
+			this.unshipped = unshipped;
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	// 到达时间
+	public void setCome(Date come) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade SET come=" + DbAdapter.cite(come) + " WHERE trade=" + _nTrade);
+			this.come = come;
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	public void setPayByPoint(BigDecimal bigdecimal) throws EntityException
+	{
+		Date date = new Date(System.currentTimeMillis());
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade SET time=" + DbAdapter.cite(date) + ", " + " paybypoint=" + bigdecimal + "  WHERE trade=" + _nTrade);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		_blLoaded = false;
+	}
+
+	public void setRefund(BigDecimal bigdecimal, BigDecimal bigdecimal1) throws EntityException
+	{
+		Date date = new Date(System.currentTimeMillis());
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade SET time=" + DbAdapter.cite(date) + ", " + " refundedpoint=" + bigdecimal + ", " + " refund=" + bigdecimal1 + "  WHERE trade=" + _nTrade);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		_blLoaded = false;
+	}
+
+	public void setConvertedPoint(BigDecimal bigdecimal) throws EntityException
+	{
+		Date date = new Date(System.currentTimeMillis());
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade SET time=" + DbAdapter.cite(date) + ", " + " convertedpoint=" + bigdecimal + "  WHERE trade=" + _nTrade);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		_blLoaded = false;
+	}
+
+	public int getShipping() throws EntityException
+	{
+		load();
+		return _nShipping;
+	}
+
+	private Trade(int i)
+	{
+		_nType = 0;
+		_nStatus = 0;
+		_nTrade = i;
+		_blLoaded = false;
+	}
+
+	public String getbState(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strbState, _nBLanguage, i);
+	}
+
+	public String getsTelephone(int i) throws EntityException
+	{
+		load();
+		return _strsTelephone;
+	}
+
+	public boolean getVVoiceFlag() throws EntityException
+	{
+		load();
+		return _blVVoiceFlag;
+	}
+
+	public String getsLastName(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strsLastName, _nBLanguage, i);
+	}
+
+	public static int createByAded(RV rv, RV rv1, int i, BigDecimal bigdecimal, boolean flag, int j, String s, String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8,
+			String s9, String s10, int k, int l, int i1, BigDecimal bigdecimal1, int j1, String s11, byte abyte0[]) throws EntityException
+	{
+		String s12 = null;
+		if (l != 0)
+		{
+			Shipping shipping = Shipping.find(l);
+			s12 = shipping.getText(j);
+		}
+		String s13 = null;
+		if (i1 != 0)
+		{
+			Coupon coupon = Coupon.find(i1);
+			s13 = coupon.getText(j);
+		}
+		int k1 = 0;
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.setAutoCommit(false);
+			db
+					.executeUpdate(" INSERT INTO Trade  (rvendor, vvendor, rcustomer, vcustomer,  type, status, options,  blanguage,  bemail, bfirstname, blastname, borganization, baddress, bcity, bstate, bzip, bcountry, btelephone, bfax,  semail, sfirstname, slastname, sorganization, saddress, scity, sstate, szip, scountry, stelephone, sfax,  currency,  shipping, shippingtext, sh, tax,  coupon, coupontext, discount,  clanguage, ctext, cvoice)  VALUES( "
+							+ DbAdapter.cite(rv._strR)
+							+ ", "
+							+ DbAdapter.cite(rv._strV)
+							+ ", "
+							+ DbAdapter.cite(rv1._strR)
+							+ ", "
+							+ DbAdapter.cite(rv1._strV)
+							+ ", "
+							+ 7
+							+ ", "
+							+ 0
+							+ ", "
+							+ (flag ? 4 : 0)
+							+ ", "
+							+ j
+							+ ", "
+							+ DbAdapter.cite(s)
+							+ ", "
+							+ DbAdapter.cite(s1)
+							+ ", "
+							+ DbAdapter.cite(s2)
+							+ ", "
+							+ DbAdapter.cite(s3)
+							+ ", "
+							+ DbAdapter.cite(s4)
+							+ ", "
+							+ DbAdapter.cite(s5)
+							+ ", "
+							+ DbAdapter.cite(s6)
+							+ ", "
+							+ DbAdapter.cite(s7)
+							+ ", "
+							+ DbAdapter.cite(s8)
+							+ ", "
+							+ DbAdapter.cite(s9)
+							+ ", "
+							+ DbAdapter.cite(s10)
+							+ ", "
+							+ DbAdapter.cite(s)
+							+ ", "
+							+ DbAdapter.cite(s1)
+							+ ", "
+							+ DbAdapter.cite(s2)
+							+ ", "
+							+ DbAdapter.cite(s3)
+							+ ", "
+							+ DbAdapter.cite(s4)
+							+ ", "
+							+ DbAdapter.cite(s5)
+							+ ", "
+							+ DbAdapter.cite(s6)
+							+ ", "
+							+ DbAdapter.cite(s7)
+							+ ", "
+							+ DbAdapter.cite(s8)
+							+ ", "
+							+ DbAdapter.cite(s9)
+							+ ", "
+							+ DbAdapter.cite(s10)
+							+ ", "
+							+ k
+							+ ", "
+							+ l
+							+ ", "
+							+ DbAdapter.cite(s12)
+							+ ", "
+							+ 0
+							+ ", "
+							+ 0
+							+ ", "
+							+ i1
+							+ ", "
+							+ DbAdapter.cite(s13)
+							+ ", "
+							+ bigdecimal1
+							+ ", "
+							+ j1
+							+ ", "
+							+ DbAdapter.cite(s11)
+							+ ", "
+							+ DbAdapter.cite(abyte0) + ") ");
+			k1 = db.getInt("SELECT @@IDENTITY");
+			if (k1 != 0)
+			{
+				Aded aded = Aded.find(i);
+				int l1 = aded.getAding();
+				Ading ading = Ading.find(l1);
+				ading.getName(j1);
+				db.executeUpdate("INSERT INTO TradeItem  (trade, subject, price, oquantity, squantity)  VALUES( " + k1 + ", " + i + ", " + bigdecimal + ", 1, 1) ");
+			}
+			db.commit();
+		} catch (Exception exception1)
+		{
+			try
+			{
+				db.rollback();
+			} catch (Exception _ex)
+			{
+			}
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			try
+			{
+				db.setAutoCommit(true);
+			} catch (Exception _ex)
+			{
+			}
+			db.close();
+		}
+		return k1;
+	}
+
+	public static int createByAccess(RV rv, RV rv1, int i, BigDecimal bigdecimal, boolean flag, int j, String s, String s1, String s2, String s3, String s4, String s5, String s6, String s7,
+			String s8, String s9, String s10, int k, int l, int i1, BigDecimal bigdecimal1, int j1, String s11, byte abyte0[]) throws EntityException
+	{
+		String s12 = null;
+		if (l != 0)
+		{
+			Shipping shipping = Shipping.find(l);
+			s12 = shipping.getText(j);
+		}
+		String s13 = null;
+		if (i1 != 0)
+		{
+			Coupon coupon = Coupon.find(i1);
+			s13 = coupon.getText(j);
+		}
+		int k1 = 0;
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.setAutoCommit(false);
+			db
+					.executeUpdate(" INSERT INTO Trade  (rvendor, vvendor, rcustomer, vcustomer,  type, status, options,  blanguage,  bemail, bfirstname, blastname, borganization, baddress, bcity, bstate, bzip, bcountry, btelephone, bfax,  semail, sfirstname, slastname, sorganization, saddress, scity, sstate, szip, scountry, stelephone, sfax,  currency,  shipping, shippingtext, sh, tax,  coupon, coupontext, discount,  clanguage, ctext, cvoice)  VALUES( "
+							+ DbAdapter.cite(rv._strR)
+							+ ", "
+							+ DbAdapter.cite(rv._strV)
+							+ ", "
+							+ DbAdapter.cite(rv1._strR)
+							+ ", "
+							+ DbAdapter.cite(rv1._strV)
+							+ ", "
+							+ 4
+							+ ", "
+							+ 0
+							+ ", "
+							+ (flag ? 4 : 0)
+							+ ", "
+							+ j
+							+ ", "
+							+ DbAdapter.cite(s)
+							+ ", "
+							+ DbAdapter.cite(s1)
+							+ ", "
+							+ DbAdapter.cite(s2)
+							+ ", "
+							+ DbAdapter.cite(s3)
+							+ ", "
+							+ DbAdapter.cite(s4)
+							+ ", "
+							+ DbAdapter.cite(s5)
+							+ ", "
+							+ DbAdapter.cite(s6)
+							+ ", "
+							+ DbAdapter.cite(s7)
+							+ ", "
+							+ DbAdapter.cite(s8)
+							+ ", "
+							+ DbAdapter.cite(s9)
+							+ ", "
+							+ DbAdapter.cite(s10)
+							+ ", "
+							+ DbAdapter.cite(s)
+							+ ", "
+							+ DbAdapter.cite(s1)
+							+ ", "
+							+ DbAdapter.cite(s2)
+							+ ", "
+							+ DbAdapter.cite(s3)
+							+ ", "
+							+ DbAdapter.cite(s4)
+							+ ", "
+							+ DbAdapter.cite(s5)
+							+ ", "
+							+ DbAdapter.cite(s6)
+							+ ", "
+							+ DbAdapter.cite(s7)
+							+ ", "
+							+ DbAdapter.cite(s8)
+							+ ", "
+							+ DbAdapter.cite(s9)
+							+ ", "
+							+ DbAdapter.cite(s10)
+							+ ", "
+							+ k
+							+ ", "
+							+ l
+							+ ", "
+							+ DbAdapter.cite(s12)
+							+ ", "
+							+ 0
+							+ ", "
+							+ 0
+							+ ", "
+							+ i1
+							+ ", "
+							+ DbAdapter.cite(s13)
+							+ ", "
+							+ bigdecimal1
+							+ ", "
+							+ j1
+							+ ", "
+							+ DbAdapter.cite(s11)
+							+ ", "
+							+ DbAdapter.cite(abyte0) + ") ");
+			k1 = db.getInt("SELECT @@IDENTITY");
+			if (k1 != 0)
+			{
+				db.executeUpdate("INSERT INTO TradeItem  (trade, subject, price, oquantity, squantity)  VALUES( " + k1 + ", " + i + ", " + bigdecimal + ", 1, 1) ");
+				if (flag)
+				{
+					db.executeUpdate("INSERT INTO AccessMemberCreate(node,rmember,vmember)VALUES(" + i + ", " + DbAdapter.cite(rv1._strR) + ", " + DbAdapter.cite(rv1._strV) + ")");
+				} else
+				{
+					db.executeUpdate("INSERT INTO AccessRequest(node, rmember, vmember)VALUES(" + i + ", " + DbAdapter.cite(rv1._strR) + ", " + DbAdapter.cite(rv1._strV) + ")");
+				}
+			}
+			db.commit();
+		} catch (Exception exception1)
+		{
+			try
+			{
+				db.rollback();
+			} catch (Exception _ex)
+			{
+			}
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			try
+			{
+				db.setAutoCommit(true);
+			} catch (Exception _ex)
+			{
+			}
+			db.close();
+		}
+		return k1;
+	}
+
+	public String getCouponText(int i) throws EntityException
+	{
+		load();
+		if (_strCouponText == null)
+		{
+			DbAdapter db = new DbAdapter();
+			try
+			{
+				db.executeQuery("SELECT DATALENGTH(coupontext), coupontext  FROM Trade  WHERE trade=" + _nTrade);
+				if (db.next())
+				{
+					_strCouponText = db.getText(1);
+				}
+			} catch (Exception exception1)
+			{
+				throw new EntityException(exception1.toString());
+			} finally
+			{
+				db.close();
+			}
+		}
+		return Translator.getInstance().translate(_strCouponText, _nBLanguage, i);
+	}
+
+	public boolean isCustomer(RV rv) throws EntityException
+	{
+		load();
+		return rv.equals(_customer) || rv._strR.equals(_customer._strR) && (rv.isPurchaser() || rv.isAccountant());
+	}
+
+	public BigDecimal getTax() throws EntityException
+	{
+		load();
+		return _bdTax;
+	}
+
+	public int getTrade() throws EntityException
+	{
+		return this._nTrade;
+	}
+
+	public String getsOrganization(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strsOrganization, _nBLanguage, i);
+	}
+
+	public String getsCity(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strsCity, _nBLanguage, i);
+	}
+
+	public String getsZip() throws EntityException
+	{
+		load();
+		return _strsZip;
+	}
+
+	public static int count(boolean flag, RV rv, int type, int status, String community) throws EntityException
+	{
+		int k = 0;
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			k = db.getInt("SELECT COUNT(trade) " + getSql(flag, rv, type, status, community));
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		return k;
+	}
+
+	public static Trade find(int i)
+	{
+		Trade trade = (Trade) _cache.get(Integer.valueOf(i));
+		// if (trade == null)
+		{
+			trade = new Trade(i);
+			_cache.put(Integer.valueOf(i), trade);
+		}
+		return trade;
+	}
+
+	public static Enumeration find(boolean flag, RV rv, int type, int pos, int pagesize, String community) throws EntityException
+	{
+		Vector vector = new Vector();
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT trade " + getSql(flag, rv, type, community) + " ORDER BY time DESC ");
+			for (int i1 = 0; i1 < pos + pagesize && db.next(); i1++)
+			{
+				if (i1 >= pos)
+				{
+					vector.addElement(Integer.valueOf(db.getInt(1)));
+				}
+			}
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		return vector.elements();
+	}
+
+	public static Enumeration find(boolean flag, RV rv, int type, int status, int pos, int pagesize, String community) throws EntityException
+	{
+		Vector vector = new Vector();
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT trade " + getSql(flag, rv, type, status, community) + " ORDER BY time DESC ");
+			for (int i1 = 0; i1 < pos + pagesize && db.next(); i1++)
+			{
+				if (i1 >= pos)
+				{
+					vector.addElement(Integer.valueOf(db.getInt(1)));
+				}
+			}
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		return vector.elements();
+	}
+
+	public static Enumeration findAll(String where, int pos, int pagesize) throws EntityException
+	{
+		Vector vector = new Vector();
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT t.trade FROM Trade t WHERE 1=1 " + where);
+			for (int i1 = 0; i1 < pos + pagesize && db.next(); i1++)
+			{
+				if (i1 >= pos)
+				{
+					vector.addElement(Integer.valueOf(db.getInt(1)));
+				}
+			}
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		return vector.elements();
+	}
+
+	public static int countAll(String where) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			return db.getInt("SELECT COUNT(t.trade) FROM Trade t WHERE 1=1" + where);
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	public static int count(boolean flag, RV rv, int type, String community) throws EntityException
+	{
+		int j = 0;
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			j = db.getInt("SELECT COUNT(trade) " + getSql(flag, rv, type, community));
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		return j;
+	}
+
+	public static Enumeration find() throws EntityException
+	{
+		Vector vector = new Vector();
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT trade FROM Trade WHERE status=7 ORDER BY time DESC ");
+			while (db.next())
+			{
+				vector.addElement(Integer.valueOf(db.getInt(1)));
+			}
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+		return vector.elements();
+	}
+
+	public String getsEmail() throws EntityException
+	{
+		load();
+		return _strsEmail;
+	}
+
+	public String getsState(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strsState, _nBLanguage, i);
+	}
+
+	public String getsCountry(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strsCountry, _nBLanguage, i);
+	}
+
+	public BigDecimal getTotal() throws EntityException
+	{
+		load();
+		if (_bdTotal == null)
+		{
+			DbAdapter db = new DbAdapter();
+			try
+			{
+				db.executeQuery("SELECT SUM(price*squantity) FROM TradeItem WHERE trade=" + _nTrade);
+				if (db.next())
+				{
+					_bdTotal = db.getBigDecimal(1, 2).add(_bdSh).add(_bdTax).add(_bdDiscount);
+				}
+			} catch (Exception exception1)
+			{
+				throw new EntityException(exception1.toString());
+			} finally
+			{
+				db.close();
+			}
+		}
+		return _bdTotal;
+	}
+
+	public boolean getCVoiceFlag() throws EntityException
+	{
+		load();
+		return _blCVoiceFlag;
+	}
+
+	public String getsAddress(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strsAddress, _nBLanguage, i);
+	}
+
+	public String getShippingText(int i) throws EntityException
+	{
+		load();
+		if (_strShippingText == null)
+		{
+			DbAdapter db = new DbAdapter();
+			try
+			{
+				db.executeQuery("SELECT DATALENGTH(shippingtext), shippingtext  FROM Trade  WHERE trade=" + _nTrade);
+				if (db.next())
+				{
+					_strShippingText = db.getText(1);
+				}
+			} catch (Exception exception1)
+			{
+				throw new EntityException(exception1.toString());
+			} finally
+			{
+				db.close();
+			}
+		}
+		return Translator.getInstance().translate(_strShippingText, _nBLanguage, i);
+	}
+
+	public String getbLastName(int i) throws EntityException
+	{
+		load();
+		return Translator.getInstance().translate(_strbLastName, _nBLanguage, i);
+	}
+
+	public void createBuyPoint(int i, BigDecimal bigdecimal) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("INSERT INTO TradeBuyPoint (trade, currency, buypoint) VALUES( " + _nTrade + ", " + i + ", " + bigdecimal + ")");
+		} catch (Exception _ex)
+		{
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	public void setBuyPoint(int i, BigDecimal bigdecimal) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE TradeBuyPoint SET buypoint=" + bigdecimal + " WHERE trade=" + _nTrade + " AND currency=" + i);
+		} catch (Exception _ex)
+		{
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	public BigDecimal getBuyPoint(int i) throws EntityException
+	{
+		BigDecimal bigdecimal = new BigDecimal(0.0D);
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT buypoint FROM TradeBuyPoint WHERE trade=" + _nTrade + " AND currency=" + i);
+			if (db.next())
+			{
+				bigdecimal = db.getBigDecimal(1, 2);
+			}
+		} catch (Exception _ex)
+		{
+		} finally
+		{
+			db.close();
+		}
+		return bigdecimal;
+	}
+
+	public boolean isExisted(int i) throws EntityException
+	{
+		boolean flag = false;
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT * FROM TradeBuyPoint WHERE trade=" + _nTrade + " AND currency=" + i);
+			if (db.next())
+			{
+				flag = true;
+			}
+		} catch (Exception _ex)
+		{
+		} finally
+		{
+			db.close();
+		}
+		return flag;
+	}
+
+	public void setReclaimedBuyPoint(int i, BigDecimal bigdecimal) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE TradeBuyPoint SET reclaimedbuypoint=" + bigdecimal + " WHERE trade=" + _nTrade + " AND currency=" + i);
+		} catch (Exception _ex)
+		{
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	public BigDecimal getReclaimedBuyPoint(int i) throws EntityException
+	{
+		BigDecimal bigdecimal = new BigDecimal(0.0D);
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT reclaimedbuypoint FROM TradeBuyPoint WHERE trade=" + _nTrade + " AND currency=" + i);
+			if (db.next())
+			{
+				bigdecimal = db.getBigDecimal(1, 2);
+			}
+		} catch (Exception _ex)
+		{
+		} finally
+		{
+			db.close();
+		}
+		return bigdecimal;
+	}
+
+	public Enumeration findConvertCurrency() throws EntityException
+	{
+		Vector vector = new Vector();
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeQuery("SELECT currency FROM TradeBuyPoint WHERE trade=" + _nTrade);
+			for (; db.next(); vector.addElement(Integer.valueOf(db.getInt(1))))
+			{
+				;
+			}
+		} catch (Exception _ex)
+		{
+		} finally
+		{
+			db.close();
+		}
+		return vector.elements();
+	}
+
+	public int getPayType() throws EntityException
+	{
+		load();
+		return payType;
+	}
+
+	public Date getUnshipped() throws EntityException
+	{
+		load();
+		return unshipped;
+	}
+
+	public Date getCome() throws EntityException
+	{
+		load();
+		return come;
+	}
+
+	public Date getEstimate()
+	{
+		return estimate;
+	}
+
+	// 估计到达时间
+	public void setEstimate(Date estimate) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade SET estimate=" + DbAdapter.cite(estimate) + " WHERE trade=" + _nTrade);
+			this.estimate = estimate;
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	// 收款
+	public void setGathering(java.math.BigDecimal gathering) throws EntityException
+	{
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade SET gathering=" + (gathering) + " WHERE trade=" + _nTrade);
+			this.gathering = gathering;
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	public void setInvoice(int invoice) throws EntityException
+	{
+		load();
+		DbAdapter db = new DbAdapter();
+		try
+		{
+			db.executeUpdate("UPDATE Trade  SET invoice=" + invoice + " WHERE trade=" + _nTrade + " AND status=" + _nStatus);
+			this.invoice = invoice;
+		} catch (Exception exception1)
+		{
+			throw new EntityException(exception1.toString());
+		} finally
+		{
+			db.close();
+		}
+	}
+
+	// 收款
+	public java.math.BigDecimal getGathering() throws EntityException
+	{
+		load();
+		return gathering;
+	}
+
+	public int getInvoice() throws EntityException
+	{
+		load();
+		return invoice;
+	}
+
+	public String getCommunity() throws EntityException
+	{
+		load();
+		return community;
+	}
+
+	// 取消订单的原因
+	public String getExplain() throws EntityException
+	{
+		load();
+		return explained;
+	}
+
+	public static final int TRADES_NEW = 0; // 0 NewOrder=新订单
+	public static final int TRADES_CANCEL = 1; // 1 CancelOrder=取消订单
+	public static final int TRADES_INCEPT = 2; // 2 Incept=接收
+	public static final int TRADES_CONFIRMED = 3; // 3 Confirmed=确认
+	public static final int TRADES_UNSHIPPED = 4; // 4 Unshipped=准备发货
+	public static final int TRADES_APPROVED_SHIPPED = 5; // 5 ApprovedShipped=已经发货
+	public static final int TRADES_GATHERING = 6; // 付款
+	public static final int TRADES_FINISHED = 7; // 7 Finished=完成
+	// public static final int TRADES_RECONFIRM = 3;
+	// public static final int TRADES_REFUND = 6;
+	// public static final int TRADES_PENDING_REFUND = 7;
+	// public static final int TRADES_IGNORED_REFUND = 8;
+	// public static final int TRADES_APPROVED_REFUND = 9;
+	// public static final int TRADES_PENDING = 10;
+	public static final String TRADE_STATUS[] = { "NewOrder", "CancelOrder", "Incept", "Confirmed", "Unshipped", "ApprovedShipped", "Gathering", "Finished" };
+	// "NewOrder", "CancelOrder", "Unshipped", "Reconfirm", "Confirmed", "ApprovedShipped", "Refund", "PendingRefund", "IgnoredRefund", "ApprovedRefund", "Pending"
+	// 新订单, 取消订单, 准备发货, 要求确认, 确认, 已经发货, 要求退款, 退款等待处理, 不予退款, 批准退款, 等待处理
+	// "Incept"
+	// express
+	public static final int TRADEO_CREAD = 1;
+	public static final int TRADEO_VREAD = 2;
+	public static final int TRADEO_PAID = 4;
+	public static final int TRADEO_SPLIT = 8;
+	public static final String TRADE_TYPE[] = { "Custom", "Buy", "Bid", "Bargain", "Access", "PaymentTrade", "PaymentList", "PaymentAd" };
+	public static final String PAY_TYPE[] = { "货到付款", "储值卡支付" }; // , "银行汇款", "支票付款"
+	public static final int TRADET_CUSTOM = 0;
+	public static final int TRADET_BUY = 1;
+	public static final int TRADET_BID = 2;
+	public static final int TRADET_BARGAIN = 3;
+	public static final int TRADET_ACCESS = 4;
+	public static final int TRADET_TRADE = 5;
+	public static final int TRADET_LIST = 6;
+	public static final int TRADET_AD = 7;
+	private int _nTrade;
+	private RV _vendor;
+	private RV _customer;
+	private Date _time;
+	private int _nType;
+	private int _nStatus;
+	private int _nOptions;
+	private int _nBLanguage;
+	private String _strbEmail;
+	private String _strbFirstName;
+	private String _strbLastName;
+	private String _strbName;
+	private String _strbOrganization;
+	private String _strbAddress;
+	private String _strbCity;
+	private String _strbState;
+	private String _strbZip;
+	private String _strbCountry;
+	private String _strbTelephone;
+	private String _strbFax;
+	private String _strsEmail;
+	private String _strsFirstName;
+	private String _strsLastName;
+	private String _strsName;
+	private String _strsOrganization;
+	private String _strsAddress;
+	private String _strsCity;
+	private String _strsState;
+	private String _strsZip;
+	private String _strsCountry;
+	private String _strsTelephone;
+	private String _strsFax;
+	private int _nCurrency;
+	private int _nShipping;
+	private String _strShippingText;
+	private BigDecimal _bdSh; // 运费
+	private BigDecimal _bdTax; // 税
+	private int _nCoupon;
+	private String _strCouponText;
+	private BigDecimal _bdDiscount;
+	private int _nCLanguage;
+	private String _strCText;
+	private boolean _blCVoiceFlag;
+	private byte _abCVoice[];
+	private int _nVLanguage;
+	private String _strVText;
+	private boolean _blVVoiceFlag;
+	private byte _abVVoice[];
+	private BigDecimal _bdPayByPoint;
+	private BigDecimal _bdRefundedPoint;
+	private BigDecimal _bdRefund;
+	private BigDecimal _bdConvertedPoint;
+	private boolean _blLoaded;
+	private BigDecimal _bdTotal;
+	private static Cache _cache = new Cache();
+	private int payType;
+	private int express;
+	private Date unshipped;
+	private Date come;
+	private Date estimate;
+	private java.math.BigDecimal gathering;
+	private int invoice;
+	private static final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+	private String community;
+	private String explained;
+}

@@ -1,0 +1,16 @@
+#
+InvalidLicecnse=Invalid license
+InvalidWebSite=Invalid website
+InvalidWebName=Invalid web name
+InvalidWebMaster=Invalid web master
+InvalidWebSupport=Invalid web support
+InvalidSmtpServer=Invalid smtp server
+AlertConnection=Connection to {0} is broken, You license will be verified later automaticly.
+InfWebOptionsSet=Web options set
+SerialNumber=Serial Number
+RegistrationDate=Registration Date
+ExpirationDate=Expiration Date
+NumberOfCommunity=Licensed Number of Communities
+LocalHost=Localhost IP
+EditLicense=Editor License
+Sitemap=Site Map

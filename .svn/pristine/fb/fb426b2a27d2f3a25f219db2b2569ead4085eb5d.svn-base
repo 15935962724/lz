@@ -1,0 +1,15 @@
+WorkTableStatus=Work Order workflow status
+Sender=Order Sender
+Manager=Department Manager
+Reciever=Order Receiver
+Status=Status
+PleaseWaitManagerDesign=Pending Departing Manager Approval
+PleaseRecieverDesign=Please Signed with Order Reciver Signature
+PleaseFillInCompleteDate=Please fill in Finishing Date by Order Receiver
+PleaseFillInCompleteStatus=Please fill in Finish Status by Order Sender
+Return=Return
+WorkTableComplete=Work Order Has Been Completed
+ManagerNotAgree=Department Manager Disapproval
+WorkTableSearch=Work Order Search
+Result=Search Result
+IgnoreDate=Missing Date

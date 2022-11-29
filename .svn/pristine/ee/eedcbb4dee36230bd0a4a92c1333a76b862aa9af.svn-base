@@ -1,0 +1,173 @@
+package tea.entity.admin.cebbank;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.imageio.ImageIO;
+
+import com.runqian.report4.dataset.DataSet;
+import com.runqian.report4.dataset.Row;
+import com.runqian.report4.model.ReportDefine;
+import com.runqian.report4.model.engine.ExtCellSet;
+import com.runqian.report4.model.expression.graph.StatisticGraph;
+import com.runqian.report4.usermodel.Context;
+import com.runqian.report4.usermodel.Engine;
+import com.runqian.report4.usermodel.IReport;
+import com.runqian.report4.usermodel.ParamMetaData;
+import com.runqian.report4.util.ReportUtils;
+
+//import nc.ui.foundation.util.ClientENV;
+
+
+public class QueryModuleClient
+{
+
+    public static String strurl = "http://127.0.0.1:8080/clientRemote";
+
+    public static Map process(Map map) throws Exception
+    {
+        URL url = new URL(strurl);
+        HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
+        urlc.setDoOutput(true);
+        OutputStream outstream = urlc.getOutputStream();
+        ObjectOutputStream oostream = new ObjectOutputStream(outstream);
+        oostream.writeObject(map);
+        outstream.close();
+        oostream.close();
+        urlc.connect();
+        urlc.disconnect();
+        urlc.setDoOutput(false);
+        urlc.setDoInput(true);
+        ObjectInputStream responsein = new ObjectInputStream(urlc.getInputStream());
+        Map returnMap = (Map) responsein.readObject();
+        responsein.close();
+        System.out.println("channel_no : " + returnMap.get("channel_no"));
+        System.out.println("trade_no : " + returnMap.get("trade_no"));
+        System.out.println("error_code : " + returnMap.get("error_code"));
+        return returnMap;
+    }
+
+    public byte[] exportPdf(List result)
+    {
+        try
+        {
+
+            DataSet oneBatchDataSet = createDataSet(result, "ds0");
+
+            ExtCellSet.setLicenseFileName("report4.lic");
+
+            String raqPath = "/tea/entity/admin/cebbank/templet/contrast_info.raq";
+
+            String destPath = "c:/dest.pdf";
+
+            InputStream fis = QueryModuleClient.class.getResource(raqPath).openStream();
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ReportDefine rd = (ReportDefine) ois.readObject();
+
+            Context context = new Context();
+
+            context.setDataSet(oneBatchDataSet.getDataSetName(), oneBatchDataSet);
+
+            Map param = new HashMap();
+            BufferedImage bimage = ImageIO.read(QueryModuleClient.class.getResourceAsStream("/tea/entity/admin/cebbank/templet/ceb.JPG"));
+            param.put("banner", StatisticGraph.getImageBytes(bimage, (byte) 1));
+
+            ParamMetaData pmd = rd.getParamMetaData();
+            String paramOrMocrName = "";
+            if (pmd != null && param != null)
+            {
+                for (int i = 0; i < pmd.getParamCount(); i++)
+                {
+                    paramOrMocrName = pmd.getParam(i).getParamName();
+                    context.setParamValue(paramOrMocrName, param.get(paramOrMocrName));
+                }
+            }
+
+            Engine engine = new Engine(rd, context);
+            IReport iReport = engine.calc();
+
+            ReportUtils.exportToPDF(destPath, iReport);
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+            ReportUtils.exportToPDF(out, iReport);
+
+            return out.toByteArray();
+
+        } catch (Exception ex)
+        {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    private DataSet createDataSet(List queryList, String name)
+    {
+
+        DataSet ds = new DataSet(name);
+        List keyList = new ArrayList();
+
+        Set keys = ((Map) queryList.get(0)).keySet();
+        for (Iterator iter2 = keys.iterator(); iter2.hasNext(); )
+        {
+            String oneKey = (String) iter2.next();
+            ds.addCol(oneKey);
+            keyList.add(oneKey);
+        }
+
+        for (Iterator iter = queryList.iterator(); iter.hasNext(); )
+        {
+            Map ones = (Map) iter.next();
+            Row row = ds.addRow();
+            for (int i = 0; i < keyList.size(); i++)
+            {
+                row.setData(i + 1, ones.get(keyList.get(i)));
+            }
+        }
+        return ds;
+    }
+
+    public static void main(String[] args)
+    {
+        try
+        {
+//            Map map = new HashMap();
+//            map.put("channel_no", "111111");
+//            map.put("trade_no", "0001");
+//            map.put("code", "1");
+//            map.put("user", "柳州五菱汽车");
+//            Map rmap = process(map);
+//            System.out.println(rmap);
+
+            QueryModuleClient q = new QueryModuleClient();
+
+            Map map = new HashMap();
+            map.put("channel_no", "111111");
+            map.put("trade_no", "4001");
+            map.put("code", "1199292481");
+            map.put("period", "1");
+            Map rmap = process(map);
+            System.out.println(rmap);
+
+            if (rmap.get("result") != null && ((List) rmap.get("result")).size() != 0)
+            {
+                q.exportPdf((List) rmap.get("result"));
+            }
+
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+}

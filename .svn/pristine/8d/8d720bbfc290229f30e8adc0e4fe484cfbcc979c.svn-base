@@ -1,0 +1,11 @@
+#
+Flight=Flight
+FlightCode=Flight Number
+AeronefType=Air Craft Type
+Course=Route
+Takeoff=Departure Time
+Descent=Landing Time
+Eat=Dining
+Remark=Remark
+Berth=Class Type
+Aagio=Discount

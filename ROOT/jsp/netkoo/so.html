@@ -1,0 +1,19 @@
+﻿
+<SCRIPT LANGUAGE=JAVASCRIPT SRC=/tea/tea.js></SCRIPT>
+
+<form name="form1" action="/jsp/netkoo/SearchCompany.jsp" target="result">
+<input name="city" type="hidden" value="0"/>
+<input name="father" type="hidden" value="0"/>
+<input type="text" name="q"/>
+<input type="submit" value="GO">
+<iframe src="/jsp/netkoo/City.jsp?field=form1.city" width="600px" scrolling="no"></iframe>
+<script src="/jsp/include/JsNodeTree.jsp?node=1&root=1"></script>
+<iframe name=result src="/jsp/netkoo/SearchCompany.jsp" width="600px" scrolling="no"></iframe>
+<script>
+function nt_open(id)
+{
+form1.father.value=id;
+form1.submit();
+}
+</script>
+</form>

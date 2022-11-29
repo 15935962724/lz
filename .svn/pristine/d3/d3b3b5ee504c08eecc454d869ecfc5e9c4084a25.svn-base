@@ -1,0 +1,1776 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>近距离治疗平台 - 粒子治疗一站式解决方案</title><meta name='filetype' content='0' />
+<meta name='publishedtype' content='1' />
+<meta name='pagetype' content='2' />
+<meta name='catalogs' content='19053380' />
+
+<meta name='picture' content='/res/Home/1703/17030043.jpg'/>
+<meta name="keywords" content=" 近距离治疗平台 - 粒子治疗一站式解决方案 "/>
+<meta name="description" content=""/>
+<link rel="Shortcut Icon" href="/res/Home/favicon.ico"/><script language="javascript" src="/tea/load.js"></script><script language="javascript" src="/tea/tea.js"></script><script language="javascript" src="/tea/ym/ymPrompt.js"></script><script language="javascript" src="/tea/mt.js?t=0917"></script><script>var lang=1,node={id:19053380,father:14100002,community:'Home',type:0,hidden:false},member={id:0};cook.set('community',node.community);</script><link href="/res/Home/cssjs/14110279L1.css" rel="stylesheet" type="text/css"/><script language="javascript" src="/res/Home/cssjs/14110279L1.js"></script>
+<link href="/res/Home/cssjs/19061238L1.css" rel="stylesheet" type="text/css"/><script language="javascript" src="/res/Home/cssjs/19061238L1.js"></script>
+<link href="/res/Home/cssjs/19061351L1.css" rel="stylesheet" type="text/css"/><script language="javascript" src="/res/Home/cssjs/19061351L1.js"></script>
+<link href="/res/Home/cssjs/19061511L1.css" rel="stylesheet" type="text/css"/><script language="javascript" src="/res/Home/cssjs/19061511L1.js"></script>
+<link href="/res/Home/cssjs/19061631L1.css" rel="stylesheet" type="text/css"/><script language="javascript" src="/res/Home/cssjs/19061631L1.js"></script>
+<link href="/res/Home/cssjs/19062066L1.css" rel="stylesheet" type="text/css"/><script language="javascript" src="/res/Home/cssjs/19062066L1.js"></script>
+<link href="/res/Home/cssjs/19062069L1.css" rel="stylesheet" type="text/css"/><script language="javascript" src="/res/Home/cssjs/19062069L1.js"></script>
+</head>
+<body><div id="Body"><div id="Header"><script src="/tea/jquery.min.js"></script>
+<script src="/tea/bootstrap.min.js"></script>
+
+<!--link rel="stylesheet" href="/tea/animate.css"-->
+
+<style>
+    .header{min-width:1200px;}
+    /*.animate-box {
+        opacity: 0;
+    }*/
+    #Header{width:100%;min-width:1200px;height:95px;position:relative;}
+    .head{height:95px;
+        position:fixed;
+        padding:0px 300px;
+        top:0px;
+        background:#fff;
+        z-index:8;
+        width:100%;
+box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+    .nav{margin:0px auto;height:95px;
+        max-width:850px;min-width:440px;}
+    .nav > li{line-height:95px;background:None;text-align:center;
+        position: relative !important;width:13%;min-width:60px;float:left;display:block;}
+    .nav > li.active a{background:none;color:#000;
+        position: relative;}
+    .nav > li:hover a{background:none;}
+    .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+        background:none;
+    }
+    .nav > li a:before{
+        width:100%;
+        height:3px;
+        background:#044694;
+        content:'';
+        position: absolute;
+        top:65px;
+        padding:0px 5px;
+        display:none;
+    }
+    .nav > li.active a:before{
+        display:inline-block;
+    }
+    .nav > li a{
+        font-size:15px;
+        font-weight:bold;
+        padding:0px;
+        background:none;
+        color:#000;
+        display:inline-block
+    }
+    .nav > li a:hover{
+        background:none !important;
+        color:#000 !important
+    }
+    .dropdown a{
+        background:none !important;
+    }
+    .dropdown-menu{
+        left:0px !important;
+        top:93px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        width:850px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding:20px 25px;
+    }
+    .nav .box{
+        width:25%;
+        float:left;
+        padding:0px 25px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .nav .box h1{
+        color:#044694;
+        font-size:16px;
+        font-weight:bold;
+        border-bottom:2px #044694 solid;
+        line-height:200%;
+    }
+    .nav .box h1 a{
+        color:#044694;
+    }
+    .nav .box ul{
+
+    }
+    .nav .box ul li{
+        width:100%;
+        line-height:38px;
+        border-bottom:1px #e1e1e1 solid;
+        text-align:left;
+        font-size:15px;color:#000;font-weight:bold;
+    }
+    .nav .box ul li a:hover{
+        color:#044694 !important;
+    }
+    .head .logo{
+        padding:25px 50px;
+        position: absolute;
+        left:0px;
+    }
+    .head .logo img{
+        height:45px;
+    }
+
+.xdh-list{
+    background:#fff;
+position: absolute;
+top:93px;
+padding:15px;
+-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+display:none;
+width:auto;
+}
+.xdh-list li a{
+font-size:15px;
+font-weight:bold;
+color:#333;
+}
+.xdh-list li{
+line-height:45px;
+height:45px;
+}
+.xdh-list ul li a:hover{
+color:#044694 !important;
+}
+.li3 .xdh-list{
+left:50%;
+margin-left:-82.5px;
+}
+.li4 .xdh-list{
+left:50%;
+margin-left:-60px;
+}
+.li5 .xdh-list{
+left:50%;
+margin-left:-75px;
+}
+.li6 .xdh-list{
+left:50%;
+margin-left:-45px;
+}
+.li7 .xdh-list{
+left:50%;
+margin-left:-45px;
+}
+
+</style>
+<script>
+    $(function(){
+        $(".nav li").hover(function(){
+            $(this).children(".dropdown-menu").show();
+        },function(){
+            $(this).children(".dropdown-menu").hide();
+        })
+        $(".nav li").hover(function(){
+            $(this).children(".xdh-list").show();
+        },function(){
+            $(this).children(".xdh-list").hide();
+        })
+    })
+</script>
+<div class="head">
+    <div class="logo"><a href="/html/folder/19053380-1.htm"><img src="/res/Home/structure/19090074.jpg"></a></div>
+    <ul class="nav nav-pills nav-justified">
+        <li class="li1"><a href="/html/folder/19053380-1.htm">首页</a></li>
+        <li class="li2">
+            <a class="dropdown-toggle" href="javascript:;">解决方案</a>
+            <div class="dropdown-menu">
+            <div class="box">
+                <h1><span id="NodeTitle"><a href="/html/folder/19053473-1.htm" target="_self" title="近距离治疗药物">近距离治疗药物</a></span></h1>
+                <ul>
+                    <li><span id="ListingOSonSubject"><a href="/html/folder/19053473-1.htm#nava1" target="_self">碘[<sup>125</sup>I]</a></span></li>
+                    <li><span id="ListingOSonSubject"><a href="/html/folder/19053473-1.htm#nava2" target="_self">钯[<sup>103</sup>Pd]</a></span></li>
+                    <li><span id="ListingOSonSubject"><a href="/html/folder/19053473-1.htm#nava3" target="_self">铯[<sup>131</sup>Cs]</a></span></li>
+                    <li><span id="ListingOSonSubject"><a href="/html/folder/19053473-1.htm#nava4" target="_self">钇[<sup>90</sup>Y]</a></span></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h1><span id="NodeTitle"><a href="/html/folder/19053478-1.htm" target="_self" title="治疗计划系统TPS">治疗计划系统TPS</a></span></h1>
+                <ul><li><span id="ListingOSonSubject"><a href="http://www.ftzy.com.cn/"  target="_blank">北京飞天兆业</a></span></li></ul>
+            </div>
+            <div class="box">
+                <h1><span id="NodeTitle"><a href="/html/folder/19053479-1.htm" target="_self" title="植入设备/器械">植入设备/器械</a></span></h1>
+                <ul>
+                    <li><span id="ListingOSonSubject"><a href="/html/folder/19053479-1.htm#nava1" target="_self">粒子植入设备与器械</a></span></li>
+                    
+                    <li><span id="ListingOSonSubject"><a href="/html/folder/19053479-1.htm#nava2" target="_self">辐射检测与防护</a></span></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h1><span id="NodeTitle"><a href="/html/folder/19053483-1.htm" target="_self" title="手术支持服务">手术支持服务</a></span></h1>
+                <ul>
+                    <li><span id="ListingOSonSubject"><a href="/html/folder/19053483-1.htm#nava1" target="_self">前列腺设备支持服务</a></span></li>
+                    <li><span id="ListingOSonSubject"><a href="/html/folder/19053483-1.htm#nava2" target="_self">远程计划系统服务</a></span></li>
+                </ul>
+            </div>
+</div>
+</li>
+<li class="li3">
+    <a href="/html/folder/19080995-1.htm">产品</a>
+    <div class="xdh-list" style='width:165px;'>
+        <ul>
+        <li><a href="/html/folder/19080995-1.htm">近距离治疗药物</a></li>
+        <li><a href="/html/folder/19081308-1.htm">治疗计划系统TPS</a></li>
+        <li><a href="/html/folder/19081608-1.htm?category=14110030">粒子植入器械与设备</a></li>
+        <li><a href="/html/folder/19081645-1.htm?category=14102672">前列腺设备支持服务</a></li>
+
+        </ul>
+    </div>
+</li>
+<li class="li4">
+    <a href="/html/folder/19053486-1.htm">患者</a>
+    <div class="xdh-list" style='width:120px;'>
+        <ul>
+        <li><a href="/html/folder/19053486-1.htm">粒子治疗简介</a></li>
+        <li><a href="/html/Home/node/19053494-1.htm">患者指南</a></li>
+        <li><a href="/html/category/19053510-1.htm">招募计划</a></li>
+        </ul>
+    </div>
+</li>
+<li class="li5">
+    <a href="/html/category/19053511-1.htm">医生</a>
+    <div class="xdh-list" style='width:150px;'>
+        <ul>
+        <li><a href="/html/category/19053511-1.htm">政策法规</a></li>
+        <li><a href="/html/category/19053512-1.htm">医院资质</a></li>
+        <li><a href="/html/category/19061126-1.htm">临床资料</a></li>
+        <li><a href="/html/category/19061129-1.htm">放射性同位素手册</a></li>
+        <li><a href="/html/category/19061130-1.htm">医护防护</a></li>
+        </ul>
+    </div>
+</li>
+<li class="li6">
+    <a href="/html/category/19053465-1.htm">活动资讯</a>
+    <div class="xdh-list" style='width:90px;'>
+        <ul>
+        <li><a href="/html/category/19053465-1.htm">行业新闻</a></li>
+        <li><a href="/html/category/19053466-1.htm">会议活动</a></li>
+        </ul>
+    </div>
+</li>
+<li class="li7">
+    <a href="/html/folder/19061135-1.htm">关于</a>
+    <div class="xdh-list" style='width:90px;'>
+        <ul>
+        <li><a href="/html/folder/19061135-1.htm">公司介绍</a></li>
+        <li><a href="/html/folder/19061138-1.htm">联系我们</a></li>
+        </ul>
+    </div>
+</li>
+</ul>
+<style>
+.myOrder a{color:#333;}
+    .head .user{
+        position: absolute;
+        right:50px;
+        top:22px;
+        height:48px;
+        line-height:48px;
+    }
+    .head .span{
+        float:left;
+        padding:0px 5px;
+        height:48px;
+        display:inline-block;
+    }
+    .head .search{
+        width:48px;
+        background:url(/res/Home/structure/19061621.png) center no-repeat;
+        position: relative;
+    }
+    .head .shopCar{
+        width:48px;
+        background:url(/res/Home/structure/19090243.png) center no-repeat;
+        position: relative;
+    }
+    .head .shopCar a{width:48px;height:48px;display:inline-block;}
+    .head .search.on{
+        background:none;
+    }
+    .head .search.on:after,.head .search.on:before{
+        width:20px;
+        height:2px;
+        content: '';
+        display: block;
+        position: absolute;
+        transform:rotate(45deg);
+        background:#000;
+        top:23px;
+        left:14px;
+    }
+    .head .search.on:before{
+        transform:rotate(-45deg);
+    }
+    .head .loginB a{
+        padding:0px 4px;
+        color:#000;
+    }
+    .head .nav{
+        -webkit-transition: -webkit-transform 0.5s, opacity 3s;
+        transition: transform .5s, opacity 3s;
+        opacity: 1;
+        transform-origin: left center;
+    }
+    .head-open ul.nav{
+        opacity: 0;
+        transform: scale3d(0, 0, 0);
+    }
+    .search-box {
+        position: absolute;
+        top: 0px;
+        right: 366px;
+        z-index: -1;
+        width: 500px;
+        overflow: hidden;
+        -webkit-transition: -webkit-transform 0.5s;
+        transition: transform .3s, top .3s;
+        transform-origin: right center;
+        transform: scale3d(0, 0, 0);
+    }
+    .head-open .search-box{
+        transform: scale3d(1, 1, 1);
+        z-index: 1;
+        display:block;
+    }
+    .head-open .search-box input{
+        width: 100%;
+        height: 48px;
+        border: 1px solid #d4d4d4;
+        line-height: 48px;
+        border-radius: 5px;
+        padding-left: 20px;
+        outline: none;
+        font-size: 16px;
+        padding-right: 50px;
+    }
+    .head-open .search-box .btn{
+        background:url(/res/Home/structure/19061621.png) center no-repeat;
+        width:48px;
+        height:48px;
+        position: absolute;
+        right:0px;
+        border:none;
+        top:1px;
+        cursor: pointer;
+        z-index:1;
+        outline: none;
+        color:rgba(0,0,0,0);
+    }
+    .dad{
+        padding-right:15px;
+        margin-right:10px;
+        position: relative;
+        cursor: pointer;
+        height:75px;
+        display: inline-block;
+    }
+    .dad:after{
+        content: '';
+        width:6px;
+        height:20px;
+        position: absolute;
+        right:0px;
+        top:15px;
+        background:url(/res/Home/structure/19061742.png) right center no-repeat;
+        background-size:6px auto;
+        display: block;
+        transform:rotate(90deg);
+        -ms-transform:rotate(90deg); /* Internet Explorer */
+        -moz-transform:rotate(90deg); /* Firefox */
+        -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+        -o-transform:rotate(90deg); /* Opera */
+    }
+    .dad .son{
+        display:none;
+        position: absolute;
+        top:73px;
+        width:150px;
+        left:50%;
+        margin-left:-76px;
+        background:#fff;
+        border:1px #E3E3E3 solid;
+        -webkit-border-radius: 0px 0px 5px 5px;
+        -moz-border-radius: 0px 0px 5px 5px;
+        border-radius: 0px 0px 5px 5px;
+        padding:6px;
+    }
+    .dad .son em a{
+        font-style: normal;
+        font-size:14px;
+        display: block;
+        line-height:260%;
+        border-bottom:1px #E3E3E3 dashed;
+        text-align:center;
+    }
+    .dad .son em:last-child a{
+        border:none;
+    }
+.shopcar{
+position: relative;
+}
+#shopcarcount{
+position: absolute;
+    right: 9px;
+    top: 5px;
+    background: #DF6C0A;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    line-height: 19px;
+    text-align: center;
+    color: #fff;
+    font-style: normal;
+    font-size: 13px;
+
+}
+</style>
+<script>
+    $(function(){
+        $(".loginB").hover(function(){
+            $(".son").show();
+        },function(){
+            $(".son").hide();
+        });
+        $(".search").click(function(){
+            $(".head").toggleClass("head-open");
+            $(this).toggleClass("on");
+        });
+
+    })
+</script>
+<div class="user">
+    <div class="search-box">
+        <div class="search-input">
+<form name="fser" action="/html/folder/19113053-1.htm" onsubmit="if(action.endsWith(location.pathname))action=location.pathname.replace('-1','');var t=this.q;if(t.value==t.defaultValue)mt.lamp(t);else location=action+'#q='+t.value;return false;" >
+<input type="submit" class="btn" value=" " />
+
+<input name="q" id="js-search-input-popup" class="js-search-input-popup" placeholder="搜索" class='txt' onfocus="if(value==defaultValue)value=''" onblur="if(!value)value=defaultValue;" required >
+<script>
+if(mt.isIE)
+{
+  var t=fser.q;
+  t.value=t.defaultValue=t.placeholder;
+}
+</script>
+</form>
+        </div>
+    </div>
+    <div class="search span">
+
+    </div>
+
+    <span class="loginB span" id='logins'>
+            <a href="/html/folder/19061184-1.htm">登录</a>
+            <!--<a href="/html/folder/19061185-1.htm">注册</a>-->
+    </span>
+    <span class="myOrder span" style="display:none;">
+             <a href="/html/folder/19092169-1.htm">我的订单</a>
+    </span>
+    <span class="shopCar span">
+            <a class='shopcar' href='/html/folder/19092423-1.htm'><em id='shopcarcount'></em></a>
+    </span>
+
+</div>
+</div>
+
+<script>
+    if (top.location != self.location)
+    {
+        top.location=self.location;
+    }
+
+mt.send("/mobjsp/yl/shop/ajax.jsp?act=findcountCarts",function(d)
+        {
+d = eval('(' + d+ ')');
+
+jQuery("#shopcarcount").html(d.count);
+});
+
+    if(cook.get("member"))
+    {
+        mt.send("/Members.do?act=json",function(d)
+        {
+            eval("d="+d);
+            var meb;
+            //登陆后
+            if(!d.username)return;
+            if(member.type=="1")
+            {
+                //meb="<a href='/jsp/admin/indextop.jsp' class='but' style='float:none'>管理中心</a>";
+                meb="";
+                $('.user .myOrder').html("<a href='/jsp/admin/indextop.jsp'>管理中心</a>");
+                $('.user .myOrder').show();
+            }else{
+                meb="<a href='/html/folder/19092169-1.htm' class='but' style='float:none'>个人中心</a>";
+                $('.user .myOrder').show();
+            }
+
+            var topins=$$('logins');
+            topins.innerHTML="<span class='dad'>"+d.username+"<span class='son'><em>"+meb+"</em><em><a href='/servlet/Logout' class='but' style='float:none'>退出</a></em></span></span>";
+
+
+
+            //编辑按钮
+            if(d.role.length<2)return;
+            var editmode=$$('editmode');
+            if(editmode)return;
+            topins.innerHTML+="<input type='image' style='z-index:100;right:1px;position:fixed;top:14px;' id='editmode' onclick=window.open('/servlet/Node?node="+node.id+"&em=1&edit=ON','_top') src='/tea/image/public/icon_edit.gif' accesskey='w'>";
+            editmode=$$('editmode');
+            if(mt.isIE){(editmode=editmode.style).position='absolute';setInterval('editmode.top=document.body.scrollTop+14;',100);}
+        });
+    }
+</script>
+
+<script>
+    var btns =document.getElementById('btns');
+    var showid=document.getElementById('showid');
+    var colss=document.getElementById('colss');
+    //btns.onmouseover=function(){
+    //    showid.style.display='block';
+    //}
+    //colss.onclick=function(){
+    //    showid.style.display='none'
+    //};
+
+    //document.onclick=function(){
+    //    showid.style.display='none';
+    //};
+    if(showid.addEventListener)
+    {
+        showid.addEventListener('click',function(e){e.stopPropagation()},false)
+    }
+    else if(showid.attachEvent)
+    {
+        showid.attachEvent('click',function(e){e.stopPropagation()},false)
+    }
+
+    if(cook.get("member"))
+    {
+
+    }else{
+        if(cook.get("autologin"))
+        {
+            mt.send("/Members.do?act=autologin",function(d)
+                {
+                    parent.location = '/';
+                }
+            );
+        }
+    }
+
+</script></div>
+<div id="Content"><div id="Content1"><style>
+    .focus{
+        height:600px;
+        position: relative;
+    }
+    .focus img{
+   width:100%;
+        height:600px !important;
+        max-width: none !important;
+        display:inherit !important;margin:0px auto;
+    }
+    .focus .item{text-align:center;}
+    .focus .carousel-indicators li{margin:1px 8px;background:#cdcdcd;border:none;}
+    .focus .carousel-indicators .active{margin:0px 5px;background:#e47415;border:none;}
+    .focus .item{
+    }
+.carousel-indicators{bottom:12px;}
+    .focus .nr{
+        width:1000px;
+        position: absolute;
+        height:200px;
+        left:50%;
+        margin-left:-500px;
+        top:50%;
+        margin-top:-100px;
+        z-index:1;
+        color:#fff;
+    }
+    .focus h1,.focus p{
+        width:440px;
+        line-height:200%;
+        text-align:left;
+    }
+.carousel-indicators{z-index:2;}
+</style>
+<div id="myCarousel" class="carousel slide focus section slider-text animated fadeInUp">
+
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <!--img src="/res/Home/structure/19091407.jpg" alt="First slide">
+            <div class="nr slider-text">
+                <h1>市场领导者</h1>
+                <p>中国同辐股份有限公司是中国核工业集团公司旗下一家核技术应用产业专业化大型央企，在国内近距离放射治疗（LDR）领域处于市场领导地位，致力于为临床提供粒子治疗“一站式”整体解决方案，是您值得信赖的合作伙伴。</p>
+            </div-->
+<a href="http://iso-sphere.brachysolution.com/" target="_blank">
+            <img src="/res/Home/structure/20079408.jpg" alt="Second slide"></a>
+
+        </div>
+        <div class="item">
+            <img src="/res/Home/structure/19091403.jpg" alt="Second slide">
+
+        </div>
+        <div class="item">
+            <!--img src="/res/Home/structure/19091404.jpg" alt="Third slide"-->
+            <a href="https://www.americanbrachytherapy.org/meetings-events/summit-2020/" target="_blank"><img src="/res/Home/structure/20079420.jpg" alt="Third slide"></a>
+
+        </div>
+        <div class="item">
+            <img src="/res/Home/structure/19091405.jpg" alt="Third slide">
+
+        </div>
+        <div class="item">
+            <img src="/res/Home/structure/19091406.jpg" alt="Third slide">
+
+        </div>
+    </div>
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+
+    </ol></div>
+<script>
+        var len = $(".focus .carousel-inner .item").length;
+        
+
+        for(i=0;i<len;i++){
+            //var lic = $(`<li data-target="#myCarousel" data-slide-to="`+i+`"></li>`);
+            var lic = $("<li data-target='#myCarousel' data-slide-to="+i+"></li>");
+            $(".focus .carousel-indicators").append(lic)
+        }
+        $(".focus .carousel-indicators li").eq(0).addClass("active")
+    </script><style>
+    .solve{padding-top:115px;padding-bottom:100px;height:680px;background:url(/res/Home/structure/19082896.png) 0 0 no-repeat;}
+    .solve .carousel-indicators{bottom:100px;}
+    .solve .carousel-indicators li{width:36px;height:8px;margin:0px 5px;background:#cdcdcd;border-radius:0;}
+    .solve .carousel-indicators .active{margin:0px 5px;background:#044694}
+    .solve .carousel-inner{}
+
+    .solve .item img{
+        width:512px;
+float:left;
+    }
+    .solve .item{height:350px;}
+    .solve .item h1{
+        font-size:21px;
+        font-weight:bold;
+        color:#044694;
+        line-height:200%;
+    }
+    .solve .item p{
+        color:#555d68;
+        line-height:200%;
+        text-indent:2em;
+    text-align: justify;
+    }
+    .solve .item p a{
+        display:block;
+        width:135px;
+        height:45px;
+        border:1px #044694 solid;
+        -webkit-border-radius:2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        text-align:center;
+        line-height:45px;
+        color:#044694;
+        text-indent: 0em;
+        margin-top:25px;
+        font-size:14px;
+        font-weight:bold;
+    }
+.solve .item p .head-gm{display:inline-block;background: #df6c0a;border-color: #df6c0a;color: #fff;width: 120px;height: 40px;line-height: 40px;margin-top: 44px;}
+.addo-heading #NodeTitle a {color:#044694;}
+</style>
+<div id="myCarousela" class="carousel slide solve section">
+
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner"><div class="item"><div class="container"><div class="row"><div class="col-md-6  addo-heading animate-box" data-animate-effect="fadeInLeft" style="text-align:center;margin-top:30px"><span><a href='/html/folder/19053474-1.htm' target='_self' title="125I]' />"><img src='/res/Home/node/19080062.png' alt='碘[<sup>125</sup>I]' /></a></span></div><div class="col-md-6"><h1 class="addo-heading animate-box" data-animate-effect="fadeInLeft"><span id="NodeTitle">碘[<sup>125</sup>I]</span></h1><p class="addo-heading animate-box" style="text-align: justify;"><span id="NodeText">碘[<sup>125</sup>I]密封籽源，简称碘-125籽源（或碘-125粒子），属于近距离植入治疗肿瘤类药物。通过放射性[<sup>125</sup>I]发出的低能&gamma;射线，可以直接抑制肿瘤的有丝分裂，使肿瘤细胞因辐射效应得到最大程度的杀伤，同时低剂量照射可使乏氧细胞再氧化，增加肿瘤细胞对射线的敏感性，从而达到治疗的目的。…</span><a href="" target="_self"  class="ck-more">了解更多</a></p></div></div></div></div><script>var tmp=document.all("NodeText");if(tmp.length)tmp=tmp[tmp.length-1];var tmpa=tmp.firstChild;tmp.insertBefore(tmpa.firstChild,tmpa);tmpa.innerHTML="了解更多";</script><div class="item"><div class="container"><div class="row"><div class="col-md-6  addo-heading animate-box" data-animate-effect="fadeInLeft" style="text-align:center;margin-top:30px"><span><a href='/html/folder/19053475-1.htm' target='_self' title="103Pd]' />"><img src='/res/Home/node/19080063.jpg' alt='钯[<sup>103</sup>Pd]' /></a></span></div><div class="col-md-6"><h1 class="addo-heading animate-box" data-animate-effect="fadeInLeft"><span id="NodeTitle">钯[<sup>103</sup>Pd]</span></h1><p class="addo-heading animate-box" style="text-align: justify;"><span id="NodeText">半衰期为16. 96天，&gamma;射线平均能量为23keV， 初始剂量率为20cGy/h，适用于治疗分化较差、增殖迅速的肿瘤。钯[<sup>103</sup>Pd]对杀死增殖迅速的 肿瘤细胞效果要好于碘[<sup>125</sup>I]。动物实验研究表明钯[<sup>103</sup>Pd]治疗分化差的癌瘤更为有效。钯[<sup>10…</span><a href="" target="_self"  class="ck-more">了解更多</a></p></div></div></div></div><script>var tmp=document.all("NodeText");if(tmp.length)tmp=tmp[tmp.length-1];var tmpa=tmp.firstChild;tmp.insertBefore(tmpa.firstChild,tmpa);tmpa.innerHTML="了解更多";</script><div class="item"><div class="container"><div class="row"><div class="col-md-6  addo-heading animate-box" data-animate-effect="fadeInLeft" style="text-align:center;margin-top:30px"><span><a href='/html/folder/19053477-1.htm' target='_self' title="131Cs]' />"><img src='/res/Home/node/19080061.jpg' alt='铯[<sup>131</sup>Cs]' /></a></span></div><div class="col-md-6"><h1 class="addo-heading animate-box" data-animate-effect="fadeInLeft"><span id="NodeTitle">铯[<sup>131</sup>Cs]</span></h1><p class="addo-heading animate-box" style="text-align: justify;"><span id="NodeText">铯的人工同位素半衰期9.7天。相比钯[<sup>103</sup>Pd]及碘[<sup>125</sup>I]，铯[<sup>131</sup>Cs]兼具高活性剂量及较短的半衰期。2003年FDA批准开始销售癌症治疗用的铯[<sup>131</sup>Cs]籽源，在治疗过程中放射性籽源被直接植入前列腺内，2004年10月铯[<sup>13…</span><a href="" target="_self"  class="ck-more">了解更多</a></p></div></div></div></div><script>var tmp=document.all("NodeText");if(tmp.length)tmp=tmp[tmp.length-1];var tmpa=tmp.firstChild;tmp.insertBefore(tmpa.firstChild,tmpa);tmpa.innerHTML="了解更多";</script><div class="item"><div class="container"><div class="row"><div class="col-md-6  addo-heading animate-box" data-animate-effect="fadeInLeft" style="text-align:center;margin-top:30px"><span><a href='/html/folder/19053476-1.htm' target='_self' title="90Y]' />"><img src='/res/Home/node/19080064.png' alt='钇[<sup>90</sup>Y]' /></a></span></div><div class="col-md-6"><h1 class="addo-heading animate-box" data-animate-effect="fadeInLeft"><span id="NodeTitle">钇[<sup>90</sup>Y]</span></h1><p class="addo-heading animate-box" style="text-align: justify;"><span id="NodeText">钇[<sup>90</sup>Y]是一种只会放出&beta;射线的放射性同位素，跟其他放射治疗使用的伽玛射线不同的是，&beta;射线对组织的辐射距离最远不到1公分、平均则为0.25公分。也就是说，钇[<sup>90</sup>Y]微球体植入人体内后，对于周遭的肿瘤细胞有很强的杀伤力，超过此范围影响力就递减，故对肿瘤邻近的正常细胞伤害性相…</span><a href="" target="_self"  class="ck-more">了解更多</a></p></div></div></div></div><script>var tmp=document.all("NodeText");if(tmp.length)tmp=tmp[tmp.length-1];var tmpa=tmp.firstChild;tmp.insertBefore(tmpa.firstChild,tmpa);tmpa.innerHTML="了解更多";</script></div>
+<!-- 轮播（Carousel）指标 -->
+<ol class="carousel-indicators">
+
+</ol></div>
+<script>
+    var len = $(".solve .carousel-inner .item").length;
+    $(".solve .carousel-inner .item").eq(0).addClass("active");
+    for(j=0;j<len;j++){
+        //var lic = $(`<li data-target="#myCarousela" data-slide-to="`+j+`"></li>`);
+        var lic = $("<li data-target='#myCarousela' data-slide-to="+j+"></li>");
+        $(".solve .carousel-indicators").append(lic)
+    }
+    $(".solve .carousel-indicators li").eq(0).addClass("active");
+var iteml=$('#myCarousela .item').length;
+
+for(var al=0;al<=iteml;al++){
+var bl=al+1;
+$("#myCarousela .item a.ck-more").eq(al).attr('href','/html/folder/19053473-1.htm#nava'+bl);
+}
+$('.item .addo-heading').eq(0).append("<p style='width:100%;text-align:center;'><a class='head-gm' href='/html/folder/19080996-1.htm?category=14102669'>立即购买</a></p>");
+
+$('.carousel').carousel()
+</script><style>
+.head-open .search-box .btn{    color: rgba(0,0,0,0);}
+    .brand{height:675px;background:#e3eefe;overflow:hidden;}
+    .brand h3{
+        font-size:29px;
+        color:#044694;
+        text-align:center;
+        font-weight: bold;
+        line-height:300%;
+        margin:50px 0px 20px;
+    }
+    .brand h3:after,.brand h3:before{
+        width:150px;
+        height:1px;
+        background:#739ac9;
+        content: '';
+        display:inline-block;
+        position: relative;
+        top:-7px;
+    }
+    .brand h3:before{
+        left:-70px;
+    }
+    .brand h3:after{
+        right:-70px;
+    }
+
+    .brand .box img{
+        display:block;
+        width:100%;
+        height:225px;
+    }
+    .brand .box h1{
+        font-size:16px;
+margin-top:15px;
+        color:#000;
+        text-align:center;
+        line-height:260%;
+        padding:0px 40px;
+        -webkit-transition: font-size 0.5s;
+        -moz-transition: font-size 0.5s;
+        -ms-transition: font-size 0.5s;
+        -o-transition: font-size 0.5s;
+        transition: font-size 0.5s;
+    }
+    .brand .box h1 a{
+        color:#000;
+        text-decoration: underline;
+    }
+    .brand .box .p {
+        line-height: 200%;
+        padding-top: 0;
+        text-align: center;
+        color: #959595;
+        font-size: 14px;
+        margin: 0 auto;
+        width:360px;
+        padding:0px 40px;
+        height:56px;
+        overflow:hidden;opacity:1;
+        -webkit-transition: opacity 0.2s;
+        -moz-transition: opacity 0.2s;
+        -ms-transition: opacity 0.2s;
+        -o-transition: opacity 0.2s;
+        transition: opacity 0.2s;
+    }
+    .brand .box .p1 p{margin:0;text-align: justify;}
+    .brand .box .p1{
+        line-height:200%;
+        padding-top:0px;
+        -webkit-transition: top 0.5s;
+        -moz-transition: top 0.5s;
+        -ms-transition: top 0.5s;
+        -o-transition: top 0.5s;
+        transition: top 0.5s;
+        background:#fff;
+        text-align: left;
+        color: #959595;
+        font-size: 14px;
+        margin: 0;
+        padding:0px 40px;
+        overflow:hidden;
+        position: absolute;
+        top:365px;left:50%;margin-left:-240px;
+        height:140px;
+        width:480px;
+    }
+    .brand .box .more{
+        line-height: 200%;
+        padding-top: 0;
+        text-align: center;
+        color: #959595;
+        font-size: 14px;
+        margin: 0;
+        padding:0px 40px;
+        text-align: right !important;
+        margin-top:30px;
+        opacity:0;
+        -webkit-transition: opacity 0.5s,top 0.5s;
+        -moz-transition: opacity 0.5s,top 0.5s;
+        -ms-transition: opacity 0.5s,top 0.5s;
+        -o-transition: opacity 0.5s,top 0.5s;
+        transition: opacity 0.5s,top 0.5s;
+        height:auto !important;
+        position: absolute;
+        top:665px;
+        right:0px;
+    }
+    .brand .box .more a{
+        color:#044694;
+    }
+    .brand .box .more a:hover{color:#ef7301}
+    .brand .box{
+        width:360px;
+        background:#fff;
+        height:365px;
+        transition:width 0.5s, height 0.5s,left 0.5s,top 0.5s;
+        -moz-transition:width 0.5s, height 0.5s,left 0.5s,top 0.5s, -moz-transform 0.5s; /* Firefox 4 */
+        -webkit-transition:width 0.5s, height 0.5s,left 0.5s,top 0.5s, -webkit-transform 0.5s; /* Safari and Chrome */
+        -o-transition:width 0.5s, height 0.5s,left 0.5s,top 0.5s, -o-transform 0.5s; /* Opera */
+        top:0px;
+        left:0px;
+        -webkit-box-shadow: 0px 0px 15px rgba(5,95,232,0.15);
+        -moz-box-shadow: 0px 0px 15px rgba(5,95,232,0.15);
+        box-shadow: 0px 0px 15px rgba(5,95,232,0.15);
+        position: relative;
+        overflow:hidden;
+    }
+    .brand .col-md-4:hover{
+        position: relative;
+        z-index:1;
+    }
+    .brand .box:hover{
+        width:480px;
+        height:540px;
+        left:-60px;
+        top:-90px;
+    }
+    .brand .box:hover .p{
+        opacity:0;
+    }
+    .brand .box:hover .p1{
+        opacity: 1;
+        top:320px;
+    }
+    .brand .box:hover h1 {
+        font-size:26px;
+    }
+    .brand .box:hover h1 a{
+        text-decoration: none;
+    }
+
+    .brand .box:hover .more{
+        opacity:1;top:450px;
+
+    }
+</style>
+
+<script>
+    $(function(){
+        $(".brand .box").each(function(){
+            var txt = $(this).find(".p").html();
+            //console.log(txt);
+            $(this).find(".p1").html(txt);
+        })
+    })
+
+</script>
+<div class="brand brand1 section">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h3 class="addo-heading animate-box">
+                    三大品牌
+                </h3>
+            </div>
+            <div class="col-md-12 column" style="padding:0px;margin-top:55px;">
+                <div class="container">
+                    <div class="row clearfix addo-heading animate-box"><div class="col-md-4 column addo-heading animate-box" data-animate-effect="fadeInLeft"><div class="box"><span><a href='/html/folder/19062080-1.htm' target='_self' title=""><img src='/res/Home/node/19080715.png' alt='原子高科股份有限公司' /></a></span><h1 class=""><span id="NodeTitle"><a href='/html/folder/19062080-1.htm' target='_self' title="原子高科股份有限公司">原子高科股份有限公司</a></span></h1><div class="p"><span id="NodeText"><p>　　原子高科股份有限公司(简称&ldquo;原子高科&rdquo;)是由中国原子能科学研究院作为主发起人，联合多家单位共同发起设立的高新技术企业，成立于2001年5月，现注册资本为13256万元。2003年3月，原子能院将同位素产业重组进入原子高科，从而使主营业务拓展至同位素技术和辐射技术领域…</span></div><div class="p1"></div></div></div><div class="col-md-4 column addo-heading animate-box" data-animate-effect="fadeInLeft"><div class="box"><span><a href='/html/folder/19062079-1.htm' target='_self' title=""><img src='/res/Home/node/19080714.png' alt='宁波君安药业科技有限公司' /></a></span><h1 class=""><span id="NodeTitle"><a href='/html/folder/19062079-1.htm' target='_self' title="宁波君安药业科技有限公司">宁波君安药业科技有限公司</a></span></h1><div class="p"><span id="NodeText"><p>　　宁波君安药业科技有限公司 (简称&ldquo;宁波君安&rdquo;)，是中国同辐股份有限公司的全资子公司。公司专注于肿瘤及相关疾病治疗的体内放射性药品的生产、研发和销售。建有由放射性药物、核物理、辐射防护、化学分析、微生物检测等专业配套训练有素的生产、质检队伍，汇集国内科技精英，广泛开展…</span></div><div class="p1"></div></div></div><div class="col-md-4 column addo-heading animate-box" data-animate-effect="fadeInLeft"><div class="box"><span><a href='/html/folder/19062081-1.htm' target='_self' title=""><img src='/res/Home/node/19081486.jpg' alt='上海欣科医药有限公司' /></a></span><h1 class=""><span id="NodeTitle"><a href='/html/folder/19062081-1.htm' target='_self' title="上海欣科医药有限公司">上海欣科医药有限公司</a></span></h1><div class="p"><span id="NodeText"><p>　　上海欣科医药有限公司(简称&ldquo;上海欣科&rdquo;)，是中国同辐股份有限公司参股的，以放射性药品和相关同位素生产为主的专业化合资企业。公司的主要经营范围是:研制、生产放射性体内用药品(放射性显像剂、尿素[<sup>14</sup>C]呼吸试验胶囊及其药盒、用于治疗癌症的放射性籽…</span></div><div class="p1"></div></div></div></div>
+                </div>
+
+
+            </div>
+        </div>
+    </div></div>
+<script>
+
+    $(function(){
+
+        $('.brand1').find('.col-md-4').each(function() {
+            var h = $(this).find("#NodeText").children("a").attr("href");
+console.log(h);
+           // $(this).find("#NodeText").html($(this).find("#NodeText").text());
+            $(this).children(".box").append("<div class='more'><a href=''>查看更多></a></div>")
+        });
+for(var san=0;san<3;san++){
+var s_href=$('.brand1 .col-md-4 #NodeTitle').eq(san).find('a').attr('href');
+console.log(s_href);
+$('.more').eq(san).find('a').attr('href',s_href);
+}
+
+    })
+
+
+</script><style>
+    .solution{
+        height:650px;
+        background: #fff;
+
+    }
+    .solution .column{
+        width:1200px;
+    }
+    .box1{
+        width:100%;
+        height:360px;
+        border:1px #e9e9e9 solid;
+        background:url("/res/Home/structure/19061519.jpg") center no-repeat;
+        background-size:cover;
+        float:left;
+        position: absolute;
+        -webkit-transition: left 0.5s;
+        -moz-transition: left 0.5s;
+        -ms-transition: left 0.5s;
+        -o-transition: left 0.5s;
+        transition: left 0.5s;
+        left:0px;
+    }
+    .box1 .tit{
+        padding:30px 25px 0px;
+        text-align:center;
+        line-height:200%;
+        font-size:16px;
+        font-weight: bold;
+    }
+    .box1 .con{
+        padding:0px 20px;
+        -webkit-transition: padding 0.5s;
+        -moz-transition: padding 0.5s;
+        -ms-transition: padding 0.5s;
+        -o-transition: padding 0.5s;
+        transition: padding 0.5s;
+    }
+    .box1 .con ul{
+        border-top:1px #ddd dashed;
+        padding-top:12px;
+overflow:hidden;
+    }
+    .box1 .con ul li{
+        width:50%;
+        float:left;
+        padding-top:5px;
+        text-align:center;
+        font-size:16px;
+        line-height:260%;
+    }
+    .box1 .con ul li img{
+        width:30px;
+        height:28px;
+    }
+    .box1 .con ul li a{
+        display:block;
+        color:#000;
+    }
+    .solution .container,.solution .column{
+        padding:0px;
+    }
+    .box2{
+        width:441px;
+        height:360px;
+        border:1px #e9e9e9 solid;
+        background:url("/res/Home/structure/19061525.jpg") center no-repeat;
+        float:left;
+        position: absolute;
+        left:271px;
+        -webkit-transition: left 0.5s;
+        -moz-transition: left 0.5s;
+        -ms-transition: left 0.5s;
+        -o-transition: left 0.5s;
+        transition: left 0.5s;
+    }
+    .box2 ul{
+        padding:20px;
+    }
+    .box2 ul li{
+        padding-left:70px;
+        /*background:url("/res/Home/structure/19061526.png") 15px 5px no-repeat;*/
+        
+        min-height:60px;
+        text-align:left;
+        line-height:200%;
+        font-size:14px;
+        color:#bac4d9;
+        margin-top:15px;
+        padding-right:20px;
+    }
+    .box-yw ul li{background:url("/res/Home/structure/20079448.png") 15px 5px no-repeat;}
+    .box-xt ul li{background:url("/res/Home/structure/20079466.png") 15px 5px no-repeat;}
+    .box-zr ul li{background:url("/res/Home/structure/20079467.png") 15px 5px no-repeat;}
+    .box-fw ul li{background:url("/res/Home/structure/20079468.png") 15px 5px no-repeat;}
+
+    .box2 ul li a{
+        font-size:16px;
+        font-weight: bold;
+        opacity: 1;
+        display: block;
+        color:#fff;
+    }
+.column .box2 ul li a:hover{
+text-decoration:underline !important;
+}
+    .box0{
+        width:271px;
+        height:360px;
+        float:left;
+        margin-left:24px;
+        overflow:hidden;
+        position: relative;
+        -webkit-transition: width 0.5s;
+        -moz-transition: width 0.5s;
+        -ms-transition: width 0.5s;
+        -o-transition: width 0.5s;
+        transition: width 0.5s;
+margin-top:40px;
+    }
+    .box0 .box2{
+    }
+    .box0.cur{
+        width:441px;
+    }
+    .box0.cur .box2{
+        left:0px;
+    }
+    .box0.cur .box1{
+        left:-441px;
+    }
+    .box0.sl .box1 .con{
+        padding:0px 13px !important;
+    }
+    .box0.sl{
+        width:220px;
+    }
+    .box0 .ul1{
+        padding-top:15px !important;
+    }
+    .box0 .ul1 li{
+        padding:0px;
+        line-height:220% !important;
+        font-size:14px !important;
+    }
+    .box0 .ul1 li b{
+        font-size:16px !important;
+    }
+    .box0 .ul2 li{
+        line-height:160% !important;
+        height:105px;
+        font-size:15px !important;
+    }
+    .box0 .ul2 li img{
+        margin-bottom:10px;
+    }
+.solution .addo-heading img{width:110px;height:auto;}
+</style>
+<script>
+    $(function(){
+        $(".box0").hover(function(){
+            $(this).addClass("cur");
+            $(".box2").addClass("cur")
+            $(this).siblings(".box0").addClass("sl");
+        },function(){
+            $(this).removeClass("cur");
+            $(".box2").removeClass("cur")
+            $(this).siblings(".box0").removeClass("sl");
+        });
+    })
+</script>
+<div class="solution brand section">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h3 class="addo-heading animate-box">
+                    解决方案
+                </h3>
+            </div>
+            <div class="column">
+                <div class="box0">
+                    <div class="box1 clearfix addo-heading animate-box">
+                        <div class="tit clearfix">
+                            <p class="addo-heading animate-box"><img src="/res/Home/structure/19081047.png" /></p>
+                            <p class="addo-heading animate-box">近距离治疗药物</p>
+                        </div>
+                        <div class="con clearfix">
+                            <ul class="addo-heading animate-box">
+                                <li>
+                                    <!--img src="/res/Home/structure/19061522.jpg"/-->
+                                    <img src="/res/Home/structure/20079455.png"/>
+                                    <a href="">碘[<sup>125</sup>I]</a>
+                                </li>
+                                <li>
+                                    <img src="/res/Home/structure/20079455.png"/>
+                                    <a href="">钯[<sup>103</sup>Pd]</a>
+                                </li>
+                                <li>
+                                    <img src="/res/Home/structure/20079455.png"/>
+                                    <a href="">铯[<sup>131</sup>Cs]</a>
+                                </li>
+                                <li>
+                                    <img src="/res/Home/structure/20079455.png"/>
+                                    <a href="">钇[<sup>90</sup>Y]</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box2 addo-heading animate-box box-yw">
+                        <ul class="addo-heading animate-box">
+                            <li>
+                                <a href="/html/folder/19053473-1.htm#nava1">碘[<sup>125</sup>I]</a>
+                               碘[<sup>125</sup>I]密封籽源，简称碘-125籽源……
+                                <a style="float:right;color:#bac4d9;font-weight:normal;font-size:14px;" href="/html/folder/19053473-1.htm#nava1">更多></a>
+                            </li>
+                            <li>
+                                <a href="/html/folder/19053473-1.htm#nava2">钯[<sup>103</sup>Pd]</a>
+                                 钯[<sup>103</sup>Pd]半衰期为16. 96天，γ射线平...
+                                <a style="float:right;color:#bac4d9;font-weight:normal;font-size:14px;" href="/html/folder/19053473-1.htm#nava2">更多></a>
+                            </li>
+                            <li>
+                                <a href="/html/folder/19053473-1.htm#nava3">铯[<sup>131</sup>Cs]</a>
+                                铯[<sup>131</sup>Cs]，铯的人工同位素半衰期9.7... 
+                                <a style="float:right;color:#bac4d9;font-weight:normal;font-size:14px;" href="/html/folder/19053473-1.htm#nava3">更多></a>
+                            </li>
+                            <li>
+                                <a href="/html/folder/19053473-1.htm#nava4">钇[<sup>90</sup>Y]</a>
+                                钇[<sup>90</sup>Y]是一种只会放出β射线的放射性同... 
+                                <a style="float:right;color:#bac4d9;font-weight:normal;font-size:14px;" href="/html/folder/19053473-1.htm#nava4">更多></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box0">
+                    <div class="box1 addo-heading animate-box">
+                        <div class="tit clearfix">
+                            <p class="addo-heading animate-box"><img src="/res/Home/structure/19081048.png" /></p>
+                            <p class="addo-heading animate-box">治疗计划系统TPS</p>
+                        </div>
+                        <div class="con clearfix">
+                            <ul class="addo-heading animate-box">
+                                <li>
+                                    <img src="/res/Home/structure/20079469.png"/>
+                                    <a href="">精准勾画靶区</a>
+                                </li>
+                                <li>
+                                    <img src="/res/Home/structure/20079469.png"/>
+                                    <a href="">三维剂量规划</a>
+                                </li>
+                                <li>
+                                    <img src="/res/Home/structure/20079469.png"/>
+                                    <a href="">灵活、高效</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box2 addo-heading animate-box box-xt">
+                        <ul class="addo-heading animate-box">
+                            <li>
+                                <a href="/html/folder/19053478-1.htm">精准勾画钯区</a>
+                                
+                            </li>
+                            <li>
+                                <a href="/html/folder/19053478-1.htm">三维剂量规划</a>
+                                
+                            </li>
+                            <li>
+                                <a href="/html/folder/19053478-1.htm">灵活、高效</a>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box0">
+                    <div class="box1 addo-heading animate-box">
+                        <div class="tit clearfix">
+                            <p class="addo-heading animate-box"><img src="/res/Home/structure/19081053.png" /></p>
+                            <p class="addo-heading animate-box">植入设备/器械</p>
+                        </div>
+                        <div class="con clearfix">
+                            <ul class="addo-heading animate-box ul2">
+                                <li>
+                                    <img src="/res/Home/structure/20079470.png"/>
+                                    <a href="">粒子植入<br>设备/器械</a>
+                                </li>
+                                <!--<li>
+                                    <img src="/res/Home/structure/20079470.png"/>
+                                    <a href="">计划<br>导航系统</a>
+                                </li>-->
+                                <li>
+                                    <img src="/res/Home/structure/20079470.png"/>
+                                    <a href="">辐射检测防护</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box2 addo-heading animate-box box-zr">
+                        <ul class="addo-heading animate-box">
+                            <li>
+                                <a href="/html/folder/19053479-1.htm#nava1">粒子植入设备/器械</a>
+                                
+                            </li>
+                            <li>
+                                <a href="/html/folder/19053479-1.htm#nava2">辐射检测防护</a>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box0">
+                    <div class="box1 clearfix fr addo-heading animate-box" style="margin: 0px;">
+                        <div class="tit clearfix">
+                            <p class="addo-heading animate-box"><img src="/res/Home/structure/19081049.png" /></p>
+                            <p class="addo-heading animate-box">手术支持服务</p>
+                        </div>
+                        <div class="con clearfix">
+                            <ul class="addo-heading animate-box">
+                                <li class="w100">
+                                    <img src="/res/Home/structure/20079471.png"/>
+                                    <a href="">前列腺设备支持服务</a>
+                                </li>
+                                <li class="w100">
+                                    <img src="/res/Home/structure/20079471.png"/>
+                                    <a href="">远程计划系统服务</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box2 addo-heading animate-box box-fw">
+                        <ul class="addo-heading animate-box">
+                            <li>
+                                <a href="/html/folder/19053483-1.htm#nava1">前列腺设备支持服务</a>
+                                在植入之前，利用超声观察癌性肿块的大小及位置以及周围器官。在预计划阶段，需要根据...
+                                <a style="float:right;color:#bac4d9;font-weight:normal;font-size:14px;" href="/html/folder/19053483-1.htm#nava1">更多></a>
+                            </li>
+                            <li>
+                                <a href="/html/folder/19053483-1.htm#nava2">远程计划系统服务</a>
+                                靶区勾画的好坏直接决定治疗效果。专业工程师通过远程终端准确勾画出患者治疗区域，确... 
+                                <a style="float:right;color:#bac4d9;font-weight:normal;font-size:14px;" href="/html/folder/19053483-1.htm#nava2">更多></a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div><style>
+    .news{
+        height:940px;
+    }
+    .news .list{
+        height:712px;
+        background:#fff;
+    }
+    .news .container{
+        width:1200px;
+        padding:0px;
+    }
+    .news .list h1{
+        text-align:center;
+        line-height:200%;
+        font-size:24px;
+        font-weight: bold;
+        color:#044694;
+        padding:25px 0px;
+        margin:0px;
+    }
+    .news .list ul{
+        padding:0px 30px;
+    }
+    .news .list .ul1 li{
+        padding-left:25px;
+        position: relative;
+        margin-bottom:12px;
+    }
+    .news .list .ul1 li:after{
+        position: absolute;
+        content: '';
+        left:0px;
+        top:12px;
+        width:6px;
+        height:6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        background:#ef7301;
+    }
+    .news .list .ul1 li .tit{
+        font-size:16px;
+        line-height:180%;
+        text-align:left;
+        display: block;
+    }
+    .news .list .ul1 li .tit a{
+        color:#2e2f32;
+    }
+.news .list .ul1 li .tit a:hover{color:#044694}
+    .news .list .ul1 li .fot{
+        color:#8e8e8e;
+        text-align:left;
+        display: block;
+        line-height:200%;margin:8px 0px;
+    }
+    .news .list .ul1 li .mt{
+        float:right;
+    }
+    .news .list .more{
+        padding:0px;
+        text-align:center;
+        font-size:16px;
+        float:left;
+        width:100%;
+    }
+    .news .list .more a{
+        color:#044694;
+        line-height:360%;
+    }
+    .news .list .more a:hover{
+        color:#ef7301;
+    }
+    .news .list .ul2{
+        padding:0px 20px;
+    }
+    .news .list .ul2 li{
+        width:234px;
+        float:left;
+        height:240px;
+        margin:0px 8px 20px;
+        background:#fff;
+        box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
+        -webkit-transition: top 0.1s,left 0.1s;
+        -moz-transition: top 0.1s,left 0.1s;
+        -ms-transition: top 0.1s,left 0.1s ;
+        -o-transition: top 0.1s,left 0.1s;
+        transition: top 0.1s,left 0.1s;
+position: relative;left:0px;top:0px;
+    }
+    .news .list .ul2 li:hover {
+        
+        z-index: 99;
+        text-decoration: none;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        left:-3px;
+        top:-3px;
+        border:none;
+    }
+    .news .list .ul2 li img{
+        width:234px;
+        height:150px;
+    }
+    .news .list .ul2 li .tit{
+        display:block;
+        padding:6px 10px;
+        text-align:left;
+        line-height:160%;
+    }
+    .news .list .ul2 li .tit a{
+        color:#000;
+    }
+    .news .list .ul2 li .time{
+        display:block;
+        color:#8e8e8e;
+        padding:0px 10px;
+    }
+
+</style>
+
+<div class="news brand section">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column addo-heading animate-box">
+                <h3 class="addo-heading animate-box">
+                    活动资讯
+                </h3>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-4 column addo-heading animate-box">
+                <div class="list">
+                    <h1 class="addo-heading animate-box" data-animate-effect="fadeInLeft">行业新闻</h1>
+                    <ul class="ul1 addo-heading animate-box" data-animate-effect="fadeInLeft"><li><span class="tit"><span id='ReportIDname'><a href='/html/report/19092499-1.htm' target='_self' title="中国同辐放药研发中心揭牌成立">中国同辐放药研发中心揭牌成立</a></span></span><span class="fot"><span class="time"><span id='ReportIDIssueTime'>2019-01-31</span></span><span class="mt">来自:<span id='ReportIDMediaName'>技术开发部</span></span></span></li><li><span class="tit"><span id='ReportIDname'><a href='/html/report/19092507-1.htm' target='_self' title="动态｜推动中美医疗合作 中核集团携手安科锐在津发展健康产业">动态｜推动中美医疗合作 中核集团携手安科锐在津发展健康产业</a></span></span><span class="fot"><span class="time"><span id='ReportIDIssueTime'>2019-01-29</span></span><span class="mt">来自:<span id='ReportIDMediaName'>中国同辐股份有限公司</span></span></span></li><li><span class="tit"><span id='ReportIDname'><a href='/html/report/19092496-1.htm' target='_self' title="中国同辐与中华核医学分会共同设立核医学发展基金">中国同辐与中华核医学分会共同设立核医学发展基金</a></span></span><span class="fot"><span class="time"><span id='ReportIDIssueTime'>2018-09-21</span></span><span class="mt">来自:<span id='ReportIDMediaName'>市场运营部</span></span></span></li><li><span class="tit"><span id='ReportIDname'><a href='/html/report/19061708-1.htm' target='_self' title="瓦里安获选为中国首家政府投资质子中心提供质子设备">瓦里安获选为中国首家政府投资质子中心提供质子设备</a></span></span><span class="fot"><span class="time"><span id='ReportIDIssueTime'>2016-08-15</span></span><span class="mt">来自:<span id='ReportIDMediaName'>中国日报中文网</span></span></span></li><li><span class="tit"><span id='ReportIDname'><a href='/html/report/19061709-1.htm' target='_self' title="2016年6月27日中国放射粒子代表团参加2016 World Congress of Brachytherapy">2016年6月27日中国放射粒子代表团参加2016 World Congress of Br...</a></span></span><span class="fot"><span class="time"><span id='ReportIDIssueTime'>2016-06-28</span></span><span class="mt">来自:<span id='ReportIDMediaName'>中国同辐股份有限公司</span></span></span></li></ul>
+                    <p class="more addo-heading animate-box" data-animate-effect="fadeInLeft"><a href="/html/category/19053465-1.htm">查看更多</a></p>
+                </div>
+            </div><div class="col-md-8 column addo-heading animate-box">
+                <div class="list">
+                    <h1 class="addo-heading animate-box" data-animate-effect="fadeInLeft">会议活动</h1>
+                    <ul class="ul2 addo-heading animate-box" data-animate-effect="fadeInLeft"><li><span class="pic"><span id='ReportIDPicture'><a href='/html/report/19092878-1.htm' target='_self' title="2020中国医师协会介入医师年会（CCI）"><img onerror="this.style.display='none';" src="/res/Home/report/19092881.jpg" /></a></span></span><span class="tit"><span id='ReportIDname'><a href='/html/report/19092878-1.htm' target='_self' title="2020中国医师协会介入医师年会（CCI）">2020中国医师协会介入医师年会（CCI）...</a></span></span><span class="time"><span id='ReportIDIssueTime'>2019-09-19</span></span></li><li><span class="pic"><span id='ReportIDPicture'><a href='/html/report/19061744-1.htm' target='_self' title="第十七届全国放射性粒子治疗肿瘤学术大会暨第五届中国放射性粒子治疗肿瘤护理学术大会"><img onerror="this.style.display='none';" src="/res/Home/report/17051278.jpg" /></a></span></span><span class="tit"><span id='ReportIDname'><a href='/html/report/19061744-1.htm' target='_self' title="第十七届全国放射性粒子治疗肿瘤学术大会暨第五届中国放射性粒子治疗肿瘤护理学术大会">第十七届全国放射性粒子治疗肿瘤学术大...</a></span></span><span class="time"><span id='ReportIDIssueTime'>2017-05-22</span></span></li><li><span class="pic"><span id='ReportIDPicture'><a href='/html/report/19061745-1.htm' target='_self' title="第九届全国放射性粒子规范化治疗肿瘤培训班 暨第三届泛京津冀放射性粒子精确治疗肿瘤（多中心）学术大会"><img onerror="this.style.display='none';" src="/res/Home/report/17021831.jpg" /></a></span></span><span class="tit"><span id='ReportIDname'><a href='/html/report/19061745-1.htm' target='_self' title="第九届全国放射性粒子规范化治疗肿瘤培训班 暨第三届泛京津冀放射性粒子精确治疗肿瘤（多中心）学术大会">第九届全国放射性粒子规范化治疗肿瘤培...</a></span></span><span class="time"><span id='ReportIDIssueTime'>2017-03-21</span></span></li><li><span class="pic"><span id='ReportIDPicture'><a href='/html/report/19061746-1.htm' target='_self' title="放射性粒子植入治疗技术专家委员会论坛暨全国放射性粒子植入治疗肿瘤技术规范化培训班"><img onerror="this.style.display='none';" src="/res/Home/report/16110848.jpg" /></a></span></span><span class="tit"><span id='ReportIDname'><a href='/html/report/19061746-1.htm' target='_self' title="放射性粒子植入治疗技术专家委员会论坛暨全国放射性粒子植入治疗肿瘤技术规范化培训班">放射性粒子植入治疗技术专家委员会论坛...</a></span></span><span class="time"><span id='ReportIDIssueTime'>2016-11-10</span></span></li><li><span class="pic"><span id='ReportIDPicture'><a href='/html/report/19061747-1.htm' target='_self' title="2016年第十二届中国肿瘤微治疗学术大会"><img onerror="this.style.display='none';" src="/res/Home/report/16110284.jpg" /></a></span></span><span class="tit"><span id='ReportIDname'><a href='/html/report/19061747-1.htm' target='_self' title="2016年第十二届中国肿瘤微治疗学术大会">2016年第十二届中国肿瘤微治疗学术大会...</a></span></span><span class="time"><span id='ReportIDIssueTime'>2016-11-03</span></span></li><li><span class="pic"><span id='ReportIDPicture'><a href='/html/report/19061748-1.htm' target='_self' title="2017 ABS Annual Conference Abstract Submission Instructions"><img onerror="this.style.display='none';" src="/res/Home/report/16100197.jpg" /></a></span></span><span class="tit"><span id='ReportIDname'><a href='/html/report/19061748-1.htm' target='_self' title="2017 ABS Annual Conference Abstract Submission Instructions">2017 ABS Annual Conference Abstract ...</a></span></span><span class="time"><span id='ReportIDIssueTime'>2016-10-08</span></span></li></ul>
+                    <p class="more addo-heading animate-box" data-animate-effect="fadeInLeft"><a href="/html/category/19053466-1.htm">查看更多</a></p>
+
+                </div>
+            </div>
+        </div></div>
+</div><script type="text/javascript" src="/tea/countUp.min.js"></script>
+<style>
+.bigData{
+    height:428px;
+    //background:url("/res/Home/structure/19061577.jpg");
+    background-size:auto 100%;
+    background:#fff;
+    position:relative;
+}
+.sy-ds{
+    position:absolute;
+    top:0;
+    left:50%;
+    
+}
+@media (min-width: 768px){
+.sy-ds {
+    margin-left: -375px;
+}
+}
+@media (min-width: 992px){
+.sy-ds {
+    margin-left: -485px;
+}
+}
+@media (min-width: 1200px){
+.sy-ds {
+    margin-left: -585px;
+}
+}
+
+
+.bigData h3{
+    margin:30px 0px 0px;
+}
+.bigData h4{
+    color:#044694;
+    font-size:26px;
+    line-height:200%;
+}
+.bigData h1{
+    color:#ef7301;
+    font-weight:bold;
+    margin:0px;
+    font-family: "微软雅黑 bold";
+    font-size:30px;
+}
+.bigData h1 span{
+    font-size:48px;
+}
+#wrap {}
+h1.jumbo {font-size: 8em;margin: 0;color: #4d63bc;}
+@media all and (max-width: 1021px) {
+    #wrap {
+        width:100%;
+        padding:0 20px;
+    }
+    h1.jumbo {
+        font-size:5em;
+    }
+}
+@media all and (max-width: 480px) {
+
+    #wrap {
+        padding:0 15px;
+    }
+    h1.jumbo {
+        font-size:2em;
+    }
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/tea/yl/default.css">
+<link rel="stylesheet" media="screen" href="/tea/yl/style.css">
+<div class="bigData brand section">
+<div class="container2">
+	<div id="particles-js"></div>
+</div>
+
+<script src="/tea/yl/particles.js"></script>
+<script src="/tea/yl/app.js"></script>
+    <div class="container sy-ds">
+        <div class="row clearfix">
+            <div class="col-md-12 column addo-heading animate-box" data-animate-effect="fadeInLeft">
+                <h3>
+                    粒子生命大数据
+                </h3>
+            </div>
+        </div>
+
+        <div class="row clearfix" style="margin-top:50px;" id="wrap">
+            <div class="col-md-4 column addo-heading animate-box" data-animate-effect="fadeInLeft">
+                <h4 class="text-center">开展粒子手术医院数量</h4>
+                <h1 class="text-center"><span class="jumbo" id="myTargetElement">300</span>+家</h1>
+            </div>
+            <div class="col-md-4 column addo-heading animate-box" data-animate-effect="fadeInLeft">
+                <h4 class="text-center">粒子手术总数</h4>
+                <h1 class="text-center"><span class="jumbo" id="myTargetElement2">200,000</span>+例</h1>
+            </div>
+            <div class="col-md-4 column addo-heading animate-box" data-animate-effect="fadeInLeft">
+                <h4 class="text-center">粒子销量总数</h4>
+                <h1 class="text-center"><span class="jumbo" id="myTargetElement3">8,000,000</span>+粒</h1>
+            </div>
+        </div>
+
+    </div></div>
+<script type="text/javascript">
+    var options = {
+        useEasing : true,
+        useGrouping : true,
+        separator : ',',
+        decimal : '.',
+        prefix : '',
+        suffix : ''
+    };
+    var demo = new CountUp("myTargetElement", 0, 1000, 0, 1.5, options);
+    var demo2 = new CountUp("myTargetElement2", 0, 200000, 0, 1.5, options);
+    var demo3 = new CountUp("myTargetElement3", 0, 8000000, 0, 1.5, options);
+    $(window).scroll(function(){
+        if($(window).scrollTop()>=2895){
+            demo.start();
+            demo2.start();
+            demo3.start();
+        }
+    })
+</script></div>
+<div id="Content3"></div>
+<div id="Content2"></div>
+</div>
+<div id="Footer"><script language="javascript" src="/jsp/include/FCKeditor/editor/js/fckeditorcode_ie.js"></script>
+<style>
+    .right-nav{
+
+        position: fixed;
+        z-index:99;
+        right:0px;
+        top:40%;
+        margin-top:-100px;
+        box-shadow:0px 0px 5px rgba(0,0,0,0.2);
+    }
+.right-nav ul{
+        width:62px;
+        background:#ededed;
+        height:200px;
+margin:0;
+margin-top:140px;
+position: absolute;
+    right: 0;
+}
+.right-nav .fws-f{
+    right: -4px;
+    position: absolute;
+}
+    .right-nav ul li{
+        border-bottom:1px #d8dce0 solid;
+        height:49px;
+        cursor: pointer;
+        position: relative;
+    }
+    .right-nav ul li.li1{
+        background:url(/res/Home/structure/19061623.png) center no-repeat;
+    }
+    .right-nav ul li.li2{
+        background:url(/res/Home/structure/19061624.png) center no-repeat;
+    }
+    .right-nav ul li.li3{
+        background:url(/res/Home/structure/19061625.png) center no-repeat;
+    }
+    .right-nav ul li.li4{
+        background:url(/res/Home/structure/19061626.png) center no-repeat;
+        border:none;
+    }
+    .right-nav ul li.li1 span{
+        height:49px;
+        background:#044694 url(/res/Home/structure/19061627.png) 176px center no-repeat;
+        color:#fff;
+        text-align:left;
+        line-height:49px;
+        padding:0px 62px 0px 20px;
+        display:inline-block;
+        -webkit-border-radius: 50px 0px 0px 50px;
+        -moz-border-radius: 50px 0px 0px 50px;
+        border-radius: 50px 0px 0px 50px;
+        position: absolute;
+        left:62px;
+        font-size:20px;
+        width:245px;
+        transition: left 0.5s;
+        -moz-transition: left 0.5s;	/* Firefox 4 */
+        -webkit-transition: left 0.5s;	/* Safari 和 Chrome */
+        -o-transition: left 0.5s;
+
+    }
+    .right-nav ul li.li1:hover span{
+        left:-158px;
+    }
+    .right-nav ul li.li1:hover{
+background:none;
+}
+.tip[data-v-50fb1dbe]{
+pointer-events: none;
+    -webkit-transform: translateY(80px);
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all .2s ease-out;
+    position: absolute;
+    right: 105%;
+    bottom: -57px;
+    width: 115px;
+    padding-top: 23px;
+    padding-bottom: 13px;
+    border-radius: 3px;
+    text-align: center;
+}
+    .right-nav ul li.li3:hover div{
+    opacity: 1;
+    bottom: 16px;
+}
+</style>
+
+<div class="right-nav">
+<a class="fws-f" href="/html/folder/19092170-1.htm"><img src="/res/Home/structure/19081485.png"></a>
+    <ul>
+        <li class="li1">
+            <span>010--68533123</span>
+        </li>
+        <li class="li2"></li>
+        <li class="li3">
+<div class="tip" data-v-50fb1dbe="">
+<img src="/res/Home/structure/19081634.jpg" style="width:110px;">
+</div>
+</li>
+
+        <!--<li class="li4" onclick="scrollTo(0,0)"></li>-->
+        <li class="li4"></li>
+    </ul>
+</div>
+
+<script>
+$(".right-nav ul .li4").click(function(){
+                $('body,html').animate({scrollTop:0},1000);
+                return false;
+            });
+
+</script><style>
+.yej{width:1200px;margin:auto;padding:43px 0px;display:block;color:#c0ccd4}
+
+.yej .zuo{width:960px;float:left;border-right:1px solid #e6e6e6;}
+.yej .zuo li{padding-right:50px;float:left;height:220px;}
+.yej .zuo li #CurrentlyPathNode a{display:block;font-size:14px;font-weight:bolder;color:#fff;line-height:30px;}
+.yej .zuo li #NodeTitle{display:block;font-size:14px;font-weight:bolder;color:#fff;line-height:30px;}
+.yej .zuo li #NodeTitle a{color:#fff !important;}
+.yej .zuo li #ListingOSonSubject{display:block;font-size:14px;color:#;line-height:30px;}
+.yej .zuo li a{color:#c0ccd4;}
+.yej .zuo li a:hover{color:#fff}
+.yej .weima{width:190px;float:right;font-size:16px;font-weight:bolder;color:#fff;line-height:200%;}
+
+.foot{width:100%;height:55px;background:#003a7e;margin:auto;text-align:center;font-size:15px;color:#fff;line-height:55px; display: block;clear: both;opacity:0.7;}
+.foot a{color:#fff;}
+</style>
+<div class="yej animate-box fadeInLeft animated" data-animate-effect="fadeInLeft">
+<div class="zuo">
+<ul>
+    <li>
+      <span id="NodeTitle">
+        <a href="/html/folder/19053473-1.htm" target="_self" title="解决方案">解决方案</a>
+      </span>
+      <span>
+      <a href='/html/folder/19053473-1.htm'><span id="ListingOSonSubject">近距离治疗药物</span></a>  
+      <a href='/html/folder/19053478-1.htm'><span id="ListingOSonSubject">治疗计划系统TPS</span></a>
+      <a href='/html/folder/19053479-1.htm'><span id="ListingOSonSubject">植入设备/器械</span></a>
+      <a href='/html/folder/19053483-1.htm'><span id="ListingOSonSubject">手术支持服务</span></a>
+      </span>
+    </li>
+    <li>
+      <span id="NodeTitle">
+        <a href="/html/folder/19080995-1.htm" target="_self" title="产品">产品</a>
+      </span>
+      <span>
+      <a href='/html/folder/19080995-1.htm'><span id="ListingOSonSubject">近距离治疗药物</span></a>
+      <a href='/html/folder/19081308-1.htm'><span id="ListingOSonSubject">治疗计划系统TPS</span></a>
+      <a href='/html/folder/19081608-1.htm'><span id="ListingOSonSubject">粒子植入器械与设备</span></a>
+      <a href='/html/folder/19081645-1.htm'><span id="ListingOSonSubject">前列腺设备支持服务</span></a>
+      </span>
+    </li>
+    <li>
+      <span id="NodeTitle">
+        <a href="/html/folder/19053486-1.htm" target="_self" title="患者">患者</a>
+      </span>
+      <span>
+      <a href='/html/folder/19053486-1.htm'><span id="ListingOSonSubject">粒子治疗简介</span></a>
+      <a href='/html/folder/19053492-1.htm'><span id="ListingOSonSubject">患者指南</span></a>
+      <a href='/html/category/19053510-1.htm'><span id="ListingOSonSubject">招募计划</span></a>
+      </span>
+    </li>
+    <li>
+      <span id="NodeTitle">
+        <a href="/html/category/19053511-1.htm" target="_self" title="医生">医生</a>
+      </span>
+      <span>
+      <a href='/html/category/19053511-1.htm'><span id="ListingOSonSubject">政策法规</span></a>
+      <a href='/html/category/19053512-1.htm'><span id="ListingOSonSubject">医院资质</span></a>
+      <a href='/html/category/19061126-1.htm'><span id="ListingOSonSubject">临床资料</span></a>
+      <a href='/html/category/19061129-1.htm'><span id="ListingOSonSubject">放射性同位素手册</span></a>
+      <a href='/html/category/19061130-1.htm'><span id="ListingOSonSubject">医护防护</span></a>
+      </span>
+    </li>
+    <li>
+      <span id="NodeTitle">
+        <a href="/html/category/19053465-1.htm" target="_self" title="活动资讯">活动资讯</a>
+      </span>
+      <span>
+      <a href='/html/category/19053465-1.htm'><span id="ListingOSonSubject">行业新闻</span></a>
+      <a href='/html/category/19053466-1.htm'><span id="ListingOSonSubject">会议活动</span></a>
+      </span>
+    </li>
+    <li>
+      <span id="NodeTitle">
+        <a href="/html/folder/19061135-1.htm" target="_self" title="关于我们">关于我们</a>
+      </span>
+      <span>
+      <a href='/html/folder/19061135-1.htm'><span id="ListingOSonSubject">公司介绍</span></a>
+      <a href='/html/folder/19061138-1.htm'><span id="ListingOSonSubject">联系我们</span></a>
+      </span>
+    </li>
+</ul>
+</div><div class="weima animate-box fadeInLeft animated" data-animate-effect="fadeInLeft"><a href="/html/folder/19053380-1.htm"><img src="/res/Home/structure/19091409.png"></a><br><br><img src="/res/Home/structure/19081634.jpg" style="width:93px;"><br>关注我们
+</div>
+</div>
+<div class="foot animate-box fadeInLeft animated" data-animate-effect="fadeInLeft">©Copyright 中国同辐股份有限公司   <a href="http://beian.miit.gov.cn" target="_blank">京ICP备14058279号</a></div>
+
+<script>
+    $(window).scroll(function(){
+        var mTop = $('.yej')[0].offsetTop;
+        var sTop = $(window).scrollTop();
+        var result = mTop - sTop;
+        var nodeH = $(".node-nav").height();
+        if(result < (nodeH +175)){
+            $(".node-nav").css({"top":"inherit","bottom":"368px"})
+        }else{
+            $(".node-nav").css({"top":"","bottom":""})
+        }
+    })
+
+</script></div>
+</div>
+<!--CY-20200729JWAX,1650356923387--></body></html>

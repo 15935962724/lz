@@ -1,0 +1,528 @@
+package tea.entity.node;
+
+import java.util.*;
+import tea.db.*;
+import tea.entity.*;
+import tea.entity.site.*;
+import tea.html.*;
+import tea.htmlx.*;
+import java.sql.SQLException;
+import tea.entity.member.*;
+import tea.resource.*;
+
+public class Job extends Entity
+{
+    private static Cache _cache = new Cache(100);
+    public static final String SALARY_TYPE[] =
+            {"0","1000-","1000~2000","2000~3000","3000~4000","4000~6000","6000~8000","8000~10000","10000~15000","15000~20000","20000~30000","30000~50000","50000+"};
+    public static final String JOB_TYPE[] =
+            {"--------------------","1167447115546","1167447133937","1167447161953","1167447180562"}; //全职,兼职,临时,实习
+    private int node;
+    private int language;
+    private int orgid;
+    private String jobtype; //职位性质
+    private String occid; //职业类别
+    private Date validityDate; //有效期
+    private int headcount; //招聘人数
+    private String salaryid; //月薪范围
+    private String locid; //工作地区
+    private int reqwyearid; //最低工作经验
+    private String reqdegid; //学历
+    private String requirements; //岗位要求
+    private String name; //联系人
+    private String email;
+    private String tel; //联系电话
+    //
+    private String txtJobDuty;
+    private String txtRefCode; //
+    private String adcode;
+    private boolean exists;
+    public Job(int node,int language) throws SQLException
+    {
+        this.node = node;
+        this.language = language;
+        load();
+    }
+
+    public static Job find(int node,int language) throws SQLException
+    {
+        Job obj = (Job) _cache.get(node + ":" + language);
+        if(obj == null)
+        {
+            obj = new Job(node,language);
+            _cache.put(node + ":" + language,obj);
+        }
+        return obj;
+    }
+
+    public static void create(int node,int language,int orgid,String jobtype,String occid,Date validityDate,int headcount,String salaryid,String locid,int reqwyearid,String reqdegid,String requirements,String name,String email,String tel,String refcode) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("INSERT INTO Job (node,language,orgid,jobtype,occid,validitydate,headcount,salaryid,locid,reqwyearid,reqdeg,requirements,name,email,tel,refcode)VALUES (" + node + "," + language + "," + orgid + "," + DbAdapter.cite(jobtype) + "," + DbAdapter.cite(occid) + "," + db.cite(validityDate) + "," + (headcount) + "," + DbAdapter.cite(salaryid) + ","
+                             + DbAdapter.cite(locid) + "," + (reqwyearid) + "," + DbAdapter.cite(reqdegid) + "," + DbAdapter.cite(requirements) + "," + DbAdapter.cite(name) + "," + DbAdapter.cite(email) + "," + DbAdapter.cite(tel) +  "," + DbAdapter.cite(refcode) + ")");
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public void set(int orgid,String jobtype,String occid,Date validityDate,int headcount,String salaryid,String locid,int reqwyearid,String reqdegid,String requirements,String name,String email,String tel,String refcode) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("UPDATE Job SET orgid=" + orgid + ",jobtype=" + DbAdapter.cite(jobtype) + ",occid=" + DbAdapter.cite(occid) + ",validitydate=" + db.cite(validityDate) + ",headcount=" + (headcount) + ",salaryid=" + DbAdapter.cite(salaryid) + ",locid=" + DbAdapter.cite(locid) + ",reqwyearid=" + (reqwyearid) + ",reqdeg=" + DbAdapter.cite(reqdegid)
+                             + ",requirements=" + DbAdapter.cite(requirements) + ",name=" + DbAdapter.cite(name) + ",email=" + DbAdapter.cite(email) + ",tel=" + DbAdapter.cite(tel) + ",refcode=" + DbAdapter.cite(refcode) + " WHERE node=" + node + " AND language=" + language);
+        } finally
+        {
+            db.close();
+        }
+        _cache.remove(node + ":" + language);
+    }
+
+    public boolean isExists()
+    {
+        return exists;
+    }
+
+    private void load() throws SQLException
+    {
+        int j = Node.getLanguage(node,language);
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT refcode, orgid, jobtype, occid, validitydate, headcount, salaryid, locid, reqwyearid, reqdeg, jobduty ,name,email,tel,adcode,requirements FROM Job WHERE node=" + node + " AND language=" + j);
+            if(db.next())
+            {
+                txtRefCode = db.getString(1);
+                orgid = db.getInt(2);
+                jobtype = db.getVarchar(j,language,3);
+                occid = db.getVarchar(j,language,4);
+                validityDate = db.getDate(5);
+                headcount = db.getInt(6);
+                salaryid = db.getVarchar(j,language,7);
+                locid = db.getVarchar(j,language,8);
+                reqwyearid = db.getInt(9);
+                reqdegid = db.getVarchar(j,getLanguage(),10);
+                txtJobDuty = db.getString(11);
+                name = db.getVarchar(j,language,12);
+                email = db.getString(13);
+                tel = db.getString(14);
+                adcode = db.getString(15);
+                requirements = db.getText(j,language,16);
+                exists = true;
+            } else
+            {
+                exists = false;
+                txtRefCode = name = jobtype = occid = salaryid = locid = reqdegid = adcode = txtJobDuty = "";
+            }
+        } finally
+        {
+            db.close();
+        }
+    }
+
+
+    public static int findByAdcode(String adcode)
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT DISTINCT j.node FROM Job j,Node n WHERE n.node=j.node AND j.adcode=" + DbAdapter.cite(adcode));
+            if(db.next())
+            {
+                return db.getInt(1);
+            }
+        } catch(Exception ex)
+        {
+            ex.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return 0;
+    }
+
+    public static Enumeration findByOrg(int orgId)
+    {
+        DbAdapter db = new DbAdapter();
+        Vector vector = new Vector();
+        try
+        {
+            db.executeQuery("SELECT Job.node FROM Job,Node WHERE Node.hidden=0 AND Node.node=Job.node AND orgid=" + orgId);
+            while(db.next())
+            {
+                vector.addElement(new Integer(db.getInt(1)));
+            }
+        } catch(Exception ex)
+        {
+            ex.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return vector.elements();
+    }
+
+    public void set(String adcode,int headcount,Date validityDate,String instrument,int orgid) throws SQLException
+    {
+        if(this.isExists())
+        {
+            DbAdapter db = new DbAdapter();
+            try
+            {
+                db.executeUpdate("UPDATE Job SET adcode=" + DbAdapter.cite(adcode) + ",headcount=" + headcount + ",validitydate=" + db.cite(validityDate) + ",instrument=" + DbAdapter.cite(instrument) + ",orgid=" + orgid + " WHERE node=" + node + " AND language=" + language);
+            } finally
+            {
+                db.close();
+            }
+        } else
+        {
+            DbAdapter db = new DbAdapter();
+            try
+            {
+                db.executeUpdate("INSERT INTO Job (node,language,adcode,headcount,validitydate,instrument,orgid)VALUES(" + node + "," + language + "," + DbAdapter.cite(adcode) + "," + headcount + "," + db.cite(validityDate) + "," + DbAdapter.cite(instrument) + "," + orgid + ")");
+            } finally
+            {
+                db.close();
+            }
+        }
+        _cache.remove(node + ":" + language);
+    }
+
+    public static Enumeration findCompanyByMember(String member,int _nNode,int _nLanguage) throws SQLException
+    {
+        StringBuilder sb = new StringBuilder();
+        Node node = Node.find(_nNode);
+        tea.entity.site.Communityjob communityjob = tea.entity.site.Communityjob.find(node.getCommunity());
+        if(!tea.entity.site.License.getInstance().getWebMaster().equals(member) && !member.equalsIgnoreCase(communityjob.getJobmember()))
+        {
+            Purview purview = Purview.find(member,communityjob.getCommunity());
+            StringTokenizer tokenizer = new StringTokenizer(purview.getNode(),"/");
+            if(tokenizer.hasMoreTokens())
+            {
+                sb.append(" AND (Job.orgid=" + tokenizer.nextToken());
+            } while(tokenizer.hasMoreTokens())
+            {
+                sb.append(" OR Job.orgid=" + tokenizer.nextToken());
+            }
+            sb.append(") ");
+        }
+
+        Vector vector = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT Distinct( Job.orgid) FROM Node,Job  WHERE Node.finished=1 AND Node.node=Job.node AND type=50 AND Job.language=" + _nLanguage + " AND community=" + DbAdapter.cite(communityjob.getCommunity()) + sb.toString());
+            while(db.next())
+            {
+                vector.addElement(new Integer(db.getInt(1)));
+            }
+        } catch(Exception ex)
+        {
+            ex.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return vector.elements();
+    }
+
+    public static void stop() // 把已过有效期的职位，暂停（隐藏）
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT DISTINCT Node.node FROM Node,Job WHERE Node.node=Job.node AND Job.validitydate<getdate()"); // "UPDATE Node SET hidden=1 WHERE hidden=0 AND node in(SELECT node FROM Job WHERE validitydate<getdate())"
+            while(db.next())
+            {
+                Node.find(db.getInt(1)).setHidden(true);
+            }
+        } catch(Exception ex)
+        {
+            ex.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public String getTel()
+    {
+        return tel;
+    }
+
+    public String getRefCode()
+    {
+        return txtRefCode;
+    }
+
+    public int getOrgId()
+    {
+        return orgid;
+    }
+
+    public String getJobType()
+    {
+        return jobtype;
+    }
+
+    public String getJobTypeToString(int lang)
+    {
+        Resource r = new Resource("/tea/resource/Job");
+        String str = jobtype;
+        try
+        {
+            str =r.getString(lang,Job.JOB_TYPE[Integer.parseInt(str)]);
+        } catch(NumberFormatException ex)
+        {
+        }
+        return str;
+    }
+
+//    public Enumeration getOccId()
+//    {
+//        Vector vector = new Vector();
+//        StringTokenizer tokenizer = new StringTokenizer(occid, "/");
+//        while (tokenizer.hasMoreTokens())
+//        {
+//            vector.addElement(tokenizer.nextToken().toString());
+//        }
+//        return vector.elements();
+//    }
+
+    //职业类别
+    public String getOccId()
+    {
+        return occid;
+    }
+
+    public String getOccIdToHtml() throws SQLException
+    {
+        String community = Node.find(node).getCommunity();
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer stk = new StringTokenizer(occid,"/");
+        while(stk.hasMoreTokens())
+        {
+            Occupation jc = Occupation.find(community,stk.nextToken());
+            sb.append(jc.getSubject()).append(" ");
+        }
+        return sb.toString();
+    }
+
+    public Date getValidityDate()
+    {
+        return validityDate;
+    }
+
+    public String getValidityDateToString()
+    {
+        if(validityDate == null)
+        {
+            return "";
+        } else
+        {
+            return sdf.format(validityDate);
+        }
+    }
+
+    public int getHeadCount()
+    {
+        return headcount;
+    }
+
+    public String getSalaryId()
+    {
+        return salaryid;
+    }
+
+//    public Enumeration getLocId()
+//    {
+//        Vector vector = new Vector();
+//        StringTokenizer tokenizer = new StringTokenizer(locid, "/");
+//        while (tokenizer.hasMoreTokens())
+//        {
+//            vector.addElement(tokenizer.nextToken());
+//        }
+//        return vector.elements();
+//    }
+
+    public String getLocId()
+    {
+        return locid;
+    }
+
+    //工作地区
+    public String getLocIdToHtml() throws SQLException
+    {
+        String community = Node.find(node).getCommunity();
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer stk = new StringTokenizer(locid,"/");
+        while(stk.hasMoreTokens())
+        {
+            Jobcity jc = Jobcity.find(community,stk.nextToken());
+            sb.append(jc.getSubject()).append(" ");
+        }
+        return sb.toString();
+    }
+
+    public int getReqWyearId()
+    {
+        return reqwyearid;
+    }
+
+    public String getReqDegId()
+    {
+        return reqdegid;
+    }
+
+    public String getTxtJobDuty()
+    {
+        return txtJobDuty;
+    }
+
+    public int getNode()
+    {
+        return node;
+    }
+
+    public int getLanguage()
+    {
+        return language;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getRequirements()
+    {
+        return requirements;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public String getAdcode()
+    {
+        return adcode;
+    }
+
+
+    public static String getDetail(Node node,Http h,int listing,String target) throws SQLException
+    {
+        Span span = null;
+        StringBuilder sb = new StringBuilder();
+
+        int language = h.language;
+        Job job = Job.find(node._nNode,language);
+        ListingDetail detail = ListingDetail.find(listing,50,language);;
+        Iterator e = detail.keys();
+
+        while(e.hasNext())
+        {
+            String name = (String) e.next(),value = "";
+            int istype = detail.getIstype(name);
+
+            if(istype == 0)
+            {
+                continue;
+            }
+            if(name.equals("JobCode"))
+            {
+                value = (job.getRefCode());
+            } else if(name.equals("name"))
+            {
+                // value = (job.getName());
+                value = node.getSubject(h.language);
+
+            } else if(name.equals("text"))
+            {
+                if((node.getOptions() & 0x40L) == 0) // TEXT
+                {
+                    value = (Text.toHTML(node.getText2(language)));
+                    if(value!=null){
+                    	value=value.replaceAll("\r\n", "<br/>");
+                    }
+                } else
+                // HTML
+                {
+                    value = (node.getText2(language));
+                }
+                
+            } else if(name.equals("OrgId"))
+            {
+                value = (Node.find(job.getOrgId()).getSubject(language));
+            } else if(name.equals("JobType"))
+            {
+                value = job.getJobTypeToString(language);
+            } else if(name.equals("OccClass"))
+            {
+                value = job.getOccIdToHtml();
+            } else if(name.equals("HeadCount"))
+            {
+                value = String.valueOf(job.getHeadCount());
+            } else if(name.equals("SalaryId"))
+            {
+                value = (job.getSalaryId());
+            } else if(name.equals("ProvinceId"))
+            {
+                value = (job.getLocIdToHtml());
+            } else if(name.equals("ReqWyearId"))
+            {
+                value = String.valueOf(job.getReqWyearId());
+            } else if(name.equals("ReqDegId"))
+            {
+                value = DegreeSelection.getDegree(job.getReqDegId());
+            } else if(name.equals("Resume"))
+            {
+                value = ("<A HREF=\"/servlet/Node?node=15543&id=5831&Listing=5830&applyAmount=" + node._nNode + "\">查看</A>");
+            } else if(name.equals("AlterCopy"))
+            {
+                value = ("<A HREF=\"/jsp/type/job/EditJob.jsp?node=" + node._nNode + "&edit=alter\">修改</A>&nbsp;&nbsp;<A href=\"/servlet/NewBrother?Type=50&Node=" + node._nNode + "&copynode=" + node._nNode + "\">复制</A>");
+            } else if(name.equals("Delete"))
+            {
+                value = ("<A  onClick=\"if(confirm('确认删除')){window.open('/servlet/DeleteNode?node=" + node._nNode + "', '_self')};\" HREF=\"#\">删除</A>");
+            } else if(name.equals("count"))
+            {
+                value = String.valueOf(JobApply.countByResume(node._nNode)); // 好像有问题
+            } else if(name.equals("validity"))
+            {
+                value = (job.getValidityDateToString());
+            } else if(name.equals("issuetime"))
+            {
+                value = (node.getTimeToString());
+            } else if(name.equals("ApplyJob"))
+            {
+                value = ("<input TYPE=\"button\" NAME=\"Submit\" VALUE=\"申请该职位 \" ONCLICK=\"window.open('/jsp/type/job/EditJobApply.jsp?node=" + node._nNode + "')\">");
+            } else if(name.equals("CorpJob"))
+            {
+                value = ("<input TYPE=\"button\" NAME=\"Submit\" VALUE=\"该公司所有职位 \" ONCLICK=\"window.open('/servlet/Node?node=" + job.getOrgId() + "')\">");
+            }
+            if(detail.getAnchor(name) != 0)
+            {
+                Anchor anchor;
+                if(name.equals("OrgId")) // 如果是公司,则连接到公司的节点上
+                {
+                    anchor = new Anchor("/" + (h.status == 1 ? "xhtml" : "html") + "/" + h.community + "/company/" + Job.find(node._nNode,h.language).getOrgId() + "-" + language + ".htm",value);
+                } else
+                {
+                    anchor = new Anchor("/" + (h.status == 1 ? "xhtml" : "html") + "/" + h.community + "/job/" + node._nNode + "-" + language + ".htm",value);
+                }
+                anchor.setTarget(target);
+                span = new Span(anchor);
+            } else
+            {
+                span = new Span(value);
+            }
+            span.setId("JobID" + name);
+            sb.append(detail.getBeforeItem(name)).append(span).append(detail.getAfterItem(name));
+        }
+        return sb.toString();
+    }
+}

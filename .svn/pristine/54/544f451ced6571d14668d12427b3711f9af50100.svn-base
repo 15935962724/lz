@@ -1,0 +1,474 @@
+@charset "utf-8";
+/*=========================Reset_start==========================*/
+body,h1,h2,h3,h4,h5,h6,div,p,dl,dt,dd,ol,ul,li,form,table,th,td,a,img,span,strong,var,em,input,textarea,select,option{margin: 0; padding: 0;}
+html,body{font-family:"Arial Normal", "Arial","微软雅黑","宋体",Arail,Tabhoma; font-size: 12px; text-align: left;}
+ul,ol,li{list-style: none;}
+img{border: 0;}
+input,select,textarea{outline:0;}
+textarea{resize:none; overflow: auto;}
+table{border-collapse: collapse; border-spacing: 0;}
+th,strong,var,em{font-weight: normal; font-style: normal;}
+a{text-decoration: none;}
+h1,h2,h3,h4,h5,h6{font-weight: normal}
+
+/*==========================Reset_End===========================*/
+
+
+#Content{
+    width:1200px;
+    margin:0 auto;
+}
+.con-left{
+    width:167px;
+    float:left;
+    background: #fbfbfb;
+    min-height:465px;
+}
+.con-right{
+    width:1008px;
+    float:right;
+}
+.con-left-list{
+    height:35px;
+    line-height: 35px;
+    padding:0 20px;
+    font-size:15px;
+    font-weight: bold;
+    color:#333;
+    cursor: pointer;
+}
+.con-left-list em{
+    height:12px;
+    width:12px;
+    background: url('../img/icon-img1.png') 0px 0px no-repeat;
+    display: inline-block;
+    float:right;
+    margin-top:11px;
+}
+.con-left h4.on em{
+    height:12px;
+    width:12px;
+    background: url('../img/icon-img2.png') 0px 0px no-repeat;
+    display: inline-block;
+    float:right;
+    margin-top:11px;
+}
+.con-left-list a{
+    font-weight: bold;
+    color:#333;
+}
+.con-left .bd{
+    padding-left:33px;
+    display: none;
+}
+.con-left .bd li{
+    color:#333;
+    font-size:14px;
+    line-height:220%;
+    cursor: pointer;
+}
+.con-left .bd li a{
+    color:#333;
+    font-size:14px;
+}
+.con-left .bd .h-line4-liac{
+    font-weight: bold;
+    color:#575757;
+}
+.con-left .bd .h-line4-liac a{
+    color:#575757;
+}
+.con-right-box{
+    width:1006px;
+    height:105px;
+    border:1px solid #e5ecf0;
+    background: #f5f8fa;
+}
+.right-line1{
+    float:left;
+    padding:13px 0 13px 25px;
+}
+.right-search{
+    float:right;
+    width:77px;
+    height:34px;
+    background: #044694;
+    color:#fff;
+    border-radius: 5px;
+    border:none;
+    text-align: center;
+    line-height: 34px;
+    font-size:14px;
+    margin-right:25px;
+    margin-top:35px;
+}
+.right-line1 p{
+    line-height: 35px;
+    font-size:14px;
+}
+.right-line1 span{
+
+}
+.right-line1 .right-box-yy{
+    width:335px;
+    border:1px solid #e5ecf0;
+    height:33px;
+}
+.right-line1 .right-box-data{
+    width:146px;
+    border:1px solid #e5ecf0;
+    height:33px;
+}
+.right-box-inp{
+    border:1px solid #e5ecf0;
+    height:33px;
+    width:342px;
+    margin-bottom:10px;
+}
+.right-box-tit{
+    margin-left:15px;
+}
+.right-list{
+    margin-top:23px;
+}
+.right-list-zt{
+    
+}
+.right-list-zt li{
+    float:left;
+    height:33px;
+    border:1px solid #e5ecf0;
+    background: #fff;
+    color:#333;
+    font-size:14px;
+    text-align: center;
+    line-height: 35px;
+    padding:0 30px;
+    margin-right:10px;
+    position: relative;
+    font-weight: bold;
+    margin-bottom:10px;
+}
+.right-list-zt li em{
+    position: absolute;
+    right:-8px;
+    top:-8px;
+    display: inline-block;
+    width:17px;
+    height:17px;
+    background: #f18019;
+    border-radius: 50%;
+    color:#fff;
+    line-height: 17px;
+    text-align: center;
+}
+.right-tab{
+    margin-top:10px;
+    width:100%;
+    text-align: center;
+    font-size:14px;
+}
+.right-tab th{
+    height:44px;
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    background: #f5f8fa;
+}
+.right-tab td{
+    height:44px;
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+}
+.right-tab tr{
+    border-top:1px solid #e5ecf0;
+    border-bottom:1px solid #e5ecf0;
+}
+.right-tab td a{
+    color:#044694;
+    margin-right:5px;
+}
+.right-tab .th1{
+    width:50px;
+}
+.right-tab .th2{
+    width:40px;
+}
+
+/* 订单列表 */
+.right-box-inp2{
+    width:333px;
+}
+.right-fp-inp{
+    width:90px;
+    height:34px;
+    float:right;
+    border-radius: 5px;
+    border:none;
+    background: #f18019;
+    color:#fff;
+    line-height: 34px;
+    text-align: center;
+    font-size:14px;
+}
+/* 发票管理 */
+
+.con-right-box2{
+    height:60px;
+}
+.right-search2{
+    margin-top:14px;
+}
+.right-fp-inp2{
+    width:146px;
+}
+.right-fp-inp3{
+    height: 34px;
+    float: right;
+    border-radius: 5px;
+    border: none;
+    background: #044694;
+    color: #fff;
+    width:91px;
+    margin-right:15px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 14px;
+}
+.right-line-inp{
+    width:100%;
+    text-align: center;
+    margin-top:20px;
+}
+.right-fp-inp4{
+    height: 34px;
+    border-radius: 5px;
+    border: none;
+    background: #044694;
+    color: #fff;
+    width:91px;
+    margin-right:15px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 14px;
+}
+/* 回款管理 */
+
+.right-sqkp{
+    border-bottom:1px solid #e5ecf0;
+    overflow: hidden;
+    width:100%;
+    height:40px;
+    line-height: 35px;
+}
+.right-sqkp span{
+    float:left;
+    font-size: 14px;
+}
+.right-sqkp input{
+    float:left;
+}
+.right-sq-inp{
+    width:86px;
+    height:30px;
+    border:1px solid #e5ecf0;
+}
+.right-sq-btn{
+    width: 55px;
+    height: 34px;
+    background: #044694;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    line-height: 34px;
+    font-size: 14px;
+    margin-right: 25px;
+    margin-left:15px;
+}
+.right-sqkp .right-je{
+    float:right;
+    margin-left:20px;
+    margin-right:25px;
+}
+/* 发票申请 */
+
+.right-zhgl{
+    height:30px;
+    line-height: 30px;
+}
+.right-zhgl span{
+    font-weight: bold;
+    font-size:15px;
+}
+.right-dz{
+    height:49px;
+    border-top:1px solid #e7e7e7;
+    line-height: 50px;
+    padding-left:15px;
+    background: #f9fbfd;
+    margin-top:5px;
+}
+.right-dz span{
+    font-weight: bold;
+    font-size:14px;
+}
+.right-add{
+    float:right;
+    width:110px;
+    height:30px;
+    border:1px solid #a0b4da;
+    color:#044694;
+    border-radius: 5px;
+    background: #fff;
+    margin-top:10px;
+    margin-right:10px;
+}
+.right-she{
+    width:83px;
+    border-radius:15px;
+    height:25px;
+    color:#fff;
+    background:#044694;
+    border:none;
+    float:right;
+    margin-right:25px;
+}
+.right-tab td input.on{
+    background:#f1f1f1;
+    color:#989898;
+}
+.right-tab .th4{
+    width:270px;
+}
+.right-tab2 tr:hover{
+    background: #f6f8fa;
+}
+.right-tab2 tr th{
+    font-weight: bold;
+}
+/* 添加医院 */
+.right-zhgl2{
+    border-bottom:1px solid #e7e7e7;
+    margin-bottom:10px;
+    padding-bottom:5px;
+}
+.yy-listp{
+    font-size:15px;
+}
+
+.jf-box1{
+    height: 100px;
+    border-top: 1px solid #e7e7e7;
+    line-height: 50px;
+    padding-left: 15px;
+    background: #f9fbfd;
+    margin-top: 5px;
+}
+.jf-p{
+    float:left;
+    margin-left:52px;
+    margin-top:30px;
+    font-size:14px;
+}
+.jf-span{
+    color:#ee7300;
+    font-size:22px;
+    font-weight: bold;
+    margin-left:10px;
+}
+.jf-btn{
+    width:140px;
+    height:43px;
+    border-radius: 5px;
+    color:#fff;
+    background: #ee7300;
+    float:right;
+    margin-right:38px;
+    border:none;
+    margin-top:32px;
+}
+.right-tab3{
+    width:100%;
+    text-align: center;
+    border:none;
+    margin-top:20px;
+    font-size:14px;
+}
+.right-tab3 th{
+    height: 44px;
+    background: #f5f8fa;
+    border:none;
+    font-weight: bold;
+}
+.right-tab3 tr{
+    border:none;
+   border-top:1px solid #e5ecf0;
+   border-bottom:1px solid #e5ecf0;
+}
+.right-tab3 td{
+    height: 44px;
+    border:none;
+}
+.td-jfc{
+    color:#ee7300;
+}
+/* 我的积分 */
+
+.right-tab4{
+    border:none;
+    width:100%;
+}
+.right-tab4 .td-left{
+    text-align: right;
+    color:#7b7b7b;
+    padding-right:10px;
+    height:40px;
+    font-size: 14px;
+    width:48%;
+}
+.right-tab4 .td-right{
+    text-align: left;
+    height:40px;
+    font-size: 14px;
+    width:48%;
+    padding-left:10px;
+}
+.tab-cha{
+    color:#1f5bcd;
+    margin-left:20px;
+}
+.tab-xz{
+    color:#006aed;
+}
+.tab-btn{
+    width:130px;
+    height:27px;
+    border:1px solid #a0b4da;
+    background: #f5f8fb;
+    color:#044694;
+    border-radius: 5px;
+}
+/* 基本信息 */
+
+.right-aq{
+    overflow: hidden;
+    width:100%;
+    border-bottom: 1px dashed #7b7b7b;
+    line-height: 50px;
+}
+.right-aq span{
+    float:left;
+    color:#7b7b7b;
+    font-size: 14px;
+    margin-left:15px;
+}
+.right-aq a{
+    color:#044694;
+    float:right;
+    font-size: 14px;
+    margin-right:15px;
+}
+.right-aq em{
+    margin-left:20px;
+    line-height: 50px;
+}

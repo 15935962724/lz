@@ -1,0 +1,14 @@
+#
+InvalidStartTerm=Invalid start term
+InvalidStopTerm=Invalid stop term
+RCreator=Creator
+VCreator=Assistant
+NodeStyle=Node Type
+Self=Self
+Father=Father
+Son=Son
+GrandSon=Grand Son
+Real=Self
+Virtual=Assistant
+Both=Both
+CurrentMember=Active Member

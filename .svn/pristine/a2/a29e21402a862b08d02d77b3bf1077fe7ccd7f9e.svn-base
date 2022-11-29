@@ -1,0 +1,70 @@
+package tea.statistics;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import tea.db.DbAdapter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class InvoicedQuantity extends HttpServlet {
+
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+
+        response.setContentType("text/html");
+        response.setCharacterEncoding("utf-8");// 注意設置為utf-8否則前端接收到的中文為亂碼
+        PrintWriter out = response.getWriter();
+        DbAdapter dbAdapter = new DbAdapter();
+
+        Integer year = Integer.valueOf(request.getParameter("year"));
+        System.out.println(year+"年开票数量");
+
+        ResultSet resultSet = null;
+        JSONArray jsonArray = new JSONArray();
+        try {
+            for(int j = year; j >=(year-1); j--) {
+                JSONObject jsonObject = new JSONObject();
+                String sql = "select puid,sum(num) as num from invoice where status = 2 and DATENAME(year,makeoutdate) = '"+j+"' group by puid order by puid;";
+                resultSet = dbAdapter.executeQuerySql(sql);
+                List<Integer> datas = new ArrayList<Integer>() ;
+                while (resultSet.next()){
+                    datas.add(resultSet.getInt("num"));
+                }
+                jsonObject.put("name",j+"年开票数量");
+                jsonObject.put("type","column");
+                jsonObject.put("data",datas);
+                jsonArray.add(jsonObject);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        out.write(jsonArray.toJSONString());
+
+    }
+
+
+    //Process the HTTP Post request 处理http请求
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+       doGet(request,response);
+    }
+
+
+}

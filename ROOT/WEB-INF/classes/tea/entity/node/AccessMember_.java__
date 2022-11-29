@@ -1,0 +1,323 @@
+package tea.entity.node;
+
+import java.sql.*;
+import java.util.*;
+import tea.db.*;
+import tea.entity.*;
+
+public class AccessMember extends Entity
+{
+    public static Cache _cache = new Cache();
+    public static final String PUR_TYPE[] =
+            {"访问","创建","创建和编辑","完全控制"};
+    public static final String APPLY_STYLE[] =
+            {"本节点","子节点","本树"};
+    private int accessmember;
+    private int node;
+    private String creator;
+    private String member;
+    private int style;
+    private int purview; // 0:访问,1:创建,2.创建编辑,3:完全控制
+    private boolean auditing;
+    private String type;
+    private String category;
+    private boolean exists;
+
+    private AccessMember(int node,String member,int purview,boolean auditing,String type,String category)
+    {
+        this.node = node;
+        this.member = member;
+        this.purview = purview;
+        this.auditing = auditing;
+        this.type = type;
+        this.category = category;
+    }
+
+    public void set(int style,int purview,boolean auditing,String type,String category) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("UPDATE AccessMember SET style=" + style + ",purview=" + purview + ",auditing=" + DbAdapter.cite(auditing) + ",type=" + DbAdapter.cite(type) + ",category="
+                             + DbAdapter.cite(category) + " WHERE accessmember=" + accessmember);
+        } finally
+        {
+            db.close();
+        }
+        this.exists = true;
+        this.style = style;
+        this.purview = purview;
+        this.auditing = auditing;
+        this.type = type;
+        this.category = category;
+    }
+
+    public static void create(int node,String member,String creator,int style,int purview,boolean auditing,String type,String category) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("INSERT INTO AccessMember(node,member,creator,style,purview,auditing,type,category)VALUES(" + node + ", " + DbAdapter.cite(member) + ", " + DbAdapter.cite(creator) + ","
+                             + style + ", " + purview + ", " + DbAdapter.cite(auditing) + "," + DbAdapter.cite(type) + ", " + DbAdapter.cite(category) + ")");
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public boolean isProvider(int i) throws SQLException
+    {
+        if(i != 1)
+        {
+            return type != null && type.indexOf("/" + i + "/") != -1;
+        } else
+        {
+            return category != null && category.length() > 2;
+        }
+    }
+
+    public AccessMember(int accessmember) throws SQLException
+    {
+        this.accessmember = accessmember;
+        load();
+    }
+
+    private void load() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT node,member,creator,style,purview,auditing,type,category FROM AccessMember WHERE accessmember=" + accessmember);
+            if(db.next())
+            {
+                node = db.getInt(1);
+                member = db.getString(2);
+                creator = db.getString(3);
+                style = db.getInt(4);
+                purview = db.getInt(5);
+                auditing = db.getInt(6) != 0;
+                type = db.getString(7);
+                category = db.getString(8);
+                exists = true;
+            } else
+            {
+                purview = -1;
+                exists = false;
+            }
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    // public static Vector getAccessNode(Vector vector, RV rv) throws
+    // SQLException
+    // {
+    // // Vector vector = new Vector();
+    // Enumeration enumeration = vector.elements();
+    // int nodecode;
+    // long option;
+    // while (enumeration.hasMoreElements())
+    // {
+    // nodecode = ((Integer) enumeration.nextElement()).intValue();
+    // Node node = Node.find(nodecode);
+    // option = node.getOptions();
+    // if ((option & 0x1000) != 0 && (option & 0x100) != 0 &&
+    // (!AccessMember.isAccessMember(nodecode, rv) && !node.isCreator(rv)))
+    // {
+    // vector.remove((nodecode));
+    // }
+    // }
+    // return vector;
+    // }
+
+    public void delete() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM AccessMember WHERE accessmember=" + accessmember);
+        } finally
+        {
+            db.close();
+        }
+        _cache.remove(new Integer(accessmember));
+    }
+
+    public static Enumeration findByNode(int node) throws SQLException
+    {
+        Vector v = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT accessmember FROM AccessMember WHERE node=" + node);
+            while(db.next())
+            {
+                v.addElement(new Integer(db.getInt(1)));
+            }
+        } finally
+        {
+            db.close();
+        }
+
+        if(Node.find(node).isExtend())
+        {
+            int father = Node.find(node).getFather();
+            if(father != 0)
+            {
+                Enumeration e = findByNode(father);
+                while(e.hasMoreElements())
+                {
+                    v.addElement(e.nextElement());
+                }
+            }
+        }
+        return v.elements();
+    }
+
+    // 获取用户的权限//////////
+    public static AccessMember find(int node,String member) throws SQLException
+    {
+        int p = -1;
+        boolean a = false;
+        StringBuilder sb0 = new StringBuilder();
+        StringBuilder sb1 = new StringBuilder();
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT purview,auditing,type,category FROM AccessMember WHERE ( style IN(0,2) AND node=" + node + " AND member=" + DbAdapter.cite(member) + " )");
+
+        Node obj = Node.find(node);
+        while(obj.getFather() > 0 && obj.isExtend())
+        {
+            sql.append(" OR( style IN(1,2) AND node=" + obj.getFather() + " AND member=" + DbAdapter.cite(member) + " )");
+            obj = Node.find(obj.getFather());
+        }
+        //String paths[] = Node.find(node).getPath().split("/");
+        // int i = paths.length;
+        // while (--i > 0)
+        // {
+        // int n = Integer.parseInt(paths[i]);
+        // Node obj = Node.find(n);
+        // if (node == n || obj.isExtend())
+        // {
+        // sql.append(" OR( style=2 AND node=" + n + " AND member=" +
+        // DbAdapter.cite(member) + " )");
+        // if (obj.isExtend() && i > 1) //可以继承&&父节点不为0
+        // {
+        // sql.append(" OR( style=1 AND node=" + obj.getFather() + " AND
+        // member=" + DbAdapter.cite(member) + " )");
+        // }
+        // } else
+        // {
+        // break;
+        // }
+        // }
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery(sql.toString());
+            while(db.next())
+            {
+                int purview = db.getInt(1);
+                boolean auditing = db.getInt(2) != 0;
+                String type = db.getString(3);
+                String category = db.getString(4);
+                // ///////
+                if(p < purview)
+                {
+                    p = purview;
+                }
+                if(auditing)
+                {
+                    a = true;
+                }
+                sb0.append(type);
+                sb1.append(category);
+            }
+        } finally
+        {
+            db.close();
+        }
+        return new AccessMember(node,member,p,a,sb0.toString(),sb1.toString());
+    }
+
+    public static AccessMember find(int id) throws SQLException
+    {
+        AccessMember obj = (AccessMember) _cache.get(new Integer(id));
+        if(obj == null)
+        {
+            obj = new AccessMember(id);
+            _cache.put(new Integer(id),obj);
+        }
+        return obj;
+    }
+
+    // 删除所有子节点的权限，并把子节点改为'继承'的//////////
+    public static void reset(int node) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM AccessMember WHERE node IN( SELECT node FROM Node WHERE path LIKE '%/" + node + "/_%' )");
+            db.executeQuery("SELECT node FROM Node WHERE extend=0 AND path LIKE '%/" + node + "/_%'");
+            while(db.next())
+            {
+                int n = db.getInt(1);
+                Node.find(n).setExtend(true);
+            }
+        } finally
+        {
+            db.close();
+        }
+        _cache.clear();
+    }
+
+    public String getType()
+    {
+        return type;
+    }
+
+    public int getPurview()
+    {
+        return purview;
+    }
+
+    public int getNode()
+    {
+        return node;
+    }
+
+    public String getMember()
+    {
+        return member;
+    }
+
+    public boolean isExists()
+    {
+        return exists;
+    }
+
+    public String getCreator()
+    {
+        return creator;
+    }
+
+    public String getCategory()
+    {
+        return category;
+    }
+
+    public boolean isAuditing()
+    {
+        return auditing;
+    }
+
+    public int getAccessmember()
+    {
+        return accessmember;
+    }
+
+    public int getStyle()
+    {
+        return style;
+    }
+}

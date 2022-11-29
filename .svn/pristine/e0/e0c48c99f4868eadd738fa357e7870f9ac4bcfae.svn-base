@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="viewport" content="width=device-width,user-scalable=0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="/tea/mobhtml/m-style.css">
+	<title>登录</title>
+	<style>
+		.seachr li{padding:14px 5px;}
+		html,body,.lo-head{
+			width: 100%;
+			height:100%;
+		}
+		.lo-head{
+			background:url(/tea/mobhtml/img/lo-bg.jpg) center no-repeat;
+			background-size:cover;
+			position: relative;
+		}
+	</style>
+	<script type="text/javascript" src="/tea/yl/jquery.min.js"></script>
+	<link rel="stylesheet" href="/tea/weui.css" type="text/css" />
+	<script src="/tea/MobileLoading.js"></script>
+	<script src="/mobjsp/yl/user/js/wechat.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="lo-head">
+	<div class="lo-box">
+		<p class="lo-tit">
+			<span class="on ft16">账号登录</span>
+			<span class="ft16">短信登录</span>
+		</p>
+		<div class="lo-con lo-show lo-con2">
+			<form  target="_ajax"   id="form2" name="form2" method="post">
+
+				<input placeholder="用户名" name="username" id="username" class="lo-inp ft14" type="text" />
+				<input placeholder="密码" name="password" id="password" type="password" class="lo-inp ft14" />
+				<p style="position: relative;">
+					<input placeholder="手机验证码" name="verid" id="acccountVerid"  type="text" class="lo-inp ft14" />
+					<input type="button" onclick="accountVertify()" class="ft14" id="acccountVerbut" value="获取验证码" style="background: none;border:none;color: #044694;position: absolute;right:10px;top:10px;">
+				</p>
+				<button type="button" class="lo-btn ft14" onclick="accountlogin()" value="登录" />登录</button>
+				<p class="lo-p">
+					<a href="#" class="fl-left" onclick="YKRJ.show('提示','请给管理员联系找回或修改密码　电话：010-68533123',1)">忘记密码</a>
+				</p>
+			</form>
+		</div>
+		<div class="lo-con lo-con2">
+			<form  target="_ajax"   id="form3" name="form3" method="post">
+
+				<input placeholder="手机号" name="mob" id="mob" class="lo-inp ft14" type="text" />
+				<p style="position: relative;">
+					<input placeholder="手机验证码" name="verid" id="messageVerid"  type="text" class="lo-inp ft14" />
+					<input type="button" onclick="messageVertify()" class="ft14" id="messageVerbut" value="获取验证码" style="background: none;border:none;color: #044694;position: absolute;right:10px;top:10px;">
+				</p>
+				<button style='margin-top:30px;' type="button" class="lo-btn ft14" onclick="messagelogin()" value="登录" />登录</button>
+				<p class="lo-p" style='margin-top:27px;'>
+					<a href="#" class="fl-left" onclick="YKRJ.show('提示','请给管理员联系找回或修改密码　电话：010-68533123',1)">忘记密码</a>
+				</p>
+			</form>
+		</div>
+	</div>
+
+	<div class="lo-foot ft14">
+		®Copyright 中国同辐股份有限公司   京ICP备14058279号
+	</div>
+</div>
+</body>
+</html>

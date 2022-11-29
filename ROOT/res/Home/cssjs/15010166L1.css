@@ -1,0 +1,37 @@
+#Content1{float:none;width:auto}
+#Content3{display:none}
+.showlist li{border-bottom:dashed 1px #ccc;margin-top:10px;padding-bottom:10px;overflow:hidden;}
+.showlist li .pic{float:left;width: 195px;height: 125px;border: solid 1px #ddd;text-align:center;padding: 1px;}
+.showlist li .pic img {vertical-align: middle;}
+.showlist li .tit{float:left;width:725px;margin-left:15px;}
+.titout .tt{color:#0079D2;font-size:14px;}
+.titout {color:#999;font-family:"微软雅黑";font-size:16px;color:#00A2E8;font-weight:bold;}
+.tit .texts {line-height:200%;margin:8px 0;color:#333;font-size:13px;/*padding-left:20px*/}
+.tit .texts a {color: #ff7f27;}
+.tit .ord .price{float:left;}
+
+.tit .ord .price strong{font-size:16px;color:#FD7E23}
+.tit .nowGo{float:right;}
+.tit .nowGo a{font-size:14px;color:#FE7F26;}
+.buyBtn {text-align:right;padding-right:20px;margin-top:20px}
+.buyBtn a{/*display: block;*/
+background: #FE7F26;
+width:88px;
+height: 25px;
+line-height: 25px;
+text-align: center;
+font-family: "微软雅黑";
+font-size: 14px;
+color: white;
+font-weight: bold;
+float:right}
+
+
+/* 详细介绍 */
+.detail .detailTit {font-size:16px; font-family:"微软雅黑";color:#0079D2;margin:20px 0 8px;font-weight:bold;}
+.detail .detailCon {line-height:200%;font-size:13px}
+.detail .detailCon p{padding-bottom:20px}
+
+.detail .back{text-align:right}
+.detail .back .back_1{float:right;width:88px;height:25px;text-align: center;;line-height:25px;color:#fff; font-family:"微软雅黑",sans-serif;font-size:14px;background:#00A2E8;margin-left:15px}
+.detail .back .backBuy{float:right;width:88px;font-family:"微软雅黑",sans-serif;height:25px;line-height:25px;font-size:14px;color:#fff;text-align:center;border:none;background:#FF7F27}

@@ -1,0 +1,37 @@
+#
+Code=Serial Number
+Name=Project Name
+Essence=Project Nature
+Reside=Belonging Industry
+Area=Practice Location
+Synopsis=Project Introduction
+Future=Forecast
+AllMoney=Total Investment Capital
+FinancingMoney=Project Financing Amount
+InvestCallback=Investment Return Cycle
+Redound=Return Rate
+YearRestrict=Corporation Year Limit 
+Fashion=Corporation Method
+UnitName=Provider Company Name
+UnitEssence=Company Nature
+UnitSynopsis=Company Profile
+Linkman=Contact Person Name
+Phone=Contact Person Phone
+Fax=Contact Person FAX
+Postalcode=Postal Code
+Year=Year
+IDCard=Identification Card 
+Homeplace=Residential Location
+Website=Web Site Address
+Evolve=Project Development
+
+
+Allmoney=Total Investment Capital
+Investcallback=Investment Return Time
+Yearrestrict=Corporation Year Limit
+Unitname=Provider Company Name
+Unitessence=Company Nature
+Unitsynopsis=Company Introduction
+Idcard=ID Number
+
+InfoAuditing=The Information can not be delivered without auditing

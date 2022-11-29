@@ -1,0 +1,21 @@
+InvalidSymbol=Invalid symbol
+GraphWeek=走势图(周)
+GraphMonth=走势图(月)
+GraphYear=走势图(年)
+GraphYet=走势图(至今)
+StockInput=股价录入
+StockGraph=股价走势图
+HistoryStockManage=历史股票管理
+
+HistoryQuery=History Query
+StockName=Stock Name
+BeginDate=Begin Date
+Year=年
+Month=月
+Day=日
+EndDate=End Date
+Search=查询
+ThereIsNoResult=There is no result
+AllRecords=All ({0})Records
+Current=当前页
+ThereIsNoResult=没有查询到相关记录

@@ -1,0 +1,81 @@
+<%@page import="tea.entity.Http"%>
+<%@page import="tea.entity.yl.shop.ShopMyPoints"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="tea.entity.yl.shop.ShopOrder"%>
+<%
+/* *
+ 功能：支付宝服务器异步通知页面
+ 版本：3.3
+ 日期：2012-08-17
+ 说明：
+ 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
+ 该代码仅供学习和研究支付宝接口使用，只是提供一个参考。
+
+ //***********页面功能说明***********
+ 创建该页面文件时，请留心该页面文件中无任何HTML代码及空格。
+ 该页面不能在本机电脑测试，请到服务器上做测试。请确保外部可以访问该页面。
+ 该页面调试工具请使用写文本函数logResult，该函数在com.alipay.util文件夹的AlipayNotify.java类文件中
+ 如果没有收到该页面返回的 success 信息，支付宝会在24小时内按一定的时间策略重发通知
+ //********************************
+ * */
+%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.mobalipay.util.*"%>
+<%@ page import="com.mobalipay.config.*"%>
+<%@ page import="org.dom4j.Document"%>
+<%@ page import="org.dom4j.DocumentHelper"%>
+<%
+Http h=new Http(request);
+	//获取支付宝POST过来反馈信息
+	Map<String,String> params = new HashMap<String,String>();
+	Map requestParams = request.getParameterMap();
+	for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
+		String name = (String) iter.next();
+		String[] values = (String[]) requestParams.get(name);
+		String valueStr = "";
+		for (int i = 0; i < values.length; i++) {
+			valueStr = (i == values.length - 1) ? valueStr + values[i]
+					: valueStr + values[i] + ",";
+		}
+		//乱码解决，这段代码在出现乱码时使用。如果mysign和sign不相等也可以使用这段代码转化
+		//valueStr = new String(valueStr.getBytes("ISO-8859-1"), "gbk");
+		params.put(name, valueStr);
+	}
+
+	//获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以下仅供参考)//
+	
+	//RSA签名解密
+   	if(AlipayConfig.sign_type.equals("0001")) {
+   		params = AlipayNotify.decrypt(params);
+   	}
+	//XML解析notify_data数据
+	Document doc_notify_data = DocumentHelper.parseText(params.get("notify_data"));
+	
+	//商户订单号
+	String out_trade_no = doc_notify_data.selectSingleNode( "//notify/out_trade_no" ).getText();
+
+	//支付宝交易号
+	String trade_no = doc_notify_data.selectSingleNode( "//notify/trade_no" ).getText();
+
+	//交易状态
+	String trade_status = doc_notify_data.selectSingleNode( "//notify/trade_status" ).getText();
+
+	//获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以上仅供参考)//
+	System.out.print("-------------------------------------------------------"+AlipayNotify.verifyNotify(params));
+	if(AlipayNotify.verifyNotify(params)){//验证成功
+		if(trade_status.equals("TRADE_FINISHED")||trade_status.equals("TRADE_SUCCESS")){
+			ShopOrder so=ShopOrder.findByOrderId(out_trade_no);
+			if(!so.isPayment()&&so.getAmount()==Double.valueOf(request.getParameter("total_fee"))){//
+				so.setPayment(true);
+				so.setStatus(1);
+				so.setPayTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(request.getParameter("gmt_payment")));
+				so.set();
+				ShopMyPoints.setPoints(out_trade_no, h.member);	
+			}
+			out.println("success");	//请不要修改或删除
+		}
+	}else{//验证失败
+		out.println("fail");
+	}
+%>

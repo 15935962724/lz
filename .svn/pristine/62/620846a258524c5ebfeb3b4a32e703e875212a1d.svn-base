@@ -1,0 +1,14 @@
+Subject=团体或个体名称
+Project=捐赠项目/意向
+Classes=捐赠实体类型
+Belong=金额分类
+MoneyCount=捐赠金额
+Time=捐赠日期
+Photo=捐赠者照片
+Linkman=联系人
+Phone=联系电话
+Postalcode=邮政编码
+Reset=重写
+Individual=个人
+Unit=单位
+RMB=元人民币

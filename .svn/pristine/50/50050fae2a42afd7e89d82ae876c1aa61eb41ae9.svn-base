@@ -1,0 +1,50 @@
+#需替换的值
+#user:用户ID
+#order:订单ID
+#waybill:运单号
+#returnid:退货单ID
+#hospital:医院
+#consignees:收货人
+
+#1.提交订单：
+tjdd=user提交订单order，hospital，数量quantity，收货人consignees，请等待管理员确认。
+#收短信人：用户，订单管理员
+
+#2.确认发货：
+qrfh=您的订单order已确认，正在准备出库,hospital 收货人consignees，开票单位invoice。
+#收短信人：用户，订单管理员，出库管理员
+
+#3.出库完成：
+ckwc=订单order已出库，运单号为：waybill，hospital，数量quantity，收货人consignees。
+#收短信人：用户，出库管理员
+
+#4.索要发票：
+syfp=user订单order索要发票，hospital，收货人consignees，等待管理员确认。
+#收短信人：用户，订单管理员
+
+#5.发票送出：
+fpjc=订单order发票已开具，运单号为：waybill，hospital 收货人consignees。
+#收短信人：用户，订单管理员
+
+#6.退换货订单申请：
+thsq=原订单order申请退货，hospital 收货人consignees，请与管理员联系。电话：telephone。
+#收短信人：用户，出库管理员
+
+#7.退货订单完成：（成功）
+thwc=退货单returnid退货成功，如有疑问请与管理员联系。电话：telephone。
+#收短信人：用户，出库管理员
+
+#8. 退货订单完成：（失败）
+thwc_f=退货单returnid退货数量已被修改，请在7天内确认，如超过7天内未确认，系统默认确认。如有疑问请与管理员联系。电话：telephone。
+#收短信人：用户，出库管理员
+
+
+
+#1.提交订单：
+tjddgaoke=user提交订单order，hospital，数量quantity，活度activity，收货人consignees，请等待管理员确认。
+#收短信人：用户，订单管理员
+
+
+#3.出库完成：
+ckwcgaoke=订单order已出库，运单号为：waybill，hospital，数量quantity，活度activity，收货人consignees。
+#收短信人：用户，出库管理员

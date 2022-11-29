@@ -1,0 +1,10 @@
+.nav > li.li1 a{background:none;color:#044694;
+        position: relative;font-size:19px;}
+    .nav > li:hover a{background:none;}
+    .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+        background:none;
+    }
+    
+    .nav > li.li1 a:before{
+        display:inline-block;
+    }

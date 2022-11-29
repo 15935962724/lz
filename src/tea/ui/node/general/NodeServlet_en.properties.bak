@@ -1,0 +1,114 @@
+#
+English=英文
+Simplified=简体中文
+Traditional=繁体中文
+Japanese=日文
+Korean=韩文
+French=法文
+German=德文
+Spanish=西班牙文
+Portuguese=葡萄牙文
+Italian=意大利文
+
+
+
+Previous=Previous
+Next=Next
+Logout=Logout
+LoginSignUp=Login/Sign up
+Subscribers=Subscribers
+Organizers=Organizers
+Providers=Providers
+EditCommunity=Edit community
+ReplaceCreator=Replace creator
+JoinRequests=Join requests
+Talkbacks=Talkbacks
+ChatRoom=Chat room
+Forward=Forward
+ReplyToCreator=Reply to creator
+Adeds=Adeds
+NewFolder=New folder
+NewCategory=New category
+NewPage=New page
+NewPoll=New poll
+NewBuy=New buy
+NewBid=New bid
+NewBargain=New bargain
+NewPresentation=New presentation
+NewChat=New chat
+NewQuiz=New quiz
+NewStampSet=New stampSet
+NewStamp=New stamp
+NewBook=New book
+NewNews=New news
+NewWeather=New weather
+NewStock=New stock
+NewClassified=New classified
+NewGovernment=New government
+NewInstitution=New institution
+NewGroup=New group
+NewSchool=New school
+NewCompany=New company
+NewMedia=New media
+NewPublisher=New publisher
+NewWebSite=New webSite
+NewPerson=New person
+NewAuthor=New author
+NewReporter=New reporter
+NewExpert=New expert
+NewCareer=New career
+NewEmployment=New employment
+NewFriend=New friend
+NewSupply=New supply
+NewDemand=New demand
+NewGoods=New goods
+NewLaw=New law
+NewRecipe=New recipe
+NewEvent=New event
+NewSports=New sports
+
+
+TEXT=Text
+HTML=Html
+Poster=发表人
+
+
+
+Clone=Clone
+SonNodes=Son nodes
+AccessPrices=Access prices
+AccessMembers=Access members
+JoinRequests=Join requests
+Sections=Sections
+NewSection=New section
+Listings=Listings
+NewListing=New listing
+Adings=Adings
+Listeds=Listeds
+AddToBriefcase=Add to briefcase
+AddToFavorites=Add to favorites
+
+CBNewApplication=创建招聘
+
+InvalidChoice=Invalid choice
+Vote=Vote
+Results=Results
+InfRecordVoice=<A HREF=/tea/html/0/recorder.html TARGET=_blank> Record </A>.
+
+Saving=Saving
+AddToShoppingCart=Add to shopping cart
+		
+AnswerQuiz=Answer
+
+InfToEnterChatRoom=To enter chat room, {0}
+
+NewBookAuthor=New book author
+NewBookTranslator=New book translator
+
+AllBooksBy=All books by {0}
+
+KiloWord=Kilo-word
+
+#File Extension
+FileExtensionGraphics=jpg, gif, bmp, jpeg, dib, tif, png, pcx
+FileExtensionVoices=wav, aud

@@ -1,0 +1,5 @@
+InfCheckoutNotification=Order Notification
+InfViewOrder=To view order, please
+InfTradeError=Create order error, please contact webmaster.
+InfAfterTrade=Congratulation! Your order number is {0}, please remember order number for inquring. Thanks!
+InfAfterTrade1=The total amount of {0} has been charged to your account. Thanks!

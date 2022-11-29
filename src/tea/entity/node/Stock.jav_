@@ -1,0 +1,334 @@
+package tea.entity.node;
+
+import java.math.*;
+import java.util.*;
+import tea.db.*;
+import tea.entity.*;
+import java.text.*;
+import tea.html.*;
+import java.sql.SQLException;
+
+public class Stock extends Entity
+{
+    private static Cache _cache = new Cache();
+    public static DecimalFormat df = new DecimalFormat("0.00");
+
+    private int _nNode;
+    private String stockName;
+    private int _stockid;
+    private BigDecimal _bdChangePercent;
+    private int _nVolume;
+    private BigDecimal _bdOpen;
+    private BigDecimal _bdLow;
+    private BigDecimal _bdHigh;
+    private java.util.Date time;
+    private float dateData;
+    private float closingPrice;
+    private String estockName;
+
+    private boolean _blLoaded;
+
+    public void set(int node,java.util.Date time,String stockname,float datedata,float openingprice,float high,float low,float closingprice,float percentchange,int volume,String estockname) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            int j = db.executeUpdate("UPDATE stock SET stockname=" + DbAdapter.cite(stockname) + ",datedata=" + datedata + ",openingprice=" + openingprice + ",high=" + (high) + ",low=" + low + ",closingprice=" + closingprice + ",percentchange=" + percentchange + ",volume=" + volume + ",estockname=" + DbAdapter.cite(estockname) + " WHERE node=" + node + " AND time=" + DbAdapter.cite(time));
+            if(j < 1)
+            {
+                db.executeUpdate("INSERT INTO stock(node,time,stockname,datedata,openingprice,high,low,closingprice,percentchange,volume,estockname)VALUES(" + node + "," + DbAdapter.cite(time) + "," + DbAdapter.cite(stockname) + "," + datedata + "," + openingprice + "," + (high) + "," + low + "," + closingprice + "," + percentchange + "," + volume + "," + DbAdapter.cite(estockname) + ")");
+            }
+        } finally
+        {
+            db.close();
+        }
+        _cache.remove(new Integer(_stockid));
+        _blLoaded = false;
+    }
+
+    private Stock(int i)
+    {
+        _stockid = i;
+        _blLoaded = false;
+    }
+
+    private void load() throws SQLException
+    {
+        if(!_blLoaded)
+        {
+            DbAdapter db = new DbAdapter();
+            try
+            {
+                db.executeQuery("SELECT stockname,time,datedata,openingprice,high,low,closingprice,percentchange,volume,estockname,node FROM stock WHERE id=" + _stockid);
+                if(db.next())
+                {
+                    stockName = db.getVarchar(1,1,1);
+                    time = db.getDate(2);
+                    dateData = db.getFloat(3);
+                    _bdOpen = db.getBigDecimal(4,2);
+                    _bdHigh = db.getBigDecimal(5,2);
+                    _bdLow = db.getBigDecimal(6,2);
+                    closingPrice = db.getFloat(7);
+                    _bdChangePercent = db.getBigDecimal(8,2);
+                    _nVolume = db.getInt(9);
+                    estockName = db.getString(10);
+                    _nNode = db.getInt(11);
+                }
+            } finally
+            {
+                db.close();
+            }
+            _blLoaded = true;
+        }
+    }
+
+    public int getVolume() throws SQLException
+    {
+        load();
+        return _nVolume;
+    }
+
+    public int getNode() throws SQLException
+    {
+        load();
+        return _nNode;
+    }
+
+    public BigDecimal getHigh() throws SQLException
+    {
+        load();
+        return _bdHigh;
+    }
+
+    public BigDecimal getOpen() throws SQLException
+    {
+        load();
+        return _bdOpen;
+    }
+
+    public BigDecimal getChangePercent() throws SQLException
+    {
+        load();
+        return _bdChangePercent;
+    }
+
+    public BigDecimal getLow() throws SQLException
+    {
+        load();
+        return _bdLow;
+    }
+
+    public int getId() throws SQLException
+    {
+        load();
+        return _stockid;
+    }
+
+    public String getStockName(int language) throws SQLException
+    {
+        load();
+        if(language == 1)
+        {
+            return stockName;
+        } else
+        {
+            return estockName;
+        }
+    }
+
+    public void delete() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM stock WHERE id =" + this._stockid);
+        } finally
+        {
+            db.close();
+        }
+        _cache.remove(new Integer(_stockid));
+    }
+
+    public static int count() throws SQLException
+    {
+        int i = 0;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            i = db.getInt("SELECT COUNT(symbol)  FROM Stock ");
+        } finally
+        {
+            db.close();
+        }
+        return i;
+    }
+
+    public static Stock find(int _stockid)
+    {
+        Stock stock = (Stock) _cache.get(new Integer(_stockid));
+        if(stock == null)
+        {
+            stock = new Stock(_stockid);
+            _cache.put(new Integer(_stockid),stock);
+        }
+        return stock;
+    }
+
+    public static Stock find(int node,java.util.Date time) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        StringBuilder sb = new StringBuilder("SELECT id FROM stock WHERE node=");
+        sb.append(node);
+        if(time != null)
+        {
+            sb.append(" AND time=" + DbAdapter.cite(time));
+        } else
+        {
+            sb.append(" ORDER BY time DESC");
+        }
+        try
+        {
+            return find(db.getInt(sb.toString()));
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public static String find(int i,int j) throws SQLException
+    {
+        StringBuilder stringbuffer = new StringBuilder();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT symbol, suffix  FROM Stock ");
+            for(int k = 0;k < i + j && db.next();k++)
+            {
+                if(k >= i)
+                {
+                    String s = db.getString(1);
+                    String s1 = db.getString(2);
+                    if(s.startsWith("^"))
+                    {
+                        stringbuffer.append(s);
+                    } else
+                    {
+                        stringbuffer.append(s + s1);
+                    }
+                    stringbuffer.append("+");
+                }
+            }
+        } finally
+        {
+            db.close();
+        }
+        return stringbuffer.toString();
+    }
+
+    public static Enumeration find() throws SQLException
+    {
+        Vector vector = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT distinct(stockid) from stock");
+            for(;db.next();vector.addElement(db.getString(1)))
+            {
+                ;
+            }
+        } finally
+        {
+            db.close();
+        }
+        return vector.elements();
+    }
+
+    public static Vector find(int node,Date date1,Date date2) throws SQLException
+    {
+        Vector vector = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            String sql;
+            if(date1 != null && date2 != null)
+            {
+                sql = "SELECT id from stock where node =" + node + " and time between  " + DbAdapter.cite(date1) + " and " + DbAdapter.cite(date2) + " order by time desc";
+            } else
+            {
+                sql = "SELECT id from stock where node =" + node;
+                if(date1 != null)
+                {
+                    sql += " AND time>=" + DbAdapter.cite(date1);
+                }
+                if(date2 != null)
+                {
+                    sql += " AND time<" + DbAdapter.cite(date2);
+                }
+                sql += " ORDER BY time DESC";
+            }
+            db.executeQuery(sql);
+            for(;db.next();vector.addElement(new Integer(db.getInt(1))))
+            {
+                ;
+            }
+        } finally
+        {
+            db.close();
+        }
+        return vector;
+    }
+
+    public static int count_s(int node,Date date1,Date date2) throws SQLException
+    {
+        int c_s;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            String sql = "SELECT COUNT(*) FROM stock WHERE node=" + node;
+            if(date1 != null)
+            {
+                sql += " AND time>=" + DbAdapter.cite(date1);
+            }
+            if(date2 != null)
+            {
+                sql += " AND time<" + DbAdapter.cite(date2);
+            }
+            c_s = db.getInt(sql);
+        } finally
+        {
+            db.close();
+        }
+        return c_s;
+    }
+
+
+
+    public Date getDate() throws SQLException
+    {
+        load();
+        return time;
+    }
+
+    public float getDateData() throws SQLException
+    {
+        load();
+        return dateData;
+    }
+
+    public float getClosingPrice() throws SQLException
+    {
+        load();
+        return closingPrice;
+    }
+
+    public String getDateToString() throws SQLException
+    {
+        load();
+        if(time == null)
+        {
+            return "";
+        }
+        return sdf.format(time);
+    }
+
+}

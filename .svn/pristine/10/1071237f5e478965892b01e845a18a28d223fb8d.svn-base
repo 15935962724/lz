@@ -1,0 +1,53 @@
+.Btn
+{
+    BACKGROUND-COLOR: #F3F8FC;
+    BORDER-BOTTOM: #F3F8FC 1px solid;
+    BORDER-LEFT: #F3F8FC 1px solid;
+    BORDER-RIGHT: #F3F8FC 1px solid;
+    BORDER-TOP: #F3F8FC 1px solid;
+    HEIGHT: 23px;
+    float:left;
+    TOP: 1px;
+    WIDTH: 23px
+    }
+.BtnMouseOverUp
+{
+    BACKGROUND-COLOR: #F3F8FC;
+    BORDER-BOTTOM: buttonshadow 1px solid;
+    BORDER-LEFT: buttonhighlight 1px solid;
+    BORDER-RIGHT: buttonshadow 1px solid;
+    BORDER-TOP: buttonhighlight 1px solid;
+    HEIGHT: 23px;
+    float:left;
+    TOP: 1px;
+    WIDTH: 24px
+}
+.BtnMouseOverDown
+{
+    BACKGROUND-COLOR: #F3F8FC;
+    BORDER-BOTTOM: buttonhighlight 1px solid;
+    BORDER-LEFT: buttonshadow 1px solid;
+    BORDER-RIGHT: buttonhighlight 1px solid;
+    BORDER-TOP: buttonshadow 1px solid;
+    HEIGHT: 23px;
+    float:left;
+    TOP: 1px;
+    WIDTH: 24px
+}
+.BtnDown
+{
+    BACKGROUND-COLOR: gainsboro;
+    BORDER-BOTTOM: buttonhighlight 1px solid;
+    BORDER-LEFT: buttonshadow 1px solid;
+    BORDER-RIGHT: buttonhighlight 1px solid;
+    BORDER-TOP: buttonshadow 1px solid;
+    HEIGHT: 23px;
+    float:left;
+    TOP: 1px;
+    WIDTH: 24px
+}
+
+.TBGen
+{
+float:left;
+}

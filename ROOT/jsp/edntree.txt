@@ -1,0 +1,3803 @@
+文件夹 PATH 列表
+卷序列号为 700F-C9F2
+X:.
+│  catalogue.txt
+│  css.css
+│  Distinct.jsp
+│  EAFformat.htc
+│  EbookSearch.jsp
+│  edntree.txt
+│  Export.jsp
+│  Header.jsp
+│  Locoso.jsp
+│  Optimize.jsp
+│  
+├─access
+│      AccessMemberFrame.jsp
+│      AccessMembers.jsp
+│      AccessMembers_.jsp
+│      AccessMemberTree.jsp
+│      AccessPrices.jsp
+│      EditAccessMember.jsp
+│      EditAccessMember_.jsp
+│      EditAccessPrice.jsp
+│      EditNotification.jsp
+│      EditPower.jsp
+│      EditSecurity.jsp
+│      Glance.jsp
+│      Glance2.jsp
+│      Glance3.jsp
+│      GroupUser.jsp
+│      Notification.jsp
+│      PayAccess.jsp
+│      PayAccess0.jsp
+│      PayAccess1.jsp
+│      RequestAccess.jsp
+│      RequestAccess2.jsp
+│      
+├─add
+│      AddToBriefcase.jsp
+│      AddToContact.jsp
+│      AddToFavorite.jsp
+│      AddToFavorite_1.jsp
+│      AddToReminder.jsp
+│      EditReminder.jsp
+│      Reminders.jsp
+│      
+├─aded
+│      Adeds.jsp
+│      EditAded.jsp
+│      NewAded.jsp
+│      
+├─ading
+│      Adings.jsp
+│      EditAding.jsp
+│      
+├─admin
+│  │  AccessButton.jsp
+│  │  area.js
+│  │  BlogDesktop.jsp
+│  │  DefaultDesktop.jsp
+│  │  DynamicDesktop.jsp
+│  │  Frame.jsp
+│  │  Framesms.jsp
+│  │  head.jsp
+│  │  headsms.jsp
+│  │  index.jsp
+│  │  index2.jsp
+│  │  index2.jsp.bak
+│  │  indextop.jsp
+│  │  index_head.jsp
+│  │  index_head.jsp.bak
+│  │  index_head2.jsp
+│  │  index_headtop.jsp
+│  │  index_leftup.jsp
+│  │  index_profile.jsp
+│  │  index_profile2.jsp
+│  │  leftup.jsp
+│  │  leftup2.jsp
+│  │  leftupsms.jsp
+│  │  logg.jsp
+│  │  logout.jsp
+│  │  MenuDesktop.jsp
+│  │  NodeTree.jsp
+│  │  right.jsp
+│  │  SumFlowitem.jsp
+│  │  SumRealincome.jsp
+│  │  复件 index.jsp
+│  │  
+│  ├─agent
+│  │      AgentManageMembers.jsp
+│  │      AgentMembers.jsp
+│  │      EditAgentMember.jsp
+│  │      
+│  ├─archives
+│  │      Archives.jsp
+│  │      EditArchives.jsp
+│  │      Lookarchives.jsp
+│  │      show.jsp
+│  │      
+│  ├─books
+│  │      detail.jsp
+│  │      edit.jsp
+│  │      Editedit.jsp
+│  │      list.jsp
+│  │      newbook.jsp
+│  │      record.jsp
+│  │      see.jsp
+│  │      sort.jsp
+│  │      
+│  ├─cebbank
+│  │  │  Annuity.jsp
+│  │  │  AnnuityDesktop.jsp
+│  │  │  AnnuityEnt.jsp
+│  │  │  AnnuityFrame.jsp
+│  │  │  AnnuityPlans.jsp
+│  │  │  AnnuityTest.jsp
+│  │  │  Annuity_0001_.jsp
+│  │  │  Annuity_0002_.jsp
+│  │  │  Annuity_0003_.jsp
+│  │  │  Annuity_0004_.jsp
+│  │  │  Annuity_0005_.jsp
+│  │  │  Annuity_0006_.jsp
+│  │  │  Annuity_0009.jsp
+│  │  │  Annuity_0011_.jsp
+│  │  │  Annuity_0012_.jsp
+│  │  │  Annuity_0013_.jsp
+│  │  │  Annuity_1001.jsp
+│  │  │  Annuity_1002.jsp
+│  │  │  Annuity_1003.jsp
+│  │  │  Annuity_1003_.jsp
+│  │  │  Annuity_1004_.jsp
+│  │  │  Annuity_1005_.jsp
+│  │  │  Annuity_1006_.jsp
+│  │  │  Annuity_1009_.jsp
+│  │  │  Annuity_1010_.jsp
+│  │  │  Annuity_1011_.jsp
+│  │  │  Annuity_1013.jsp
+│  │  │  Annuity_4001_.jsp
+│  │  │  Annuity_4003_.jsp
+│  │  │  Annuity_5001_.jsp
+│  │  │  Annuity_5003_.jsp
+│  │  │  Annuity_5005_.jsp
+│  │  │  Annuity_8003_.jsp
+│  │  │  Annuity_8004_.jsp
+│  │  │  CalPension.jsp
+│  │  │  CalPension2.jsp
+│  │  │  EditAnnuityEnt.jsp
+│  │  │  EditAnnuityPlan.jsp
+│  │  │  ReplaceRate.jsp
+│  │  │  RiskPredict.jsp
+│  │  │  TreeAnnuityEnt.jsp
+│  │  │  
+│  │  ├─cssjs
+│  │  │      css.css
+│  │  │      Globals.js
+│  │  │      style2.css
+│  │  │      validate.js
+│  │  │      
+│  │  ├─htc
+│  │  │      disable.htc
+│  │  │      EAFformat.htc
+│  │  │      grid.htc
+│  │  │      select.htc
+│  │  │      Text.htc
+│  │  │      
+│  │  └─更新
+│  │      │  更新.zip
+│  │      │  
+│  │      ├─jsp
+│  │      │  └─admin
+│  │      │      └─cebbank
+│  │      │              Annuity_772950D8-0B15-453D-93F2-C384E239DAA7.jsp
+│  │      │              
+│  │      └─WEB-INF
+│  │          └─classes
+│  │              └─tea
+│  │                  ├─entity
+│  │                  │  └─admin
+│  │                  │      └─cebbank
+│  │                  │              Annuity.class
+│  │                  │              
+│  │                  ├─resource
+│  │                  │      Annuity_zh_CN.properties
+│  │                  │      
+│  │                  └─ui
+│  │                      └─admin
+│  │                          └─cebbank
+│  │                                  ExportAnnuity.class
+│  │                                  
+│  ├─certificate
+│  │      Brand.jsp
+│  │      CertiBrandAudit.jsp
+│  │      certificate.jsp
+│  │      EditBrand.jsp
+│  │      EditCertificate.jsp
+│  │      
+│  ├─earth
+│  │      EarthCdns.jsp
+│  │      EarthCommunity.jsp
+│  │      EarthCommunityDetail.jsp
+│  │      EarthDesktop.jsp
+│  │      EarthHeader.jsp
+│  │      EarthHosts.jsp
+│  │      EarthIps.jsp
+│  │      EarthNode.jsp
+│  │      EarthProfile.jsp
+│  │      EditEarthCdn.jsp
+│  │      EditEarthHost.jsp
+│  │      EditEarthIp.jsp
+│  │      EN.jsp
+│  │      index.jsp
+│  │      Leftup.jsp
+│  │      LeftupBottom.jsp
+│  │      复件 Leftup.jsp
+│  │      
+│  ├─express
+│  │      ExpressPricezjs.jsp
+│  │      
+│  ├─fileendorse
+│  │      Causation.jsp
+│  │      EditFileendorse.jsp
+│  │      fileendorse.jsp
+│  │      lookfilee.jsp
+│  │      optmember.jsp
+│  │      show.jsp
+│  │      showcontent.jsp
+│  │      
+│  ├─flow
+│  │      Affair.jsp
+│  │      Affair2.jsp
+│  │      AffairContent.jsp
+│  │      Bulletin.jsp
+│  │      BulletinContent.jsp
+│  │      DayOrder.jsp
+│  │      DayOrder2.jsp
+│  │      DayOrderGL.jsp
+│  │      DayOrderTest.jsp
+│  │      DynamicCsignView.jsp
+│  │      EditDynamicCsign.jsp
+│  │      EditDynamicOffice.jsp
+│  │      EditFlow.jsp
+│  │      EditFlowAttach.jsp
+│  │      EditFlowAttach1.jsp
+│  │      EditFlowbusiness.jsp
+│  │      EditFlowbusinessBack.jsp
+│  │      EditFlowbusinessConsign.jsp
+│  │      EditFlowbusinessNext.jsp
+│  │      EditFlowbusinessNext_Stop.jsp
+│  │      EditFlowCSign.jsp
+│  │      EditFlowDispatch.jsp
+│  │      EditFlowdynamicvalue.jsp
+│  │      EditFlowdynamicvalue_2.jsp
+│  │      EditFlowOpinion.jsp
+│  │      EditFlowOpinion2.jsp
+│  │      EditFlowprocess.jsp
+│  │      EditFlowprocessDynamictype.jsp
+│  │      EditFlowprocessMember.jsp
+│  │      EditFlowReceive.jsp
+│  │      EditFlowReminder.jsp
+│  │      EditFlowReview.jsp
+│  │      EditFlowstep.jsp
+│  │      EditFlowtopinion.jsp
+│  │      EditProDefend.jsp
+│  │      EditProjectNotPay.jsp
+│  │      Flowbusiness.jsp
+│  │      Flowbusiness2.jsp
+│  │      Flowbusiness3.jsp
+│  │      FlowbusinessView.jsp
+│  │      FlowCSigns.jsp
+│  │      FlowIssuecodes.jsp
+│  │      Flowitems.jsp
+│  │      Flowitems2.jsp
+│  │      Flowprocess.jsp
+│  │      Flows.jsp
+│  │      Flowtopinions.jsp
+│  │      Flowview.jsp
+│  │      Flowviews.jsp
+│  │      NewAffair.jsp
+│  │      NewBulletin.jsp
+│  │      NewBullfile.jsp
+│  │      NewDepartment.jsp
+│  │      NewFile.jsp
+│  │      Newpart.jsp
+│  │      NodeMenu1_jax.jsp
+│  │      NodeMenu_jax.jsp
+│  │      ProDefend.jsp
+│  │      ProjectNotPay.jsp
+│  │      ProjectNotPaymember.jsp
+│  │      QueryFlow.jsp
+│  │      QueryFlowbusiness.jsp
+│  │      QueryFlowbusiness2.jsp
+│  │      QueryFlowbusiness3.jsp
+│  │      QueryFlowitem.jsp
+│  │      QueryFlowprocess.jsp
+│  │      QueryResults.jsp
+│  │      SeeBulletin.jsp
+│  │      SeeBulletin1.jsp
+│  │      SelFlowDept.jsp
+│  │      SelFlowtopinions.jsp
+│  │      SetFlowbusinessCSign.jsp
+│  │      SetFlowbusinessFC.jsp
+│  │      SetFlowbusinessSN.jsp
+│  │      SetFlowbusinessSubor.jsp
+│  │      ViewFlowDispatch.jsp
+│  │      ViewFlowReceive.jsp
+│  │      
+│  ├─fm1073
+│  │      Cha_Xun.jsp
+│  │      EditProfilePostulant.jsp
+│  │      EditProfilePostulant2.jsp
+│  │      ProfilePostulants.jsp
+│  │      ViewProfilePostulant.jsp
+│  │      
+│  ├─ig
+│  │      EditIgdirectory.jsp
+│  │      feedjson.jsp
+│  │      feeds.jsp
+│  │      IgAddressBook.jsp
+│  │      Igdirectorys.jsp
+│  │      IgEmail.jsp
+│  │      IgFavoriteNodes.jsp
+│  │      IgFlowbusiness3.jsp
+│  │      IgFlowitems.jsp
+│  │      Ighead.jsp
+│  │      IgMembers.jsp
+│  │      IgMessages.jsp
+│  │      IgNodes.jsp
+│  │      IgProfile.jsp
+│  │      IgQueryFlowbusiness2.jsp
+│  │      IgRSS.jsp
+│  │      IgTrees.jsp
+│  │      IgWorklogs.jsp
+│  │      index.jsp
+│  │      mytable.jsp
+│  │      SelectAdminFunction.jsp
+│  │      sunup.jsp
+│  │      
+│  ├─import
+│  │      CrImport.jsp
+│  │      CrImportAdmin.jsp
+│  │      CrImportPreview.jsp
+│  │      CrImportPreviewAdmin.jsp
+│  │      复件 CrImportPreview.jsp
+│  │      
+│  ├─laborage
+│  │      branch_role.jsp
+│  │      EditLaborage.jsp
+│  │      laborage.jsp
+│  │      looklaborage.jsp
+│  │      showlaborage.jsp
+│  │      
+│  ├─manage
+│  │      Anevection.jsp
+│  │      anleave.jsp
+│  │      delete.jsp
+│  │      Disposal.jsp
+│  │      duty.jsp
+│  │      edit.jsp
+│  │      EditSettingIp.jsp
+│  │      evection.jsp
+│  │      incheck.jsp
+│  │      Inmanage.jsp
+│  │      inquire.jsp
+│  │      inquire2.jsp
+│  │      Inreport.jsp
+│  │      instruction.jsp
+│  │      inTree.jsp
+│  │      leave.jsp
+│  │      Newevection.jsp
+│  │      Newleave.jsp
+│  │      Newrankclass.jsp
+│  │      out.jsp
+│  │      rankclass.jsp
+│  │      report.jsp
+│  │      search.jsp
+│  │      search2.jsp
+│  │      searchreport.jsp
+│  │      seereport.jsp
+│  │      SettingIp.jsp
+│  │      Todaykq.jsp
+│  │      user_duty.jsp
+│  │      
+│  ├─manoeuvre
+│  │      AuditingManoeuvre.jsp
+│  │      EditManoeuvre.jsp
+│  │      manoeuvre.jsp
+│  │      show.jsp
+│  │      
+│  ├─map
+│  │      EditGMap.jsp
+│  │      EditMapabc.jsp
+│  │      EditMapReal.jsp
+│  │      GMaps.jsp
+│  │      Mapabcs.jsp
+│  │      MapReals.jsp
+│  │      MapSearchResult.jsp
+│  │      MapShow.jsp
+│  │      SelectMapabc.jsp
+│  │      TestGMap.jsp
+│  │      UpMapReal.jsp
+│  │      ViewGMap.jsp
+│  │      
+│  ├─office
+│  │  │  CachetList.jsp
+│  │  │  Cachets.jsp
+│  │  │  EditCachet.jsp
+│  │  │  EditCachetControl.jsp
+│  │  │  EditCachetUser.jsp
+│  │  │  EditProfileISign.jsp
+│  │  │  
+│  │  └─seal
+│  │          apply.jsp
+│  │          Auditing.jsp
+│  │          EditApply.jsp
+│  │          Noauditing.jsp
+│  │          Query.jsp
+│  │          Stamp.jsp
+│  │          
+│  ├─orthonline
+│  │      CaseCollection.jsp
+│  │      CaseCollectionAll.jsp
+│  │      CaseCollectionAll2.jsp
+│  │      CaseCollectionInfo.jsp
+│  │      CaseCollectionlist.jsp
+│  │      CaseCollection_ajax.jsp
+│  │      CaseColltiontop.jsp
+│  │      CasePicshow.jsp
+│  │      CasePicshow2.jsp
+│  │      city_ajax.jsp
+│  │      doctor.jsp
+│  │      Doctoradmin.jsp
+│  │      DoctorAdminLog.jsp
+│  │      DoctorParLog.jsp
+│  │      DoctorRanking.jsp
+│  │      DoctorShow.jsp
+│  │      DoctorShow2.jsp
+│  │      DoctorShow3.jsp
+│  │      EditCaseCollection.jsp
+│  │      EditDoctor.jsp
+│  │      EditDoctoradmin.jsp
+│  │      Hospital.jsp
+│  │      LookupMember.jsp
+│  │      snap_m.jpg
+│  │      Statistics.jsp
+│  │      
+│  ├─phoneorder
+│  │      EditSalePayment.jsp
+│  │      order_input.jsp
+│  │      order_input_ajax.jsp
+│  │      order_list.jsp
+│  │      order_succeed.jsp
+│  │      order_zbfh_list.jsp
+│  │      query1.jsp
+│  │      ViewTrade.jsp
+│  │      
+│  ├─popedom
+│  │      adduser.jsp
+│  │      AdminFunctionGroup.jsp
+│  │      AdminFunctions.jsp
+│  │      AdminFunctionTree.jsp
+│  │      AdminRoles.jsp
+│  │      AdminUnitFrame.jsp
+│  │      AdminUnitList.jsp
+│  │      AdminUnits.jsp
+│  │      AdminUnitTree.jsp
+│  │      AdminUnitView.jsp
+│  │      AdminUsrRoles.jsp
+│  │      Areas.jsp
+│  │      AreaTree.jsp
+│  │      CebbankDept_user.jsp
+│  │      conductor.jsp
+│  │      conductorlist.jsp
+│  │      EditAdminFunction.jsp
+│  │      EditAdminList.jsp
+│  │      EditAdminRole.jsp
+│  │      EditAdminUnit.jsp
+│  │      EditAdminUsrRole.jsp
+│  │      EditArea.jsp
+│  │      editconductor.jsp
+│  │      editzone.jsp
+│  │      editzonearea.jsp
+│  │      functionicon.jsp
+│  │      KeySerialNum.jsp
+│  │      ListAdminUnit.jsp
+│  │      Menu.xls
+│  │      SelectIgIcon.jsp
+│  │      SetAdminRoleConsign.jsp
+│  │      UnitSelect.jsp
+│  │      zone.jsp
+│  │      zonearea.jsp
+│  │      zonearealist.jsp
+│  │      zonelist.jsp
+│  │      
+│  ├─sales
+│  │      affiliationimport1.jsp
+│  │      affiliationimport2.jsp
+│  │      affiliationimport3.jsp
+│  │      assigner.jsp
+│  │      clientserver.jsp
+│  │      clienttask.jsp
+│  │      document.jsp
+│  │      document_info.jsp
+│  │      EditSalesLinkman.jsp
+│  │      EditTaskConsign.jsp
+│  │      import1.jsp
+│  │      import2.jsp
+│  │      import3.jsp
+│  │      latency.jsp
+│  │      LatencyCompany.jsp
+│  │      latency_info.jsp
+│  │      MyTask.jsp
+│  │      Newclienttask.jsp
+│  │      newdocument.jsp
+│  │      newlatency.jsp
+│  │      newtask.jsp
+│  │      newzhuangtai.jsp
+│  │      saleschance.jsp
+│  │      saleschanceinfo.jsp
+│  │      saleschanceshow.jsp
+│  │      Saleschanceview.jsp
+│  │      SalesLinkmans.jsp
+│  │      task.jsp
+│  │      task_inof.jsp
+│  │      ViewSalesLinkman.jsp
+│  │      复件 LatencyCompany.jsp
+│  │      
+│  ├─schoolfinance
+│  │      EditSFAccount.jsp
+│  │      EditSFAccountOutlay.jsp
+│  │      EditSFAccountYearAccessories.jsp
+│  │      EditSubsidyForms.jsp
+│  │      EditSubsidyMenu.jsp
+│  │      EditSubsidyOutlay.jsp
+│  │      EditSubsidyTime.jsp
+│  │      InfoSuccess.jsp
+│  │      SFAccountManage.jsp
+│  │      SFAccountMenu.jsp
+│  │      SubsidyManage.jsp
+│  │      SubsidyMenu.jsp
+│  │      SubsidyMonthList.jsp
+│  │      SubsidyPayout.jsp
+│  │      SubsidyTotal.jsp
+│  │      SubsidyYearList.jsp
+│  │      
+│  ├─vehicle
+│  │  │  apply.jsp
+│  │  │  apply1.jsp
+│  │  │  apply2.jsp
+│  │  │  applying.jsp
+│  │  │  applys.jsp
+│  │  │  attemper.jsp
+│  │  │  cargenre.jsp
+│  │  │  deal.jsp
+│  │  │  dept_manage.jsp
+│  │  │  dept_manage1.jsp
+│  │  │  dept_manages.jsp
+│  │  │  load.js
+│  │  │  manage.jsp
+│  │  │  manage1.jsp
+│  │  │  manages.jsp
+│  │  │  newamnage.jsp
+│  │  │  newcargenre.jsp
+│  │  │  NewDepartment.jsp
+│  │  │  NewDepartment1.jsp
+│  │  │  newtype.jsp
+│  │  │  order_detail.jsp
+│  │  │  prearrange.jsp
+│  │  │  query.jsp
+│  │  │  query1.jsp
+│  │  │  query2.jsp
+│  │  │  querys.jsp
+│  │  │  see.jsp
+│  │  │  submit.jsp
+│  │  │  usage_detail.jsp
+│  │  │  vehicle_detail.jsp
+│  │  │  
+│  │  ├─checkup
+│  │  │      query.jsp
+│  │  │      query1.jsp
+│  │  │      querys.jsp
+│  │  │      
+│  │  └─query
+│  │          amend.jsp
+│  │          not_using.jsp
+│  │          query.jsp
+│  │          query1.jsp
+│  │          querys.jsp
+│  │          query_all.jsp
+│  │          search.jsp
+│  │          
+│  └─workreport
+│          Already.jsp
+│          AlreadyProjectList.jsp
+│          AlreadyShow.jsp
+│          Contract.jsp
+│          Contract2.jsp
+│          EarningsSta.jsp
+│          EarningStaSum.jsp
+│          EditAlready.jsp
+│          EditFlowitem.jsp
+│          EditSalesRecord.jsp
+│          EditWorklinkman.jsp
+│          EditWorklog.jsp
+│          EditWorkproject.jsp
+│          EditWorktel.jsp
+│          EditWorktype.jsp
+│          EditWrTrade.jsp
+│          EditWrTrade_2.jsp
+│          EditWrTrade_3.jsp
+│          Flowitem.jsp
+│          FlowitemShow.jsp
+│          ImportWorkproject1.jsp
+│          ImportWorkproject2.jsp
+│          ImportWorkproject3.jsp
+│          ItemList.jsp
+│          ItemManage.jsp
+│          ItemManage_1.jsp
+│          ItemManage_1_copy.jsp
+│          ItemMenu.jsp
+│          ManualSendWorklog.jsp
+│          myjsp.jsp
+│          NonceItem.jsp
+│          NonceItem_copy.jsp
+│          ProjectList.jsp
+│          Reckon.jsp
+│          SalesRecord.jsp
+│          SendWorklog.jsp
+│          SendWorktel.jsp
+│          SetWorklogScore.jsp
+│          TaskAll.jsp
+│          task_info_2.jsp
+│          ViewWorklogScore.jsp
+│          ViewWorkproject.jsp
+│          ViewWorkproject2.jsp
+│          WorkFormList.jsp
+│          Worklinkmans.jsp
+│          Worklinkmans_2.jsp
+│          WorklogAccessories.jsp
+│          Worklogs.jsp
+│          WorklogsScore.jsp
+│          Worklogs_10.jsp
+│          Worklogs_11.jsp
+│          Worklogs_11_copy.jsp
+│          Worklogs_12.jsp
+│          Worklogs_2.jsp
+│          Worklogs_3.jsp
+│          Worklogs_5.jsp
+│          Worklogs_6.jsp
+│          Worklogs_7.jsp
+│          Worklogs_7revert.jsp
+│          Worklogs_8.jsp
+│          Worklogs_9.jsp
+│          Worklogs_new.jsp
+│          WorkprojectGoods.jsp
+│          Workprojects.jsp
+│          Workprojects_2.jsp
+│          Workprojects_3.jsp
+│          Worktels.jsp
+│          Worktels_4.jsp
+│          Worktypes.jsp
+│          wquery.jsp
+│          wquery2.jsp
+│          WrGoods_2.jsp
+│          WrTrades.jsp
+│          
+├─adword
+│      AdwordClicks.jsp
+│      Adwords.jsp
+│      AdwordShow.jsp
+│      EditAdwordConfirm.jsp
+│      EditAdwordKeywords.jsp
+│      EditAdwordName.jsp
+│      EditAdwordPricing.jsp
+│      EditAdwordShow.jsp
+│      EditAdwordTarget.jsp
+│      
+├─alisoft
+│      CompanyInit.jsp
+│      failure.jsp
+│      
+├─bpicture
+│  │  AdvanSearch.jsp
+│  │  AuditPicture.jsp
+│  │  Audit_Compression.jsp
+│  │  Bpicprofile.jsp
+│  │  Bpicture_head.jsp
+│  │  BpProfile.jsp
+│  │  BPSearch.jsp
+│  │  B_headtop.jsp
+│  │  DefaultDesktop.jsp
+│  │  DelManage.jsp
+│  │  EditAuditPicture.jsp
+│  │  financeAudit.jsp
+│  │  ImageExifParam.jsp
+│  │  ImageInfo.jsp
+│  │  index.jsp
+│  │  index_leftup.jsp
+│  │  index_profile2.jsp
+│  │  jqtest.jsp
+│  │  Lightbox_ajax.jsp
+│  │  OrderingImage.jsp
+│  │  PicShow.jsp
+│  │  ResultSearch.jsp
+│  │  right.jsp
+│  │  SearchIndex.jsp
+│  │  SearchRes.jsp
+│  │  SImageInfo.jsp
+│  │  testfile.jsp
+│  │  testpiczoom.jsp
+│  │  TextSearch.jsp
+│  │  WaterTest.jsp
+│  │  
+│  ├─buyer
+│  │      AccountApp.jsp
+│  │      AddShopping.jsp
+│  │      CalPrice.jsp
+│  │      CalPriceRM.jsp
+│  │      ChangeContact.jsp
+│  │      ChangeLog.jsp
+│  │      CreateLightbox.jsp
+│  │      CurrentLightbox_ajax.jsp
+│  │      DeleteLightbox.jsp
+│  │      EmailLightbox.jsp
+│  │      OrderAndDown.jsp
+│  │      RegistCon.jsp
+│  │      RenameLightbox.jsp
+│  │      ShoppingCart.jsp
+│  │      ViewLightbox.jsp
+│  │      VirtualCDs.jsp
+│  │      
+│  ├─regist
+│  │      BpNavigation.jsp
+│  │      ForgetPwd.jsp
+│  │      index.jsp
+│  │      RegistContributor.jsp
+│  │      register.jsp
+│  │      RegisterBuy.jsp
+│  │      RegisterSale.jsp
+│  │      RegisterSaleCon.jsp
+│  │      RegistSame.jsp
+│  │      RegSuccess.jsp
+│  │      StartLogin.jsp
+│  │      
+│  └─saler
+│          Audit_saler.jsp
+│          BkeyWord.jsp
+│          Bpicmemberlist.jsp
+│          BProfileInfo.jsp
+│          ChangeLd.jsp
+│          ChangePayDetail.jsp
+│          ChangePayment.jsp
+│          DelCount.jsp
+│          dialogbox.jsp
+│          EditPicture_copy.jsp
+│          EditPicture_new.jsp
+│          My_submissions.jsp
+│          SalerBigPictrue.jsp
+│          SalerManagement.jsp
+│          Saler_All_Alamy.jsp
+│          Saler_default_mg.jsp
+│          Saler_EditImage.jsp
+│          Saler_my_images.jsp
+│          Saler_PAjax.jsp
+│          Saler_price.jsp
+│          Saler_Pseudonym.jsp
+│          Saler_revenue.jsp
+│          Saler_SearchImage.jsp
+│          Saler_SearchTerms.jsp
+│          Saler_statement.jsp
+│          Saler_Summary_sold.jsp
+│          Saler_Video.jsp
+│          Saler_YourImage.jsp
+│          test.html
+│          test.jsp
+│          Upload.jsp
+│          UploadImages.jsp
+│          
+├─cio
+│      CioClerk.jsp
+│      CioClerklist.jsp
+│      CioCompanys.jsp
+│      CioCustomlist.jsp
+│      CioFeedbacks.jsp
+│      CioInviteCodes.jsp
+│      CioMeetingBaomQY.jsp
+│      CioMeetingIndex.jsp
+│      CioMeetingjsap.jsp
+│      CioMeetingQiye01.jsp
+│      CioMeetingQiye02.jsp
+│      CioMeetingxuapzsrytj.jsp
+│      CioMeetingyapfan.jsp
+│      CioMeetingyapfan2.jsp
+│      CioMeetingyapj.jsp
+│      CioMeetingyjjy.jsp
+│      CioMeetingzsap.jsp
+│      CioMeetingzsrytj.jsp
+│      CioMeetingzwxinx.jsp
+│      CiopInfoView.jsp
+│      CioPolls.jsp
+│      CioUpdatePer.jsp
+│      EditCioClerk.jsp
+│      EditCioCompany.jsp
+│      EditCioCompany1.jsp
+│      EditCioCompany12.jsp
+│      EditCioCompanySuccess.jsp
+│      EditCioFeedback.jsp
+│      EditCioPart.jsp
+│      EditRoomCioPart.jsp
+│      EditShuttleCioPart.jsp
+│      error.jsp
+│      ImportCioCompany.jsp
+│      InfoCioCompany.jsp
+│      InviteCioCompany.jsp
+│      JsCioAccessButton.jsp
+│      OkCioCompany.jsp
+│      OkCioCompany1.jsp
+│      OkCioCompany12.jsp
+│      OkCioCompany2.jsp
+│      OkCioCompany22.jsp
+│      OkCioCompany3.jsp
+│      OkCioCompany4.jsp
+│      OkCioCompany42.jsp
+│      OkCioCompany5.jsp
+│      ReceiptCioCompany.jsp
+│      RegCioMember.jsp
+│      RegCioMemberSuccess.jsp
+│      SelCollectInfoView.jsp
+│      setBdVip.jsp
+│      SetCioCompanyName.jsp
+│      SetSeat.jsp
+│      StopCioCompany.jsp
+│      TripCioPart.jsp
+│      ViewCioCompany.jsp
+│      ViewCioFeedback.jsp
+│      ViewCioPoll.jsp
+│      VIPBdView.jsp
+│      
+├─citybroadcast
+│      Citybcst.jsp
+│      CitybcstOver.jsp
+│      EditCitybroadcast.jsp
+│      
+├─community
+│  │  Attributes.jsp
+│  │  cnoocjobdelmember.jsp
+│  │  cnoocjobsubscribers.jsp
+│  │  Communities.jsp
+│  │  CommunitySetOther.jsp
+│  │  CommunitySetSubscriber.jsp
+│  │  CommunitySetWeather.jsp
+│  │  CommunitySetWeblog.jsp
+│  │  Dynamics.jsp
+│  │  DynamicSearch.jsp
+│  │  DynamicTypeContents.jsp
+│  │  DynamicTypes.jsp
+│  │  DynamicTypeView.jsp
+│  │  EditAttribute.jsp
+│  │  EditCLicense.jsp
+│  │  EditCommunity.jsp
+│  │  EditCommunityAdminList.jsp
+│  │  EditCommunityim.jsp
+│  │  EditCommunityjob.jsp
+│  │  EditCommunityjob.jsp.bak
+│  │  EditCommunitytrial.jsp
+│  │  EditDCommunity.jsp
+│  │  EditDynamic.jsp
+│  │  EditDynamicType.jsp
+│  │  EditDynamicTypeContent.jsp
+│  │  EditFrame.jsp
+│  │  EditHtml.jsp
+│  │  EditMark.jsp
+│  │  EditPdf.jsp
+│  │  EditProvider.jsp
+│  │  JoinedCommunities.jsp
+│  │  JoiningCommunities.jsp
+│  │  Manager.jsp
+│  │  Managers.jsp
+│  │  Marks.jsp
+│  │  NewAccess.jsp
+│  │  NewManager.jsp
+│  │  NewOrganizers.jsp
+│  │  NewSubscribers.jsp
+│  │  Organizers.jsp
+│  │  OrganizingCommunities.jsp
+│  │  PauseCompany.jsp
+│  │  PreInfo.jsp
+│  │  Providers.jsp
+│  │  Rename.jsp
+│  │  SelPreInfomation.jsp
+│  │  SetDynamicDtfb.jsp
+│  │  Subscribers.jsp
+│  │  Subscribers2.jsp
+│  │  test.jsp
+│  │  Watermarks.jsp
+│  │  yjobdelmember.jsp
+│  │  yjobsubscribers.jsp
+│  │  
+│  └─options
+│          SetDDNS.jsp
+│          SetEditor.jsp
+│          SetEon.jsp
+│          SetLogin.jsp
+│          SetMessageBoard.jsp
+│          SetMsn.jsp
+│          SetOpenID.jsp
+│          SetSMS.jsp
+│          SetSync.jsp
+│          SetTender.jsp
+│          
+├─confab
+│  │  ConfabHostels.jsp
+│  │  ConfabLists.jsp
+│  │  ConfabQrcView.jsp
+│  │  ConfabReceptions.jsp
+│  │  ConfabView.jsp
+│  │  ConferenceDynamicvalues.jsp
+│  │  EditConfabAuditing.jsp
+│  │  EditConfabDynamicValue.jsp
+│  │  EditConfabHostel.jsp
+│  │  EditConfabReception.jsp
+│  │  
+│  └─card
+│          CardferenceDynamicvalues.jsp
+│          CardLists.jsp
+│          CardQrcView.jsp
+│          DynamicValueViewTab.jsp
+│          EquipmentLists.jsp
+│          ProjectPer.jsp
+│          
+├─consigneeaddress
+│      address.js
+│      address.xml
+│      consigneeaddress.jsp
+│      consigneevalidateform.js
+│      
+├─contract
+│  │  conlist.jsp
+│  │  contract.jsp
+│  │  iteminfo.jsp
+│  │  itemlist.jsp
+│  │  management.jsp
+│  │  
+│  └─useraudit
+│          audit.jsp
+│          audit1.jsp
+│          useraudit.jsp
+│          
+├─copyright
+│      CrallowQuery.jsp
+│      Crallows.jsp
+│      CrallowView.jsp
+│      Crbargain0Query.jsp
+│      Crbargain0View.jsp
+│      Crbargain1Query.jsp
+│      Crbargain1View.jsp
+│      Crbargains0.jsp
+│      Crbargains1.jsp
+│      CrbookinQuery.jsp
+│      Crbookins.jsp
+│      CrbookinView.jsp
+│      CrbulletinQuery.jsp
+│      Crbulletins.jsp
+│      CrbulletinView.jsp
+│      CrcancelQuery.jsp
+│      Crcancels.jsp
+│      CrcancelView.jsp
+│      CrcourtcloseQuery.jsp
+│      Crcourtcloses.jsp
+│      CrcourtcloseView.jsp
+│      CrimpawnQuery.jsp
+│      Crimpawns.jsp
+│      CrimpawnView.jsp
+│      CrImport.jsp
+│      CrImportPreview.jsp
+│      CrnoticeQuery.jsp
+│      Crnotices.jsp
+│      CrnoticeView.jsp
+│      CrtransfercontractQuery.jsp
+│      Crtransfercontracts.jsp
+│      CrtransfercontractView.jsp
+│      CrtransferQuery.jsp
+│      Crtransfers.jsp
+│      CrtransferView.jsp
+│      CrupdateQuery.jsp
+│      Crupdates.jsp
+│      CrupdateView.jsp
+│      Crzzbas.jsp
+│      CrzzbaView.jsp
+│      EditCrallow.jsp
+│      EditCrbargain0.jsp
+│      EditCrbargain1.jsp
+│      EditCrbookin.jsp
+│      EditCrbulletin.jsp
+│      EditCrcancel.jsp
+│      EditCrcourtclose.jsp
+│      EditCrimpawn.jsp
+│      EditCrnotice.jsp
+│      EditCrtransfer.jsp
+│      EditCrtransfercontract.jsp
+│      EditCrupdate.jsp
+│      EditCrzzba.jsp
+│      ImportData.jsp
+│      
+├─count
+│      AccessAnalyse.jsp
+│      count.jsp
+│      CountManage.jsp
+│      day.jsp
+│      draw.js
+│      hot.jsp
+│      hour.jsp
+│      HourIp.jsp
+│      import.jsp
+│      import2.jsp
+│      index.jsp
+│      ipquery.jsp
+│      last20.jsp
+│      main.jsp
+│      month.jsp
+│      NodeHits.jsp
+│      Online.jsp
+│      referer.jsp
+│      referer1.jsp
+│      RefererKeywords.jsp
+│      searchhot.jsp
+│      Stat.jsp
+│      where.jsp
+│      where1.jsp
+│      
+├─cpcc
+│  │  Accept.jsp
+│  │  Accept_2.jsp
+│  │  Announcement.jsp
+│  │  Announcement_1.jsp
+│  │  BuildFile.jsp
+│  │  CashCheck.jsp
+│  │  CashCheck_1.jsp
+│  │  FirstCheck.jsp
+│  │  FirstCheck_2.jsp
+│  │  MakeCertifi.jsp
+│  │  MakeCertifi_1.jsp
+│  │  MakeCertifi_2.jsp
+│  │  MakeRom.jsp
+│  │  ProvideLook.jsp
+│  │  SaleNewOrder.jsp
+│  │  SaleNewOrder_1.jsp
+│  │  SaleNewOrder_2.jsp
+│  │  SecondCheck.jsp
+│  │  SeconeCheck_2.jsp
+│  │  SendCertifi.jsp
+│  │  
+│  └─turnaccept
+│          ArticaInfo.jsp
+│          ArticaInfo_1.jsp
+│          ArticaInfo_2.jsp
+│          ArticaInfo_Edit.jsp
+│          ArticaInfo_enter.jsp
+│          ArticaInfo_leadin.jsp
+│          ArticalPapers.jsp
+│          ArticalPapers_1.jsp
+│          ArticalPapers_Add.jsp
+│          ArticalPapers_Edit.jsp
+│          ArticalTeach.jsp
+│          ArticalTeach_1.jsp
+│          ArticalTeach_Add.jsp
+│          ArticalTeach_Edit.jsp
+│          AuthorInfo.jsp
+│          AuthorInfo_1.jsp
+│          AuthorInfo_Add.jsp
+│          AuthorInfo_Edit.jsp
+│          GongShang.jsp
+│          Pay.jsp
+│          Unauthor.jsp
+│          UnauthorCheck.jsp
+│          UnauthorCheck_1.jsp
+│          Unauthor_1.jsp
+│          Unauthor_Add.jsp
+│          Unauthor_Edit.jsp
+│          UserInfo.jsp
+│          UserInfo_1.jsp
+│          UserInfo_Add.jsp
+│          UserInfo_Edit.jsp
+│          
+├─criterion
+│      ArchiveItems.jsp
+│      BudgetEditItem.jsp
+│      BudgetItems.jsp
+│      Callboards.jsp
+│      CreateItems.jsp
+│      dept_user.jsp
+│      Desktop.jsp
+│      DirectorEditItem.jsp
+│      DirectorItems.jsp
+│      DocDeleteItem.jsp
+│      DocItems.jsp
+│      DocViewItem.jsp
+│      DocViewItemfilehistory.jsp
+│      DraftAuditingItem.jsp
+│      DraftEditItem.jsp
+│      DraftItems.jsp
+│      EditArchiveItems.jsp
+│      EditEgqb.jsp
+│      EditExpertres.jsp
+│      EditgroupItems.jsp
+│      EditItem.jsp
+│      EditItemoutlay.jsp
+│      EditOutlay.jsp
+│      EditReferenceres.jsp
+│      EditSMSMessage.jsp
+│      EditUnitres.jsp
+│      EgEditItem.jsp
+│      Egqbs.jsp
+│      Expertres.jsp
+│      Export.jsp
+│      FinishedItems.jsp
+│      FormulatingAuditingItem.jsp
+│      FormulatingEditItem.jsp
+│      FormulatingItems.jsp
+│      IdeaAuditingItem.jsp
+│      IdeaEditItem.jsp
+│      IdeaItems.jsp
+│      InitEditItem.jsp
+│      InitItems.jsp
+│      IssueEditItem.jsp
+│      IssueItems.jsp
+│      Itembasicoutlays.jsp
+│      Itembasics.jsp
+│      ItemClear.jsp
+│      ItemDownload.jsp
+│      Itemoutlays.jsp
+│      Itemoutlays2.jsp
+│      Itemoutlays3.jsp
+│      Itempersonnels.jsp
+│      Items.jsp
+│      Itemstates.jsp
+│      js.js
+│      LevelAuditingItem.jsp
+│      LevelEditItem.jsp
+│      LevelItems.jsp
+│      Linkman.jsp
+│      OpenAuditingItem.jsp
+│      OpenEditItem.jsp
+│      OpenItems.jsp
+│      OtherAuditingItem.jsp
+│      OtherEditItem.jsp
+│      OtherItems.jsp
+│      OutlayItems.jsp
+│      Outlays.jsp
+│      Outlays2.jsp
+│      Referenceres.jsp
+│      SendMessage.jsp
+│      SMSMessageList.jsp
+│      StandardAuditingItem.jsp
+│      StandardEditItem.jsp
+│      StandardItems.jsp
+│      StateEditItem.jsp
+│      StateItems.jsp
+│      StopEditItem.jsp
+│      StopItems.jsp
+│      unitlist.jsp
+│      unitlist_2.jsp
+│      Unitres.jsp
+│      user.jsp
+│      UserEditItem.jsp
+│      UserEditItem2.jsp
+│      UserItems.jsp
+│      UserItems2.jsp
+│      user_list.jsp
+│      
+├─debug
+│      Cache.jsp
+│      Database.jsp
+│      Databaseleft.jsp
+│      Databaseright.jsp
+│      Database_editsql.jsp
+│      Database_execsql.jsp
+│      Database_sql.jsp
+│      DB.jsp
+│      Desktop.jsp
+│      Exp.jsp
+│      exp2.jsp
+│      File.jsp
+│      FTime.jsp
+│      inc.jsp
+│      index.jsp
+│      Login.jsp
+│      mtc.jsp
+│      mtdb.jsp
+│      Scan.jsp
+│      SQL.jsp
+│      SQL2.jsp
+│      style.css
+│      Toolbar.jsp
+│      unrar.exe
+│      Update.jsp
+│      User.jsp
+│      
+├─demo
+│  │  allorders.jsp
+│  │  applications.jsp
+│  │  applications.jsp~10~
+│  │  applications.jsp~11~
+│  │  applications.jsp~12~
+│  │  applications.jsp~13~
+│  │  applications.jsp~14~
+│  │  applications.jsp~15~
+│  │  applications.jsp~16~
+│  │  applications.jsp~7~
+│  │  applications.jsp~8~
+│  │  applications.jsp~9~
+│  │  audit.jsp
+│  │  audit.jsp~10~
+│  │  audit.jsp~11~
+│  │  audit.jsp~12~
+│  │  audit.jsp~1~
+│  │  audit.jsp~2~
+│  │  audit.jsp~3~
+│  │  audit.jsp~4~
+│  │  audit.jsp~5~
+│  │  audit.jsp~6~
+│  │  audit.jsp~7~
+│  │  audit.jsp~8~
+│  │  audit.jsp~9~
+│  │  audits.jsp
+│  │  Authorized.jsp
+│  │  caller.jsp
+│  │  callers.jsp
+│  │  callorders.jsp
+│  │  district.jsp
+│  │  edituser.jsp
+│  │  hotelaudits.jsp
+│  │  manageorders.jsp
+│  │  membercenter.jsp
+│  │  myhotels.jsp
+│  │  myorders.jsp
+│  │  mypays.jsp
+│  │  newcaller.jsp
+│  │  orderstatistics.jsp
+│  │  register.jsp
+│  │  register.jsp~1~
+│  │  register.jsp~2~
+│  │  register.jsp~3~
+│  │  register.jsp~4~
+│  │  register.jsp~5~
+│  │  register.jsp~6~
+│  │  register.jsp~7~
+│  │  register.jsp~8~
+│  │  search.jsp
+│  │  souquan.jsp
+│  │  users.jsp
+│  │  userstatistics.jsp
+│  │  validate.jsp
+│  │  
+│  ├─bbs
+│  │  └─default_bbsphoto
+│  │          10.gif
+│  │          11.gif
+│  │          12.gif
+│  │          13.gif
+│  │          14.gif
+│  │          15.gif
+│  │          16.gif
+│  │          17.gif
+│  │          18.gif
+│  │          19.gif
+│  │          2.gif
+│  │          20.gif
+│  │          21.gif
+│  │          22.gif
+│  │          23.gif
+│  │          3.gif
+│  │          4.gif
+│  │          5.gif
+│  │          6.gif
+│  │          7.gif
+│  │          8.gif
+│  │          9.gif
+│  │          index.jpg
+│  │          Thumbs.db
+│  │          
+│  └─list
+│          AllMembers.jsp
+│          OnlineMembers.jsp
+│          SelMembers.jsp
+│          
+├─eon
+│      EditEonConsume.jsp
+│      EditEonNode.jsp
+│      EditEonNodeMember.jsp
+│      EditEonTeleset.jsp
+│      EditEonTelesetMessage.jsp
+│      EonCall1.jsp
+│      EonCall2.jsp
+│      EonCode.jsp
+│      EonConsumes.jsp
+│      EonInclude.jsp
+│      EonNodeMembers.jsp
+│      EonRecords.jsp
+│      
+├─erp
+│  │  Arrearage.jsp
+│  │  ArrearageShow.jsp
+│  │  asGoods.jsp
+│  │  AuditPurchase.jsp
+│  │  AuditReturnedShop.jsp
+│  │  AuditSale.jsp
+│  │  AuditShopstock.jsp
+│  │  BatchPrice.jsp
+│  │  CallOut.jsp
+│  │  CalloutGoods.jsp
+│  │  CalloutGoods2.jsp
+│  │  CalloutPrint.jsp
+│  │  CalloutShow.jsp
+│  │  ClientReturned.jsp
+│  │  ClientReturnedShow.jsp
+│  │  ComDisButprepara.jsp
+│  │  Complimentary.jsp
+│  │  ComplimentaryPrint.jsp
+│  │  ComplimentaryShow.jsp
+│  │  compl_ajax.jsp
+│  │  ConfirmShopstock.jsp
+│  │  co_ajax.jsp
+│  │  Delivery.jsp
+│  │  DeliveryDetail.jsp
+│  │  DeliverySituation.jsp
+│  │  DeliverySituationDetail.jsp
+│  │  DisButprepara.jsp
+│  │  Distribution.jsp
+│  │  DistributionPrint.jsp
+│  │  DistributionShow.jsp
+│  │  distri_ajax.jsp
+│  │  EditArrearage.jsp
+│  │  EditAuditReturnedShop.jsp
+│  │  EditAuditSale.jsp
+│  │  EditBatchPrice.jsp
+│  │  EditCallout.jsp
+│  │  EditClientReturned.jsp
+│  │  EditComplimentary.jsp
+│  │  EditDistribution.jsp
+│  │  EditLoss.jsp
+│  │  EditPaidinfull.jsp
+│  │  EditPurchase.jsp
+│  │  EditRepayment.jsp
+│  │  EditRetreatGoods.jsp
+│  │  EditReturnedShop.jsp
+│  │  EditShopService.jsp
+│  │  EditShopstock.jsp
+│  │  EditWarehouse.jsp
+│  │  GoodList.jsp
+│  │  Goods.jsp
+│  │  Goods_ajax.jsp
+│  │  Inventory.jsp
+│  │  InventoryShow.jsp
+│  │  LookClient.jsp
+│  │  Loss.jsp
+│  │  LossPrint.jsp
+│  │  LossShow.jsp
+│  │  loss_ajax.jsp
+│  │  Paidinfull.jsp
+│  │  PaidinfullPrint.jsp
+│  │  PaidinfullShow.jsp
+│  │  paidinfull_ajax.jsp
+│  │  Price.jsp
+│  │  PuGoodsStatis.jsp
+│  │  PuGoodsStatisShow.jsp
+│  │  Purchase.jsp
+│  │  PurchasePrint.jsp
+│  │  PurchaseShow.jsp
+│  │  PurchaseStatistics.jsp
+│  │  purch_ajax.jsp
+│  │  purch_ajax2.jsp
+│  │  purch_ajax3.jsp
+│  │  PurGoods.jsp
+│  │  Repayment.jsp
+│  │  RepaymentShow.jsp
+│  │  RepaymentShow2.jsp
+│  │  RetreatGoods.jsp
+│  │  RetreatGoodsPrint.jsp
+│  │  RetreatGoodsShow.jsp
+│  │  ReturnedShop.jsp
+│  │  ReturnedShopGoods.jsp
+│  │  ReturnedShopPrint.jsp
+│  │  ReturnedShopShow.jsp
+│  │  rgGoods.jsp
+│  │  rgPurchase.jsp
+│  │  rg_ajax.jsp
+│  │  rsGoods.jsp
+│  │  rsPaidinfull.jsp
+│  │  Sale.jsp
+│  │  Sale2.jsp
+│  │  Sale2Show.jsp
+│  │  SaleDetail.jsp
+│  │  SaleDetail2.jsp
+│  │  SaleDetail3.jsp
+│  │  ShopServices.jsp
+│  │  ShopStatistics.jsp
+│  │  Shopstock.jsp
+│  │  ShopstockMember.jsp
+│  │  ShopstockShow.jsp
+│  │  shopstock_ajax.jsp
+│  │  Stockup.jsp
+│  │  StockupDetail.jsp
+│  │  Warehouse.jsp
+│  │  
+│  ├─icard
+│  │      BatICard.jsp
+│  │      EditICardType.jsp
+│  │      EditShopICard.jsp
+│  │      ICards.jsp
+│  │      ICardTypes.jsp
+│  │      ShopICards.jsp
+│  │      
+│  ├─semi
+│  │      EditSemiCatecargo.jsp
+│  │      EditSemiCatecargocai.jsp
+│  │      EditSemiGoods.jsp
+│  │      EditSemiGoodsadd.jsp
+│  │      EditSemiGoodsSupplier.jsp
+│  │      EditSemipurchase.jsp
+│  │      Good2_2.jsp
+│  │      Goods2.jsp
+│  │      Goods3.jsp
+│  │      GoodsGZ.jsp
+│  │      GoodsGZcai.jsp
+│  │      GoodsGZ_ajax.jsp
+│  │      GoodsGZ_ajaxcai.jsp
+│  │      purch_ajax3.jsp
+│  │      purch_GZ_ajax3.jsp
+│  │      SemiCatecargo.jsp
+│  │      SemiCatecargo2_2.jsp
+│  │      SemiCatecargo2_2cai.jsp
+│  │      SemiCatecargocai.jsp
+│  │      SemiCatecargolist.jsp
+│  │      SemiCatecargo_ajax2_2.jsp
+│  │      SemiCatecargo_ajax2_2cai.jsp
+│  │      SemiCatecargo_ajax3.jsp
+│  │      SemiCatecargo_ajax3cai.jsp
+│  │      SemiGoods.jsp
+│  │      SemiGoodsadd.jsp
+│  │      SemiGoodsHC.jsp
+│  │      SemiGoodsSupplier.jsp
+│  │      SemiGoods_ajax.jsp
+│  │      SemiGoods_ajax_2.jsp
+│  │      SemiGoods_ajax_2cai.jsp
+│  │      SemiInventory.jsp
+│  │      SemiManage.jsp
+│  │      Semipurchase.jsp
+│  │      SemiPurchaseShow.jsp
+│  │      Semipurch_ajax2.jsp
+│  │      Semipurch_ajax2_2.jsp
+│  │      Semipurch_ajax4.jsp
+│  │      
+│  └─trends
+│          aaaa.jsp
+│          bbb.jsp
+│          EditICPrice.jsp
+│          ICPrices.jsp
+│          TrendsDay.jsp
+│          TrendsTime.jsp
+│          
+├─feedback
+│      Feedback.jsp
+│      Feedbacks.jsp
+│      NewFeedback.jsp
+│      
+├─finance
+│  └─auxiliary
+│          Add_money.jsp
+│          KindsManage.jsp
+│          MoneyManage.jsp
+│          
+├─friend
+│  │  AddToFriend.jsp
+│  │  EditFriend.jsp
+│  │  FriendList.jsp
+│  │  InviteFriend.jsp
+│  │  SearchFriend.jsp
+│  │  TheirFriends.jsp
+│  │  
+│  └─feedback
+│          Feedback.jsp
+│          Feedbacks.jsp
+│          NewFeedback.jsp
+│          
+├─general
+│      CloneNode.jsp
+│      CreateNodeButton.jsp
+│      EditNode.jsp
+│      EditPage.jsp
+│      ExportNodeToHtml.jsp
+│      MoveNode.jsp
+│      NodeLists.jsp
+│      NodeLists2.jsp
+│      NodeWords.jsp
+│      ReplaceCreator.jsp
+│      RevertData.jsp
+│      Search.jsp
+│      SelNode.jsp
+│      SetVisible.jsp
+│      SonNodes.jsp
+│      WeblogContentManage.jsp
+│      WeblogContentManageLeft.jsp
+│      WeblogContentManageRight.jsp
+│      WeblogEditNode.jsp
+│      WeblogSelectTemp.jsp
+│      
+├─im
+│  │  EditImdirectory.jsp
+│  │  EditMsn.jsp
+│  │  im.js
+│  │  im.jsp
+│  │  Imdirectorys.jsp
+│  │  ImHistorys.jsp
+│  │  JS7201R.js
+│  │  Msns.jsp
+│  │  SelSmile.jsp
+│  │  SendImMessage.jsp
+│  │  SendImMessageDialog.jsp
+│  │  SetFont.jsp
+│  │  复件 SendImMessageDialog.jsp
+│  │  
+│  └─msn
+│          Communitymsn.jsp
+│          HistoryMsnMessage.jsp
+│          MsnFrame.jsp
+│          MsnLogin.jsp
+│          MsnMessages.jsp
+│          MsnOnlinelist.jsp
+│          Msntemp.jsp
+│          SendMsnMessage.jsp
+│          
+├─img
+│      bj1.jpg
+│      bj2.jpg
+│      bt_GoNext.gif
+│      edit_GoFinish.gif
+│      h1.gif
+│      h2.gif
+│      jx.gif
+│      pdfbf.gif
+│      Pictureview.gif
+│      qt.gif
+│      qx.gif
+│      regno.gif
+│      regyes.gif
+│      tou.jpg
+│      wc.gif
+│      wh.gif
+│      xb.jpg
+│      
+├─include
+│  │  Calendar.jsp
+│  │  Calendar2.jsp
+│  │  Calendar3.jsp
+│  │  Calendar4.jsp
+│  │  Canlendar4.jsp
+│  │  ColorSelect.htm
+│  │  currentlynode.jsp
+│  │  currentnodecreator.jsp
+│  │  DownFile.jsp
+│  │  editfunc.js
+│  │  Header.jsp
+│  │  htmltoolstyle.css
+│  │  JsNodeTree.jsp
+│  │  nexturl.jsp
+│  │  nodeclick.jsp
+│  │  Nodekeywords.jsp
+│  │  Pic.jsp
+│  │  Type.jsp
+│  │  
+│  ├─bbs_edit
+│  │      edit_menu.jsp
+│  │      index.jsp
+│  │      msgbox.v1189736933.js
+│  │      ubb.v1189736939.js
+│  │      wEdit.htm
+│  │      
+│  ├─FCKeditor
+│  │  │  fckconfig.js
+│  │  │  fckeditor.js
+│  │  │  fckpackager.xml
+│  │  │  fckstyles.xml
+│  │  │  fcktemplates.xml
+│  │  │  SimpleUploaderServlet.java
+│  │  │  
+│  │  └─editor
+│  │      │  fckdebug.html
+│  │      │  fckdialog.html
+│  │      │  fckeditor.html
+│  │      │  fckeditor.original.html
+│  │      │  upload.jsp
+│  │      │  
+│  │      ├─css
+│  │      │  │  fck_editorarea.css
+│  │      │  │  fck_internal.css
+│  │      │  │  fck_showtableborders_gecko.css
+│  │      │  │  
+│  │      │  ├─behaviors
+│  │      │  │      disablehandles.htc
+│  │      │  │      showtableborders.htc
+│  │      │  │      
+│  │      │  └─images
+│  │      │          embed.gif
+│  │      │          fck_anchor.gif
+│  │      │          fck_flashlogo.gif
+│  │      │          fck_hiddenfield.gif
+│  │      │          fck_pagebreak.gif
+│  │      │          media.gif
+│  │      │          
+│  │      ├─dialog
+│  │      │  │  Embed.html
+│  │      │  │  fck_about.html
+│  │      │  │  fck_anchor.html
+│  │      │  │  fck_button.html
+│  │      │  │  fck_checkbox.html
+│  │      │  │  fck_colorselector.html
+│  │      │  │  fck_docprops.html
+│  │      │  │  fck_find.html
+│  │      │  │  fck_flash.html
+│  │      │  │  fck_form.html
+│  │      │  │  fck_hiddenfield.html
+│  │      │  │  fck_image.html
+│  │      │  │  fck_link.html
+│  │      │  │  fck_listprop.html
+│  │      │  │  fck_paste.html
+│  │      │  │  fck_radiobutton.html
+│  │      │  │  fck_replace.html
+│  │      │  │  fck_select.html
+│  │      │  │  fck_smiley.html
+│  │      │  │  fck_source.html
+│  │      │  │  fck_specialchar.html
+│  │      │  │  fck_spellerpages.html
+│  │      │  │  fck_table.html
+│  │      │  │  fck_tablecell.html
+│  │      │  │  fck_template.html
+│  │      │  │  fck_textarea.html
+│  │      │  │  fck_textfield.html
+│  │      │  │  Media.html
+│  │      │  │  
+│  │      │  ├─common
+│  │      │  │  │  fcknumericfield.htc
+│  │      │  │  │  fck_dialog_common.css
+│  │      │  │  │  fck_dialog_common.js
+│  │      │  │  │  moz-bindings.xml
+│  │      │  │  │  
+│  │      │  │  └─images
+│  │      │  │          locked.gif
+│  │      │  │          reset.gif
+│  │      │  │          unlocked.gif
+│  │      │  │          
+│  │      │  ├─fck_about
+│  │      │  │      logo_fckeditor.gif
+│  │      │  │      logo_fredck.gif
+│  │      │  │      
+│  │      │  ├─fck_docprops
+│  │      │  │      fck_document_preview.html
+│  │      │  │      
+│  │      │  ├─fck_flash
+│  │      │  │      fck_flash.js
+│  │      │  │      fck_flash_preview.html
+│  │      │  │      
+│  │      │  ├─fck_image
+│  │      │  │      fck_image.js
+│  │      │  │      fck_image_preview.html
+│  │      │  │      
+│  │      │  ├─fck_link
+│  │      │  │      fck_link.js
+│  │      │  │      
+│  │      │  ├─fck_select
+│  │      │  │      fck_select.js
+│  │      │  │      
+│  │      │  ├─fck_spellerpages
+│  │      │  │  └─spellerpages
+│  │      │  │      │  blank.html
+│  │      │  │      │  controls.html
+│  │      │  │      │  controlWindow.js
+│  │      │  │      │  spellchecker.html
+│  │      │  │      │  spellChecker.js
+│  │      │  │      │  spellerStyle.css
+│  │      │  │      │  wordWindow.js
+│  │      │  │      │  
+│  │      │  │      └─server-scripts
+│  │      │  │              spellchecker.cfm
+│  │      │  │              spellchecker.php
+│  │      │  │              spellchecker.pl
+│  │      │  │              
+│  │      │  └─fck_template
+│  │      │      └─images
+│  │      │              template1.gif
+│  │      │              template2.gif
+│  │      │              template3.gif
+│  │      │              
+│  │      ├─filemanager
+│  │      │  ├─browser
+│  │      │  │  └─default
+│  │      │  │      │  browser.css
+│  │      │  │      │  browser.html
+│  │      │  │      │  frmactualfolder.html
+│  │      │  │      │  frmcreatefolder.html
+│  │      │  │      │  frmfolders.html
+│  │      │  │      │  frmresourceslist.html
+│  │      │  │      │  frmresourcetype.html
+│  │      │  │      │  frmupload.html
+│  │      │  │      │  
+│  │      │  │      ├─connectors
+│  │      │  │      │  │  test.html
+│  │      │  │      │  │  
+│  │      │  │      │  ├─asp
+│  │      │  │      │  │      basexml.asp
+│  │      │  │      │  │      class_upload.asp
+│  │      │  │      │  │      commands.asp
+│  │      │  │      │  │      config.asp
+│  │      │  │      │  │      connector.asp
+│  │      │  │      │  │      io.asp
+│  │      │  │      │  │      util.asp
+│  │      │  │      │  │      
+│  │      │  │      │  ├─aspx
+│  │      │  │      │  │      connector.aspx
+│  │      │  │      │  │      
+│  │      │  │      │  ├─cfm
+│  │      │  │      │  │      config.cfm
+│  │      │  │      │  │      connector.cfm
+│  │      │  │      │  │      
+│  │      │  │      │  ├─lasso
+│  │      │  │      │  │      config.lasso
+│  │      │  │      │  │      connector.lasso
+│  │      │  │      │  │      
+│  │      │  │      │  ├─perl
+│  │      │  │      │  │      basexml.pl
+│  │      │  │      │  │      commands.pl
+│  │      │  │      │  │      connector.cgi
+│  │      │  │      │  │      io.pl
+│  │      │  │      │  │      upload_fck.pl
+│  │      │  │      │  │      util.pl
+│  │      │  │      │  │      
+│  │      │  │      │  ├─php
+│  │      │  │      │  │      basexml.php
+│  │      │  │      │  │      commands.php
+│  │      │  │      │  │      config.php
+│  │      │  │      │  │      connector.php
+│  │      │  │      │  │      io.php
+│  │      │  │      │  │      util.php
+│  │      │  │      │  │      
+│  │      │  │      │  └─py
+│  │      │  │      │          connector.py
+│  │      │  │      │          
+│  │      │  │      ├─images
+│  │      │  │      │  │  ButtonArrow.gif
+│  │      │  │      │  │  Folder.gif
+│  │      │  │      │  │  Folder32.gif
+│  │      │  │      │  │  FolderOpened.gif
+│  │      │  │      │  │  FolderOpened32.gif
+│  │      │  │      │  │  FolderUp.gif
+│  │      │  │      │  │  spacer.gif
+│  │      │  │      │  │  
+│  │      │  │      │  └─icons
+│  │      │  │      │      │  ai.gif
+│  │      │  │      │      │  avi.gif
+│  │      │  │      │      │  bmp.gif
+│  │      │  │      │      │  cs.gif
+│  │      │  │      │      │  default.icon.gif
+│  │      │  │      │      │  dll.gif
+│  │      │  │      │      │  doc.gif
+│  │      │  │      │      │  exe.gif
+│  │      │  │      │      │  fla.gif
+│  │      │  │      │      │  gif.gif
+│  │      │  │      │      │  htm.gif
+│  │      │  │      │      │  html.gif
+│  │      │  │      │      │  jpg.gif
+│  │      │  │      │      │  js.gif
+│  │      │  │      │      │  mdb.gif
+│  │      │  │      │      │  mp3.gif
+│  │      │  │      │      │  pdf.gif
+│  │      │  │      │      │  png.gif
+│  │      │  │      │      │  ppt.gif
+│  │      │  │      │      │  rdp.gif
+│  │      │  │      │      │  swf.gif
+│  │      │  │      │      │  swt.gif
+│  │      │  │      │      │  txt.gif
+│  │      │  │      │      │  vsd.gif
+│  │      │  │      │      │  xls.gif
+│  │      │  │      │      │  xml.gif
+│  │      │  │      │      │  zip.gif
+│  │      │  │      │      │  
+│  │      │  │      │      └─32
+│  │      │  │      │              ai.gif
+│  │      │  │      │              avi.gif
+│  │      │  │      │              bmp.gif
+│  │      │  │      │              cs.gif
+│  │      │  │      │              default.icon.gif
+│  │      │  │      │              dll.gif
+│  │      │  │      │              doc.gif
+│  │      │  │      │              exe.gif
+│  │      │  │      │              fla.gif
+│  │      │  │      │              gif.gif
+│  │      │  │      │              htm.gif
+│  │      │  │      │              html.gif
+│  │      │  │      │              jpg.gif
+│  │      │  │      │              js.gif
+│  │      │  │      │              mdb.gif
+│  │      │  │      │              mp3.gif
+│  │      │  │      │              pdf.gif
+│  │      │  │      │              png.gif
+│  │      │  │      │              ppt.gif
+│  │      │  │      │              rdp.gif
+│  │      │  │      │              swf.gif
+│  │      │  │      │              swt.gif
+│  │      │  │      │              txt.gif
+│  │      │  │      │              vsd.gif
+│  │      │  │      │              xls.gif
+│  │      │  │      │              xml.gif
+│  │      │  │      │              zip.gif
+│  │      │  │      │              
+│  │      │  │      └─js
+│  │      │  │              common.js
+│  │      │  │              fckxml.js
+│  │      │  │              
+│  │      │  └─upload
+│  │      │      │  test.html
+│  │      │      │  
+│  │      │      ├─asp
+│  │      │      │      class_upload.asp
+│  │      │      │      config.asp
+│  │      │      │      io.asp
+│  │      │      │      upload.asp
+│  │      │      │      
+│  │      │      ├─aspx
+│  │      │      │      upload.aspx
+│  │      │      │      
+│  │      │      ├─cfm
+│  │      │      │      config.cfm
+│  │      │      │      upload.cfm
+│  │      │      │      
+│  │      │      ├─lasso
+│  │      │      │      config.lasso
+│  │      │      │      upload.lasso
+│  │      │      │      
+│  │      │      └─php
+│  │      │              config.php
+│  │      │              upload.php
+│  │      │              util.php
+│  │      │              
+│  │      ├─images
+│  │      │  │  anchor.gif
+│  │      │  │  arrow_ltr.gif
+│  │      │  │  arrow_rtl.gif
+│  │      │  │  spacer.gif
+│  │      │  │  
+│  │      │  └─smiley
+│  │      ├─js
+│  │      │      fckeditorcode_gecko.js
+│  │      │      fckeditorcode_ie.js
+│  │      │      
+│  │      ├─lang
+│  │      │      af.js
+│  │      │      ar.js
+│  │      │      bg.js
+│  │      │      bn.js
+│  │      │      bs.js
+│  │      │      ca.js
+│  │      │      cs.js
+│  │      │      da.js
+│  │      │      de.js
+│  │      │      el.js
+│  │      │      en-au.js
+│  │      │      en-ca.js
+│  │      │      en-uk.js
+│  │      │      en.js
+│  │      │      eo.js
+│  │      │      es.js
+│  │      │      et.js
+│  │      │      eu.js
+│  │      │      fa.js
+│  │      │      fi.js
+│  │      │      fo.js
+│  │      │      fr.js
+│  │      │      gl.js
+│  │      │      he.js
+│  │      │      hi.js
+│  │      │      hr.js
+│  │      │      hu.js
+│  │      │      it.js
+│  │      │      ja.js
+│  │      │      km.js
+│  │      │      ko.js
+│  │      │      lt.js
+│  │      │      lv.js
+│  │      │      mn.js
+│  │      │      ms.js
+│  │      │      nb.js
+│  │      │      nl.js
+│  │      │      no.js
+│  │      │      pl.js
+│  │      │      pt-br.js
+│  │      │      pt.js
+│  │      │      ro.js
+│  │      │      ru.js
+│  │      │      sk.js
+│  │      │      sl.js
+│  │      │      sr-latn.js
+│  │      │      sr.js
+│  │      │      sv.js
+│  │      │      th.js
+│  │      │      tr.js
+│  │      │      uk.js
+│  │      │      vi.js
+│  │      │      zh-cn.js
+│  │      │      zh.js
+│  │      │      _getfontformat.html
+│  │      │      _translationstatus.txt
+│  │      │      
+│  │      ├─plugins
+│  │      │  ├─autogrow
+│  │      │  │      fckplugin.js
+│  │      │  │      
+│  │      │  ├─placeholder
+│  │      │  │  │  fckplugin.js
+│  │      │  │  │  fck_placeholder.html
+│  │      │  │  │  placeholder.gif
+│  │      │  │  │  
+│  │      │  │  └─lang
+│  │      │  │          de.js
+│  │      │  │          en.js
+│  │      │  │          fr.js
+│  │      │  │          it.js
+│  │      │  │          pl.js
+│  │      │  │          
+│  │      │  ├─simplecommands
+│  │      │  │      fckplugin.js
+│  │      │  │      
+│  │      │  └─tablecommands
+│  │      │          fckplugin.js
+│  │      │          
+│  │      └─skins
+│  │          │  _fckviewstrips.html
+│  │          │  
+│  │          ├─default
+│  │          │  │  fck_dialog.css
+│  │          │  │  fck_editor.css
+│  │          │  │  fck_strip.gif
+│  │          │  │  
+│  │          │  └─images
+│  │          │          toolbar.arrowright.gif
+│  │          │          toolbar.buttonarrow.gif
+│  │          │          toolbar.collapse.gif
+│  │          │          toolbar.end.gif
+│  │          │          toolbar.expand.gif
+│  │          │          toolbar.separator.gif
+│  │          │          toolbar.start.gif
+│  │          │          
+│  │          ├─office2003
+│  │          │  │  fck_dialog.css
+│  │          │  │  fck_editor.css
+│  │          │  │  fck_strip.gif
+│  │          │  │  
+│  │          │  └─images
+│  │          │          toolbar.arrowright.gif
+│  │          │          toolbar.bg.gif
+│  │          │          toolbar.buttonarrow.gif
+│  │          │          toolbar.collapse.gif
+│  │          │          toolbar.end.gif
+│  │          │          toolbar.expand.gif
+│  │          │          toolbar.separator.gif
+│  │          │          toolbar.start.gif
+│  │          │          
+│  │          └─silver
+│  │              │  fck_dialog.css
+│  │              │  fck_editor.css
+│  │              │  fck_strip.gif
+│  │              │  
+│  │              └─images
+│  │                      toolbar.arrowright.gif
+│  │                      toolbar.buttonarrow.gif
+│  │                      toolbar.buttonbg.gif
+│  │                      toolbar.collapse.gif
+│  │                      toolbar.end.gif
+│  │                      toolbar.expand.gif
+│  │                      toolbar.separator.gif
+│  │                      toolbar.start.gif
+│  │                      
+│  └─word_edit
+│          BackColor.html
+│          Face.html
+│          FileContent.jsp
+│          FontName.html
+│          FontSize.html
+│          ForeColor.html
+│          FormatBlock.html
+│          InsertFContent.html
+│          InsertImg.html
+│          InsertLink.html
+│          InsertTable.html
+│          menu.html
+│          publish_img.js
+│          Upload.jsp
+│          word_edit.css
+│          word_edit.js
+│          
+├─info
+│  │  Alert.jsp
+│  │  Alert_Interlocution.jsp
+│  │  Alert_Interlocution1.jsp
+│  │  NewSucceed.jsp
+│  │  Succeed.jsp
+│  │  
+│  └─error
+│          400.jsp
+│          403.jsp
+│          404.jsp
+│          500.jsp
+│          505.jsp
+│          NotFound.jsp
+│          Notice.jsp
+│          
+├─integral
+│      IntegralChange.jsp
+│      IntegralChangeAdd.jsp
+│      IntegralCycle.jsp
+│      IntegralhandUser.jsp
+│      Integralhandwork.jsp
+│      IntegralhandworkAdd.jsp
+│      IntegralManage.jsp
+│      IntegralManageNode.jsp
+│      IntegralMember.jsp
+│      IntegralNode.jsp
+│      IntegralPrize.jsp
+│      IntegralPrizeAdd.jsp
+│      IntegralQuKey.jsp
+│      IntegralQuKeyAdd.jsp
+│      IntegralQuKeyBack.jsp
+│      IntegralQuKeylist.jsp
+│      Integraltest.jsp
+│      IntegralUser.jsp
+│      IntegralUserinfo.jsp
+│      IntergalChangeAdd.jsp
+│      IntergalPrizeAdd.jsp
+│      Intergralsum_list.jsp
+│      Memberdetail.jsp
+│      Memberdetail2.jsp
+│      
+├─leagueshop
+│      area.js
+│      EditLeagueShop.jsp
+│      EditLeagueShop2.jsp
+│      EditLeagueShopClass.jsp
+│      EditleagueShopClassType.jsp
+│      EditLeagueShopImprest.jsp
+│      EditLeagueShopImprestinfo.jsp
+│      EditLeagueShopMsg.jsp
+│      EditLeagueShopStatic.jsp
+│      GoodsStatistics.jsp
+│      GoodsStatisticsShow.jsp
+│      InventorySta.jsp
+│      InventoryStaShow.jsp
+│      InventoryWarning.jsp
+│      InventoryWarningShow.jsp
+│      LeagueShopAuditList.jsp
+│      leagueShopbumen.jsp
+│      LeagueShopDaoru.jsp
+│      LeagueShopDelete.jsp
+│      LeagueShopImprestList.jsp
+│      LeagueShopImprestList2.jsp
+│      LeagueShopImprestList3.jsp
+│      LeagueShopImprestListdaochu.jsp
+│      LeagueShopinfo.jsp
+│      LeagueShopInfoOver.jsp
+│      LeagueShopLinkList.jsp
+│      LeagueShopMonitor.jsp
+│      LeagueShopMonitor2.jsp
+│      LeagueShopMsgs.jsp
+│      LeagueShopStatic.jsp
+│      LeagueShopSum.jsp
+│      LeagueShop_ajax.jsp
+│      lstext.jsp
+│      SalesMonitor.jsp
+│      SalesMonitorShow.jsp
+│      SalesStatistics.jsp
+│      SalesStatisticsShow.jsp
+│      SetLeagueShopTypeStyle.jsp
+│      ShopMember.jsp
+│      ShopMemberConsume.jsp
+│      ShopMemberConsumeShow.jsp
+│      ShopMemberShow.jsp
+│      
+├─listing
+│      BriefcaseItems.jsp
+│      EditListed.jsp
+│      EditListing.jsp
+│      EditListing2.jsp
+│      EditListingShow.jsp
+│      EditPickFrom.jsp
+│      EditPickManual.jsp
+│      EditPickNews.jsp
+│      EditPickNode.jsp
+│      EditSearch.jsp
+│      LastAccessListing.jsp
+│      Listeds.jsp
+│      Listings.jsp
+│      ListingToListingShow.jsp
+│      NewListed.jsp
+│      Picks.jsp
+│      SelListing.jsp
+│      
+├─meeting
+│      AnswerIn.jsp
+│      CheckIn.jsp
+│      DivertCall.jsp
+│      Meeting.jsp
+│      MeetingFrameSet.jsp
+│      SendToMeeting.jsp
+│      
+├─message
+│      CGroups.jsp
+│      Contacts.jsp
+│      DraftMessages.jsp
+│      EditCGroup.jsp
+│      EditEmailBox.jsp
+│      EditMessage.jsp
+│      EditMessageFolder.jsp
+│      EditMessageInvite.jsp
+│      Email.jsp
+│      EmailBoxs.jsp
+│      Emails.jsp
+│      InboxMessages.jsp
+│      javamail.jsp
+│      ManageMessageFolders.jsp
+│      Message.jsp
+│      Message2.jsp
+│      MessageFolderContents.jsp
+│      MessageFolders.jsp
+│      MessageFolderSubscribers.jsp
+│      MessageInvite.jsp
+│      MessageReaders.jsp
+│      Messages.jsp
+│      Messages.jsp_
+│      MessageYNread.jsp
+│      NewContacts.jsp
+│      NewMessage.jsp
+│      NewMessage2.jsp
+│      NewMessageAttachment.jsp
+│      Reminder.jsp
+│      ReminderDiglog.jsp
+│      SentMessages.jsp
+│      StandinnerEmail.jsp
+│      TrashMessages.jsp
+│      ViewInvite.jsp
+│      复件 Message.jsp_
+│      
+├─mov
+│      AdminSuccess.jsp
+│      AdminTransfer.jsp
+│      AdminTransfer2.jsp
+│      CompanyShow.jsp
+│      EditCompany.jsp
+│      EditCompany2.jsp
+│      EditMemeberType.jsp
+│      EditPay.jsp
+│      MemberDecide.jsp
+│      MemberDecide2.jsp
+│      MemberLatencyInfo.jsp
+│      MemberLatencyManage.jsp
+│      MemberManage.jsp
+│      MemberVerify.jsp
+│      member_ajax.jsp
+│      MemeberTypeList.jsp
+│      PayList.jsp
+│      register.jsp
+│      RegisterInstall.jsp
+│      RegisterList.jsp
+│      SigUp.jsp
+│      Success.jsp
+│      Success2.jsp
+│      Success3.jsp
+│      Transfer.jsp
+│      
+├─netdisk
+│      EditFileCenter.jsp
+│      EditFileCenterSafety.jsp
+│      EditFileCenterSafety2.jsp
+│      EditFileCenterSet.jsp
+│      EditFileCenterUnit.jsp
+│      EditMms.jsp
+│      EditNetDisk.jsp
+│      EditNetdiskEnterprise.jsp
+│      EditNetDiskMemberSet.jsp
+│      EditNetDiskNew.jsp
+│      EditNetDiskSet.jsp
+│      EditNetDiskShare.jsp
+│      EditNetDiskSize.jsp
+│      EditSafety.jsp
+│      FileCenterMoveCopy.jsp
+│      FileCenters.jsp
+│      FileCenterSafetyFrame.jsp
+│      FileCenterSafetys.jsp
+│      FileCenterSearch.jsp
+│      FileCentersShow.jsp
+│      FileCentersShow.jsp.bak
+│      FileCenterTree.jsp
+│      FileCenterUnits.jsp
+│      FileCenterView.jsp
+│      filereader.jsp
+│      FileReadTest.jsp
+│      FileYNread.jsp
+│      FileYNread1.jsp
+│      index.jsp
+│      MoveCopy.jsp
+│      NetDiskCompress.jsp
+│      NetDiskDownload.jsp
+│      NetdiskEnterprises.jsp
+│      NetDiskFrame.jsp
+│      NetDiskHelp.html
+│      NetDiskHelp.jsp
+│      NetDiskMember.jsp
+│      NetDiskMemberMoveCopy.jsp
+│      NetDiskMemberNewfolder.jsp
+│      NetDiskMemberTree.jsp
+│      NetDiskMemberUpload.jsp
+│      NetDiskNewUser.jsp
+│      NetDiskNewUser2.jsp
+│      NetDiskOldUser.jsp
+│      NetDisks.jsp
+│      NetDiskSelect.jsp
+│      NetDiskShareList.jsp
+│      NetDiskShareList2.jsp
+│      NetDiskSize.jsp
+│      NetDiskSubscribers.jsp
+│      NetDiskTree3.jsp
+│      Newfolder.jsp
+│      SafetyFrame.jsp
+│      Safetys.jsp
+│      Search.jsp
+│      Tree.jsp
+│      Upload.jsp
+│      
+├─netkoo
+│      bottom.html
+│      City.jsp
+│      index.jsp
+│      index_head.jsp
+│      index_leftup.jsp
+│      JsCategoryList.jsp
+│      SearchCompany.jsp
+│      SearchCompany1.jsp
+│      SearchCompany2.jsp
+│      SearchSupply1.jsp
+│      so.html
+│      复件 SearchCompany2.jsp
+│      
+├─node
+│      AdedNodes.jsp
+│      AdingNodes.jsp
+│      engine.jsp
+│      FavoriteNodes.jsp
+│      FavoriteNodes_1.jsp
+│      ListedNodes.jsp
+│      ListingNodes.jsp
+│      Nodes.jsp
+│      TalkbackedNodes.jsp
+│      TalkbackedNodes2.jsp
+│      TalkbackingNodes.jsp
+│      
+├─ocean
+│      EditLevyname.jsp
+│      EditLevyPicture.jsp
+│      EditOceanOver.jsp
+│      EditOceanRoll.jsp
+│      EditOceanRoll2.jsp
+│      EditOceanRoll3.jsp
+│      EditOceanRoll4.jsp
+│      EditOceanRoll5.jsp
+│      EditOceanRoll_1.jsp
+│      EditOceanRoll_2.jsp
+│      LevyName.jsp
+│      LevyPicture.jsp
+│      LevyWord.jsp
+│      OceanClause.jsp
+│      Oceanfafang.jsp
+│      OceanFlack.jsp
+│      OceanProfile.jsp
+│      OceanRollList1.jsp
+│      OceanRollList2.jsp
+│      OceanRollList3.jsp
+│      OceanRollList4.jsp
+│      OceanRollList5.jsp
+│      OceanRollNO.jsp
+│      OceanRollpayment_2_1.jsp
+│      OceanSearch.jsp
+│      OceanSearchInfo.jsp
+│      OceanSuccess.jsp
+│      OceanSuccess1.jsp
+│      OceanSuccess2.jsp
+│      OceanTransferInfo.jsp
+│      OceanWord.jsp
+│      testing.jsp
+│      
+├─offer
+│      AccountDefault.jsp
+│      Bargains.jsp
+│      Bids.jsp
+│      CheckoutCart1.jsp
+│      CheckoutCart1s.jsp
+│      CheckoutCart2.jsp
+│      CheckoutCart3.jsp
+│      CheckoutCart_1s.jsp
+│      CheckoutCart_2s.jsp
+│      CheckoutCat2s.jsp
+│      EditCheckout.jsp
+│      EditLogin.jsp
+│      login.jsp
+│      Offers.jsp
+│      ShoppingCarts.jsp
+│      ShoppingCarts2.jsp
+│      复件 ShoppingCarts.jsp
+│      
+├─order
+│      ApprovedShippedTrade.jsp
+│      BgPurchaseTradeList.jsp
+│      CancelTrade.jsp
+│      ConfirmedTrade0.jsp
+│      EditPurchaseOrder.jsp
+│      EditSaleNewOrder.jsp
+│      EditTrade.jsp
+│      EditTrade2.jsp
+│      FinishedTrade.jsp
+│      GatheringTrade.jsp
+│      InceptTrade.jsp
+│      MemberTrades.jsp
+│      NewTrade.jsp
+│      Points.jsp
+│      Purchase.jsp
+│      PurchaseIncept.jsp
+│      PurchaseMemberList.jsp
+│      PurchaseNewOrder.jsp
+│      PurchaseOrders.jsp
+│      PurchaseTradeList.jsp
+│      SaleApprovedRefund.jsp
+│      SaleCancelOrder.jsp
+│      SaleConfirmed.jsp
+│      SaleFinished.jsp
+│      SaleNewOrder.jsp
+│      SaleOrders.jsp
+│      SaleOrders2.jsp
+│      SaleOrders3.jsp
+│      SaleOrders_1s.jsp
+│      SalePayment.jsp
+│      SalePayment2.jsp
+│      SaleRefund.jsp
+│      SaleRejected.jsp
+│      SaleRollback.jsp
+│      SaleUnshipped.jsp
+│      Trade.jsp
+│      TradeInvoice.jsp
+│      TradeInvoiceInc.jsp
+│      TradeMembers.jsp
+│      Trades.jsp
+│      TradeTotal.jsp
+│      Trade_old.jsp
+│      Trade_Table.jsp
+│      Trade_Table1.jsp
+│      Trade_Table1_inc.jsp
+│      Trade_Table2.jsp
+│      Trade_Table3.jsp
+│      Trade_Table3_inc.jsp
+│      Trade_Table4.jsp
+│      Trade_Table5.jsp
+│      Trade_Table6.jsp
+│      UnshippedTrade.jsp
+│      ViewTrade.jsp
+│      ViewTrade2.jsp
+│      
+├─pay
+│  │  alipay_notify.jsp
+│  │  alipay_return.jsp
+│  │  index.jsp
+│  │  
+│  ├─99bill
+│  │      Receive.jsp
+│  │      Send.jsp
+│  │      
+│  ├─beijing
+│  │      AutoReceive.jsp
+│  │      Receive.jsp
+│  │      Send.jsp
+│  │      
+│  ├─chinabank
+│  │      AutoReceive.jsp
+│  │      Receive.jsp
+│  │      Send.jsp
+│  │      
+│  ├─cncard
+│  │      GetPayNotify.jsp
+│  │      get_user.jsp
+│  │      Send.jsp
+│  │      
+│  ├─hybeijing
+│  │      AutoReceive.jsp
+│  │      hyReceive.jsp
+│  │      Receive.jsp
+│  │      Send.jsp
+│  │      新建 文本文档 (2).txt
+│  │      新建 文本文档.txt
+│  │      
+│  ├─newbeijing
+│  │      AutoReceive.jsp
+│  │      Receive.jsp
+│  │      
+│  └─spdb
+│          AutoReceive.jsp
+│          Receive.jsp
+│          Send.jsp
+│          
+├─payinstall
+│      EditPay.jsp
+│      PayList.jsp
+│      
+├─producer
+│      EditProducer.jsp
+│      index.jsp
+│      ProducerList.jsp
+│      
+├─profile
+│  │  addcard.jsp
+│  │  AddCode.jsp
+│  │  Associates.jsp
+│  │  BuyInstructions.jsp
+│  │  Callboards.jsp
+│  │  CancelMembership.jsp
+│  │  cartewarehouse.jsp
+│  │  Center.jsp
+│  │  Codes.jsp
+│  │  CodeValidity.jsp
+│  │  CodeValidity2.jsp
+│  │  CouponMembers.jsp
+│  │  Coupons.jsp
+│  │  downorder.jsp
+│  │  EditAssociate.jsp
+│  │  EditBuyInstruction.jsp
+│  │  EditCallboard.jsp
+│  │  EditCarteOper.jsp
+│  │  EditCode.jsp
+│  │  EditCoupon.jsp
+│  │  EditHome.jsp
+│  │  EditShipping.jsp
+│  │  EditShipping1.jsp
+│  │  grantcarte.jsp
+│  │  loginfo.jsp
+│  │  LoginHistory.jsp
+│  │  loginpassval.jsp
+│  │  loginsuc.jsp
+│  │  logoutpassval.jsp
+│  │  logoutsuc.jsp
+│  │  Logs.jsp
+│  │  NewCouponMembers.jsp
+│  │  Profile.jsp
+│  │  ProfileMoney.jsp
+│  │  receivecarte.jsp
+│  │  sample.htm
+│  │  Shippings.jsp
+│  │  tloginsuc.jsp
+│  │  upname.jsp
+│  │  uporder.jsp
+│  │  
+│  └─attendance
+│          AddType.jsp
+│          DeleteAttend.jsp
+│          DeleteType.jsp
+│          EditAttend.jsp
+│          EditType.jsp
+│          SelMembers.jsp
+│          selNowAtt.jsp
+│          SelType.jsp
+│          Shiftcharge.jsp
+│          
+├─proxy
+│      index.html
+│      proxy.jsp
+│      top.html
+│      
+├─registration
+│      adddestineinfo.jsp
+│      allhotels.jsp
+│      applyadmin.jsp
+│      audit.jsp
+│      auditcaller.jsp
+│      audits.jsp
+│      auditsHostel.jsp
+│      Calendar.jsp
+│      Calendar2.jsp
+│      caller.jsp
+│      calleregister.jsp
+│      callersmember.jsp
+│      callertype.jsp
+│      CallerView.jsp
+│      cancaller.jsp
+│      canceled.jsp
+│      changep.jsp
+│      ChangePassword.jsp
+│      chp.jsp
+│      cjup.jsp
+│      CreateHostel.jsp
+│      createhotel.jsp
+│      cregsuc.jsp
+│      critique.jsp
+│      deal.jsp
+│      dealcontent.jsp
+│      deletecaller.jsp
+│      deletedestine.jsp
+│      deletehostel.jsp
+│      deleteorders.jsp
+│      deleteprofile.jsp
+│      DesCallView.jsp
+│      DestineView.jsp
+│      doc.jsp
+│      EditAudit.jsp
+│      Editaudits.jsp
+│      EditCreatehostel.jsp
+│      EditDestine.jsp
+│      EditDestine2.jsp
+│      EditDestine_ajax.jsp
+│      EditHostel.jsp
+│      Edithosteldemand.jsp
+│      EditHostel_application.jsp
+│      editmbookrooms.jsp
+│      editorder.jsp
+│      EditRegister.jsp
+│      edituser.jsp
+│      enquirieshotel.jsp
+│      enquirieshotel2.jsp
+│      enquirieshotel3.jsp
+│      enrol.jsp
+│      guanliyuanTK.jsp
+│      hosteldemand.jsp
+│      hostelmanageinfo.jsp
+│      Hostels.jsp
+│      hostelstyleinfor.jsp
+│      HostelView.jsp
+│      hsearch.jsp
+│      individualorder.jsp
+│      JDManagerView.jsp
+│      login.jsp
+│      Lottery.jsp
+│      managehostel.jsp
+│      ManagementEntrance.jsp
+│      manageorders.jsp
+│      manageordershownew.jsp
+│      manageordersshow.jsp
+│      memberbookrooms.jsp
+│      membercenter.jsp
+│      memberorder.jsp
+│      membership.jsp
+│      membership1.jsp
+│      membershow.jsp
+│      Myexpenserecord.jsp
+│      myorders.jsp
+│      newcaller.jsp
+│      newsmanager.jsp
+│      orderdeal.jsp
+│      orderprocessing.jsp
+│      pagerange.jsp
+│      ProfileView.jsp
+│      publichostelnews.jsp
+│      putongTK.jsp
+│      qxjd.jsp
+│      qxsuc.jsp
+│      RegionalAuthority.jsp
+│      register.jsp
+│      rplaceroomhostel.jsp
+│      rpsanda.jsp
+│      scallerwork.jsp
+│      search.jsp
+│      search2.jsp
+│      secondregion.jsp
+│      shostelorders.jsp
+│      SignUp.jsp
+│      statisticsorders.jsp
+│      test.jsp
+│      TK.jsp
+│      upisuc.jsp
+│      uppsuc.jsp
+│      Upuser.jsp
+│      validate.jsp
+│      websitestatistics.jsp
+│      
+├─request
+│      AccessRequestNodes.jsp
+│      AccessRequests.jsp
+│      AdRequestNodes.jsp
+│      AdRequests.jsp
+│      JoinRequestCommunities.jsp
+│      JoinRequests.jsp
+│      NodePreview.jsp
+│      NodeRequestNodes.jsp
+│      NodeRequests.jsp
+│      ProfileRequests.jsp
+│      Requests.jsp
+│      
+├─section
+│      CssJs.jsp
+│      EditCssJs.jsp
+│      EditSection.jsp
+│      InsertPicture.jsp
+│      Sections.jsp
+│      WeblogEditCssJs.jsp
+│      WeblogEditSection.jsp
+│      WeblogSelectCssJs.jsp
+│      
+├─site
+│      Cluster.jsp
+│      DNSCitys.jsp
+│      EditDNS.jsp
+│      EditExample.jsp
+│      EditHelp.jsp
+│      EditLicense.jsp
+│      EditLicensePost.jsp
+│      EditLicenseSN.jsp
+│      EditTypeAlias.jsp
+│      EditYellowPage.jsp
+│      Examples.jsp
+│      Examples1.jsp
+│      HelpContent.jsp
+│      HelpFrame.jsp
+│      HelpLists.jsp
+│      HelpLists2.jsp
+│      Helps.jsp
+│      Init.jsp
+│      MemberList.jsp
+│      MemberOverview.jsp
+│      TypeAliases.jsp
+│      UseExample.jsp
+│      
+├─sms
+│  │  AddSMSMoney.jsp
+│  │  EditSMSEnterCode.jsp
+│  │  EditSMSMessage.jsp
+│  │  EditSMSMoney.jsp
+│  │  EditSMSProfile.jsp
+│  │  EditSMSProfile2.jsp
+│  │  SendMessage.jsp
+│  │  SMSEnterprise.jsp
+│  │  SMSEnterprise2.jsp
+│  │  SMSMessageList.jsp
+│  │  SMSMoneyList.jsp
+│  │  SMSRMessageList.jsp
+│  │  SMSScode.jsp
+│  │  SMSSubcodes.jsp
+│  │  
+│  └─psmanagement
+│          chakan.htm
+│          CommunityEditGroup.jsp
+│          CommunityEditPhoneBook.jsp
+│          CommunityGroupManage.jsp
+│          CommunityPhoneBookManage.jsp
+│          CommunityPhoneBookQuery.jsp
+│          deletephone.jsp
+│          EditGroup.jsp
+│          EditPhoneBook.jsp
+│          FrameGU.jsp
+│          GroupList.jsp
+│          GroupList2.jsp
+│          GroupList3.jsp
+│          GroupList4.jsp
+│          GroupList5.jsp
+│          GroupList6.jsp
+│          GroupManage.jsp
+│          logout.htm
+│          logouterror.htm
+│          logoutsuccess.htm
+│          newnumbersubmit.jsp
+│          phonebook.htm
+│          PhoneBookManage.jsp
+│          quash.htm
+│          subscibe.htm
+│          UserList.jsp
+│          UserList2.jsp
+│          UserList3.jsp
+│          UserList4.jsp
+│          UserList5.jsp
+│          UserList6.jsp
+│          
+├─subscibe
+│      DemoSubscibe.jsp
+│      EditSubscibe.jsp
+│      IncSubscibe.jsp
+│      SendSubscibe.jsp
+│      SetSubscibe.jsp
+│      SubscibeFrame.jsp
+│      SubscibeList.jsp
+│      Subscibes.jsp
+│      
+├─talkback
+│      CebbankTalkbacks.jsp
+│      cnoocjobtalkback.jsp
+│      CreateAllTalkbackList.jsp
+│      EditCebbankTalkback.jsp
+│      EditTalkback.jsp
+│      Feedback.jsp
+│      Talkback.jsp
+│      TalkbackLists.jsp
+│      Talkbacks.jsp
+│      yjobtalkback.jsp
+│      
+├─template
+│      Templates.jsp
+│      Templates3.jsp
+│      
+├─tools
+│  │  Encoder.html
+│  │  ISNConversion.jsp
+│  │  skycn.jsp
+│  │  Update.jsp
+│  │  
+│  └─toUTF-8
+│          tab_count.jsp
+│          test222.jsp
+│          test2222.jsp
+│          
+├─type
+│  │  EditNodeExtractor.jsp
+│  │  TypePicture.jsp
+│  │  
+│  ├─account
+│  │      AccountSearch.jsp
+│  │      BargainingSearch.jsp
+│  │      EditAccount.jsp
+│  │      EditBargaining.jsp
+│  │      EditNetPay.jsp
+│  │      EditTransfer.jsp
+│  │      NetPaySearch.jsp
+│  │      SaveExcel.jsp
+│  │      TransferSearch.jsp
+│  │      
+│  ├─admin
+│  │      EditAdmin.jsp
+│  │      
+│  ├─amitylink
+│  │      AmityLinkDetail.jsp
+│  │      EditAmityLink.jsp
+│  │      EditAmityLink2.jsp
+│  │      Link.jsp
+│  │      
+│  ├─application
+│  │      ApplicationDetail.jsp
+│  │      ApplicationList.jsp
+│  │      EditApplication.jsp
+│  │      
+│  ├─author
+│  │      EditAuthor.jsp
+│  │      
+│  ├─bargain
+│  │      BargainPrices.jsp
+│  │      EditBargainPrice.jsp
+│  │      
+│  ├─bbs
+│  │  │  BBSAccessButton.jsp
+│  │  │  BBSBatDel.jsp
+│  │  │  BBSDetail.jsp
+│  │  │  BBSManage.jsp
+│  │  │  BBSMonitor.jsp
+│  │  │  BBSQuintessence.jsp
+│  │  │  BBSReplyManage.jsp
+│  │  │  EditBBS.jsp
+│  │  │  EditBBSHost.jsp
+│  │  │  EditBBSReply.jsp
+│  │  │  EditBBSReply_celerity.jsp
+│  │  │  EditProfileBBS.jsp
+│  │  │  ForumManage.jsp
+│  │  │  InnerPhotoManage.jsp
+│  │  │  MyBBS.jsp
+│  │  │  MyBBSReply.jsp
+│  │  │  OrolaEditBBS.jsp
+│  │  │  SetBBSReplyVisible.jsp
+│  │  │  
+│  │  └─default_bbsphoto
+│  │          10.gif
+│  │          11.gif
+│  │          12.gif
+│  │          13.gif
+│  │          14.gif
+│  │          15.gif
+│  │          16.gif
+│  │          17.gif
+│  │          18.gif
+│  │          19.gif
+│  │          2.gif
+│  │          20.gif
+│  │          21.gif
+│  │          22.gif
+│  │          23.gif
+│  │          3.gif
+│  │          4.gif
+│  │          5.gif
+│  │          6.gif
+│  │          7.gif
+│  │          8.gif
+│  │          9.gif
+│  │          index.jpg
+│  │          
+│  ├─bid
+│  │      BidPrices.jsp
+│  │      EditBidPrice.jsp
+│  │      
+│  ├─book
+│  │      BookDetail.jsp
+│  │      EditBook.jsp
+│  │      
+│  ├─brand
+│  │      BrandGoods.jsp
+│  │      BrandRole.jsp
+│  │      DialogBrand.jsp
+│  │      EditBrand.jsp
+│  │      EditBrandDiscounts.jsp
+│  │      EditBrandPrice.jsp
+│  │      EditSupplierBrandDiscounts.jsp
+│  │      ManageBrand.jsp
+│  │      SupplierBrandDiscounts.jsp
+│  │      
+│  ├─bulletinboard
+│  │      BulletinBoards.jsp
+│  │      EditBulletinBoard.jsp
+│  │      MessageBoardDetail.jsp
+│  │      
+│  ├─buy
+│  │      ATSCAlert.jsp
+│  │      BuyDetail.jsp
+│  │      BuyPrices.jsp
+│  │      Buys.jsp
+│  │      Buys2.jsp
+│  │      EditBid.jsp
+│  │      EditBuy.jsp
+│  │      EditBuy2.jsp
+│  │      EditBuyPrice.jsp
+│  │      
+│  ├─car
+│  │      carbrand.js
+│  │      CarDetail.jsp
+│  │      EditCar.jsp
+│  │      
+│  ├─career
+│  │      CareerDetail.jsp
+│  │      EditCareer.jsp
+│  │      
+│  ├─category
+│  │      CategoryDetail.jsp
+│  │      EditBankCategory.jsp
+│  │      EditCategory.jsp
+│  │      EditGoodsCategory.jsp
+│  │      
+│  ├─chat
+│  │      ChatCustomers.jsp
+│  │      ChatFrameSet.jsp
+│  │      ChatMembers.jsp
+│  │      ChatRoom.jsp
+│  │      ChatServiceFrameSet.jsp
+│  │      ChatServiceLogin.jsp
+│  │      ChatServiceOnline.jsp
+│  │      ChatServiceRoom.jsp
+│  │      EditChat.jsp
+│  │      EditChatService.jsp
+│  │      LeaveChat.jsp
+│  │      SendChat.jsp
+│  │      SendChatService.jsp
+│  │      
+│  ├─classes
+│  │      Classes.jsp
+│  │      ClassesChild.jsp
+│  │      ClassesChildList.jsp
+│  │      ClassesList.jsp
+│  │      ClassesSel.jsp
+│  │      EditClasses.jsp
+│  │      EditClassesChild.jsp
+│  │      
+│  ├─classified
+│  │      AddUserImpower.jsp
+│  │      ClassifiedDetail.jsp
+│  │      EditClassified.jsp
+│  │      
+│  ├─client
+│  │      ClientPrice.jsp
+│  │      EditClient.jsp
+│  │      
+│  ├─company
+│  │  │  AddUserImpower.jsp
+│  │  │  cnoocjobcompanymanage.jsp
+│  │  │  cnoocjobEditCompany.jsp
+│  │  │  CompanyDetail.jsp
+│  │  │  CompanyList.jsp
+│  │  │  CompanyMemberList.jsp
+│  │  │  CompanySearch.jsp
+│  │  │  CompanySearchResult.jsp
+│  │  │  EditCompany.jsp
+│  │  │  Header.jsp
+│  │  │  ManageCompanycenter.jsp
+│  │  │  ManageCompanyindex.jsp
+│  │  │  ManageCompanymenu.jsp
+│  │  │  ManageCompanySearch.jsp
+│  │  │  ManageCompanyView.jsp
+│  │  │  ManageEditCompany.jsp
+│  │  │  yjobcompanymanage.jsp
+│  │  │  yjobEditCompany.jsp
+│  │  │  
+│  │  └─windows
+│  │      │  CompanyBasicinfo.jsp
+│  │      │  CompanyBasicinfo1.jsp
+│  │      │  CompanyBasicinfo_include.jsp
+│  │      │  CompanyGoods.jsp
+│  │      │  CompanyGoods_include.jsp
+│  │      │  Companys1.jsp
+│  │      │  Companys2.jsp
+│  │      │  CompanySynopsis.jsp
+│  │      │  CompanyTalkback.jsp
+│  │      │  Edit.jsp
+│  │      │  EditCompany1.jsp
+│  │      │  EditCompany2.jsp
+│  │      │  EditCompany2_.jsp
+│  │      │  EonCall1.jsp
+│  │      │  EonCall2.jsp
+│  │      │  index.jsp
+│  │      │  script.js
+│  │      │  Search.jsp
+│  │      │  SetCompanyUpload.jsp
+│  │      │  复件 Companys1.jsp
+│  │      │  复件 Companys2.jsp
+│  │      │  
+│  │      ├─edit
+│  │      │      AmityLinks.jsp
+│  │      │      BulletinBoards.jsp
+│  │      │      EditAmityLink.jsp
+│  │      │      EditBulletinBoard.jsp
+│  │      │      EditCompany0.jsp
+│  │      │      EditCompany1.jsp
+│  │      │      EditCompany2.jsp
+│  │      │      EditCompany3.jsp
+│  │      │      EditCompany4.jsp
+│  │      │      EditDNS.jsp
+│  │      │      EditGoods.jsp
+│  │      │      EditJob.jsp
+│  │      │      EditMessageBoard.jsp
+│  │      │      EditReport.jsp
+│  │      │      GoodsCategory.jsp
+│  │      │      Goodss.jsp
+│  │      │      index.jsp
+│  │      │      Jobs.jsp
+│  │      │      MessageBoards.jsp
+│  │      │      Reports.jsp
+│  │      │      Styles.jsp
+│  │      │      Talkbacks.jsp
+│  │      │      Templates.jsp
+│  │      │      WindowsBoxs.jsp
+│  │      │      
+│  │      ├─view
+│  │      │      Goodss.jsp
+│  │      │      index.jsp
+│  │      │      Reports.jsp
+│  │      │      ViewBulletinBoard.jsp
+│  │      │      ViewCompany0.jsp
+│  │      │      ViewCompany1.jsp
+│  │      │      ViewCompany2.jsp
+│  │      │      ViewCompany3.jsp
+│  │      │      ViewCompany4.jsp
+│  │      │      ViewGoods.jsp
+│  │      │      ViewHits.jsp
+│  │      │      ViewJob.jsp
+│  │      │      ViewMessageBoard.jsp
+│  │      │      ViewReport.jsp
+│  │      │      
+│  │      └─_notes
+│  │              dwsync.xml
+│  │              
+│  ├─conference
+│  │      EditConference.jsp
+│  │      
+│  ├─contribute
+│  │      ContributeDetail.jsp
+│  │      EditContribute.jsp
+│  │      
+│  ├─correlative
+│  │      EditCorrelative.jsp
+│  │      
+│  ├─csvservice
+│  │      Csvdogservices.jsp
+│  │      Csvservices.jsp
+│  │      EditCsvdogservice.jsp
+│  │      EditCsvservice.jsp
+│  │      
+│  ├─dish
+│  │      DishDetail.jsp
+│  │      EditDish.jsp
+│  │      
+│  ├─district
+│  │      DistrictDetail.jsp
+│  │      EditDistrict.jsp
+│  │      EYPDistrictSearch.jsp
+│  │      EYPDistrictSearchResult.jsp
+│  │      
+│  ├─download
+│  │      Down.jsp
+│  │      DownloadDetail.jsp
+│  │      EditDownload.jsp
+│  │      EditDownloadAddress.jsp
+│  │      EditDownloadAddress2.jsp
+│  │      file.jsp
+│  │      ListDownload.jsp
+│  │      
+│  ├─dynamicvalue
+│  │      CebbankPdfDownload.jsp
+│  │      DynamicValueDetail.jsp
+│  │      DynamicValuePdfView.jsp
+│  │      DynamicValues.jsp
+│  │      DynamicValuesMember.jsp
+│  │      DynamicValuesMemberTab.jsp
+│  │      DynamicValuesTab.jsp
+│  │      DynamicValueView.jsp
+│  │      DynamicValueViewTab.jsp
+│  │      EditCebbank.jsp
+│  │      EditCebbankDynamicValue.jsp
+│  │      EditCebbankTab.jsp
+│  │      EditDynamicValue.jsp
+│  │      EditNodeFile.jsp
+│  │      
+│  ├─earthkavass
+│  │      EarthKavassDetail.jsp
+│  │      EditEarthKavass.jsp
+│  │      
+│  ├─egazetteer
+│  │      21shijiEditEGazetteer.jsp
+│  │      EditEGazetteer.jsp
+│  │      EGazetteerUp.jsp
+│  │      
+│  ├─environmental
+│  │      EditEnvironmental.jsp
+│  │      EnvironmentalDetail.jsp
+│  │      
+│  ├─eregister
+│  │      21shijiEditERegister.jsp
+│  │      EditERegister.jsp
+│  │      
+│  ├─event
+│  │      Calendar.jsp
+│  │      DayWeekMonth.jsp
+│  │      EditEvent.jsp
+│  │      EventDetail.jsp
+│  │      EventSearch.jsp
+│  │      EventSearch1.jsp
+│  │      
+│  ├─expenserecord
+│  │      adminaudit.jsp
+│  │      audit.jsp
+│  │      audit1.jsp
+│  │      callerauditnum.jsp
+│  │      dindanstate.jsp
+│  │      expenserecord.jsp
+│  │      explist.jsp
+│  │      hostelauditnum.jsp
+│  │      logtime.jsp
+│  │      reportnum.jsp
+│  │      xiaofei.jsp
+│  │      xiaofeiaudit.jsp
+│  │      
+│  ├─expert
+│  │      AddUserImpower.jsp
+│  │      EditExpert.jsp
+│  │      ExpertDetail.jsp
+│  │      
+│  ├─express
+│  │      EditExpress.jsp
+│  │      
+│  ├─files
+│  │      EditFiles.jsp
+│  │      FilesDetail.jsp
+│  │      
+│  ├─financing
+│  │      EditFinancing.jsp
+│  │      FinancingDetail.jsp
+│  │      
+│  ├─flight
+│  │      Aerodromes.jsp
+│  │      EditAerodrome.jsp
+│  │      EditBerth.jsp
+│  │      EditFlight.jsp
+│  │      EditTicket.jsp
+│  │      FlightDetail.jsp
+│  │      TicketDetail.jsp
+│  │      
+│  ├─folder
+│  │      EditFolder.jsp
+│  │      FolderDetail.jsp
+│  │      
+│  ├─friend
+│  │      EditFriend.jsp
+│  │      FriendDetail.jsp
+│  │      
+│  ├─gazetteer
+│  │      21shijiEditGazetteer.jsp
+│  │      EditDiscourse.jsp
+│  │      EditGazetteer.jsp
+│  │      EditGazetteer2.jsp
+│  │      GazetteerUp.jsp
+│  │      Untitled-4.jsp
+│  │      
+│  ├─golf
+│  │      EditGolf.jsp
+│  │      EditGolfMark.jsp
+│  │      GolfDetail.jsp
+│  │      GolfList.jsp
+│  │      GolfMark.jsp
+│  │      GolfPriceList.jsp
+│  │      Mark.jsp
+│  │      Picture.jsp
+│  │      
+│  ├─goods
+│  │  │  9000_BrandList.jsp
+│  │  │  9000_GoodsCompare.jsp
+│  │  │  9000_GoodsInfo.jsp
+│  │  │  9000_GoodsList.jsp
+│  │  │  9000_GoodsTypeList.jsp
+│  │  │  9000_GoodsTypeList2.jsp
+│  │  │  AllBrandGoodsList.jsp
+│  │  │  comlan_BrandList.jsp
+│  │  │  comlan_GoodsList.jsp
+│  │  │  EditGoods.jsp
+│  │  │  EditGoodsTime.jsp
+│  │  │  EditGoodsType.jsp
+│  │  │  EYPGoodsSearch.jsp
+│  │  │  EYPGoodsSearchResult.jsp
+│  │  │  Goods.jsp
+│  │  │  GoodsBrandList.jsp
+│  │  │  GoodsDetail.jsp
+│  │  │  GoodsList.jsp
+│  │  │  GoodsList2.jsp
+│  │  │  GoodsList3.jsp
+│  │  │  GoodsMemberList.jsp
+│  │  │  GoodsQueryResultList.jsp
+│  │  │  GoodsSearch.jsp
+│  │  │  GoodsSearchHeader.jsp
+│  │  │  GoodsShow.jsp
+│  │  │  GoodsTypeList.jsp
+│  │  │  GoodsTypes.jsp
+│  │  │  ManageCompanyGoodsView.jsp
+│  │  │  ProductSel.jsp
+│  │  │  publish_item.css
+│  │  │  publish_item_v3.js
+│  │  │  RevertGoodsData.jsp
+│  │  │  SelectGoodsType.jsp
+│  │  │  SelectGoodsType_taobao.jsp
+│  │  │  SetGoodsTypeBrand.jsp
+│  │  │  Suppliers.jsp
+│  │  │  WeblogEditGoods.jsp
+│  │  │  xml_http_request.js
+│  │  │  复件 SelectGoodsType.jsp
+│  │  │  
+│  │  ├─info_import
+│  │  │      commodity_import.jsp
+│  │  │      commodity_importdate.jsp
+│  │  │      commodity_out.jsp
+│  │  │      conversion.jsp
+│  │  │      ImportData.jsp
+│  │  │      Imports.jsp
+│  │  │      kind.jsp
+│  │  │      kind_ajax.jsp
+│  │  │      
+│  │  └─newgoods
+│  │          9000_GoodsAllList.jsp
+│  │          9000_GoodsList.jsp
+│  │          9000_GoodsTypeList2.jsp
+│  │          buy_stat.jsp
+│  │          EditBrandPrice.jsp
+│  │          GoodsTypes.jsp
+│  │          
+│  ├─greenmanufacture
+│  │      EditGreenManufacture.jsp
+│  │      GreenManufactureDetail.jsp
+│  │      
+│  ├─hostel
+│  │  │  Calendar.jsp
+│  │  │  Calendar2.jsp
+│  │  │  DesSuc.jsp
+│  │  │  Destine.jsp
+│  │  │  DestineOrders.jsp
+│  │  │  Destines.jsp
+│  │  │  DestineView.jsp
+│  │  │  DesView.jsp
+│  │  │  EditDestine.jsp
+│  │  │  EditDestine_old.jsp
+│  │  │  EditDestine_old2.jsp
+│  │  │  EditHostel.jsp
+│  │  │  EditRoomPrice.jsp
+│  │  │  HostelDetail.jsp
+│  │  │  HostelSearch_goldenholiday.jsp
+│  │  │  ListingRoomPrice.jsp
+│  │  │  Result.jsp
+│  │  │  SendFax.jsp
+│  │  │  style.css
+│  │  │  
+│  │  └─image
+│  │          10891.gif
+│  │          10907.jpg
+│  │          10912.gif
+│  │          bj.jpg
+│  │          chaxun.jpg
+│  │          sc.jpg
+│  │          tgsh.jpg
+│  │          Thumbs.db
+│  │          
+│  ├─house
+│  │      EditHouse.jsp
+│  │      HouseDetail.jsp
+│  │      
+│  ├─indict
+│  │      BgEditIndict.jsp
+│  │      EditIndict.jsp
+│  │      IndictDetail.jsp
+│  │      
+│  ├─interlocution
+│  │  │  EditInterlocution.jsp
+│  │  │  EditInterlocutionReply.jsp
+│  │  │  InterlocutionDetail.jsp
+│  │  │  InterlocutionManage.jsp
+│  │  │  InterlocutionReplyManage.jsp
+│  │  │  InterlocutionType.jsp
+│  │  │  
+│  │  ├─csv
+│  │  └─htmlqu
+│  │          Endqu.jsp
+│  │          Offerqu.jsp
+│  │          Startqu.jsp
+│  │          
+│  ├─investor
+│  │      area.js
+│  │      EditInvestor.jsp
+│  │      InvestorDetail.jsp
+│  │      
+│  ├─job
+│  │      AllCorp.jsp
+│  │      AllJob.jsp
+│  │      AppHistory.jsp
+│  │      area.htm
+│  │      cnoocjobEditJob.jsp
+│  │      cnoocjobendissue.jsp
+│  │      cnoocjobfooter.jsp
+│  │      cnoocjobheader.jsp
+│  │      cnoocjobindex.jsp
+│  │      cnoocjobjobmanage.jsp
+│  │      cnoocjobmanageaccess.jsp
+│  │      cnoocjobpreview.jsp
+│  │      cnoocjobpreviewedit.jsp
+│  │      cnoocjobtalkback.jsp
+│  │      EditApply.jsp
+│  │      EditApply2.jsp
+│  │      EditEntSearch.jsp
+│  │      EditEntSearch2.jsp
+│  │      EditJob.js
+│  │      EditJob.jsp
+│  │      EditJob.jsp.bak
+│  │      EditJob2.jsp
+│  │      EditJob3.jsp
+│  │      EditJobApply.jsp
+│  │      EditJobMailmsg.jsp
+│  │      EntResult.jsp
+│  │      EntSearchSave.jsp
+│  │      gl.jpg
+│  │      glb.jpg
+│  │      glleft.jpg
+│  │      glright.jpg
+│  │      JobDetail.jsp
+│  │      JobEntReg.jsp
+│  │      JobHeader.jsp
+│  │      JobImpower.jsp
+│  │      JobInstitution.jsp
+│  │      JobInstitution1.jsp
+│  │      JobList.jsp
+│  │      JobManage.jsp
+│  │      JobPosition.jsp
+│  │      JobResult.jsp
+│  │      JobSearch.jsp
+│  │      JobSearch2.jsp
+│  │      JobSearch3.jsp
+│  │      JobTemplet.jsp
+│  │      ProfileJobs.jsp
+│  │      Select.js
+│  │      SendFriend.jsp
+│  │      spacer.gif
+│  │      Thumbs.db
+│  │      validate.js
+│  │      ViewResume.jsp
+│  │      yjobEditJob.jsp
+│  │      yjobendissue.jsp
+│  │      yjobheader.jsp
+│  │      yjobindex.jsp
+│  │      yjobjobmanage.jsp
+│  │      yjoboperate.jsp
+│  │      yjobpreview.jsp
+│  │      yjobSap.jsp
+│  │      yjobtalkback.jsp
+│  │      复件 AllCorp.jsp
+│  │      复件 cnoocjobmanageaccess.jsp
+│  │      复件 EditApply.jsp
+│  │      复件 EditJob.jsp
+│  │      复件 yjobpreview.jsp
+│  │      澶嶄欢 AllCorp.jsp
+│  │      澶嶄欢 cnoocjobmanageaccess.jsp
+│  │      澶嶄欢 EditApply.jsp
+│  │      澶嶄欢 EditJob.jsp
+│  │      
+│  ├─landscape
+│  │      EditLandscape.jsp
+│  │      LandscapeArea.js
+│  │      LandscapeDetail.jsp
+│  │      
+│  ├─lfinancing
+│  │      EditLFinancing.jsp
+│  │      LFinancingDetail.jsp
+│  │      ToNodeLayer.jsp
+│  │      
+│  ├─linvestor
+│  │      area.js
+│  │      EditLInvestor.jsp
+│  │      LInvestorDetail.jsp
+│  │      
+│  ├─literature
+│  │      EditLiterature.jsp
+│  │      LiteratureDetail.jsp
+│  │      
+│  ├─media
+│  │      EditMedia.jsp
+│  │      Medias.jsp
+│  │      MediaSel.jsp
+│  │      
+│  ├─messageboard
+│  │      EditMessageBoard.jsp
+│  │      EditMessageBoardReply.jsp
+│  │      MessageBoardDetail.jsp
+│  │      MessageBoardManage.jsp
+│  │      MessageBoardReplyManage.jsp
+│  │      
+│  ├─movie
+│  │      EditMovie.jsp
+│  │      MovieDetail.jsp
+│  │      
+│  ├─news
+│  │      EditNews.jsp
+│  │      NewsDetail.jsp
+│  │      
+│  ├─newspaper
+│  │      EditNewsPaper.jsp
+│  │      ExpNewsPaper.jsp
+│  │      NewsPaperDetail.jsp
+│  │      
+│  ├─nightshop
+│  │      alter.jsp
+│  │      EditMark.jsp
+│  │      EditNightShop.jsp
+│  │      ListingDetail_Result.jsp
+│  │      Mark.jsp
+│  │      NightShopDetail.jsp
+│  │      NightShopList.jsp
+│  │      Picture.jsp
+│  │      
+│  ├─page
+│  │      EditPage.jsp
+│  │      PageDetail.jsp
+│  │      
+│  ├─perform
+│  │      EditOrders.jsp
+│  │      EditPerform.jsp
+│  │      PerformDetail.jsp
+│  │      PShoppingCarts.jsp
+│  │      Query.jsp
+│  │      
+│  ├─picture
+│  │      EditPicture.jsp
+│  │      PictureDetail.jsp
+│  │      
+│  ├─poll
+│  │      EditPoll.jsp
+│  │      EditPollChoice.jsp
+│  │      EditPollNode.jsp
+│  │      EditPollQuestion.jsp
+│  │      PollbigPic.jsp
+│  │      PollDetail.jsp
+│  │      PollDetail_old.jsp
+│  │      PollPoints.jsp
+│  │      PollResults.jsp
+│  │      PollResults2.jsp
+│  │      PollResults3.jsp
+│  │      PollResults4.jsp
+│  │      PollResults5.jsp
+│  │      PollResults_old.jsp
+│  │      PollSearch.jsp
+│  │      复件 PollSearch.jsp
+│  │      澶嶄欢 PollSearch.jsp
+│  │      
+│  ├─quiz
+│  │      AnswerQuiz.jsp
+│  │      EditQuiz.jsp
+│  │      EditQuizA.jsp
+│  │      EditQuizQ.jsp
+│  │      EditQuizR.jsp
+│  │      
+│  ├─register
+│  │      21shijiEditRegister.jsp
+│  │      EditRegister.jsp
+│  │      RegisterDetail.jsp
+│  │      
+│  ├─report
+│  │      DelImg.jsp
+│  │      EditReport.jsp
+│  │      EditReport2.jsp
+│  │      EditReportKeywords.jsp
+│  │      ImpMZB.jsp
+│  │      Import.jsp
+│  │      ManageCompanyReportView.jsp
+│  │      ReportDetail.jsp
+│  │      ReportListHomology.jsp
+│  │      ReportMember.jsp
+│  │      ReportSearch.jsp
+│  │      ReportSearch1.jsp
+│  │      ReportSearch2.jsp
+│  │      Report_ajax.jsp
+│  │      SubjectCopyReport.jsp
+│  │      WeblogEditReport.jsp
+│  │      备份EditReport.jsp
+│  │      
+│  ├─resume
+│  │      ApplyManageHeader.jsp
+│  │      cnoocjobapplymanage.jsp
+│  │      cnoocjobapplymanage2.jsp
+│  │      cnoocjobapplymanage3.jsp
+│  │      cnoocjobresumemanage.jsp
+│  │      DownApply.jsp
+│  │      EditApplyTable.jsp
+│  │      EditAward.jsp
+│  │      EditEducate.jsp
+│  │      EditEducate2.jsp
+│  │      EditEmployment.jsp
+│  │      EditEmployment2.jsp
+│  │      EditFamily.jsp
+│  │      EditInhabit.jsp
+│  │      EditLang.jsp
+│  │      EditProfessional.jsp
+│  │      EditProfessional2.jsp
+│  │      EditResume.jsp
+│  │      EditResume.jsp__
+│  │      EditResume2.jsp
+│  │      EditResumeOther.jsp
+│  │      EditResumeyu.jsp
+│  │      ExportResumeAlert.jsp
+│  │      Input.jsp
+│  │      JobApplyManage.jsp
+│  │      JobApplySearch.jsp
+│  │      Output.jsp
+│  │      Preview.jsp
+│  │      Resume.jsp
+│  │      ResumeDetail.jsp
+│  │      ResumeFrame.jsp
+│  │      ResumeLeft.jsp
+│  │      ResumeManage.jsp
+│  │      ResumeSearch.jsp
+│  │      SendEmailCandidate.jsp
+│  │      SendResume.jsp
+│  │      yjobapplymanage2.jsp
+│  │      yjobapplymanage3.jsp
+│  │      复件 ResumeManage.jsp
+│  │      
+│  ├─resume_复件
+│  │      ApplyManageHeader.jsp
+│  │      ApplySearch.jsp
+│  │      cnoocjobapplymanage.jsp
+│  │      cnoocjobapplymanage2.jsp
+│  │      cnoocjobapplymanage3.jsp
+│  │      cnoocjobresumemanage.jsp
+│  │      DownApply.jsp
+│  │      EditApplyTable.jsp
+│  │      EditAward.jsp
+│  │      EditEducate.jsp
+│  │      EditEmployment.jsp
+│  │      EditFamily.jsp
+│  │      EditInhabit.jsp
+│  │      EditLang.jsp
+│  │      EditProfessional.jsp
+│  │      EditResume.jsp
+│  │      EditResume.jsp__
+│  │      EditResumeOther.jsp
+│  │      EditResumeyu.jsp
+│  │      ExportResumeAlert.jsp
+│  │      Input.jsp
+│  │      Output.jsp
+│  │      Preview.jsp
+│  │      Resume.jsp
+│  │      ResumeDetail.jsp
+│  │      ResumeFrame.jsp
+│  │      ResumeLeft.jsp
+│  │      ResumeSearch.jsp
+│  │      Resume__.jsp
+│  │      SendEmailCandidate.jsp
+│  │      SendResume.jsp
+│  │      yjobapplymanage.jsp
+│  │      yjobapplymanage2.jsp
+│  │      yjobapplymanage3.jsp
+│  │      yjobresumemanage.jsp
+│  │      yResumeSearch.jsp
+│  │      复件 (2) EditResume.jsp
+│  │      复件 EditEducate.jsp
+│  │      复件 EditResume.jsp
+│  │      复制于 Preview.jsp
+│  │      澶嶄欢 (2) EditResume.jsp
+│  │      澶嶄欢 EditEducate.jsp
+│  │      澶嶄欢 EditResume.jsp
+│  │      
+│  ├─sale
+│  │      EditSale.jsp
+│  │      SaleDetail.jsp
+│  │      SaleList.jsp
+│  │      
+│  ├─scholar
+│  │      EditScholar.jsp
+│  │      ScholarDetail.jsp
+│  │      
+│  ├─score
+│  │      EditScore.jsp
+│  │      ManagesButton.jsp
+│  │      ScoreBrowse.jsp
+│  │      ScoreCount.jsp
+│  │      ScoreDetail.jsp
+│  │      ScoreHistory.jsp
+│  │      ScoreInfo.jsp
+│  │      ScoreList.jsp
+│  │      ScoreManage.jsp
+│  │      ScoreManages.jsp
+│  │      ScoreQuery.jsp
+│  │      
+│  ├─service
+│  │      EditService.jsp
+│  │      ServiceDetail.jsp
+│  │      
+│  ├─sorder
+│  │      BgEditSOrder.jsp
+│  │      BgFinishedSOrder.jsp
+│  │      BgInceptSOrder.jsp
+│  │      BgNewSOrder.jsp
+│  │      BgPurchaseSOrder.jsp
+│  │      EditPrint.jsp
+│  │      EditSClientPrice.jsp
+│  │      EditSOrder.jsp
+│  │      FgSaleSOrder2.jsp
+│  │      ListingDetail_service.jsp
+│  │      Payment.jsp
+│  │      PrintSOrder.jsp
+│  │      PurchaseSOrder.jsp
+│  │      Reckoning.jsp
+│  │      ReckoningBySOrder.jsp
+│  │      SaleSOrder.jsp
+│  │      SaleSOrder2.jsp
+│  │      SOrder.jsp
+│  │      SOrderDetail.jsp
+│  │      
+│  ├─sound
+│  │      EditSound.jsp
+│  │      SoundDetail.jsp
+│  │      textbox.jsp
+│  │      
+│  ├─stock
+│  │      EditStock.jsp
+│  │      EditStocktxt.jsp
+│  │      StockDetail.jsp
+│  │      StockDetail_search.jsp
+│  │      
+│  ├─supply
+│  │      EditSupply.jsp
+│  │      JsCategoryList.jsp
+│  │      Supply.jsp
+│  │      SupplyAudit.jsp
+│  │      SupplyAuditShow.jsp
+│  │      SupplyDetail.jsp
+│  │      SupplyList.jsp
+│  │      SupplyShow.jsp
+│  │      SupplyTree.jsp
+│  │      复件 SupplyAudit.jsp
+│  │      
+│  ├─tender
+│  │      TenderDetail.jsp
+│  │      
+│  ├─travel
+│  │      EditTravel.jsp
+│  │      EditTravelCorrelative.jsp
+│  │      EditTravelHostelCorrelative.jsp
+│  │      EditTravelShopping.jsp
+│  │      EditTravelTicketCorrelative.jsp
+│  │      EditTravelType.jsp
+│  │      SubmitTravelOrder.jsp
+│  │      TravelDetail.jsp
+│  │      TravelShoppingManages.jsp
+│  │      TravelShoppings.jsp
+│  │      TravelTypes.jsp
+│  │      
+│  ├─waiter
+│  │      EditSalesmanship.jsp
+│  │      EditWaiter.jsp
+│  │      EditWaiterEducate.jsp
+│  │      EditWaiterEmployment.jsp
+│  │      SalesmanshipTradeList.jsp
+│  │      SalesmanshipWaiterList.jsp
+│  │      WaiterFrame.jsp
+│  │      WaiterList.jsp
+│  │      WaiterPreview.jsp
+│  │      WaiterZoneList.jsp
+│  │      
+│  ├─weather
+│  │      EditWeather.jsp
+│  │      WeatherDetail.jsp
+│  │      Weathers.jsp
+│  │      
+│  └─weblog
+│          EditWeblog.jsp
+│          EditWeblogInfo.jsp
+│          print.css
+│          read_mode.css
+│          read_mode.js
+│          WeblogAmity.jsp
+│          WeblogClass_js.jsp
+│          WeblogDesktop.jsp
+│          WeblogDetail.jsp
+│          WeblogHome_js.jsp
+│          WeblogNewWeblog_js.jsp
+│          WeblogNickname.jsp
+│          WeblogPicture.jsp
+│          WeblogPrint.jsp
+│          WeblogRreader.jsp
+│          WeblogSearch.jsp
+│          WeblogTitle.jsp
+│          
+├─user
+│  │  21sjlogin.jsp
+│  │  9000_Login.jsp
+│  │  9000_Register.jsp
+│  │  9000_Register1.jsp
+│  │  9000_Register2.jsp
+│  │  9000_Register4.jsp
+│  │  AlterPass.jsp
+│  │  ApprovalPer.jsp
+│  │  AuditingCompany.jsp
+│  │  AuditingEnterprise.jsp
+│  │  BBSRegister.jsp
+│  │  CancelAutoLogin.jsp
+│  │  CebbankEditAddress.jsp
+│  │  CepfEntRegister.jsp
+│  │  CepfRegister.jsp
+│  │  ChangeMobile.jsp
+│  │  ChangePassword.jsp
+│  │  ChangePasswordMd5.jsp
+│  │  cnoocjobEditAddress.jsp
+│  │  cnoocjobnewuser.jsp
+│  │  CompanyShow.jsp
+│  │  currentlyuser.jsp
+│  │  DelProfileZh.jsp
+│  │  EditAddress.jsp
+│  │  EditCompany.jsp
+│  │  EditCompany2.jsp
+│  │  EditCompany_ajax.jsp
+│  │  EditProfileEnterpriseValid.jsp
+│  │  EditProfileReminder.jsp
+│  │  EditProfileZh.jsp
+│  │  EditProfileZhPwd.jsp
+│  │  EditUser.jsp
+│  │  EditUserHotdog.jsp
+│  │  EjEditAddress.jsp
+│  │  EjMember.jsp
+│  │  EjMemberCount.jsp
+│  │  EjRegister.jsp
+│  │  EjSendMail.jsp
+│  │  EnterpriseView.jsp
+│  │  fixpwd.jsp
+│  │  FreeTrial.jsp
+│  │  getpassword.jsp
+│  │  Login.jsp
+│  │  logined.jsp
+│  │  login_java.jsp
+│  │  MemberHomePage.jsp
+│  │  MemberIdExist.jsp
+│  │  Nethdous.jsp
+│  │  Nethduser.jsp
+│  │  OnlineView.jsp
+│  │  ProfileEnterprises.jsp
+│  │  ProfileView.jsp
+│  │  ProfileZhList.jsp
+│  │  ProfileZhView.jsp
+│  │  ProZhInfoOpen.jsp
+│  │  RapidEditUser.jsp
+│  │  RapidRegister.jsp
+│  │  RedirectBBS.jsp
+│  │  register.jsp
+│  │  register2.jsp
+│  │  RegisterEnterprise.jsp
+│  │  register_zh.jsp
+│  │  RegMail.jsp
+│  │  regsuccess.jsp
+│  │  regsuccess2.jsp
+│  │  SafetyUser.jsp
+│  │  SeaRegister.jsp
+│  │  SeaRegister2.jsp
+│  │  SendEmailToEnterprise.jsp
+│  │  SetPhoto.jsp
+│  │  SignCompany.jsp
+│  │  SignUp.jsp
+│  │  SignUp2.htm
+│  │  SignUpHotdog.jsp
+│  │  SignUp_Shop.jsp
+│  │  StartLogin.jsp
+│  │  State.jsp
+│  │  SucceedHotdog.jsp
+│  │  UpdateMobile.jsp
+│  │  validate.jsp
+│  │  WarningHotdog.jsp
+│  │  WeblogRegister.jsp
+│  │  WeblogRequest.jsp
+│  │  WeblogSignUp.jsp
+│  │  YellowPageMemberBrokage.jsp
+│  │  YellowPageMemberInfo.jsp
+│  │  YellowPageMemberInfoList.jsp
+│  │  YellowPageMemberMail.jsp
+│  │  YellowPageMemberSite.jsp
+│  │  yjobEditAddress.jsp
+│  │  yjobnewuser.jsp
+│  │  复件 AuditingCompany.jsp
+│  │  复件 EjRegister.jsp
+│  │  复件 SignUp.jsp
+│  │  
+│  ├─list
+│  │      AllMembers.jsp
+│  │      OnlineMember.jsp
+│  │      OnlineMembers.jsp
+│  │      SelMembers.jsp
+│  │      SelMembers2.jsp
+│  │      TeamManage.jsp
+│  │      
+│  └─_notes
+│          dwsync.xml
+│          
+├─userlogininfo
+│      pub.jsp
+│      shenhe.jsp
+│      update.jsp
+│      Validity.jsp
+│      yingpin.jsp
+│      新建 文本文档.txt
+│      
+├─util
+│  │  Calendars.jsp
+│  │  Cards.jsp
+│  │  CSV_import.jsp
+│  │  EditLucene.jsp
+│  │  EditLucenechoice.jsp
+│  │  EditResource.jsp
+│  │  Flagtimes.jsp
+│  │  Like.jsp
+│  │  Lucenehours.jsp
+│  │  LuceneLists.jsp
+│  │  Map.jsp
+│  │  Map_2.jsp
+│  │  Postcodes.jsp
+│  │  ReplaceData.jsp
+│  │  Resources.jsp
+│  │  RetrieveMemberId.jsp
+│  │  RetrievePassword.jsp
+│  │  Search.jsp
+│  │  SendMail.jsp
+│  │  
+│  └─clickhistory
+│          ClickHistorys.jsp
+│          EditClickHistoryDetail.jsp
+│          HistoryNode.js
+│          ViewClickHistory.jsp
+│          
+├─version
+│      CreateConfirm.jsp
+│      CreateUpdate.jsp
+│      currentjob.jsp
+│      done.jsp
+│      info.jsp
+│      init.jsp
+│      list.jsp
+│      Lucenehours.jsp
+│      setclient.jsp
+│      setpath.jsp
+│      updatelist.jsp
+│      
+├─volunteer
+│      scroll.js
+│      Volunteer.jsp
+│      VolunteerHand.jsp
+│      VolunteerHuiFu.jsp
+│      Volunteerleading.jsp
+│      VolunteerList.jsp
+│      VolunteerMember.jsp
+│      VolunteerNew.jsp
+│      Volunteersearch.jsp
+│      VolunteerShow.jsp
+│      VolunteerShows.jsp
+│      VolunteerXianshi.jsp
+│      
+└─youku
+        YoukuSetup.jsp
+        YoukuShow.jsp
+        

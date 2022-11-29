@@ -1,0 +1,58 @@
+body {
+	text-align:center;
+	font-family: "Courier New", Courier, mono;
+}
+img{border:0px;}
+#edit_Bodydiv,#edit_Bodydiv td,#edit_Bodydiv input,#edit_Bodydiv a{font-size:9pt;}
+
+#edit_Bodydiv {WIDTH: 780px; padding:10px 60px 10px 60px;background-color: #f6f6f6; text-align:left;}
+
+#edit_Bodydiv a{color:#003399;}
+
+.edit_input {border: 1px solid #7a7a7a;}/*文本框通用样式*/
+.CB,.edit_button{
+	background-image:url(img/edit_GoFinish.gif);
+	border:1px solid #9BB7CC;
+	background-color:white;
+	background-repeat: no-repeat;	
+	background-position: left center;
+	padding-top:3px;
+	padding-left:15px;
+	line-height:12px;
+	margin:0px 3px 3px 0px;
+}/*按钮通用样式*/
+
+#edit_GoFinish{background-image:url(img/edit_GoFinish.gif);}/*“完成”背景图*/
+#edit_GoNext{background-image:url(img/bt_GoNext.gif);}/*“下一步”背景图*/
+#edit_GoBack{}/*“上一步”背景图*/
+#edit_submit{}/*提交*/
+#Pictureview{background-image:url(img/Pictureview.gif);}/*“图片浏览”背景图*/
+#CBNew,#CBDelete,#CBDeleteAll{}/*创建,删除，删除全部*/
+/*
+.CB{border:1px solid #000000; background-color:#eeeeee;padding-top:3px; margin:1px; line-height:100%; }中英繁切换*/
+
+tr#TableCaption{background-color: #3775CA; padding:4px; padding-left:10px;font-weight:bold;color:#ffffff;}/*标题*/
+table.section,fieldset{border:1px solid #3775ca; font-size:9pt; margin-top:15px; margin-bottom:5px; padding:10px;}/*大区块*/
+legend{color:#3775CA; font-size:14px; padding:3px; }
+fieldset{text-align:center;}
+table.section td,table.section th{ padding:4px;}
+#edit_Bodydiv th{
+	font-size:12px;
+	width:95px;
+	text-align:right;
+}
+#edit_Bodydiv table.section table th{width:auto; padding:5px; font-weight:bold; text-align:center}
+table.section table.listings{border:none;}
+table.section table.listings td,table.section table.listings th{border-bottom:1px solid #ececec;}
+table.listings{width:100%;}
+table.listings #TableHeader{background-color:#E6EEF9;}
+table.section,fieldset,div#language,div#pathdiv{ width:660px; }/* 主内容部分宽度*/
+div#language,div#pathdiv{text-align:left;}
+div#language{margin-top:15px; padding-top:10px; border-top:3px solid #3775CA;}
+#TableHeader th{text-align:center;}
+table.section td.listing{padding:0px; padding-bottom:20px;}
+#edit_Bodydiv table.listings th{padding-left:25px; font-weight:100; text-align:left;}
+span {
+	white-space: nowrap;
+}
+

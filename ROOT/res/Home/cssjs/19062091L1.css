@@ -1,0 +1,79 @@
+.banner span{line-height:274px;}
+.course h3{
+    font-size:34px;
+    text-align:left;
+    line-height:200%;
+}
+.course ul{
+    padding-left:490px;
+}
+.course ul li{
+    font-size:16px;
+    line-height:200%;
+    padding:10px 0px 10px 50px;
+    position: relative;
+    border-left:1px #e2e2e2 solid;
+}
+.course ul li:before{
+    width:15px;
+    height:15px;
+    position: absolute;
+    left:-8px;
+    top:50%;
+    margin-top:-7px;
+    background:#7da7d9;
+    border-radius: 14px;
+    z-index: 1;
+    content: '';
+    display: block;
+}
+
+.course ul li a{
+    color:#5a5a5a;
+    text-align:left;
+}
+.course ul li em{
+    font-style: normal;
+    color:#7b7b7b;position:absolute;left:-50px;
+}
+.course ul li .time{display:none;}
+
+.Box {position: relative;}
+.Box .content {width: 1200px;margin: 30px auto 50px;}
+.Box h2 {text-align: center;margin-bottom: 35px;padding-top: 20px;}
+.Box .Box_con {position: relative;}
+.Box .Box_con .btnl {position: absolute;}
+.Box .Box_con .btn1 {display: block;width: 40px;height: 40px;position: absolute;top: 50%;margin-top:-20px;cursor: pointer;}
+.Box .Box_con .btnl {background: url(/res/Home/structure/19061743.png) right center no-repeat;left: -72px;opacity:0.3}
+.Box .Box_con .btnr {background: url(/res/Home/structure/19061742.png) right center no-repeat;right: -72px;opacity:0.3}
+.Box .Box_con .btnl:hover {background: url(/res/Home/structure/19061743.png) right center no-repeat;opacity:1}
+.Box .Box_con .btnr:hover {background: url(/res/Home/structure/19061742.png) right center no-repeat;opacity:1}
+.Box .Box_con .conbox {position: relative;overflow: hidden;}
+.Box .Box_con .conbox ul {position: relative;list-style: none;}
+.Box .Box_con .conbox ul li {float: left;width: 285px;height: 350px;margin-left: 20px;overflow: hidden;border:1px #e5e5e5 solid;}
+.Box .Box_con .conbox ul li:first-child {margin-left: 0;}
+.Box .Box_con .conbox ul li img {max-width: 225px;width:auto;height: 235px;transition: all 0.5s;}
+.Box .Box_con .conbox ul li:hover{
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+.Box .Box_con .conbox ul li{
+    text-align: center;line-height:200%;
+}
+.Box .Box_con .conbox ul li:hover img {transform: scale(1.1);}
+.Box .Box_con .conbox ul li .pic{
+    text-align:center;
+    display: block;
+    margin-top:15px;margin-bottom:15px;padding:0px 15px;height:235px;overflow:hidden;
+}
+
+.Box .Box_con .conbox ul li .tit{
+display:block;text-align:center;padding:0px 15px;
+}
+.Box .Box_con .conbox ul li a{
+    font-size:16px;color:#000;
+    font-weight:bold;
+}
+.Box .Box_con .conbox ul li .fbt{
+    color:#737373;display:block;text-align:center;padding:0px 15px;
+    font-size:14px;
+}

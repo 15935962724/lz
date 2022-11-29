@@ -1,0 +1,7 @@
+AccessMembers=Access members
+AccessMembersUsageNote=usage note:  you can define access right and access member list for all nodes under this node. <br>1. If you want to clear 'Access member only' option and access member list for all nodes under this node,  unselect all access members and 'Access member only' option, click Apply To This Tree button; <br>2. If you want to keep all the access member lists of all nodes under this node, but want to add some extra access members to those nodes, select the members you want to add and check the 'Access member only' option, click Apply To This Tree button; <br>3. If you only want to clear 'Access member only' option but keep access member lists of all nodes under this node, unselect 'Access member only' option and select at least one of the access members, click Apply To This Tree button. The selected members will not be added to the access member lists of all nodes under this node.
+ConfirmApplySelectedMembersToThisTree=Confirm apply to this tree?
+UsageNote=Description
+Close=Cose
+ConfirmApplyToThisTree=Reset all the sub objects and authorize inheritance
+InheritPurview=Authorize to assign inheritant priviledge to this object

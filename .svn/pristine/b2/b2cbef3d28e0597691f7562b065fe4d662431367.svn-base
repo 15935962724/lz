@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/res/lizi/css/bootstrap.css">
+    <link rel="stylesheet" href="/res/lizi/css/animate.css">
+    <link rel="stylesheet" href="/res/lizi/css/style1.css">
+    <link rel="stylesheet" href="/res/lizi/css/common.css">
+    <script src='/tea/mt.js'></script>
+    <script src="/res/lizi/js/jquery-1.11.3.min.js"></script>
+    <script src="/res/lizi/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <!-- <div id="Header" class="animate-box" data-animate-effect="fadeInLeft"></div> -->
+    <div class="container-fluid banner animate-box" data-animate-effect="fadeInLeft">
+        <div class="row">
+            <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+                <a class="btn btn-primary" href="/html/folder/19070526-1.htm" role="button">申请服务商</a>
+                <a class="btn btn-primary" href="/html/folder/19070528-1.htm" role="button">申请VIP</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container con01 animate-box sq" data-animate-effect="fadeInLeft">
+        <div class="row">
+            <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft" style="min-width: 1200px;">
+                <span class="animate-box" data-animate-effect="fadeInLeft"><em>①</em> 注册账户</span>
+                <span class="animate-box" data-animate-effect="fadeInLeft"><em>②</em> 提交申请</span>
+                <span class="animate-box" data-animate-effect="fadeInLeft"><em>③</em> 资质审核</span>
+                <span class="last animate-box" data-animate-effect="fadeInLeft"><em>④</em> 完成</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container con02" style="padding:0">
+        <div class="row">
+            <div class="col-md-12"  style="min-width: 1200px;">
+                <h1 class="nav nav-tabs sq-tab animate-box" data-animate-effect="fadeInLeft" role="tablist">
+                    <span role="presentation" class="active col-md-6"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">服务商</a></span>
+                    <span role="presentation" class="col-md-6"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">VIP</a></span>
+                </h1>
+                <div class="tab-content animate-box" data-animate-effect="fadeInLeft">
+                    <div class="sq-box1">
+                        <p class="sq-r">入驻权益</p>
+                        <div role="tabpanel" style="overflow: hidden;background: #F9FBFD;margin-bottom:35px;height:341px" class="tab-pane active animate-box" data-animate-effect="fadeInLeft" id="home">
+                            <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                                <div class="addo-feature">
+                                    <p><img src="/tea/yl/img/list011.png" /></p>
+                                    <h3>三大品牌支持</h3>
+                                    <p>平台下属原子高科、宁波君安、上海欣科三大碘[125I]密封籽源品牌，为服务商提供更多选择。</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                                <div class="addo-feature">
+                                    <p><img src="/tea/yl/img/list021.png" /></p>
+                                    <h3>打造品牌营销体系</h3>
+                                    <p>依托中国同辐股份有限公司在核技术应用领域的影响力，通过多样化的品牌营销手段，助力服务商开拓市场，打造整体品牌营销体系。</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                                <div class="addo-feature">
+                                    <p><img src="/tea/yl/img/list031.png" /></p>
+                                    <h3>专业技术支持</h3>
+                                    <p>提供专业的技术人员为服务商及所在区域的客户进行培训，指导。</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                                <div class="addo-feature">
+                                    <p><img src="/tea/yl/img/list041.png" /></p>
+                                    <h3>全新体验升级</h3>
+                                    <p>平台以“源于客户、服务用户”为理念，为服务商提供一站式服务升级体验。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sq-r">入驻要求</p>
+                        <div class="container-fluid con03 con02 animate-box" data-animate-effect="fadeInLeft" style="padding:0">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="tab-content animate-box" data-animate-effect="fadeInLeft">
+                                        <div role="tabpanel" class="tab-pane active animate-box" data-animate-effect="fadeInLeft" id="pro">
+                                            <div class="pane">
+                                                <p>1. 符合国家相关法律、法规规定，拥有正规的公司资质。</p>
+                                                <p>2. 具有一定的客户资源和相关产品市场推广服务经验。</p>
+                                                <p>3. 接受并签署平台的技术服务协议，并按照协议相关约束的条款开展业务合作。</p>
+                                                <p>4. 接受平台市场管理制度的相关规定，并严格按照市场管理制度开展业务合作。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sq-box1 sq-box2" style="display:none">
+                        <p class="sq-r">入驻权益</p>
+                        <div role="tabpanel" style="overflow: hidden;background: #F9FBFD;margin-bottom:35px;height:341px;" class="tab-pane active animate-box" data-animate-effect="fadeInLeft" id="home">
+                            <div class="col-md-4 box animate-box" data-animate-effect="fadeInLeft">
+                                <div class="addo-feature">
+                                    <p><img src="/tea/yl/img/list011.png" /></p>
+                                    <h3>三大品牌支持</h3>
+                                    <p>平台下属原子高科、宁波君安、上海欣科三大碘[125I]密封籽源品牌，为vip用户提供更多选择。</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 box animate-box" data-animate-effect="fadeInLeft">
+                                <div class="addo-feature">
+                                    <p><img src="/tea/yl/img/list051.png" /></p>
+                                    <h3>积分权益</h3>
+                                    <p>VIP用户享有专属积分权益，积分可兑换相关服务。</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 box animate-box" data-animate-effect="fadeInLeft">
+                                <div class="addo-feature">
+                                    <p><img src="/tea/yl/img/list031.png" /></p>
+                                    <h3>全新服务体验</h3>
+                                    <p>以“源于客户、服务用户”为理念，为vip用户提供“一站式”解决方案和计划。</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <p class="sq-r">入驻要求</p>
+                        <div class="container-fluid con03 con02 animate-box" data-animate-effect="fadeInLeft" style="padding:0">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="tab-content animate-box" data-animate-effect="fadeInLeft">
+                                        <div role="tabpanel" class="tab-pane active animate-box" data-animate-effect="fadeInLeft" id="pro">
+                                            <div role="tabpanel" class="tab-pane animate-box" data-animate-effect="fadeInLeft" id="vip">
+                                                <div class="pane">
+                                                    <p>1. 符合国家相关法律、法规规定</p>
+                                                    <p>2. 具有开展碘[<sup>125</sup>I]密封籽源项目的相关资质</p>
+                                                    <p>3. 接受平台的相关管理制度和规则。</p>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div role="tabpanel" class="tab-pane active animate-box" data-animate-effect="fadeInLeft" id="home">
+                        <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                            <div class="addo-feature">
+                                <p><img src="/tea/yl/img/list01.jpg" /></p>
+                                <h3>三大品牌支持</h3>
+                                <p>平台下属原子高科、宁波君安、上海欣科三大碘[125I]密封籽源品牌，为服务商提供更多选择。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                            <div class="addo-feature">
+                                <p><img src="/tea/yl/img/list02.jpg" /></p>
+                                <h3>打造品牌营销体系</h3>
+                                <p>依托中国同辐股份有限公司在核技术应用领域的影响力，通过多样化的品牌营销手段，助力服务商开拓市场，打造整体品牌营销体系。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                            <div class="addo-feature">
+                                <p><img src="/tea/yl/img/list03.jpg" /></p>
+                                <h3>专业技术支持</h3>
+                                <p>提供专业的技术人员为服务商及所在区域的客户进行培训，指导。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                            <div class="addo-feature">
+                                <p><img src="/tea/yl/img/list04.jpg" /></p>
+                                <h3>全新体验升级</h3>
+                                <p>平台以“源于客户、服务用户”为理念，为服务商提供一站式服务升级体验。</p>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div role="tabpanel" class="tab-pane animate-box" data-animate-effect="fadeInLeft" id="profile">
+                        <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                            <div class="addo-feature">
+                                <p><img src="/tea/yl/img/list01.jpg" /></p>
+                                <h3>三大品牌支持</h3>
+                                <p>平台下属原子高科、宁波君安、上海欣科三大碘[125I]密封籽源品牌，为vip用户提供更多选择。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                            <div class="addo-feature">
+                                <p><img src="/tea/yl/img/list02.jpg" /></p>
+                                <h3>积分权益</h3>
+                                <p>VIP用户享有专属积分权益，积分可兑换相关服务。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                            <div class="addo-feature">
+                                <p><img src="/tea/yl/img/list03.jpg" /></p>
+                                <h3>全新服务体验</h3>
+                                <p>以“源于客户、服务用户”为理念，为vip用户提供“一站式”解决方案和计划。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 box animate-box" data-animate-effect="fadeInLeft">
+                            <div class="addo-feature">
+                                <p><img src="/tea/yl/img/list04.jpg" /></p>
+                                <h3>技术支持培训</h3>
+                                <p>AI大学提供专业技术培训线下沙龙,技术论坛</p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="container-fluid con03 con02 animate-box" data-animate-effect="fadeInLeft">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="nav nav-tabs animate-box" data-animate-effect="fadeInLeft" role="tablist">
+                    <span role="presentation" class="active"><a href="#pro" aria-controls="pro" role="tab" data-toggle="tab">服务商入驻要求</a></span>|
+                    <span role="presentation"><a href="#vip" aria-controls="vip" role="tab" data-toggle="tab">VIP入驻要求</a></span>
+                </h1>
+                <div class="tab-content animate-box" data-animate-effect="fadeInLeft">
+                    <p class="col-md-12 sq-p">入驻权益</p>
+                    <div role="tabpanel" class="tab-pane active animate-box" data-animate-effect="fadeInLeft" id="pro">
+                        <div class="pane">
+                            <p>1. 符合国家相关法律、法规规定，拥有正规的公司资质。</p>
+                            <p>2. 具有一定的客户资源和相关产品市场推广服务经验。</p>
+                            <p>3. 接受并签署平台的技术服务协议，并按照协议相关约束的条款开展业务合作。</p>
+                            <p>4. 接受平台市场管理制度的相关规定，并严格按照市场管理制度开展业务合作。</p>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane animate-box" data-animate-effect="fadeInLeft" id="vip">
+                        <div class="pane">
+                            <p>1. 符合国家相关法律、法规规定</p>
+                            <p>2. 具有开展碘[<sup>125</sup>I]密封籽源项目的相关资质</p>
+                            <p>3. 接受平台的相关管理制度和规则。</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+<script>
+    mt.fit();
+
+    $("h1.nav span").click(function(){
+        $(this).addClass("active").siblings("span").removeClass("active");
+        var a1=$(this).index();
+        console.log(a1);
+        $('.sq-box1').eq(a1).show().siblings("div").hide();
+    });
+    mt.fit();
+</script>
+<!-- <script src="js/jquery.waypoints.min.js"></script>
+<script src="js/main.js"></script> -->
+</body>
+</html>

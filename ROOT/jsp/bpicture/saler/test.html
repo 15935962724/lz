@@ -1,0 +1,50 @@
+<%@ page language="java" pageEncoding="GBK"%>
+
+<html>
+ <head>
+  <title>struts upload by zhangc</title>
+   <script language="javascript">
+   var rnum = 1;
+   function addRow()
+   {
+    var oT = document.getElementById("oTable");
+    var newTR = oT.insertRow(oT.rows.length-1);
+    newTR.id = "row" + rnum;
+    var newTD0 = newTR.insertCell();
+    var newTD1 = newTR.insertCell();
+
+    newTD1.setAttribute("colSpan","2");
+
+
+    newTD0.innerText = "file";
+    newTD1.innerHTML = "<input name=\"file"
+         + rnum
+         + "\" type=\"file\" > <input name=\"del\" type=\"button\" value=\" del \" onClick=\"deleteRow(" + rnum +");\">";
+
+    rnum++;
+   }
+   function deleteRow(line)
+   {
+     oTable.deleteRow(document.getElementById("row" + line).rowIndex);
+   }
+  </script>
+
+ </head>
+ <body>
+  <form name="updForm" method="post" action="/jsp/bpicture/saler/Upload.jsp" enctype="multipart/form-data">
+  <table id="oTable">
+   <tr>
+   <td>name</td>
+   <td><input name="name" type="text"></td>
+   </tr>
+   <tr>
+   <td>files</td>
+   <td><input type="button" name="add" value=" add " onClick="addRow()"></td>
+   </tr>
+   <tr>
+   <td><input name="sub" type="submit" value=" sub "></td>
+   </tr>
+  </table>
+  </form>
+ </body>
+</html>

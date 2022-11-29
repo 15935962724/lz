@@ -1,0 +1,227 @@
+#BuyNowTitle{
+	height:65px;
+}
+
+h1{
+	float:left;
+	width:163px;
+	height:58px;
+}
+h1#BuyNowTitleHeading{
+	background:transparent url(http://pics.taobao.com/bao/album/sys/misc/publishitem_buynow_title.gif) 0 0 no-repeat;
+	text-indent:-9999px;
+}
+h1#BidTitleHeading{
+	background:transparent url(http://pics.taobao.com/bao/album/sys/misc/publishitem_bid_title.gif) 0 0 no-repeat;
+	text-indent:-9999px;
+}
+#TaobaoAnnouncement{
+	float:right;
+	width:465px;
+	font-size:12px;
+}
+#TaobaoAnnouncement span{
+	color:#D63004;
+	font-weight:bold;
+}
+#WarningMessage{
+	float:right;
+	width:450px;
+	margin:10px 0 0 0;
+	padding:0 0 0 20px;
+}
+
+#NormalCategorySelector{
+
+}
+#RecentUsedCategories{
+	float:left;
+	margin:5px 0;
+	font-weight:normal;
+}
+#GoSearchScreen {
+	clear:both;
+	height:94px;
+	padding:8px 0 0 15px;
+	background:transparent url(http://pics.taobao.com/bao/album/sys/auction/sortsearch_icon.gif) 0 0 no-repeat;
+}
+
+#CategorySelector{
+	clear:both;
+	width:760px;
+	height:220px;
+	background-color:#FFF;
+}
+#CategorySelector ul{
+	margin:0 2px 0 0;
+	padding:0;
+	border:1px solid #CCC;
+	float:left;
+	width:186px;
+	height:218px;
+	overflow:auto;
+}
+#CategorySelector ul.Blank{
+	background-color:#F6F6F6;
+}
+#CategorySelector li{
+	list-style-type:none;
+	width:156px !important;
+	width:auto;
+	height:20px;
+	margin:0 1px !important;
+	margin /**/:0 1px 0 -15px;
+	padding:0;
+	border:1px solid #FFF;
+	line-height:20px;
+	color:#444;
+	text-indent:3px;
+	cursor:default;
+}
+#CategorySelector li.Selected{
+	background-color:#CAFFC0;
+	border:1px solid #0A9800;
+	color:#006623;
+}
+#CategorySelector li.IsFather{
+	background-image:url(http://pics.taobao.com/bao/album/sys/misc/publishitem_subcate_arrow.gif);
+	background-position:99% 50%;
+	background-repeat:no-repeat;
+}
+#CategorySelector li.RecentUsed{
+	color:#170;
+}
+
+#NowSelected{
+	margin-top:10px;
+	padding:10px;
+	width:97%;
+	background-color:#FFFFF4;
+	border:1px #F9D875 solid;
+	text-align:left;
+	position:relative;
+}
+
+#BlebBox{
+	position:absolute;
+	top:-8px;
+	left:20px;
+}
+
+#NowSelectedResult{
+	font-weight:bold;
+}
+
+#NowSelected p{
+	padding:0;
+	margin:0;
+	height:18px;
+	line-height:18px;
+	text-indent:25px;
+	color:#444;
+}
+
+#NowSelected p span{
+	color:#F60;
+	}
+
+#NowSelected span{
+	color:#111;
+}
+
+#SubmitForm{
+	margin:10px 0 15px;
+	text-align:center;
+}
+#SubmitForm input#SubmitButton{
+	width:150px;
+	height:26px;
+	font-size:13px;
+}
+
+/*Search Box*/
+#SearchCategory{
+	padding:0 5px;
+	background-color:#FFF;
+}
+#SearchTerm{
+	font-weight:bold;
+	color:#333;
+	float:left;
+	margin-bottom:5px;
+}
+#SearchTermInput{
+	width:450px;
+}
+
+#SortSearchTitle{
+	font-size:14px;
+	font-weight:bold;
+	background:none;
+	border:none;
+	padding:0 0 5px 0;
+	margin:0;
+	color:#FF3300;
+}
+#SortSearchNote{
+	color:#999;
+	text-indent:70px;
+	margin-top:3px;
+}
+
+#GoNormalScreen{
+	float:right;
+}
+#GoNormalScreen input{
+	width:70px;
+	height:24px;
+	border:none;
+	color:#333;
+	margin:0 0 12px 0;
+	padding:0;
+	background:transparent url(http://pics.taobao.com/bao/album/sys/misc/publishitem_back_btn.gif) 0 50% no-repeat;
+	text-decoration:underline;
+	cursor:pointer;
+	cursor:hand;
+}
+#SearchCategoryResult{
+	clear:both;
+	margin:0 2px 0 0;
+	padding:0;
+	border:1px solid #CCC;
+	height:262px;
+	overflow:auto;
+	overflow_x:hidden;
+}
+#SearchCategoryResult li{
+	list-style-type:none;
+	width:96% !important;
+	width:auto;
+	height:20px;
+	margin:0 1px !important;
+	margin /**/:0 1px 0 -15px;
+	padding:0;
+	border:1px solid #FFF;
+	line-height:20px;
+	color:#444;
+	text-indent:3px;
+	cursor:default;
+}
+#SearchCategoryResult li.Selected{
+	background-color:#E8FFE8;
+	border:1px solid #7BCD7B;
+}
+#SearchCategoryResult li span{
+	color:#F50;
+}
+#YesOrNoBtns{
+	margin-top:10px;
+	text-align:center;
+}
+#YesOrNoBtns input{
+	height:24px;
+	margin-left:5px;
+}
+.formError {
+	color:#F00;
+}

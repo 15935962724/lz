@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Embed Properties</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta content="noindex, nofollow" name="robots">
+		<script src="common/fck_dialog_common.js" type="text/javascript"></script>
+		<link href="common/fck_dialog_common.css" type="text/css" rel="stylesheet">
+<script type="">
+
+var oEditor		= window.parent.InnerDialogLoaded() ;
+var FCK			= oEditor.FCK ;
+var FCKLang		= oEditor.FCKLang ;
+var FCKConfig	= oEditor.FCKConfig ;
+
+//#### Dialog Tabs
+
+// Set the dialog tabs.
+window.parent.AddTab( 'Info', oEditor.FCKLang.DlgInfoTab ) ;
+
+if ( FCKConfig.FlashUpload )
+	window.parent.AddTab( 'Upload', FCKLang.DlgLnkUpload ) ;
+
+// Function called when a dialog tag is selected.
+function OnDialogTabChange( tabCode )
+{
+	ShowE('divInfo'		, ( tabCode == 'Info' ) ) ;
+	ShowE('divUpload'	, ( tabCode == 'Upload' ) ) ;
+	//ShowE('divAdvanced'	, ( tabCode == 'Advanced' ) ) ;
+}
+
+// Get the selected flash embed (if available).
+var oFakeImage = FCK.Selection.GetSelectedElement() ;
+var oEmbed ;
+
+if ( oFakeImage )
+{
+	if ( oFakeImage.tagName == 'IMG' && oFakeImage.getAttribute('_fckmedia') )
+		oEmbed = FCK.GetRealElement( oFakeImage ) ;
+	else
+		oFakeImage = null ;
+}
+
+window.onload = function()
+{
+	// Translate the dialog box texts.
+	oEditor.FCKLanguageManager.TranslatePage(document) ;
+
+	// Load the selected element information (if any).
+	LoadSelection() ;
+
+	// Show/Hide the "Browse Server" button.
+	//GetE('tdBrowse').style.display = FCKConfig.FlashBrowser	? '' : 'none' ;
+
+	// Set the actual uploader URL.
+	if ( FCKConfig.FlashUpload )
+		GetE('frmUpload').action = FCKConfig.FlashUploadURL ;
+
+	window.parent.SetAutoSize( true ) ;
+
+	// Activate the "OK" button.
+	window.parent.SetOkButton( true ) ;
+
+    f_click();
+}
+
+var arr=new Array("showcontrols","showtracker","showpositioncontrols","showaudiocontrols","autostart",//默认:true
+"showdisplay","showstatusbar","loop");
+function LoadSelection()
+{
+	if ( ! oEmbed ) return ;
+
+	GetE('txtUrl').value    = GetAttribute( oEmbed, 'src', '' ) ;
+	GetE('txtWidth').value  = GetAttribute( oEmbed, 'width', '' ) ;
+	GetE('txtHeight').value = GetAttribute( oEmbed, 'height', '' ) ;
+    for(var i=0;i<arr.length;i++)
+    {
+      GetE(arr[i]).checked=GetAttribute( oEmbed, arr[i],i>4?'false':'true')!='false';
+    }
+	UpdatePreview() ;
+}
+
+//#### The OK button was hit.
+function Ok()
+{
+	if ( GetE('txtUrl').value.length == 0 )
+	{
+		window.parent.SetSelectedTab( 'Info' ) ;
+		GetE('txtUrl').focus() ;
+
+		alert( oEditor.FCKLang.DlgAlertUrl ) ;
+
+		return false ;
+	}
+
+	if ( !oEmbed )
+	{
+		oEmbed		= FCK.EditorDocument.createElement( 'EMBED' ) ;
+		oFakeImage  = null ;
+	}
+	UpdateEmbed( oEmbed ) ;
+
+	if ( !oFakeImage )
+	{
+		oFakeImage	= oEditor.FCKDocumentProcessor_CreateFakeImage( 'FCK__Media', oEmbed ) ;
+		oFakeImage.setAttribute( '_fckmedia', 'true', 0 ) ;
+		oFakeImage	= FCK.InsertElementAndGetIt( oFakeImage ) ;
+	}
+	else
+		oEditor.FCKUndo.SaveUndoStep() ;
+
+	oEditor.FCKFlashProcessor.RefreshView( oFakeImage, oEmbed ) ;
+
+	return true ;
+}
+
+function UpdateEmbed( e )
+{
+	SetAttribute( e, 'type'			, 'application/x-mplayer2' ) ;
+	//SetAttribute( e, 'pluginspage'	, 'http://www.macromedia.com/go/getflashplayer' ) ;
+
+	SetAttribute( e, 'src', GetE('txtUrl').value ) ;
+	SetAttribute( e, "width" , GetE('txtWidth').value ) ;
+	SetAttribute( e, "height", GetE('txtHeight').value ) ;
+    SetAttribute( e, "enablecontextmenu", "false" ) ;
+
+    for(var i=0;i<arr.length;i++)
+    {
+      SetAttribute( e,arr[i], GetE(arr[i]).checked?'true':'false' );
+    }
+}
+
+var ePreview ;
+
+function SetPreviewElement( previewEl )
+{
+	ePreview = previewEl ;
+
+	if ( GetE('txtUrl').value.length > 0 )
+		UpdatePreview() ;
+}
+
+function UpdatePreview()
+{
+	if ( !ePreview )
+		return ;
+
+	while ( ePreview.firstChild )
+		ePreview.removeChild( ePreview.firstChild ) ;
+
+	if ( GetE('txtUrl').value.length == 0 )
+		ePreview.innerHTML = '&nbsp;' ;
+	else
+	{
+		var oDoc	= ePreview.ownerDocument || ePreview.document ;
+		var e		= oDoc.createElement( 'EMBED' ) ;
+
+		SetAttribute( e, 'src', GetE('txtUrl').value ) ;
+		SetAttribute( e, 'type', 'application/x-shockwave-flash' ) ;
+		SetAttribute( e, 'width', '100%' ) ;
+		SetAttribute( e, 'height', '100%' ) ;
+
+		ePreview.appendChild( e ) ;
+	}
+}
+
+function BrowseServer()
+{
+	OpenFileBrowser( FCKConfig.FlashBrowserURL, FCKConfig.FlashBrowserWindowWidth, FCKConfig.FlashBrowserWindowHeight ) ;
+}
+
+function SetUrl( url, width, height )
+{
+	GetE('txtUrl').value = url ;
+
+	if ( width )
+		GetE('txtWidth').value = width ;
+
+	if ( height )
+		GetE('txtHeight').value = height ;
+
+	UpdatePreview() ;
+
+	window.parent.SetSelectedTab( 'Info' ) ;
+}
+
+function OnUploadCompleted( errorNumber, fileUrl, fileName, customMsg )
+{
+	switch ( errorNumber )
+	{
+		case 0 :	// No errors
+			alert( 'Your file has been successfully uploaded' ) ;
+			break ;
+		case 1 :	// Custom error
+			alert( customMsg ) ;
+			return ;
+		case 101 :	// Custom warning
+			alert( customMsg ) ;
+			break ;
+		case 201 :
+			alert( 'A file with the same name is already available. The uploaded file has been renamed to "' + fileName + '"' ) ;
+			break ;
+		case 202 :
+			alert( 'Invalid file type' ) ;
+			return ;
+		case 203 :
+			alert( "Security error. You probably don't have enough permissions to upload. Please check your server." ) ;
+			return ;
+		default :
+			alert( 'Error on file upload. Error number: ' + errorNumber ) ;
+			return ;
+	}
+
+	SetUrl( fileUrl ) ;
+	GetE('frmUpload').reset() ;
+}
+
+var oUploadAllowedExtRegex	= new RegExp( FCKConfig.FlashUploadAllowedExtensions, 'i' ) ;
+var oUploadDeniedExtRegex	= new RegExp( FCKConfig.FlashUploadDeniedExtensions, 'i' ) ;
+
+function CheckUpload()
+{
+	var sFile = GetE('txtUploadFile').value ;
+
+	if ( sFile.length == 0 )
+	{
+		alert( 'Please select a file to upload' ) ;
+		return false ;
+	}
+
+//  if ( ( FCKConfig.FlashUploadAllowedExtensions.length > 0 && !oUploadAllowedExtRegex.test( sFile ) ) ||	( FCKConfig.FlashUploadDeniedExtensions.length > 0 && oUploadDeniedExtRegex.test( sFile ) ) )
+//	if(sFile.toLowerCase().indexOf(".flv")==-1)
+//	{
+//		OnUploadCompleted( 202 ) ;
+//		return false ;
+//	}
+	return true ;
+}
+function f_click()
+{
+  var sc=document.getElementById("showcontrols");
+  document.getElementById("showtracker").disabled=!sc.checked;
+  document.getElementById("showpositioncontrols").disabled=!sc.checked;
+  document.getElementById("showaudiocontrols").disabled=!sc.checked;
+}
+</script>
+	</head>
+	<body scroll="no" style="OVERFLOW: hidden">
+		<div id="divInfo">
+			<table cellSpacing="1" cellPadding="1" width="100%" border="0">
+				<tr>
+					<td><span fckLang="DlgImgURL">URL</span></td>
+                    <td vAlign="top"><input id="txtUrl" onBlur="UpdatePreview();" style="WIDTH: 100%" type="text"></td>
+                </tr>
+                <tr><td>外观:</td><td>
+				<fieldset>
+				<legend><input type="checkbox" id="showcontrols" checked="true" onclick="f_click()" /><label for="showcontrols">控制条</label></legend>
+				<input type="checkbox" id="showtracker" checked="true" /><label for="showtracker">进度条按钮</label>
+				<input type="checkbox" id="showpositioncontrols" /><label for="showpositioncontrols">快进/快退按钮</label>
+				<input type="checkbox" id="showaudiocontrols" checked="true" /><label for="showaudiocontrols">音量按钮</label>
+				</fieldset>
+				<input type="checkbox" id="showdisplay" /><label for="showdisplay">文件信息</label>
+				<input type="checkbox" id="showstatusbar" checked="true" /><label for="showstatusbar">状态栏</label>
+				<!--
+				<input type="checkbox" id="gotobar" /><label for="gotobar">列表选择</label>
+				<input type="checkbox" id="captioning" /><label for="captioning">字幕</label>
+				<input type="checkbox" id="enablecontextmenu" /><label for="enablecontextmenu">右键菜单</label>
+				-->
+				</td>
+                </tr>
+				<tr>
+					<td><span fckLang="DlgImgWidth">Width</span></td>
+                    <td><input id="txtWidth" class="FCK__FieldNumeric" type="text" size="3"></TD>
+              </tr>
+                <tr>
+                  <td><span fckLang="DlgImgHeight">Height</span></td>
+                  <td><input id="txtHeight" class="FCK__FieldNumeric" type="text" size="3"></td>
+                </tr>
+				<tr>
+					<td></td>
+					<td><input type="checkbox" id="autostart" /><label for="autostart">自动播放</label></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="checkbox" id="loop" /><label for="loop">自动重播</label></td>
+				</tr>
+			</table>
+		</div>
+		<div id="divUpload" style="DISPLAY: none">
+			<form id="frmUpload" method="post" target="UploadWindow" enctype="multipart/form-data" action="" onSubmit="return CheckUpload();">
+                <input type="hidden" name="repository" value="media"/>
+				<span fckLang="DlgLnkUpload">Upload</span><br />
+				<input id="txtUploadFile" style="WIDTH: 100%" type="file" size="40" name="NewFile" /><br />
+				<br />
+				<input id="btnUpload" type="submit" value="Send it to the Server" fckLang="DlgLnkBtnUpload" />
+				<iframe name="UploadWindow" style="DISPLAY: none" src="javascript:void(0)"></iframe>
+			</form>
+		</div>
+
+	</body>
+</html>

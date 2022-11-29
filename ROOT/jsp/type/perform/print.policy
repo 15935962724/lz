@@ -1,0 +1,6 @@
+keystore"file:print.store","JKS"; 
+grantsignedBy"print" 
+{ 
+   permission java.io.FilePermission"<<ALLFILES>>","read"; 
+   permission java.security.AllPermission;
+}; 

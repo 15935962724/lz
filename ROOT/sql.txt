@@ -1,0 +1,424 @@
+1023 齐
+alter table shopProduct_data add category int;
+
+2014-10-23
+USE [yl]
+GO
+/****** 对象:  Table [dbo].[shopTrade]    脚本日期: 10/23/2014 18:32:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[shopTrade](
+	[trade] [int] NOT NULL,
+	[code] [varchar](50) NULL,
+	[member] [int] NULL,
+	[aname] [varchar](50) NULL,
+	[acity] [int] NULL,
+	[aaddress] [varchar](200) NULL,
+	[amobile] [varchar](50) NULL,
+	[atel] [varchar](50) NULL,
+	[aemail] [varchar](50) NULL,
+	[azip] [varchar](50) NULL,
+	[ppayment] [tinyint] NULL,
+	[ptime] [tinyint] NULL,
+	[itype] [tinyint] NULL,
+	[ipayable] [tinyint] NULL,
+	[ititname] [varchar](80) NULL,
+	[insrcode] [varchar](80) NULL,
+	[iaddress] [varchar](80) NULL,
+	[itel] [varchar](50) NULL,
+	[ibank] [varchar](80) NULL,
+	[iaccount] [varchar](80) NULL,
+	[icontent] [tinyint] NULL,
+	[remark] [ntext] NULL,
+	[state] [tinyint] NULL,
+	[coupon] [float] NULL,
+	[total] [float] NULL,
+	[actually] [float] NULL,
+	[time] [datetime] NULL,
+	[tstateid] [int] NULL,
+	[pay] [int] NULL,
+ CONSTRAINT [PK_order] PRIMARY KEY CLUSTERED 
+(
+	[trade] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'订单编号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'code'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'用户' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'member'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'姓名' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'aname'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'省　　份' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'acity'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'地　　址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'aaddress'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'手机号码' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'amobile'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'固定电话' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'atel'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'电子邮件' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'aemail'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'邮政编码' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'azip'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'支付方式:货到付款;在线支付;邮局汇款;' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'ppayment'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'送货日期:只工作日送货(双休日、假日不用送);工作日、双休日与假日均可送货;只双休日、假日送货(工作日不用送);' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'ptime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'发票类型:普通发票;增值税发票;' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'itype'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'发票抬头:个人;单位;' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'ipayable'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'单位名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'ititname'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'纳税人识别号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'insrcode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'注册地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'iaddress'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'注册电话' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'itel'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'开户银行' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'ibank'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'银行帐户' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'iaccount'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'发票内容:明细;办公用品;电脑配件;耗材;' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'icontent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'订单状态:默认;' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'state'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'优惠券' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'coupon'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'商品金额' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'total'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'应付总额' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopTrade', @level2type=N'COLUMN',@level2name=N'actually'
+
+-- 2014.10.24 张超群
+alter table shopProduct add activity ntext NULL;
+
+-- 2014-10-27 支付流水
+USE [yl]
+GO
+/****** 对象:  Table [dbo].[shopPayment]    脚本日期: 10/27/2014 10:04:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[shopPayment](
+	[id] [int] NOT NULL,
+	[order_id] [varchar](50) NOT NULL,
+	[payNum] [varchar](50) NULL,
+	[payer] [varchar](50) NULL,
+	[recipient] [varchar](50) NULL,
+	[amount] [float] NULL,
+	[paymentTime] [datetime] NULL,
+	[status] [int] NULL,
+ CONSTRAINT [PK_shopPayment] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'订单编号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPayment', @level2type=N'COLUMN',@level2name=N'order_id'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'网银的订单编号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPayment', @level2type=N'COLUMN',@level2name=N'payNum'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'付款账户' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPayment', @level2type=N'COLUMN',@level2name=N'payer'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'收款账户' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPayment', @level2type=N'COLUMN',@level2name=N'recipient'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'付款金额' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPayment', @level2type=N'COLUMN',@level2name=N'amount'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'付款时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPayment', @level2type=N'COLUMN',@level2name=N'paymentTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'订单状态' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPayment', @level2type=N'COLUMN',@level2name=N'status'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'支付流水' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPayment'
+
+-- 产品套餐
+USE [yl]
+GO
+/****** 对象:  Table [dbo].[shopPackage]    脚本日期: 10/27/2014 16:40:21 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[shopPackage](
+	[id] [int] NOT NULL,
+	[product_id] [int] NOT NULL,
+	[product_link_id] [varchar](50) NULL,
+	[packageName] [varchar](50) NULL,
+	[setPrice] [float] NULL,
+	[price] [float] NULL,
+ CONSTRAINT [PK_shopPackage] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'产品ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPackage', @level2type=N'COLUMN',@level2name=N'product_id'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'产品组合ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPackage', @level2type=N'COLUMN',@level2name=N'product_link_id'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'套餐名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPackage', @level2type=N'COLUMN',@level2name=N'packageName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'套餐价格' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPackage', @level2type=N'COLUMN',@level2name=N'setPrice'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'原价' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopPackage', @level2type=N'COLUMN',@level2name=N'price'
+
+-- 产品咨询
+USE [yl]
+GO
+/****** 对象:  Table [dbo].[shopAdvisory]    脚本日期: 10/27/2014 16:41:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[shopAdvisory](
+	[id] [int] NOT NULL,
+	[product_id] [int] NOT NULL,
+	[member] [int] NULL,
+	[depict] [varchar](280) NULL,
+	[createdate] [datetime] NULL,
+	[replycont] [varchar](280) NULL,
+	[replymember] [int] NULL,
+	[replyTime] [datetime] NULL,
+	[isdelete] [int] NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'产品ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopAdvisory', @level2type=N'COLUMN',@level2name=N'product_id'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'用户ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopAdvisory', @level2type=N'COLUMN',@level2name=N'member'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'咨询详情' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopAdvisory', @level2type=N'COLUMN',@level2name=N'depict'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'咨询时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopAdvisory', @level2type=N'COLUMN',@level2name=N'createdate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'回复' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopAdvisory', @level2type=N'COLUMN',@level2name=N'replycont'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'回复人' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopAdvisory', @level2type=N'COLUMN',@level2name=N'replymember'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'回复时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopAdvisory', @level2type=N'COLUMN',@level2name=N'replyTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否删除' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopAdvisory', @level2type=N'COLUMN',@level2name=N'isdelete'
+
+-- 2014-10-30 郭栋辉
+USE [yl]
+GO
+/****** 对象:  Table [dbo].[shopOrderDispatch]    脚本日期: 10/30/2014 14:35:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[shopOrderDispatch](
+	[id] [int] NOT NULL,
+	[order_id] [varchar](50) NULL,
+	[n_company] [varchar](150) NULL,
+	[n_openbank] [varchar](150) NULL,
+	[n_accountNo] [varchar](50) NULL,
+	[n_taxpayerid] [varchar](50) NULL,
+	[n_telphone] [varchar](50) NULL,
+	[n_zip] [varchar](50) NULL,
+	[n_type] [int] NULL,
+	[n_address] [varchar](260) NULL,
+	[a_consignees] [varchar](50) NULL,
+	[a_hospital] [varchar](150) NULL,
+	[a_address] [varchar](260) NULL,
+	[a_mobile] [varchar](50) NULL,
+	[a_telphone] [varchar](50) NULL,
+ CONSTRAINT [PK_shopOrderDispatch] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'公司地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopOrderDispatch', @level2type=N'COLUMN',@level2name=N'n_address'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'收货人' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopOrderDispatch', @level2type=N'COLUMN',@level2name=N'a_consignees'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'医院' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopOrderDispatch', @level2type=N'COLUMN',@level2name=N'a_hospital'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'发货地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopOrderDispatch', @level2type=N'COLUMN',@level2name=N'a_address'
+
+-- 2014-11-5 张超群
+表ShopProduct_data和ShopProduct_data_list,字段brief和content类型改为ntext
+
+-- 2014-11-10 张杰
+CREATE TABLE [dbo].[shopExchanged](
+	[id] [int] NOT NULL,
+	[order_id] [varchar](50) NULL,
+	[type] [int] NULL,
+	[quantity] [int] NULL,
+	[description] [text] NULL,
+	[picture] [varchar](256) NULL,
+	[exchanged_code] [varchar](200) NULL,
+	[status] [varchar](200) NULL,
+	[product_id] [varchar](200) NULL,
+	[member] [varchar](200) NULL,
+	[time] [varchar](200) NULL,
+ CONSTRAINT [PK_shopExchanged] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'订单编号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopExchanged', @level2type=N'COLUMN',@level2name=N'order_id'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务类型：1退货，2换货' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopExchanged', @level2type=N'COLUMN',@level2name=N'type'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopExchanged', @level2type=N'COLUMN',@level2name=N'quantity'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'问题描述' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'shopExchanged', @level2type=N'COLUMN',@level2name=N'description'
+
+
+CREATE TABLE [dbo].[ShopOrderExpress](
+	[id] [int] NOT NULL,
+	[order_id] [varchar](50) NULL,
+	[express_code] [varchar](50) NULL,
+	[person] [varchar](50) NULL,
+	[time] [datetime] NULL,
+	[mobile] [varchar](50) NULL,
+	[price] [decimal](18, 0) NULL,
+	[express_name] [varchar](50) NULL,
+	[type] [int] NULL,
+ CONSTRAINT [PK_ShopOrderExpress] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+
+#郭栋辉
+/****** 对象:  Table [dbo].[shopMyPoints]    脚本日期: 11/11/2014 15:40:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[shopMyPoints](
+	[id] [int] NOT NULL,
+	[createTime] [datetime] NULL,
+	[integral] [int] NULL,
+	[orderId] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_shopMyPoints] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+
+GO
+/****** 对象:  Table [dbo].[shopIntegralRules]    脚本日期: 11/11/2014 15:40:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[shopIntegralRules](
+	[id] [int] NOT NULL,
+	[item] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[integeral] [int] NULL,
+ CONSTRAINT [PK_shopIntegralRules] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+
+
+#张超群  2014-11-15
+alter table ShopOrderAddress add zipcode varchar(50) null
+alter table ShopOrderDispatch add a_zipcode varchar(50) null
+
+
+
+齐东瑞 1118
+update profile set membertype = 2 where profile = (select profile from profile where membertype = 3)
+更新用户类型 
+
+齐东瑞 1120
+alter table shopproduct add returnc nvarchar(50);
+审核不通过原因
+
+
+#张超群  2014-11-24
+alter table ShopOrder add invoiceStatus int null;
+alter table ShopOrder add isLzCategory bit null;
+
+alter table ShopOrderDispatch add n_invoiceNo varchar(64) null;
+alter table ShopOrderDispatch add n_invoiceTime datetime null;
+alter table ShopOrderDispatch add n_expressNo varchar(64) null;
+alter table ShopOrderDispatch add n_consignees varchar(64) null;
+
+齐东瑞 2014-11-24
+alter table ShopHospital add addflag int;
+update ShopHospital set addflag = 0;
+alter table profile add hospitals nvarchar(500);
+update profile set hospitals = '|';
+
+#张超群  2014-12-5
+alter table shoporder add receiptTime datetime null;
+
+
+
+CREATE TABLE ReplyMoney(
+	[id] [int] NULL,
+	[hid] [int] NULL,
+	[replyTime] [datetime] NULL,
+	[replyPrice] [float] NULL,
+	[context] [ntext] NULL,
+	[status] [int] NULL,
+	[returnStr] [nvarchar](500) NULL,
+	[member] [int] NULL,
+	[time] [datetime] NULL,
+	[statusmember] [int] NULL,
+	[memberReturnStr] [int] NULL,
+	[code] [nvarchar](100) NULL,
+	[type] [int] NULL
+)
+
+
+
+
+
+
+
+
+
+

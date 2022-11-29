@@ -1,0 +1,453 @@
+<%@page contentType="text/html;charset=UTF-8" %>
+<%@include file="/jsp/Header.jsp"%>
+<%!
+public void getEmails(String s, HttpServletRequest httpservletrequest, RV rv, int i, HttpServletResponse httpservletresponse)
+        throws Exception
+    {
+        //EmailBox emailbox = EmailBox.find(rv._strR, s);
+     	 EmailBox emailbox = EmailBox.find(node.getCommunity(),rv._strR,s);
+        String s1 = emailbox.getPop3User();
+        String s2 = emailbox.getPop3Passwd();
+        HttpSession httpsession = httpservletrequest.getSession(true);
+        if(s1 != null)
+            httpsession.setAttribute("tea." + rv._strR + "." + s + ".User", s1);
+        else
+            return;
+        if(s2 != null)
+            httpsession.setAttribute("tea." + rv._strR + "." + s + ".Passwd", s2);
+        else
+            return;
+        boolean flag = false;
+        try
+        {
+           // Folder folder = emailbox.openFolder(s1, s2);
+           Folder folder = emailbox.openFolder();
+            if(folder != null)
+            {
+                int j = folder.getMessageCount();
+                if(j == 0)
+                    return;
+                javax.mail.Message amessage[] = folder.getMessages();
+                FetchProfile fetchprofile = new FetchProfile();
+                fetchprofile.add(javax.mail.FetchProfile.Item.ENVELOPE);
+                fetchprofile.add("X-mailer");
+                folder.fetch(amessage, fetchprofile);
+                for(int k = 0; k < amessage.length; k++)
+                {
+                    String s3 = null;
+                    Object obj = null;
+                    javax.mail.Address aaddress[];
+                    if((aaddress = amessage[k].getFrom()) != null)
+                    {
+                        for(int l = 0; l < aaddress.length; l++)
+                        {
+                            InternetAddress internetaddress = (InternetAddress)aaddress[l];
+                            s3 = internetaddress.getAddress();
+                            String s4 = internetaddress.getPersonal();
+                        }
+
+                    }
+                    java.util.Date date = amessage[k].getSentDate();
+                    String s5 = amessage[k].getSubject();
+                    if(s3.toLowerCase().indexOf("163.com") != -1)
+                        try
+                        {
+                            s5 = new String(s5.getBytes("gb2312"), "ISO-8859-1");
+                        }
+                        catch(Exception exception2) { }
+                    if(s5 == null || s5.length() == 0)
+                        s5 = "<No Subject>";
+                    String s6 = s;
+                    String s7 = "";
+                    String s8 = "";
+                    String s9 = null;
+                    int j1 = 0;
+                    int k1 = 0;
+                    byte abyte0[] = null;
+                    byte abyte1[] = null;
+                    String s10 = null;
+                    byte abyte2[] = null;
+                    int l1 = 0;
+                    try
+                    {
+                        l1 = tea.entity.member.Message.create(null, s3, j1, 0, 0, k1, i, s5, s9, abyte0, abyte1, s10, abyte2, s6, s7, s8, null, null, 0, 0, rv);
+                    }
+                    catch(Exception exception3) { }
+                    tea.entity.member.Message message = tea.entity.member.Message.find(l1);
+                    message.setTime(date);
+                    boolean flag1 = false;
+                    outPart(message, amessage[k], 0, s3, flag1);
+                }
+
+                emailbox.closeFolder();
+                Socket socket = null;
+                PrintWriter printwriter = null;
+                BufferedReader bufferedreader = null;
+                try
+                {
+                    socket = new Socket(emailbox.getPop3Server(), emailbox.getPop3Port());
+                    socket.setSoTimeout(30000);
+                    printwriter = new PrintWriter(socket.getOutputStream(), true);
+                    bufferedreader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    bufferedreader.readLine();
+                    printwriter.println("USER " + s1);
+                    bufferedreader.readLine();
+                    printwriter.println("PASS " + s2);
+                    bufferedreader.readLine();
+                    for(int i1 = 1; i1 <= j; i1++)
+                    {
+                        printwriter.println("DELE " + i1);
+                        bufferedreader.readLine();
+                    }
+
+                    printwriter.println("QUIT");
+                    bufferedreader.readLine();
+                    printwriter.close();
+                    bufferedreader.close();
+                    socket.close();
+                }
+                catch(Exception exception1) { }
+                finally
+                {
+                    if(printwriter != null)
+                        try
+                        {
+                            printwriter.close();
+                        }
+                        catch(Exception exception5) { }
+                    if(bufferedreader != null)
+                        try
+                        {
+                            bufferedreader.close();
+                        }
+                        catch(Exception exception6) { }
+                    if(socket != null)
+                        try
+                        {
+                            socket.close();
+                        }
+                        catch(Exception exception7) { }
+                }
+            }
+        }
+        catch(Exception exception)
+        {
+            exception.printStackTrace();
+        }
+    }
+
+    int outPart(tea.entity.member.Message message, Part part, int i, String s, boolean flag)
+        throws Exception
+    {
+        int j = i;
+        if(part.isMimeType("text/*"))
+        {
+            Object obj = part.getContent();
+            String s1 = obj.toString();
+            String s2 = null;
+            try
+            {
+                s2 = part.getFileName();
+            }
+            catch(Exception exception) { }
+            if(s2 != null)
+            {
+                j++;
+                if(s2.toLowerCase().endsWith(".rtf"))
+                {
+                    BufferedInputStream bufferedinputstream1 = new BufferedInputStream((InputStream)obj);
+                    int i1 = bufferedinputstream1.available();
+                    byte abyte1[] = new byte[i1];
+                    bufferedinputstream1.read(abyte1, 0, i1 - 1);
+                    message.createAttachment(j, s2, abyte1);
+                } else
+                {
+                    message.createAttachment(j, s2, s1.getBytes("ISO-8859-1"));
+                }
+            } else
+            {
+                boolean flag1 = false;
+                if(flag && s.toLowerCase().indexOf("sina.com") != -1)
+                    flag1 = true;
+                if(s.toLowerCase().endsWith("yahoo.com.cn"))
+                    flag1 = true;
+                if(flag1)
+                    try
+                    {
+                        s1 = new String(s1.getBytes("gb2312"), "ISO-8859-1");
+                    }
+                    catch(Exception exception1) { }
+                message.setContent(s1);
+            }
+        } else
+        if(part.isMimeType("multipart/*"))
+        {
+            flag = true;
+            Multipart multipart = (Multipart)part.getContent();
+            for(int k = 0; k < multipart.getCount(); k++)
+                j = outPart(message, ((Part) (multipart.getBodyPart(k))), j, s, flag);
+
+        } else
+        if(part.isMimeType("message/rfc822"))
+        {
+            j = outPart(message, (Part)part.getContent(), j, s, flag);
+        } else
+        {
+            Object obj1 = part.getContent();
+            if(obj1 instanceof InputStream)
+            {
+                j++;
+                BufferedInputStream bufferedinputstream = new BufferedInputStream((InputStream)obj1);
+                int l = bufferedinputstream.available();
+                byte abyte0[] = new byte[l];
+                bufferedinputstream.read(abyte0, 0, l - 1);
+                message.createAttachment(j, part.getFileName(), abyte0);
+            }
+        }
+        return j;
+    }
+%>
+<%
+r.add("tea/ui/member/message/Messages");
+String s = request.getParameter("Folder");
+            if(s == null)
+                s = "Inbox";
+            boolean flag = false;
+            if(s.equals("Sent"))
+                flag = true;
+            String s1 = request.getParameter("Pos");
+            int i = s1 == null ? 0 : Integer.parseInt(s1);
+            int j = tea.entity.member.Message.count(s, teasession._rv);
+
+%>
+<HTML>
+<HEAD>
+<link href="/res/<%=node.getCommunity()%>/cssjs/community.css" rel="stylesheet" type="text/css">
+<SCRIPT LANGUAGE=JAVASCRIPT SRC="/tea/tea.js" type="text/javascript"></SCRIPT>
+</HEAD>
+<body>
+<h1><%=r.getString(teasession._nLanguage, "Messages")%></h1>
+  <div id="head6"><img height="6" src="about:blank"></div>
+<TABLE border="0" cellpadding="0" cellspacing="0" id="tablecenter">
+  <tr>
+    <td ID=MessageTopDiv COLSPAN=2></td>
+  </tr>
+  <tr>
+    <td width="130" rowspan="3" ID=MessageLeftDiv><UL>
+        <LI><A href="/servlet/Messages?Folder=Inbox"><%=r.getString(teasession._nLanguage, "Inbox")%></A> </LI>
+        <LI><A href="/servlet/Messages?Folder=Sent"><%=r.getString(teasession._nLanguage, "Send")%></A> </LI>
+        <LI><A href="/servlet/Messages?Folder=Draft"><%=r.getString(teasession._nLanguage, "Draft")%></A> </LI>
+        <LI><A href="/servlet/Messages?Folder=Trash"><%=r.getString(teasession._nLanguage, "Trash")%></A> </LI>
+        <LI><A href="/servlet/CGroups"><%=r.getString(teasession._nLanguage, "ContactGroups")%></A> </LI>
+        <LI><A href="/servlet/EmailBoxs"><%=r.getString(teasession._nLanguage, "Emailboxs")%></A> </LI>
+        <LI><A href="/servlet/EditMessageFolder"><%=r.getString(teasession._nLanguage, "CreateFolder")%></A> </LI>
+        <LI><A href="/servlet/ManageMessageFolders"><%=r.getString(teasession._nLanguage, "ManageFolders")%></A> </LI>
+      </UL></td>
+    <td ID=MessageBodyDiv VALIGN=TOP><FORM name=foDelete METHOD=GET action="/servlet/DeleteMessages">
+        <input type='hidden' name=Operation VALUE="">
+        <input type='hidden' name=MessageFolder VALUE="">
+        <input type='hidden' name=Folder VALUE="<%=s%>">
+        <TABLE border="0" cellpadding="0" cellspacing="0" id="tablecenter">
+          <tr>
+            <td COLSPAN=5>&nbsp;<%=j%> <%=r.getString(teasession._nLanguage, s)%><%=r.getString(teasession._nLanguage, "Messages")%></td>
+          </tr>
+          <% if(j != 0)
+{
+if(s.equals("Sent") || s.equals("Draft"))
+{%>
+          <tr>
+            <td>&nbsp;</td>
+            <td><%=r.getString(teasession._nLanguage, "Receiver")%></td>
+            <td><%=r.getString(teasession._nLanguage, "Subject")%></td>
+            <td><%=r.getString(teasession._nLanguage, "Time")%></td>
+          </tr>
+          <%
+                  //  table.setTitle("&nbsp;\n" + r.getString(teasession._nLanguage, "Receiver") + "\n" + r.getString(teasession._nLanguage, "Subject") + "\n" + r.getString(teasession._nLanguage, "Time") + "\n");
+}
+if(s.equals("Inbox") || s.equals("Trash"))
+{%>
+          <tr>
+            <td>&nbsp;</td>
+            <td><%=r.getString(teasession._nLanguage, "Sender")%></td>
+            <td><%=r.getString(teasession._nLanguage, "Subject")%></td>
+            <td><%=r.getString(teasession._nLanguage, "Time")%></td>
+          </tr>
+          <%//                 table.setTitle("&nbsp;\n" + r.getString(teasession._nLanguage, "Sender") + "\n" + r.getString(teasession._nLanguage, "Subject") + "\n" + r.getString(teasession._nLanguage, "Time") + "\n");
+}
+boolean flag1 = true;
+for(Enumeration enumeration = tea.entity.member.Message.find(s, teasession._rv, i, 25); enumeration.hasMoreElements(); )
+{		    int k = ((Integer)enumeration.nextElement()).intValue();
+                    tea.entity.member.Message message = tea.entity.member.Message.find(k);
+                    RV rv = message.getFrom();
+                    String s3 = message.getFEmail();
+                    java.util.Date date = message.getTime();
+                    int l = message.getType();
+                    int j1 = message.getHint();
+                    message.getOptions();
+                    String s6 = message.getSubject(teasession._nLanguage);
+                    boolean flag3 = false;
+                    boolean flag4 = false;
+                    RV rv1 = null;
+                    String s7 = "";
+                    if(rv._strR.length() != 0)
+                        if(message.isSingleEmailReceiver(rv))
+                            s7 = message.findSingleEmailReceiver(rv);
+                        else
+                        if(message.isSingleRVReceiver(rv))
+                        {
+                            rv1 = message.findSingleRVReceiver(rv);
+                            flag4 = MessageRead.isRead(k, rv1);
+                        }
+                    boolean flag5 = message.isMultipleReceiver(rv);
+                    boolean flag6 = message.getMessageCGroup().length() != 0;
+                    boolean flag7 = message.getMessageCommunity().length() != 0;
+                    if(rv1 == null && s7.length() == 0 && !flag5 && !flag6 && !flag7)
+                        flag3 = flag ? MessageRead.isRead(k) : MessageRead.isRead(k, teasession._rv);
+                    else
+                        flag3 = flag ? MessageRead.isReadExcludeSender(k, rv) : MessageRead.isRead(k, teasession._rv);
+ %>
+          <tr ID=<%=flag1?"OddRow":"EvenRow"%>>
+            <td><input  id="CHECKBOX" type="CHECKBOX" name=<%=Integer.toString(k)%> value=null></td>
+            <td ID=MessageUnread><%                 Cell cell2 = new Cell();
+		   if(s.equals("Inbox") || s.equals("Trash"))
+		   {
+			String s8 = "";
+			if(s3 != null && s3.length() != 0)
+			{%>
+              <A href="/servlet/NewMessage?receiver=<%=s3%>" TARGET="_blank"><%=s3%></A>
+              <%
+			}else
+                        {
+                          ////=ts.hrefGlanceWithName(rv, teasession._nLanguage).toString()
+                          out.print(rv);
+                        }
+         		//<td>=(new SimpleDateFormat("yyyy.MM.dd hh:mm aaa")).format(date)
+                        cell2.add(new Text("" + (new SimpleDateFormat("yyyy.MM.dd hh:mm aaa")).format(date) + ""));
+                      //  cell1.setId(flag3 ? "MessageRead" : "MessageUnread");
+                        cell2.setId(flag3 ? "MessageRead" : "MessageUnread");%>
+            <td id=<%=(flag3 ? "MessageRead" : "MessageUnread")%>><%//<tr id==(flag3 ? "MessageRead" : "MessageUnread")
+                     //   cell2.setId(flag3 ? "MessageRead" : "MessageUnread");
+                        //row.add(cell1);
+              }
+                    if(s.equals("Sent") || s.equals("Draft"))
+                    {
+
+                        if(flag5 || flag6 || flag7)
+                        {%>
+            <td><A href="/servlet/MessageReaders?Message=<%=k%>" TARGET="_blank"><%=r.getString(teasession._nLanguage, "MessageReaders")%></A></td>
+            <%                          // cell1.add(new Anchor("MessageReaders?Message=" + k, "_blank", new Text()));
+                            cell2.add(new Text("" + (new SimpleDateFormat("yyyy.MM.dd hh.mm aaa")).format(date) + " "));
+                        } else
+                        if(s7.length() != 0)
+                        {%>
+            <A href="/servlet/NewMessage?receiver=<%=s7%>" TARGET="_blank"><%=s7%></A>
+            <%  //                          cell1.add(new Text((new Anchor("NewMessage?Receiver=" + s7, "_blank", new Text(s7))).toString()));
+                            cell2.add(new Text("" + (new SimpleDateFormat("yyyy.MM.dd hh.mm aaa")).format(date) + " "));
+                        } else
+                        if(rv1 != null)
+                        {
+out.println(rv1);
+                          %>
+            <%//=ts.hrefGlanceWithName(rv1, teasession._nLanguage).toString()%>
+            <%                 //         cell1.add(new Text(hrefGlanceWithName(rv1, teasession._nLanguage).toString()));
+                            if(flag4)
+                            {
+                                java.util.Date date1 = MessageRead.getTime(k, rv1);
+                                cell2.add(new Text("" + (new SimpleDateFormat("yyyy.MM.dd hh.mm aaa")).format(date1) + " "));
+                            } else
+                            {
+                                cell2.add(new Text("" + (new SimpleDateFormat("yyyy.MM.dd hh.mm aaa")).format(date) + " "));
+                            }
+                        } else
+                        {%>
+            <%=ts.hrefGlanceWithName(teasession._rv, teasession._nLanguage).toString()%>
+            <%//                            cell1.add(new Text(hrefGlanceWithName(teasession._rv, teasession._nLanguage).toString()));
+
+              cell2.add(new Text("" + (new SimpleDateFormat("yyyy.MM.dd hh.mm aaa")).format(date) + " "));
+                        }
+%>
+            <td id=<%=(flag3 ? "MessageRead" : "MessageUnread")%>><%//                       cell1.setId(flag3 ? "MessageRead" : "MessageUnread");
+                        cell2.setId(flag3 ? "MessageRead" : "MessageUnread");
+                      //  row.add(cell1);
+                    }
+
+%>
+            <td id=<%=(flag3 ? "MessageRead" : "MessageUnread")%>><A href="/servlet/Message?Folder=<%=s%>&Message=<%=k%>"><%=new HintImg( j1)%><%=s6%></a> <%=cell2%>
+              <input type='hidden' name=Messages VALUE="<%=Integer.toString(k)%>">
+              <%	    // row.add(new HiddenField("Messages", Integer.toString(k)));
+                    //row.setId(flag1 ? "OddRow" : "EvenRow");
+                    flag1 = !flag1;
+                }
+
+            }
+%>
+              <%  if(s.equals("Inbox"))
+            {
+                tea.html.List list = new tea.html.List();
+                Object obj = null;
+                boolean flag2 = false;
+                for(java.util.Enumeration enumeration1 = tea.entity.member.EmailBox.find(node.getCommunity(),teasession._rv._strR); enumeration1.hasMoreElements();)
+                {
+                    String s2 = (String)enumeration1.nextElement();
+                    tea.entity.member.EmailBox emailbox = tea.entity.member.EmailBox.find(node.getCommunity(),teasession._rv._strR, s2);
+                    String s4 = emailbox.getPop3User();
+               
+                    String s5 = emailbox.getPop3Passwd();
+                    int i1 = emailbox.getPop3Options();
+                    if(s4.length() != 0 && s5.length() != 0)
+                        getEmails(s2, request, teasession._rv, teasession._nLanguage, response);
+                    if(s4.length() == 0 || s5.length() == 0 && (i1 & 4) == 0)
+                    {
+                        flag2 = true;
+                        byte byte0 = -1;
+                        ListItem listitem = new ListItem(new Anchor("EditEmailBox?EmailBox=" + s2, new Text((byte0 != -1 ? Integer.toString(byte0) : "") + " " + s2)));
+                        list.add(listitem);
+                    }
+                }
+
+                if(flag2)
+                {%>
+              <%=r.getString(teasession._nLanguage, "NeedUserOrPassword")%> <%=list%>
+              <%//     form.add(new Text(r.getString(teasession._nLanguage, "NeedUserOrPassword")));
+                   // form.add(list);
+                }
+            }%>
+        </table>
+        <br/>
+        <tr>
+            <td><%=new FPNL(teasession._nLanguage, "/servlet/Messages?Folder=" + s + "&Pos=", i, j)%> </td>
+          </tr>
+        <tr>
+            <td><input type=BUTTON VALUE="<%=r.getString(teasession._nLanguage, "CBNewMessage")%>" ID="CBNewMessage" CLASS="CB" onClick="window.open('/servlet/NewMessage', '_blank');">
+              <%          if(j > 0)
+            {%>
+              <% if(s.equals("Draft"))
+                  {%>
+              <input type=BUTTON VALUE="<%=r.getString(teasession._nLanguage, "CBSend")%>" ID="CBSend" CLASS="CB" onClick="if(confirm('<%=r.getString(teasession._nLanguage, "ConfirmSendSelected")%>')){window.open('javascript:document.foDelete.Operation.value=\'Trash\';foDelete.submit();', '_self');}">
+              <%				  }
+                if(!s.equals("Trash"))
+                {%>
+              <input type=BUTTON VALUE="<%=r.getString(teasession._nLanguage, "CBTrash")%>" ID="CBTrash" CLASS="CB" onClick="if(confirm('<%=r.getString(teasession._nLanguage, "ConfirmTrashSelected")%>')){window.open('javascript:document.foDelete.Operation.value=\'Trash\';foDelete.submit();', '_self');}">
+              <input type=BUTTON VALUE="<%=r.getString(teasession._nLanguage, "CBTrashAll")%>" ID="CBTrashAll" CLASS="CB" onClick="if(confirm('<%=r.getString(teasession._nLanguage, "ConfirmTrashAll")%>')){window.open('DeleteAllMessage?Operation=TrashAll&Folder=<%=s%>', '_self');}">
+              <% //                  form.add(new Button(1, "CB", "CBTrashAll", r.getString(teasession._nLanguage, "CBTrashAll"), "if(confirm('" + r.getString(teasession._nLanguage, "ConfirmTrashAll") + "')){window.open('DeleteAllMessage?Operation=TrashAll&Folder=" + s + "', '_self');}"));
+                }
+%>
+              <input type=BUTTON VALUE="<%=r.getString(teasession._nLanguage, "CBDelete")%>" ID="CBDelete" CLASS="CB" onClick="if(confirm('<%=r.getString(teasession._nLanguage, "ConfirmDeleteSelected")%>')){window.open('javascript:foDelete.submit();', '_self');}">
+              <input type=BUTTON VALUE="<%=r.getString(teasession._nLanguage, "CBDeleteAll")%>" ID="CBDeleteAll" CLASS="CB" onClick="if(confirm('<%=r.getString(teasession._nLanguage, "ConfirmDeleteAll")%>')){window.open('/servlet/DeleteAllMessages?Folder=<%=s%>', '_self');}">
+              <%                if(s.equals("Inbox") || s.equals("Trash"))
+           			{	%>
+              <input type=BUTTON VALUE="<%=r.getString(teasession._nLanguage, "CBBlock")%>" ID="CBBlock" CLASS="CB" onClick="if(confirm('<%=r.getString(teasession._nLanguage, "ConfirmBlockSelected")%>')){window.open('javascript:document.foDelete.Operation.value=\'Block\';foDelete.submit();', '_self');}">
+              <%}%>
+              <%=MessageUI.getMessageFolderSelection(r, teasession)%>
+              <%            }
+%></td>
+          </tr>
+      </form>
+</table>
+</table>
+<FONT ID=FooterDiv>
+<div id="head6"><img height="6" src="about:blank"></div>
+<div id="language"><%=new Languages(teasession._nLanguage,request)%></div>
+</body>
+</HTML>
+

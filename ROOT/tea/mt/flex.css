@@ -1,0 +1,50 @@
+﻿html,body{width:100%; height:100%;}
+#toolbar{background-image:url(/res/Home/paper/skin/17.png); height:36px;overflow:hidden}
+#toolbar *{margin:3px 1px;float:left;background-repeat:no-repeat;}
+#toolbar a{width:30px;height:30px;display:block; background-position:50% 50%;outline:none;}
+#toolbar a:hover{border:1px solid #999999;width:28px;height:28px;}
+#toolbar input{font-size:12px;margin-top:7px;}
+#toolbar #logo{background-image:url(/res/Home/paper/skin/1.png);width:120px;border:0}
+#toolbar #logo:hover{border:none;height:30px;}
+#ArrowCursor{background-image:url(/res/Home/paper/skin/2.png);}
+#TextSelectorCursor{background-image:url(/res/Home/paper/skin/3.png);}
+#a4{background-image:url(/res/Home/paper/skin/4.png);width:100px}
+#zoomOut{background-image:url(/res/Home/paper/skin/5.png);}
+#zoomIn{background-image:url(/res/Home/paper/skin/6.png);}
+#setZoom{width:40px;text-align:center;}
+#fitWidth{background-image:url(/res/Home/paper/skin/7.png);}
+#fitHeight{background-image:url(/res/Home/paper/skin/8.png);}
+#prevPage{background-image:url(/res/Home/paper/skin/9.png);}
+#nextPage{background-image:url(/res/Home/paper/skin/10.png);}
+#gotoPage{padding-right:35px;width:28px;text-align:right;}
+#TotalPages{margin-left:-35px;font-size:12px;margin-top:10px}
+#search{background-image:url(/res/Home/paper/skin/11.png);}
+#searchText{width:92px;}
+#rotate{background-image:url(/res/Home/paper/skin/12.png);}
+#printPaper{background-image:url(/res/Home/paper/skin/13.png);}
+#fullScreen{background-image:url(/res/Home/paper/skin/21.png);}
+#separator{background-image:url(/res/Home/paper/skin/24.png);width:10px;border:0px;height:30px;background-position:50% 50%;}
+
+
+
+/*旧版
+#toolbar a{width:30px;height:30px;display:block;float:left;background-repeat:no-repeat; background-position:50% 50%;margin-left:2px;margin-top:2px;}
+#toolbar a:hover{border:1px solid #CCCCCC;width:28px;height:28px;*width:30px;*height:30px;}
+#toolbar a#logo:hover{border:0px;width:30px;height:30px;}
+#toolbar input{font-size:12px;float:left;margin-top:7px;}
+#ArrowCursor{background-image:url(/res/Home/paper/skin/2.png);}
+#TextSelectorCursor{background-image:url(/res/Home/paper/skin/3.png);}
+#a4{background-image:url(/res/Home/paper/skin/4.png);width:100px}
+#a5{background-image:url(/res/Home/paper/skin/5.png);}
+#a6{background-image:url(/res/Home/paper/skin/6.png);}
+#fitWidth{background-image:url(/res/Home/paper/skin/7.png);}
+#fitHeight{background-image:url(/res/Home/paper/skin/8.png);}
+#prevPage{background-image:url(/res/Home/paper/skin/9.png);}
+#nextPage{background-image:url(/res/Home/paper/skin/10.png);}
+#search{background-image:url(/res/Home/paper/skin/11.png);}
+#searchText{width:92px;}
+#rotate{background-image:url(/res/Home/paper/skin/12.png);}
+#printPaper{background-image:url(/res/Home/paper/skin/13.png);}
+#showFullScreen{background-image:url(/res/Home/paper/skin/21.png);}
+#CurrPage{width:70px;text-align:right;}
+*/

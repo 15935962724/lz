@@ -1,0 +1,242 @@
+<%@page contentType="text/html;charset=UTF-8" %><%@ page import="tea.db.DbAdapter"  %><%@ page import="tea.resource.Resource" %><%@ page import="tea.entity.Entity" %><%@ page import="tea.entity.criterion.*" %><%@ page import="tea.ui.TeaSession" %><%
+response.setHeader("Expires", "0");
+//response.setHeader("Cache-Control", "no-cache");
+//response.setHeader("Pragma", "no-cache");
+request.setCharacterEncoding("UTF-8");
+
+TeaSession teasession=new TeaSession(request);
+if(teasession._rv==null)
+{
+  response.sendRedirect("/servlet/StartLogin?node="+teasession._nNode);
+  return;
+}
+if(request.getParameter("t")==null)
+{
+  response.sendRedirect(request.getRequestURI()+"?"+request.getQueryString()+"&t="+System.currentTimeMillis());
+  return;
+}
+
+response.setContentType("application/x-msdownload");
+
+String uri=null,name=null;
+if(request.getParameter("itemfilehistory")!=null)
+{
+  int itemfilehistory=Integer.parseInt(request.getParameter("itemfilehistory"));
+  Itemfilehistory obj=Itemfilehistory.find(itemfilehistory);
+  uri=obj.getUri();
+  name=obj.getName();
+}else
+{
+  int item=Integer.parseInt(request.getParameter("item"));
+
+  String act=request.getParameter("act");
+
+  Item obj=Item.find(item);
+  if(act.equals("openuri"))
+  {
+    uri=obj.getOpenuri();
+    name=obj.getOpenname();
+  }else
+  if(act.equals("summaryuri"))
+  {
+    uri=obj.getSummaryuri();
+    name=obj.getSummaryname();
+  }else
+  if(act.equals("informuri"))
+  {
+    uri=obj.getInformuri();
+    name=obj.getInformname();
+  }else
+  if(act.equals("ideauri"))
+  {
+    uri=obj.getIdeauri();
+    name=obj.getIdeaname();
+  }else
+  if(act.equals("explainuri"))
+  {
+    uri=obj.getExplainuri();
+    name=obj.getExplainname();
+  }else
+  if(act.equals("backdropuri"))
+  {
+    uri=obj.getBackdropuri();
+    name=obj.getBackdropname();
+  }else
+  if(act.equals("ideainformuri"))
+  {
+    uri=obj.getIdeainformuri();
+    name=obj.getIdeainformname();
+  }else
+  if(act.equals("ideainform2uri"))
+  {
+    uri=obj.getIdeainform2uri();
+    name=obj.getIdeainform2name();
+  }else
+  if(act.equals("feedbackuri"))
+  {
+    uri=obj.getFeedbackuri();
+    name=obj.getFeedbackname();
+  }else
+  if(act.equals("formulatinguri"))
+  {
+    uri=obj.getFormulatinguri();
+    name=obj.getFormulatingname();
+  }else
+  if(act.equals("fexplainuri"))
+  {
+    uri=obj.getFexplainuri();
+    name=obj.getFexplainname();
+  }else
+  if(act.equals("fideauri"))
+  {
+    uri=obj.getFideauri();
+    name=obj.getFideaname();
+  }else
+  if(act.equals("fbackdropuri"))
+  {
+    uri=obj.getFbackdropuri();
+    name=obj.getFbackdropname();
+  }else
+  if(act.equals("fsummaryuri"))
+  {
+    uri=obj.getFsummaryuri();
+    name=obj.getFsummaryname();
+  }else
+  if(act.equals("finformuri"))
+  {
+    uri=obj.getFinformuri();
+    name=obj.getFinformname();
+  }else
+  if(act.equals("finform2uri"))
+  {
+    uri=obj.getFinform2uri();
+    name=obj.getFinform2name();
+  }else
+  if(act.equals("finformuri"))
+  {
+    uri=obj.getFinformuri();
+    name=obj.getFinformname();
+  }else
+  if(act.equals("leveluri"))
+  {
+    uri=obj.getLeveluri();
+    name=obj.getLevelname();
+  }else
+  if(act.equals("lexplainuri"))
+  {
+    uri=obj.getLexplainuri();
+    name=obj.getLexplainname();
+  }else
+  if(act.equals("lbackdropuri"))
+  {
+    uri=obj.getLbackdropuri();
+    name=obj.getLbackdropname();
+  }else
+  if(act.equals("lweaveuri"))
+  {
+    uri=obj.getLweaveuri();
+    name=obj.getLweavename();
+  }else
+  if(act.equals("lsinformuri"))
+  {
+    uri=obj.getLsinformuri();
+    name=obj.getLsinformname();
+  }else
+  if(act.equals("lssummaryuri"))
+  {
+    uri=obj.getLssummaryuri();
+    name=obj.getLssummaryname();
+  }else
+  if(act.equals("lginformuri"))
+  {
+    uri=obj.getLginformuri();
+    name=obj.getLginformname();
+  }else
+  if(act.equals("lgsummaryuri"))
+  {
+    uri=obj.getLgsummaryuri();
+    name=obj.getLgsummaryname();
+  }else
+  if(act.equals("standarduri"))
+  {
+    uri=obj.getStandarduri();
+    name=obj.getStandardname();
+  }else
+  if(act.equals("sweaveuri"))
+  {
+    uri=obj.getSweaveuri();
+    name=obj.getSweavename();
+  }else
+  if(act.equals("sbackdropuri"))
+  {
+    uri=obj.getSbackdropuri();
+    name=obj.getSbackdropname();
+  }else
+  if(act.equals("otheruri"))
+  {
+    uri=obj.getOtheruri();
+    name=obj.getOthername();
+  }else
+  if(act.equals("other2uri"))
+  {
+    uri=obj.getOther2uri();
+    name=obj.getOther2name();
+  }else
+  if(act.equals("drafturi"))
+  {
+    uri=obj.getDrafturi();
+    name=obj.getDraftname();
+  }else
+  if(act.equals("plantask"))
+  {
+    uri=obj.getPlantask();
+    name=obj.getPlantaskname();//"计划任务书"+uri.substring(uri.lastIndexOf("."));
+  }else
+  if(act.equals("areporturi_3"))
+  {
+    uri=obj.getAreporturi_3();
+    name=obj.getAreporturi_3();
+  }else
+  if(act.equals("areporturi_4"))
+  {
+    uri=obj.getAreporturi_4();
+    name=obj.getAreporturi_4();
+  }else
+  if(act.equals("areporturi_5"))
+  {
+    uri=obj.getAreporturi_5();
+    name=obj.getAreporturi_5();
+  }else
+  if(act.equals("areporturi_6"))
+  {
+    uri=obj.getAreporturi_6();
+    name=obj.getAreporturi_6();
+  }else
+  if(request.getParameter("itembudget")!=null)
+  {
+    if(act.equals("outlayapp"))
+    {
+      ItemBudget ib_obj=ItemBudget.find(Integer.parseInt(request.getParameter("itembudget")));
+      uri=ib_obj.getOutlayapp();
+      name=ib_obj.getOutlayappname();//"经费申请表"+uri.substring(uri.lastIndexOf("."));
+    }
+  }else
+  if(request.getParameter("egqbs")!=null)
+  {
+    if(act.equals("file"))
+    {
+      Egqb e_obj=Egqb.find(Integer.parseInt(request.getParameter("egqb")));
+      uri=e_obj.getFileuri();
+      name=e_obj.getFilename();//季报文档
+    }
+  }else
+  {
+    return;
+  }
+}
+
+response.setHeader("Content-Disposition", "attachment; filename=" + java.net.URLEncoder.encode(name,"UTF-8"));
+%><jsp:forward page="<%=uri%>">
+<jsp:param name="pwd" value="va"/>
+</jsp:forward>
+

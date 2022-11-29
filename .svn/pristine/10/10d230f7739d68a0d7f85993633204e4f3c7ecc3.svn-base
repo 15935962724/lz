@@ -1,0 +1,17 @@
+﻿#Report
+Report.node=新闻编号
+Report.logograph=导语
+Report.locus=地点
+Report.media=媒体名称
+Report.media_logo=媒体Logo
+Report.classes=类型名称
+Report.issuetime=发生时间
+Report.subhead=副标题
+Report.author=作者
+Report.publisher=发布人
+Report.show=一稿多投
+
+
+#
+Report.media_id=媒体名称
+Report.class_id=类型名称

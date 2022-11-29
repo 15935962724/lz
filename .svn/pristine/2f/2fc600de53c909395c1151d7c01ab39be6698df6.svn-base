@@ -1,0 +1,276 @@
+package tea.service;
+
+import java.awt.Frame;
+import java.io.PrintStream;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.StringTokenizer;
+import javax.activation.DataHandler;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import tea.entity.RV;
+import tea.entity.member.CGroup;
+import tea.entity.member.Contact;
+import tea.entity.member.Message;
+import tea.entity.member.Profile;
+import tea.entity.site.License;
+import tea.entity.site.Subscriber;
+import tea.http.ByteArrayDataSource;
+
+
+class SendEmail extends Service implements Runnable
+{
+
+    public SendEmail(int i, int j)
+    {
+        super(i, j);
+    }
+
+    public void run()
+    {
+        try
+        {
+            java.util.Properties properties = System.getProperties();
+            properties.put("mail.smtp.host", License.getInstance().getSmtpServer());
+            Session session = Session.getDefaultInstance(properties, null);
+            while (Robot._blStarted)
+            {
+                long l = System.currentTimeMillis();
+                clearLog();
+                addLog("Start");
+                setTitle(" Sending Email and Group/Community/Broadcast News ... ");
+                try
+                {
+                    for (Enumeration enumeration = Message.findUnsentEmail(); enumeration.hasMoreElements(); )
+                    {
+                        int i = ((Integer) enumeration.nextElement()).intValue();
+                        Message message = Message.find(i);
+                        int j = message.getType();
+                        int k = message.getLanguage();
+                        RV rv = message.getFrom();
+                        String s;
+                        if (rv == null || rv._strR.length() == 0)
+                        {
+                            s = message.getFEmail();
+                        } else
+                        {
+                            Profile profile = Profile.find(rv._strR);
+                            s = profile.getEmail();
+                        }
+                        if (s == null || s.length() == 0)
+                        {
+                            s = rv._strR + "@" + License.getInstance().getWebSite();
+                        }
+                        Date date = message.getTime();
+                        String s1 = message.getSubject(k);
+                        String s2 = message.getContent(k);
+                        byte abyte0[] = message.getPicture();
+                        byte abyte1[] = message.getVoice();
+                        String s3 = message.getFileName(k);
+                        byte abyte2[] = message.getFileData();
+                        try
+                        {
+                            s1 = new String(s1.getBytes(), "ISO-8859-1");
+//                            s2 = new String(s2.getBytes(), "ISO-8859-1");
+//                            s3 = new String(s3.getBytes(), "ISO-8859-1");
+                        } catch (Exception exception3)
+                        {}
+                        try
+                        {
+                            MimeMessage mimemessage = new MimeMessage(session);
+                            mimemessage.setFrom(new InternetAddress(s));
+                            mimemessage.setSubject(s1, "ISO-8859-1");
+                            mimemessage.setSentDate(date);
+                            if (abyte0 == null && abyte1 == null && abyte2 == null)
+                            {
+                                mimemessage.setText(s2);
+                                mimemessage.setContent(s2, "text/html");
+                            } else
+                            {
+                                MimeMultipart mimemultipart = new MimeMultipart();
+                                MimeBodyPart mimebodypart = new MimeBodyPart();
+                                mimebodypart.setContent(s2, "text/html");
+                                mimemultipart.addBodyPart(mimebodypart);
+                                if (abyte0 != null)
+                                {
+                                    MimeBodyPart mimebodypart1 = new MimeBodyPart();
+                                    ByteArrayDataSource bytearraydatasource = new ByteArrayDataSource(abyte0, null);
+                                    mimebodypart1.setDataHandler(new DataHandler(bytearraydatasource));
+                                    mimebodypart1.setFileName(bytearraydatasource.getName());
+                                    mimemultipart.addBodyPart(mimebodypart1);
+                                }
+                                if (abyte1 != null)
+                                {
+                                    MimeBodyPart mimebodypart2 = new MimeBodyPart();
+                                    ByteArrayDataSource bytearraydatasource1 = new ByteArrayDataSource(abyte1, null);
+                                    mimebodypart2.setDataHandler(new DataHandler(bytearraydatasource1));
+                                    mimebodypart2.setFileName(bytearraydatasource1.getName());
+                                    mimemultipart.addBodyPart(mimebodypart2);
+                                }
+                                if (abyte2 != null)
+                                {
+                                    MimeBodyPart mimebodypart3 = new MimeBodyPart();
+                                    ByteArrayDataSource bytearraydatasource2 = new ByteArrayDataSource(abyte2, s3);
+                                    mimebodypart3.setDataHandler(new DataHandler(bytearraydatasource2));
+                                    mimebodypart3.setFileName(bytearraydatasource2.getName());
+                                    mimemultipart.addBodyPart(mimebodypart3);
+                                }
+                                mimemessage.setContent(mimemultipart);
+                            }
+                            String s4 = message.getMessageTo();
+                            if (s4 != null && s4.length() != 0)
+                            {
+                                StringTokenizer stringtokenizer = new StringTokenizer(s4, ", ");
+                                int i1 = stringtokenizer.countTokens();
+                                InternetAddress ainternetaddress[] = new InternetAddress[i1];
+                                String s8 = "";
+                                for (int i2 = 0; stringtokenizer.hasMoreTokens(); i2++)
+                                {
+                                    String s14 = stringtokenizer.nextToken();
+                                    String s9;
+                                    if (s14.indexOf("@") != -1)
+                                    {
+                                        s9 = s14;
+                                    } else
+                                    {
+                                        RV rv1 = new RV(s14);
+                                        Profile profile1 = Profile.find(rv1._strR);
+                                        s9 = profile1.getEmail();
+                                    }
+                                    ainternetaddress[i2] = new InternetAddress(s9);
+                                }
+
+                                mimemessage.addRecipients(javax.mail.Message.RecipientType.TO, ainternetaddress);
+                            }
+                            String s5 = message.getMessageCc();
+                            if (s5 != null && s5.length() != 0)
+                            {
+                                StringTokenizer stringtokenizer1 = new StringTokenizer(s5, ", ");
+                                int j1 = stringtokenizer1.countTokens();
+                                InternetAddress ainternetaddress1[] = new InternetAddress[j1];
+                                String s12 = "";
+                                for (int j2 = 0; stringtokenizer1.hasMoreTokens(); j2++)
+                                {
+                                    String s19 = stringtokenizer1.nextToken();
+                                    String s13;
+                                    if (s19.indexOf("@") != -1)
+                                    {
+                                        s13 = s19;
+                                    } else
+                                    {
+                                        RV rv2 = new RV(s19);
+                                        Profile profile2 = Profile.find(rv2._strR);
+                                        s13 = profile2.getEmail();
+                                    }
+                                    ainternetaddress1[j2] = new InternetAddress(s13);
+                                }
+
+                                mimemessage.addRecipients(javax.mail.Message.RecipientType.CC, ainternetaddress1);
+                            }
+                            String s6 = message.getMessageBcc();
+                            if (s6 != null && s6.length() != 0)
+                            {
+                                StringTokenizer stringtokenizer2 = new StringTokenizer(s6, ", ");
+                                int k1 = stringtokenizer2.countTokens();
+                                InternetAddress ainternetaddress2[] = new InternetAddress[k1];
+                                String s15 = "";
+                                for (int k2 = 0; stringtokenizer2.hasMoreTokens(); k2++)
+                                {
+                                    String s21 = stringtokenizer2.nextToken();
+                                    String s16;
+                                    if (s21.indexOf("@") != -1)
+                                    {
+                                        s16 = s21;
+                                    } else
+                                    {
+                                        RV rv3 = new RV(s21);
+                                        Profile profile3 = Profile.find(rv3._strR);
+                                        s16 = profile3.getEmail();
+                                    }
+                                    ainternetaddress2[k2] = new InternetAddress(s16);
+                                }
+
+                                mimemessage.addRecipients(javax.mail.Message.RecipientType.BCC, ainternetaddress2);
+                            }
+                            String s7 = message.getMessageCGroup();
+                            if (s7.length() != 0)
+                            {
+                                String s10 = "";
+                                for (StringTokenizer stringtokenizer3 = new StringTokenizer(s7, ", "); stringtokenizer3.hasMoreTokens(); )
+                                {
+                                    String s17 = stringtokenizer3.nextToken();
+                                    String s20 = CGroup.getMember(s17);
+                                    int j3 = Contact.count(s20, s17);
+                                    for (int l3 = 0; l3 < j3; l3 += j3)
+                                    {
+                                        InternetAddress ainternetaddress4[];
+                                        for (Enumeration enumeration2 = Contact.findEmails(s20, s17, l3, j3); enumeration2.hasMoreElements(); mimemessage.addRecipients(javax.mail.Message.RecipientType.TO, ainternetaddress4))
+                                        {
+                                            ainternetaddress4 = (new InternetAddress[]
+                                                    {
+                                                    new InternetAddress((String) enumeration2.nextElement())
+                                            });
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                            String s11 = message.getMessageCommunity();
+                            if (s11.length() != 0)
+                            {
+                                for (StringTokenizer stringtokenizer4 = new StringTokenizer(s11, ", "); stringtokenizer4.hasMoreTokens(); )
+                                {
+                                    String s18 = stringtokenizer4.nextToken();
+                                    int i3 = Subscriber.count(s18,"");
+                                    for (int k3 = 0; k3 < i3; k3 += i3)
+                                    {
+                                        InternetAddress ainternetaddress3[];
+                                        for (Enumeration enumeration1 = Subscriber.findEmails(s18, k3, i3); enumeration1.hasMoreElements(); mimemessage.addRecipients(javax.mail.Message.RecipientType.BCC, ainternetaddress3))
+                                        {
+                                            ainternetaddress3 = (new InternetAddress[]
+                                                    {
+                                                    new InternetAddress((String) enumeration1.nextElement())
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+                            Transport.send(mimemessage);
+                            message.sent();
+                        } catch (Exception exception4)
+                        {
+                            System.err.println(exception4 + " " + i + " from : " + rv);
+                        }
+                    }
+                } catch (Exception exception1)
+                {
+                    exception1.printStackTrace();
+                }
+                addLog("Stop");
+                System.currentTimeMillis();
+                long l1 = l + 0x1b77400L;
+                long l2 = l1 - System.currentTimeMillis();
+                if (l2 > 0L)
+                {
+                    setStatus("  Idling until " + new Date(l1));
+                    try
+                    {
+                        Thread.sleep(l2);
+                    } catch (Exception exception2)
+                    {}
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        }
+    }
+}

@@ -1,0 +1,16 @@
+/* 广告 */
+.ad{position:relative;height:225px;width:950px;z-index:10;background:url(/res/Home/structure/14113490.jpg)}
+.ad #DAOHANG_OUT_DIV{position:absolute;left:50%;top:90%}
+.ad #DAOHANG_OUT_DIV li{float:left;margin-right:10px;background:url(/res/Home/structure/14102124.png) no-repeat left top;width:10px;height:10px;text-indent:-9999em; cursor:pointer;}
+.ad #DAOHANG_OUT_DIV li.oneNewStyle{background:url(/res/Home/structure/14102122.png) no-repeat left top;}
+#NEW_OUT_DIV{display:none}
+#PHOTO_OUT_DIV{padding:5px 2px}
+#CONTENT_DIV{padding:20px 50px;line-height:200%;font-size:15px;font-family:"微软雅黑";text-align:left}
+.ad img{width:950px;height:225px;}
+.botrou{position: absolute;
+left: 0px;
+bottom: -4px;
+z-index: 1000;}
+
+.banner-2 {margin:15px auto;}
+.banner-2 img{width:950px;border:solid 1px #ddd;}

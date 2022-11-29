@@ -1,0 +1,10 @@
+.nav > li.li3 > a {
+    background: none;
+    color: #044694;
+    position: relative;
+    font-size: 19px;
+}
+
+    .nav > li.li3 > a:before{
+        display:inline-block;
+    }

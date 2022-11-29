@@ -1,0 +1,450 @@
+// Decompiled by DJ v2.9.9.60 Copyright 2000 Atanas Neshkov  Date: 2003-4-2 11:41:44
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   EditPicture.java
+
+package tea.ui.node.type.Picture;
+
+import java.io.*;
+import java.util.Date;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import tea.db.DbAdapter;
+import tea.entity.RV;
+import tea.entity.node.*;
+import tea.entity.site.License;
+import tea.entity.site.TypeAlias;
+import tea.html.*;
+import tea.htmlx.*;
+import tea.http.MultipartRequest;
+import tea.resource.Common;
+import tea.resource.Resource;
+import tea.ui.TeaServlet;
+import tea.ui.TeaSession;
+
+public class EditPicture extends TeaServlet
+{
+
+    public EditPicture()
+    {
+    }
+
+    public void service(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse)
+        throws ServletException, IOException
+    {
+        try
+        {
+            TeaSession teasession = new TeaSession(httpservletrequest);
+            if(teasession._rv == null)
+            {
+                outLogin(httpservletrequest, httpservletresponse, teasession);
+                return;
+            }
+            String s = httpservletrequest.getRequestURI();
+            boolean flag = s.substring(s.lastIndexOf("/") + 1).equals("EditPicture");
+            boolean flag1 = s.endsWith("NewBrother");
+            int i = teasession._nNode;
+            if(flag1)
+                i = Node.find(i).getFather();
+            Node node = Node.find(i);
+			Picture Picture_r=Picture.find(i);
+            String s1 = node.getCommunity();
+            int j = 0;
+            int k = 0;
+            if(flag)
+            {
+                if(!node.isCreator(teasession._rv))
+                {
+                    httpservletresponse.sendError(403);
+                    return;
+                }
+                j = node.getType();
+                k = node.getTypeAlias();
+            } else
+            {
+                j = Integer.parseInt(teasession.getParameter("Type"));
+                try
+                {
+                    k = Integer.parseInt(teasession.getParameter("TypeAlias"));
+                }
+                catch(Exception exception1) { }
+            }
+            boolean flag2 = teasession._rv.isOrganizer(s1);
+            boolean flag3 = teasession._rv.isProvider(s1, j);
+            boolean flag4 = teasession._rv.isWebMaster();
+            int l = 0;
+            if(flag)
+                l = node.getFather();
+            else
+                l = i;
+            Node node1 = Node.find(l);
+            int i1 = 0;
+            Node node2 = null;
+            if(!flag && node1.getType() == 1)
+            {
+                Category category = Category.find(l);
+                i1 = category.getTemplate();
+                node2 = Node.find(i1);
+            }
+            if(httpservletrequest.getMethod().equals("GET"))
+            {
+                Form form = new Form("foNew", "POST", s);
+                form.setMultiPart(true);
+                form.setOnSubmit("return(submitInteger(this.Sequence, '" + super.r.getString(teasession._nLanguage, "InvalidSequence") + "')" + "&&submitText(this.Subject, '" + super.r.getString(teasession._nLanguage, "InvalidSubject") + "')" + ");");
+                form.add(new HiddenField("Node", teasession._nNode));
+                form.add(new HiddenField("Type", j));
+                form.add(new HiddenField("TypeAlias", k));
+                int j1 = 0;
+                int l1 = Node.getMaxSequence(l) + 10;
+                Date date = null;
+                Date date2 = null;
+                int j2 = 0;
+                String s2 = "";
+                String s4 = "";
+                String s6 = "";
+                int l2 = 0;
+                String s8 = "";
+                String s11 = "";
+                String s13 = "";
+                String s15 = "";
+                boolean flag6 = true;
+                int j3 = 0;
+                int k3 = 0;
+				int m_r=0;
+				int c_r=0;
+				Date date_r=null;
+                if(flag)
+                {
+                    node.isHidden();
+                    j1 = node.getOptions();
+                    node.getOptions1();
+                    l1 = node.getSequence();
+                    date = node.getStartTime();
+                    date2 = node.getStopTime();
+                    j2 = node.getDefaultLanguage();
+                    s2 = node.getSubject(teasession._nLanguage);
+                    s4 = node.getKeywords(teasession._nLanguage);
+                    s6 = node.getText(teasession._nLanguage);
+                    //l2 = node.getPictureLen(teasession._nLanguage);
+				  String picturefile2 =getServletContext().getRealPath("/tea/image/node/"+i+".jpg");
+                  File file2=new File(picturefile2);
+				  l2=(int)file2.length();
+                    String s9 = node.getAlt(teasession._nLanguage);
+                    int i3 = node.getAlign(teasession._nLanguage);
+                    String s12 = node.getClickUrl(teasession._nLanguage);
+                    String s14 = node.getSrcUrl(teasession._nLanguage);
+                    String s16 = node.getSrcUrlx(teasession._nLanguage);
+                    j3 = node.getVoiceLen(teasession._nLanguage);
+                    k3 = node.getFileLen(teasession._nLanguage);
+				
+                } else
+                if(i1 != 0)
+                {
+                    j1 = node2.getOptions();
+                    j2 = node2.getDefaultLanguage();
+                } else
+                {
+                    j1 = node1.getOptions();
+                    j1 &= 0xffdffbff;
+                    if(j != 0 && j != 1)
+                        j1 |= 0x21c200;
+                    if(j == 13 || j == 12)
+                        j1 |= 0x400000;
+                    j1 |= 0x80;
+                    j2 = node1.getDefaultLanguage();
+                }
+                Table table = new Table();
+                if(k != 0)
+                    table.setCaption(TypeAlias.find(k).getName(teasession._nLanguage));
+                else
+                    table.setCaption(super.r.getString(teasession._nLanguage, Node.NODE_TYPE[j]));
+                Row row = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, " ") + " "), true));
+                Cell cell = new Cell(new Text("<br>"));
+                row.add(cell);
+                table.add(row);
+                Row row1 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Subject") + ":"), true));
+                Cell cell1 = new Cell(new TextField("Subject", s2, 70, 255));
+                row1.add(cell1);
+                table.add(row1);
+                Row row2 = new Row();
+                Cell cell2 = new Cell();
+                cell2.setColSpan(2);
+                cell2.add(new Go(teasession._nLanguage, 0));
+                row2.add(cell2);
+                table.add(row2);
+                Row row3 = new Row();
+                Cell cell3 = new Cell();
+                cell3.setColSpan(2);
+                cell3.add(new Text("<HR SIZE=1>"));
+                row3.add(cell3);
+                table.add(row3);
+                Row row4 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Keywords") + ":"), true));
+                Cell cell4 = new Cell(new TextField("Keywords", s4, 70, 255));
+                row4.add(cell4);
+                table.add(row4);
+                Row row5 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, " ") + " "), true));
+                Cell cell5 = new Cell(new Radio("TextOrHtml", 0, (j1 & 0x40) == 0));
+                cell5.add(new Text(super.r.getString(teasession._nLanguage, "TEXT")));
+                cell5.add(new Radio("TextOrHtml", 1, (j1 & 0x40) != 0));
+                cell5.add(new Text(super.r.getString(teasession._nLanguage, "HTML")));
+                row5.add(cell5);
+                table.add(row5);
+                Row row6 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Text") + ":"), true));
+                row6.add(new Cell(new TextArea("Text", s6, 8, 70)));
+                table.add(row6);
+				Row row_pic = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "       ") ), true));
+                Cell cell_pic =new Cell();
+				cell_pic.add(new Button(1, "Pictureview", super.r.getString(teasession._nLanguage, "Pictureview"), "window.open('EditPicture', '_blank');"));
+                row_pic.add(cell_pic);
+				table.add(row_pic);
+
+                Row row7 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "DefaultLanguage") + ":"), true));
+                Cell cell6 = new Cell();
+                int l4 = License.getInstance().getWebLanguages();
+                for(int i5 = 0; i5 < Common.LANGUAGE.length; i5++)
+                    if((l4 & 1 << i5) != 0)
+                    {
+                        cell6.add(new Radio("DefaultLanguage", i5, j2 == i5));
+                        cell6.add(new Text(super.r.getString(teasession._nLanguage, Common.LANGUAGE[i5])));
+                    }
+                row7.add(cell6);
+                table.add(row7);
+                Row row8 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Sequence") + ":"), true));
+                row8.add(new Cell(new TextField("Sequence", l1)));
+                table.add(row8);
+                if(j == 3 || j == 5 || j == 6 || j == 8)
+                {
+                    if(date == null)
+                    {
+                        long l5 = System.currentTimeMillis();
+                        date = new Date(l5);
+                        date2 = new Date(l5 + 0x19bfcc00L);
+                    }
+                    Row row9 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "StartTime") + ":"), true));
+                    Cell cell7 = new Cell(new TimeSelection("Start", date));
+                    row9.add(cell7);
+                    table.add(row9);
+                    Row row11 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "StopTime") + ":"), true));
+                    Cell cell9 = new Cell(new TimeSelection("Stop", date2));
+                    row11.add(cell9);
+                    table.add(row11);
+                }
+                table.add(new FileInput(teasession._nLanguage, "File", k3));
+                table.add(new FileInput(teasession._nLanguage, "Voice", j3));
+                table.add(new FileInput(teasession._nLanguage, "Picture", l2));
+                Row row10 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "media") + ":"), true));
+                Cell cell8 = new Cell();
+                DropDown dropdown = new DropDown("media",m_r);
+                DbAdapter dbadapter = new DbAdapter();
+                try
+                {   int ii=teasession._nLanguage;
+                    dbadapter.executeQuery("SELECT media_id,mname FROM media where language="+ii);
+                    String s21 = "hhh";
+                    String s22;
+                    for(; dbadapter.next(); dropdown.addOption(s22, dbadapter.getVarchar(teasession._nLanguage, 1, 2)))
+                    {
+                        Integer integer = new Integer(dbadapter.getInt(1));
+                        s22 = integer.toString();
+                    }
+
+                }
+                catch(Exception exception3)
+                {
+                    System.out.print("error!!1");
+                }
+                finally
+                {
+                    dbadapter.close();
+                }
+
+           cell8.add(dropdown);
+            String s21;
+            if(flag)
+                s21 = "1";
+            else
+                s21 = "0";
+            cell8.add(new Button(1, "fff", super.r.getString(teasession._nLanguage, "New"), "window.open('NewMedia?Node=" + i + "&model=" + s21 + "', '_self');"));
+            cell8.add(new Button(1, "fff", super.r.getString(teasession._nLanguage, "All"), "window.open('ManageMedia?Node=" + i + "&model=" + s21 + "', '_self');"));
+            cell8.add(new Break());
+            row10.add(cell8);
+            table.add(row10);
+               
+                Row row12 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "class") + ":"), true));
+                Cell cell10 = new Cell();
+                DropDown dropdown1 = new DropDown("class",c_r);
+                DbAdapter dbadapter1 = new DbAdapter();
+                try
+                {   int jj=teasession._nLanguage;
+                    dbadapter1.executeQuery("SELECT class_id,name FROM Class where language="+jj);
+                    String s23;
+                    for(; dbadapter1.next(); dropdown1.addOption(s23, dbadapter1.getVarchar(teasession._nLanguage, 1, 2)))
+                    {
+                        Integer integer1 = new Integer(dbadapter1.getInt(1));
+                        s23 = integer1.toString();
+                    }
+
+                }
+                catch(Exception exception5)
+                {
+                    System.out.print("error!!1");
+                }
+                finally
+                {
+                    dbadapter1.close();
+                }
+
+
+            cell10.add(dropdown1);
+            cell10.add(new Button(1, "fff", super.r.getString(teasession._nLanguage, "New"), "window.open('NewClass?Node=" + i + "&model=" + s21 + "', '_self');"));
+            cell10.add(new Button(1, "fff", super.r.getString(teasession._nLanguage, "All"), "window.open('ManageClasses?Node=" + i + "&model=" + s21 + "', '_self');"));
+            cell10.add(new Break());
+            row12.add(cell10);
+            table.add(row12);
+
+                
+               // Picture Picture1 = Picture.find(i);
+                Row row13 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "IssueTime") + ":"), true));
+                row13.add(new Cell(new TimeSelection("Issue", date_r)));
+                table.add(row13);
+                form.add(table);
+                PrintWriter printwriter = beginOut(httpservletresponse, teasession);
+                printwriter.print(form);
+                printwriter.print(new Script("document.foNew.Subject.focus();"));
+                printwriter.print(new Languages(teasession._nLanguage, httpservletrequest));
+                endOut(printwriter, teasession);
+                return;
+            }
+            boolean flag5 = false;
+            if(!flag && !flag2 && !flag3 && !node1.isCreator(teasession._rv))
+                if(node1.getType() != 1)
+                {
+                    flag5 = true;
+                } else
+                {
+                    if((node1.getOptions1() & 1) == 0)
+                    {
+                        httpservletresponse.sendError(403);
+                        return;
+                    }
+                    if((node1.getOptions1() & 2) != 0)
+                        flag5 = true;
+                }
+            int k1 = 2113929216;
+            if(teasession.getParameter("TextOrHtml").equals("1"))
+                k1 |= 0x40;
+            int i2 = 0;
+            try
+            {
+                i2 = Integer.parseInt(teasession.getParameter("Sequence"));
+            }
+            catch(Exception exception2) { }
+            Date date1 = TimeSelection.makeTime(teasession.getParameter("StartYear"), teasession.getParameter("StartMonth"), teasession.getParameter("StartDay"), teasession.getParameter("StartHour"), teasession.getParameter("StartMinute"));
+            Date date3 = TimeSelection.makeTime(teasession.getParameter("StopYear"), teasession.getParameter("StopMonth"), teasession.getParameter("StopDay"), teasession.getParameter("StopHour"), teasession.getParameter("StopMinute"));
+            int k2 = Integer.parseInt(teasession.getParameter("DefaultLanguage"));
+            String s3 = teasession.getParameter("Subject");
+            String s5 = teasession.getParameter("Keywords");
+            String s7 = teasession.getParameter("Text");
+            byte abyte0[] = teasession.getBytesParameter("Picture");
+            System.out.println(abyte0);
+            String s10 = null;
+            byte byte0 = 2;
+            byte abyte1[] = teasession.getBytesParameter("Voice");
+            String s17 = null;
+            String s18 = null;
+            String s19 = null;
+            String s20 = teasession.getParameter("FileName");
+            byte abyte2[] = teasession.getBytesParameter("File");
+            if(s3.length() == 0)
+                s3 = "(No subject)";
+            int l3 = i;
+            int i4 = Integer.parseInt(teasession.getParameter("media"));
+            int j4 = Integer.parseInt(teasession.getParameter("class"));
+            Date date4 = TimeSelection.makeTime(teasession.getParameter("IssueYear"), teasession.getParameter("IssueMonth"), teasession.getParameter("IssueDay"), teasession.getParameter("IssueHour"), teasession.getParameter("IssueMinute"));
+            if(flag)
+            {
+                node.set(i2, k1, k2, date1, date3, teasession._nLanguage, s3, s5, s7, teasession.getParameter("ClearPicture") != null, abyte0, s10, byte0, teasession.getParameter("ClearVoice") != null, abyte1, s17, s18, s19, teasession.getParameter("ClearFile") != null, s20, abyte2,date4);
+                 if ((teasession.getParameter("ClearPicture")== null)&&(abyte0!=null))
+			    {
+				 ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
+                 bytestream.write(abyte0);
+                 String picturefile =getServletContext().getRealPath("/tea/image/node/"+l3+".jpg");
+                 System.out.println(picturefile);  
+			     OutputStream file=new FileOutputStream(picturefile);
+			     bytestream.writeTo(file);
+		  	     file.close();
+                }
+				else
+				{
+              String picturefile1 =getServletContext().getRealPath("/tea/image/node/"+l3+".jpg");
+              File file1=new File(picturefile1);
+			  if (file1.exists()&&(teasession.getParameter("ClearPicture")!=null))
+			  {
+				  file1.delete();
+			  }
+			}
+			} else
+            {
+                int k4 = i1 == 0 ? 0 : node2.getOptions1();
+                l3 = Node.create(l, i2, s1, teasession._rv, j, k, flag5, k1, k4, k2, date1, date3, teasession._nLanguage, s3, s5, s7, abyte0, s10, byte0, abyte1, s17, s18, s19, s20, abyte2,date4);
+                if(i1 != 0)
+                    Node.clone(i1, l3, true, true, true, teasession._rv);
+           
+			 if ((teasession.getParameter("ClearPicture")== null)&&(abyte0!=null))
+			    {
+				 ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
+                 bytestream.write(abyte0);
+                 String picturefile =getServletContext().getRealPath("/tea/image/node/"+l3+".jpg");
+                 System.out.println(picturefile);  
+			     OutputStream file=new FileOutputStream(picturefile);
+			     bytestream.writeTo(file);
+		  	     file.close();
+                }
+				else
+				{
+              String picturefile1 =getServletContext().getRealPath("/tea/image/node/"+l3+".jpg");
+              File file1=new File(picturefile1);
+			  if (file1.exists()&&(teasession.getParameter("ClearPicture")!=null))
+			  {
+				  file1.delete();
+			  }
+			}
+			}
+            Picture Picture = new Picture(l3);
+            //Picture.set(l3, i4, j4, date4);
+	   if (flag)
+        {
+		String pagefile =getServletContext().getRealPath("/tea/node/N"+teasession._nNode+"L"+teasession._nLanguage+"Pnull.html");
+        File dicfile=new File(pagefile);
+       if (dicfile.exists())
+       {
+		   dicfile.delete();
+       }
+         
+        }
+            if(teasession.getParameter("GoNext") != null)
+            {
+                httpservletresponse.sendRedirect("Node?Node=" + l3);
+                return;
+            }
+            if(teasession.getParameter("GoFinish") != null)
+            {
+                httpservletresponse.sendRedirect("Node?Node=" + l3);
+                return;
+            }
+        }
+        catch(Exception exception)
+        {
+            httpservletresponse.sendError(400, exception.toString());
+            exception.printStackTrace();
+        }
+    }
+
+    public void init(ServletConfig servletconfig)
+        throws ServletException
+    {
+        super.init(servletconfig);
+        super.r.add("tea/ui/node/type/Picture/EditPicture");
+    }
+}

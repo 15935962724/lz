@@ -1,0 +1,122 @@
+package tea.ui.node.type.job;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import tea.entity.node.*;
+import tea.entity.*;
+import tea.ui.*;
+import java.util.*;
+
+public class EditJob extends TeaServlet
+{
+
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        request.setCharacterEncoding("UTF-8");
+        TeaSession teasession = new tea.ui.TeaSession(request);
+        try
+        {
+            if (request.getMethod().equals("GET"))
+            {
+                response.sendRedirect("/jsp/type/job/EditJob.jsp?node=" + teasession._nNode);
+            } else
+            {
+                String nu = request.getParameter("nexturl");
+                Node node = Node.find(teasession._nNode);
+                String subject = teasession.getParameter("subject");
+                String text = teasession.getParameter("content");
+                if (node.getType() == 1)
+                {
+                    int sequence = Node.getMaxSequence(teasession._nNode) + 10;
+                    int options1 = 0;
+                    String community = node.getCommunity();
+                    long options = node.getOptions();
+                    int defautllangauge = node.getDefaultLanguage();
+                    Category cat = Category.find(teasession._nNode);
+                    teasession._nNode = Node.create(teasession._nNode, sequence, community, teasession._rv, cat.getCategory(), false, options, options1, defautllangauge, null, null, new java.util.Date(), 0, 0, 0, 0, "",null,teasession._nLanguage, subject, "", text, null, "", 0, null, "", "", "", "", null,null);
+                    node.finished(teasession._nNode);
+                } else
+                {
+                    node.set(teasession._nLanguage, subject, text);
+                }
+
+                //
+                int reqwyearid = 0;
+                String tmp = request.getParameter("reqwyearid");
+                if (tmp != null)
+                {
+                    reqwyearid = Integer.parseInt(tmp);
+                }
+                //
+                int headcount = 0;
+                try
+                {
+                    headcount = Integer.parseInt(request.getParameter("headcount"));
+                } catch (NumberFormatException ex1)
+                {
+                }
+                //
+                StringBuffer occid = new StringBuffer("/");
+                String tmps[] = request.getParameterValues("occid");
+                if (tmps != null)
+                {
+                    for (int i = 0; i < tmps.length; i++)
+                    {
+                        occid.append(tmps[i]).append("/");
+                    }
+                }
+                //
+                StringBuffer locid = new StringBuffer("/");
+                tmps = request.getParameterValues("locid");
+                if (tmps != null)
+                {
+                    for (int i = 0; i < tmps.length; i++)
+                    {
+                        locid.append(tmps[i]).append("/");
+                    }
+                }
+                //
+                int company = Integer.parseInt(request.getParameter("company"));
+                String jobtype = request.getParameter("jobtype");
+                String adcode = teasession.getParameter("adcode");
+                Date validity = Job.sdf.parse(teasession.getParameter("validityYear") + "-" + teasession.getParameter("validityMonth") + "-" + teasession.getParameter("validityDay"));
+                String requirements = request.getParameter("requirements");
+                String salaryid = request.getParameter("salaryid");
+                String reqdegid = request.getParameter("reqdegid");
+                String name = request.getParameter("name");
+                String email = request.getParameter("email");
+                String tel = request.getParameter("tel");
+                //
+                Job job = new Job(teasession._nNode, teasession._nLanguage);
+                if (job.isExists())
+                {
+                    job.set(company, jobtype, occid.toString(), validity, headcount, salaryid, locid.toString(), reqwyearid, reqdegid, requirements, name, email, tel);
+                } else
+                {
+                    Job.create(teasession._nNode, teasession._nLanguage, company, jobtype, occid.toString(), validity, headcount, salaryid, locid.toString(), reqwyearid, reqdegid, requirements, name, email, tel);
+                }
+                node.setHidden(teasession.getParameter("save") != null || request.getParameter("Preview") != null);
+                delete(teasession._strCommunity);
+                if (request.getParameter("Preview") != null)
+                {
+                    response.sendRedirect(request.getContextPath() + "/jsp/type/job/cnoocjobpreviewedit.jsp?node=" + teasession._nNode);
+                } else if (request.getParameter("GoBack") != null)
+                {
+                    response.sendRedirect("EditNode?node=" + teasession._nNode);
+                } else
+                {
+                    if (nu == null)
+                    {
+                        nu = "/servlet/Node?node=" + teasession._nNode;
+                    }
+                    response.sendRedirect(nu);
+                }
+            }
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+}

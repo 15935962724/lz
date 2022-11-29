@@ -1,0 +1,215 @@
+package tea.entity.admin;
+
+import java.sql.*;
+import java.util.*;
+
+import tea.db.*;
+import tea.entity.*;
+import tea.entity.node.*;
+
+public class SupplierMember extends Entity
+{
+    private static Cache _cache = new Cache();
+    private String community;
+    private String member;
+    private String company;
+    private boolean exists;
+
+    public SupplierMember(String community, String member) throws SQLException
+    {
+        this.community = community;
+        this.member = member;
+        load();
+    }
+
+    public static SupplierMember find(String community, String member) throws SQLException
+    {
+        SupplierMember obj = (SupplierMember) _cache.get(community + ":" + member);
+        if (obj == null)
+        {
+            obj = new SupplierMember(community, member);
+            _cache.put(community + ":" + member, obj);
+        }
+        return obj;
+    }
+
+    public void delete() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM SupplierMember WHERE community=" + DbAdapter.cite(community) + " AND member=" + DbAdapter.cite(member));
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public void set(String company) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("UPDATE SupplierMember SET company=" + DbAdapter.cite(company) + " WHERE community=" + DbAdapter.cite(community) + " AND member=" + DbAdapter.cite(member));
+        } finally
+        {
+            db.close();
+        }
+        this.company = company;
+    }
+
+    public static void create(String community, String member, String company) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("INSERT INTO SupplierMember (community,member,company) VALUES (" + DbAdapter.cite(community) + "," + DbAdapter.cite(member) + "," + DbAdapter.cite(company) + ")");
+        } finally
+        {
+            db.close();
+        }
+        _cache.remove(community + ":" + member);
+    }
+
+    private void load() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT company FROM SupplierMember WHERE community=" + DbAdapter.cite(community) + " AND member=" + DbAdapter.cite(member));
+            if (db.next())
+            {
+                company = db.getString(1);
+                exists = true;
+            } else
+            {
+                company = "/";
+                exists = false;
+            }
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public static Enumeration find(String community, String sql, int pos, int size) throws SQLException
+    {
+        Vector v = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT member FROM SupplierMember WHERE community=" + DbAdapter.cite(community) + sql);
+            while (db.next())
+            {
+                v.addElement(db.getString(1));
+            }
+        } finally
+        {
+            db.close();
+        }
+        return v.elements();
+    }
+
+    //旗下有权限管理的公司///////
+    public String toHtmlCompany(int language, int dv) throws SQLException
+    {
+        String cexs[] = getCompanyEx().split("/");
+        StringBuffer sb = new StringBuffer();
+        sb.append("<SELECT NAME=company ><OPTION VALUE=''>-------------------------");
+        for (int i = 1; i < cexs.length; i++)
+        {
+            int node = Integer.parseInt(cexs[i]);
+            sb.append("<OPTION VALUE=").append(node);
+            if (node == dv)
+            {
+                sb.append(" SELECTED ");
+            }
+            sb.append(">").append(Node.find(node).getSubject(language));
+        }
+        sb.append("</SELECT>");
+        return sb.toString();
+    }
+
+    //旗下有权限管理的职位///////
+    public String toHtmlJob(int language, int dv) throws SQLException
+    {
+        String cex = getCompanyEx();
+
+        StringBuffer sb = new StringBuffer();
+        sb.append("<SELECT NAME=job ><OPTION VALUE=''>-------------------------");
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT node FROM Job WHERE orgid IN(" + cex.substring(1, cex.length() - 1).replaceAll("/", ",") + ")");
+            while (db.next())
+            {
+                int node = db.getInt(1);
+                Node n = Node.find(node);
+                if (n.getTime() != null)
+                {
+                    sb.append("<OPTION VALUE=").append(node);
+                    if (node == dv)
+                    {
+                        sb.append(" SELECTED ");
+                    }
+                    sb.append(">").append(n.getSubject(language));
+                }
+            }
+        } finally
+        {
+            db.close();
+        }
+        sb.append("</SELECT>");
+        return sb.toString();
+    }
+
+    public String getCompanyEx() throws SQLException
+    {
+        StringBuffer sb = new StringBuffer();
+        sb.append("/");
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT node FROM Node WHERE community=" + DbAdapter.cite(community) + " AND type=21 AND ( vcreator=" + DbAdapter.cite(member) + " OR node IN(" + company.substring(1, company.length() - 1).replaceAll("/", ",") + ") )");
+            while (db.next())
+            {
+                sb.append(db.getInt(1)).append("/");
+            }
+        } finally
+        {
+            db.close();
+        }
+        return sb.toString();
+    }
+
+    public boolean isExists()
+    {
+        return exists;
+    }
+
+    public String getCommunity()
+    {
+        return community;
+    }
+
+    public String getMember()
+    {
+        return member;
+    }
+
+    public String getCompany()
+    {
+        return company;
+    }
+
+    public String getCompanyToHtml(int language) throws SQLException
+    {
+        StringBuffer sb = new StringBuffer();
+        String arr[] = company.split("/");
+        for (int h = 1; h < arr.length; h++)
+        {
+            sb.append(Node.find(Integer.parseInt(arr[h])).getSubject(language)).append(",");
+        }
+        return sb.toString();
+    }
+}

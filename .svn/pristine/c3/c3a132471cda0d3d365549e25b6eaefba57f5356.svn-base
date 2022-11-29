@@ -1,0 +1,35 @@
+#
+StartTime=Staring Time
+EndTime=Ending Time
+AddMoney=Refill Amount
+InvalidMoney=Invalid Amount
+Count=Sending Times
+Balance=Residue Amount
+BalanceLack=No Enough Value Left
+SendSMS=Sending Message
+Number=Mobile Phone Number
+1172546539508=Save to 'Messaging Record'
+1172546424077=Residual Words Amount
+ServiceStop=Messaging Service has been restricted by Administrator
+Signature=Label
+Startup=Start
+Stop=Stop
+Autor=Automatic Reply
+ConfirmCodeError=Code Verification Error
+Validate=Validating Code
+RecieveList=Reply Record List 
+SendList=Sending Record List 
+NoValidity=Expire
+AutorStartup=Automatic Reply Turned on Successfully
+SendSucceed=Sending Successfully
+Subnumber=Child Number
+SetMobile=Modify Mobile Phone Number
+
+SMSEnterCode=Configure Company Number
+
+1172549329635=Company Indexing Number
+1172549426366=Special Service Number
+1172560582440=IC Card Number
+1172561523654=China Mobile Card Number
+1172561523655=Chine Unicom Card Number
+1172561761638=Remaining Messaging Amount

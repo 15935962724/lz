@@ -1,0 +1,233 @@
+// Decompiled by DJ v2.9.9.60 Copyright 2000 Atanas Neshkov  Date: 2004-04-01 16:49:08
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   EditBook.java
+
+package tea.ui.node.type.book;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.math.BigDecimal;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import tea.entity.RV;
+import tea.entity.member.Profile;
+import tea.entity.node.*;
+import tea.html.*;
+import tea.htmlx.*;
+import tea.http.RequestHelper;
+import tea.resource.Resource;
+import tea.ui.TeaServlet;
+import tea.ui.TeaSession;
+
+public class EditBook extends TeaServlet
+{
+
+    public EditBook()
+    {
+    }
+
+    public void service(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse)
+        throws ServletException, IOException
+    {
+        try
+        {
+            TeaSession teasession = new TeaSession(httpservletrequest);
+            if(teasession._rv == null)
+            {
+                outLogin(httpservletrequest, httpservletresponse, teasession);
+                return;
+            }
+            Node node = Node.find(teasession._nNode);
+            if(!node.isCreator(teasession._rv))
+            {
+                httpservletresponse.sendError(403);
+                return;
+            }
+            Book book = Book.find(teasession._nNode);
+            if(httpservletrequest.getMethod().equals("GET"))
+            {
+                Form form = new Form("foEdit", "POST", "/servlet/EditBook");
+                form.setOnSubmit("return(submitText(this.ISBN, '" + super.r.getString(teasession._nLanguage, "InvalidISBN") + "')" + "&&submitInteger(this.AmountWord, '" + super.r.getString(teasession._nLanguage, "InvalidAmountWord") + "')" + "&&submitInteger(this.AmountPage, '" + super.r.getString(teasession._nLanguage, "InvalidAmountPage") + "')" + "&&submitFloat(this.Price, '" + super.r.getString(teasession._nLanguage, "InvalidPrice") + "')" + "&&submitInteger(this.Reprint, '" + super.r.getString(teasession._nLanguage, "InvalidReprint") + "')" + "&&submitText(this.Publisher, '" + super.r.getString(teasession._nLanguage, "InvalidPublisher") + "')" + ");");
+                form.add(new HiddenField("Node", teasession._nNode));
+                Table table = new Table();
+                Row row = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "ISBN") + ":"), true));
+                row.add(new Cell(new TextField("ISBN", book.getISBN(), 40, 40)));
+                table.add(row);
+                Row row1 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Format") + ":"), true));
+                DropDown dropdown = new DropDown("Format", book.getFormat());
+                for(int i1 = 0; i1 < Book.BOOK_FORMAT.length; i1++)
+                    dropdown.addOption(i1, super.r.getString(teasession._nLanguage, Book.BOOK_FORMAT[i1]));
+
+                row1.add(new Cell(dropdown));
+                table.add(row1);
+                Row row2 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Binding") + ":"), true));
+                DropDown dropdown1 = new DropDown("Binding", book.getBinding());
+                for(int j1 = 0; j1 < Book.BOOK_BINDING.length; j1++)
+                    dropdown1.addOption(j1, super.r.getString(teasession._nLanguage, Book.BOOK_BINDING[j1]));
+
+                row2.add(new Cell(dropdown1));
+                table.add(row2);
+                Row row3 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "AmountWord") + ":"), true));
+                row3.add(new Cell(new TextField("AmountWord", Integer.toString(book.getAmountWord()))));
+                table.add(row3);
+                Row row4 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "AmountPage") + ":"), true));
+                row4.add(new Cell(new TextField("AmountPage", book.getAmountPage())));
+                table.add(row4);
+                Row row5 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Price") + ":"), true));
+                row5.add(new Cell(new TextField("Price", book.getPrice())));
+                table.add(row5);
+                Row row6 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "PublishDate") + ":"), true));
+                row6.add(new Cell(new TimeSelection("Publish", book.getPublishDate(), false, false)));
+                table.add(row6);
+                Row row7 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Reprint") + ":"), true));
+                row7.add(new Cell(new TextField("Reprint", book.getReprint())));
+                table.add(row7);
+                Row row8 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "SubTitle") + ":"), true));
+                row8.add(new Cell(new TextField("SubTitle", book.getSubTitle(teasession._nLanguage), 60, 255)));
+                table.add(row8);
+                Row row9 = new Row(new Cell(new Anchor("Search?Type=" + 23, "_blank", new Text(super.r.getString(teasession._nLanguage, "Publisher") + ":")), true));
+                row9.add(new Cell(new TextField("Publisher", book.getPublisher(teasession._nLanguage), 40, 40)));
+                table.add(row9);
+                Row row10 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "CIPI") + ":"), true));
+                row10.add(new Cell(new TextField("CIPI", book.getCIPI(teasession._nLanguage), 40, 40)));
+                table.add(row10);
+                Row row11 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "CIPII") + ":"), true));
+                row11.add(new Cell(new TextField("CIPII", book.getCIPII(teasession._nLanguage), 40, 40)));
+                table.add(row11);
+                Row row12 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "CIPIII") + ":"), true));
+                row12.add(new Cell(new TextField("CIPIII", book.getCIPIII(teasession._nLanguage), 60, 255)));
+                table.add(row12);
+                Row row13 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "CIPIV") + ":"), true));
+                row13.add(new Cell(new TextField("CIPIV", book.getCIPIV(teasession._nLanguage), 60, 255)));
+                table.add(row13);
+                Row row14 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Reader") + ":"), true));
+                row14.add(new Cell(new TextField("Reader", book.getReader(teasession._nLanguage), 60, 255)));
+                table.add(row14);
+                Row row15 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Collection") + ":"), true));
+                row15.add(new Cell(new TextField("Collection", book.getCollection(teasession._nLanguage), 60, 255)));
+                table.add(row15);
+                Row row16 = new Row(new Cell(new Text(super.r.getString(teasession._nLanguage, "Annotation") + ":"), true));
+                row16.add(new Cell(new TextField("Annotation", book.getAnnotation(teasession._nLanguage), 60, 255)));
+                table.add(row16);
+                form.add(table);
+                form.add(new Go(teasession._nLanguage, 1));
+                PrintWriter printwriter = beginOut(httpservletresponse, teasession);
+                printwriter.print(node.getAncestor(teasession._nLanguage, "Path"));
+                printwriter.print(form);
+                printwriter.print(new Script("document.foEdit.ISBN.focus();"));
+                printwriter.print(new Languages(teasession._nLanguage, httpservletrequest));
+                endOut(printwriter, teasession);
+            } else
+            {
+                String s = httpservletrequest.getParameter("ISBN");
+                if(s.length() == 0)
+                {
+                    outText(httpservletresponse, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidISBN"));
+                    return;
+                }
+                int i = Integer.parseInt(httpservletrequest.getParameter("Format"));
+                int j = 0;
+                try
+                {
+                    j = Integer.parseInt(httpservletrequest.getParameter("AmountWord"));
+                }
+                catch(Exception _ex)
+                {
+                    outText(httpservletresponse, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidAmountWord"));
+                    return;
+                }
+                int k = 0;
+                try
+                {
+                    k = Integer.parseInt(httpservletrequest.getParameter("AmountPage"));
+                }
+                catch(Exception _ex)
+                {
+                    outText(httpservletresponse, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidAmountPage"));
+                    return;
+                }
+                int l = Integer.parseInt(httpservletrequest.getParameter("Binding"));
+                BigDecimal bigdecimal = null;
+                try
+                {
+                    bigdecimal = new BigDecimal(httpservletrequest.getParameter("Price"));
+                }
+                catch(Exception _ex)
+                {
+                    outText(httpservletresponse, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidPrice"));
+                    return;
+                }
+                java.util.Date date = TimeSelection.makeTime(httpservletrequest.getParameter("PublishYear"), httpservletrequest.getParameter("PublishMonth"), httpservletrequest.getParameter("PublishDay"), httpservletrequest.getParameter("PublishHour"), httpservletrequest.getParameter("PublishMonth"));
+                int k1 = 0;
+                try
+                {
+                    k1 = Integer.parseInt(httpservletrequest.getParameter("Reprint"));
+                }
+                catch(Exception _ex)
+                {
+                    outText(httpservletresponse, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidReprint"));
+                    return;
+                }
+                String s1 = httpservletrequest.getParameter("SubTitle");
+                String s2 = httpservletrequest.getParameter("Publisher");
+                if(s2.length() == 0)
+                {
+                    outText(httpservletresponse, teasession._nLanguage, super.r.getString(teasession._nLanguage, "InvalidPublisher"));
+                    return;
+                }
+                String s3 = httpservletrequest.getParameter("CIPI");
+                String s4 = httpservletrequest.getParameter("CIPII");
+                String s5 = httpservletrequest.getParameter("CIPIII");
+                String s6 = httpservletrequest.getParameter("CIPIV");
+                String s7 = httpservletrequest.getParameter("Reader");
+                String s8 = httpservletrequest.getParameter("Collection");
+                String s9 = httpservletrequest.getParameter("Annotation");
+                book.set(s, i, j, k, l, bigdecimal, date, k1, teasession._nLanguage, s1, s2, s3, s4, s5, s6, s7, s8, s9);
+                if(bigdecimal.compareTo(new BigDecimal(0.0D)) != 0)
+                {
+                    int l1 = Node.findCategorySon(teasession._nNode, 4);
+                    if(l1 == 0)
+                    {
+                        int i2 = Node.create(teasession._nNode, 0, node.getCommunity(), teasession._rv, 1, 0, false, node.getOptions() | 0x40000, 0, node.getDefaultLanguage(), null, null, teasession._nLanguage, super.r.getString(teasession._nLanguage, Node.NODE_TYPE[4]), null, null, null, null, 0, null);
+                        Category category = Category.find(i2);
+                        category.set(4, 0, 0);
+                        Profile profile = Profile.find(teasession._rv._strR);
+                        String s10 = profile.getOrganization(teasession._nLanguage);
+                        if(s10.length() == 0)
+                            s10 = RequestHelper.makeName(teasession._nLanguage, profile.getFirstName(teasession._nLanguage), profile.getLastName(teasession._nLanguage));
+                        int j2 = Node.create(i2, 0, node.getCommunity(), teasession._rv, 4, 0, false, node.getOptions() | 0x40000, 0, node.getDefaultLanguage(), null, null, teasession._nLanguage, s10, null, null, null, null, 0, null);
+                        if(j2 != 0)
+                        {
+                            Commodity commodity = Commodity.find(j2);
+                            commodity.set(s, "", 0, 1000, 0, 0, 0);
+                            BigDecimal bigdecimal1 = bigdecimal.multiply(new BigDecimal("0.9"));
+                            BuyPrice.create(j2, 1, bigdecimal, bigdecimal, bigdecimal1);
+                            BigDecimal bigdecimal2 = bigdecimal.multiply(new BigDecimal("0.67"));
+                            BigDecimal bigdecimal3 = bigdecimal2.multiply(new BigDecimal("0.9"));
+                            BuyPrice.create(j2, 0, bigdecimal2, bigdecimal2, bigdecimal3);
+                        }
+                    }
+                }
+                if(httpservletrequest.getParameter("GoBack") != null)
+                    httpservletresponse.sendRedirect("EditNode?Node=" + teasession._nNode);
+                else
+                if(httpservletrequest.getParameter("GoFinish") != null)
+                    httpservletresponse.sendRedirect("Node?Node=" + teasession._nNode + "&Edit=ON");
+            }
+        }
+        catch(Exception exception)
+        {
+            httpservletresponse.sendError(400, exception.toString());
+            exception.printStackTrace();
+        }
+    }
+
+    public void init(ServletConfig servletconfig)
+        throws ServletException
+    {
+        super.init(servletconfig);
+        super.r.add("tea/ui/node/type/book/EditBook");
+    }
+}

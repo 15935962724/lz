@@ -1,0 +1,1595 @@
+package tea.entity.member;
+
+import java.util.*;
+import tea.db.DbAdapter;
+import tea.entity.*;
+import tea.entity.admin.*;
+import tea.translator.Translator;
+import java.sql.SQLException;
+
+public class Message extends Entity
+{
+    public static final int MSGT_ALL = 1;
+    public static final int MSGS_SENT = 0;
+    public static final int MSGS_DRAFT = 2; // 草稿箱
+    public static final int MSGS_TRASH = 4;
+    public static final int MSGS_DELETED = 8;
+    public static final int MSGO_DRAFT = 1;
+    public static final int MSGO_TICKER = 1;
+    public static final int MSGO_SENDEMAILALSO = 2;
+    private int _nMessage;
+    private String _strCommunity;
+    private RV _rvFrom;
+    private String _strFEmail; // 如果会员没有登陆,则记录发送者的email
+    private Date _time;
+    private boolean _bType; // 发送给所有的会员
+    private int _nHint;
+    private int _nOptions;
+    private int _nStatus;
+    private String _strToUnit;
+    private String _strToRole;
+    private int _nLanguage;
+    private boolean _blLoaded;
+    private static Cache _cache = new Cache();
+    private Hashtable _htLayer;
+    private Hashtable _htAttachment;
+
+    class Layer
+    {
+        Layer()
+        {
+        }
+
+        public String _strSubject;
+        public String _strContent;
+        public String _strPicture;
+        public String _strVoice;
+        public String _strFileName;
+        public String _strFilePath;
+    }
+
+
+    class Attachment
+    {
+        Attachment()
+        {
+
+        }
+
+        public String filename;
+        public String filepath;
+    }
+
+
+    private Message(int i)
+    {
+        _htLayer = new Hashtable();
+        _htAttachment = new Hashtable();
+        _nMessage = i;
+        _blLoaded = false;
+    }
+
+    public static Message find(int i)
+    {
+        Message message = (Message) _cache.get(new Integer(i));
+        if (message == null)
+        {
+            message = new Message(i);
+            _cache.put(new Integer(i), message);
+        }
+        return message;
+    }
+
+    private void load() throws SQLException
+    {
+        if (!_blLoaded)
+        {
+            DbAdapter db = new DbAdapter();
+            try
+            {
+                db.executeQuery("SELECT community, frmember, fvmember, femail, time, type, hint, options, status, tounit, torole, language FROM Message WHERE message=" + _nMessage);
+                if (db.next())
+                {
+                    _strCommunity = db.getString(1);
+                    _rvFrom = new RV(db.getString(2), db.getString(3));
+                    _strFEmail = db.getString(4);
+                    _time = db.getDate(5);
+                    _bType = db.getInt(6) != 0;
+                    _nHint = db.getInt(7);
+                    _nOptions = db.getInt(8);
+                    _nStatus = db.getInt(9);
+                    _strToUnit = db.getString(10);
+                    _strToRole = db.getString(11);
+                    _nLanguage = db.getInt(12);
+                }
+            } finally
+            {
+                db.close();
+            }
+            _blLoaded = true;
+        }
+    }
+
+    private Layer getLayer(int i) throws SQLException
+    {
+        Layer layer = (Layer) _htLayer.get(new Integer(i));
+        if (layer == null)
+        {
+            layer = new Layer();
+            DbAdapter db = new DbAdapter();
+            try
+            {
+                db.executeQuery("SELECT subject,content,picture,voice,filename,filepath FROM Message WHERE message=" + _nMessage);
+                if (db.next())
+                {
+                    layer._strSubject = db.getVarchar(_nLanguage, i, 1);
+                    layer._strContent = db.getVarchar(_nLanguage, i, 2);
+                    layer._strPicture = db.getString(3);
+                    layer._strVoice = db.getString(4);
+                    layer._strFileName = db.getVarchar(_nLanguage, i, 5);
+                    layer._strFilePath = db.getString(6);
+                }
+            } finally
+            {
+                db.close();
+            }
+            _htLayer.put(new Integer(i), layer);
+        }
+        return layer;
+    }
+
+    public String getCommunity() throws SQLException
+    {
+        load();
+        return _strCommunity;
+    }
+
+    public RV getFrom() throws SQLException
+    {
+        load();
+        return _rvFrom;
+    }
+
+    public String getFEmail() throws SQLException
+    {
+        load();
+        return _strFEmail;
+    }
+
+    public Date getTime() throws SQLException
+    {
+        load();
+        return _time;
+    }
+
+    public String getTimeToString() throws SQLException
+    {
+        load();
+        return sdf2.format(_time);
+    }
+
+    public boolean isType() throws SQLException
+    {
+        load();
+        return _bType;
+    }
+
+    public int getHint() throws SQLException
+    {
+        load();
+        return _nHint;
+    }
+
+    public int getOptions() throws SQLException
+    {
+        load();
+        return _nOptions;
+    }
+
+    public int getStatus() throws SQLException
+    {
+        load();
+        return _nStatus;
+    }
+
+    public String getToUnit() throws SQLException
+    {
+        load();
+        return _strToUnit;
+    }
+
+    public String getToRole() throws SQLException
+    {
+        load();
+        return _strToRole;
+    }
+
+    public int getLanguage() throws SQLException
+    {
+        load();
+        return _nLanguage;
+    }
+
+    public String getSubject(int i) throws SQLException
+    {
+        load();
+        return getLayer(i)._strSubject;
+    }
+
+    public String getContent(int i) throws SQLException
+    {
+        load();
+        return getLayer(i)._strContent;
+    }
+
+    public String getPicture(int language) throws SQLException
+    {
+        load();
+        return getLayer(language)._strPicture;
+    }
+
+    public String getVoice(int language) throws SQLException
+    {
+        load();
+        return getLayer(language)._strVoice;
+    }
+
+    public String getFileName(int language) throws SQLException
+    {
+        load();
+        return getLayer(language)._strFileName;
+    }
+
+    public String getFilePath(int language) throws SQLException
+    {
+        load();
+        return getLayer(language)._strFilePath;
+    }
+
+    public static int create(String community, RV from, String to, int language, String subject, String content) throws SQLException
+    {
+        return create(community, from, null, false, 0, 0, 0, to, "/", "/", "/", "/", language, subject, content, null, null, null, null);
+    }
+
+    public static int create(String community, RV rv, String femail, boolean type, int hint, int options, int status, String to, String tounit, String torole, String togroup, String tocommunity, int language, String subject, String content, String picture, String voice, String filename, String filepath) throws SQLException
+    {
+        int l1 = 0;
+        String frmember = null, fvmember = null;
+        if (rv != null)
+        {
+            frmember = rv._strR;
+            fvmember = rv._strV;
+        }
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("INSERT INTO Message(community,frmember, fvmember, femail, time, type, hint, options, status, tounit, torole, togroup, tocommunity, language, subject, content, picture, voice, filename, filepath) VALUES(" + DbAdapter.cite(community) + ", " + DbAdapter.cite(frmember) + ", " + DbAdapter.cite(fvmember) + ", " + DbAdapter.cite(femail) + ", " + db.cite(new Date()) + ", " + DbAdapter.cite(type) + ", " + hint + ", " + options + ", " + status + ", " + DbAdapter.cite(tounit)
+                             + ", " + DbAdapter.cite(torole) + ", " + DbAdapter.cite(togroup) + ", " + DbAdapter.cite(tocommunity) + ", " + language + ", " + DbAdapter.cite(subject) + ", " + DbAdapter.cite(content) + ", " + DbAdapter.cite(picture) + ", " + DbAdapter.cite(voice) + ", " + DbAdapter.cite(filename) + ", " + DbAdapter.cite(filepath) + ")");
+            l1 = db.getInt("SELECT MAX(message) FROM Message");
+        } finally
+        {
+            db.close();
+        }
+        find(l1);
+        createMessageTo(l1, to, null);
+        /*
+         * if (strCc != null && strCc.length() > 0) { createMessageCc(l1, strCc, null); } if (strBcc != null && strBcc.length() > 0) { createMessageBcc(l1, strBcc, null); } createMessageCGroup(l1, vector); createMessageCommunity(l1, vector1); createMessagePM(l1, position, manager);
+         */
+        return l1;
+    }
+
+    public static void set(int message, int j, int k, int l, int i1, int j1, String s, String s1, String picture, String voice, String filename, String filepath, String s3, String s4, String s5, Vector vector, Vector vector1, int k1, int l1) throws SQLException
+    {
+        StringBuffer sql = new StringBuffer();
+        sql.append("UPDATE Message SET type=").append(j).append(",hint=").append(k).append(",options=").append(l).append(",status=").append(i1).append(",language=").append(j1).append(",subject=").append(DbAdapter.cite(s)).append(",content=").append(DbAdapter.cite(s1));
+        if (picture != null)
+        {
+            sql.append(",picture=").append(DbAdapter.cite(picture));
+        }
+        if (voice != null)
+        {
+            sql.append(",voice=").append(DbAdapter.cite(voice));
+        }
+        if (picture != null)
+        {
+            sql.append(",filename=").append(DbAdapter.cite(filename)).append(",filepath=").append(DbAdapter.cite(filepath));
+        }
+        sql.append(" WHERE message=").append(message);
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate(sql.toString());
+        } catch (Exception exception3)
+        {
+            throw new SQLException(exception3.toString());
+        } finally
+        {
+            db.close();
+        }
+        _cache.remove(new Integer(message));
+        setMessageTo(message, s3, null);
+        setMessageCc(message, s4, null);
+        setMessageBcc(message, s5, null);
+        setMessageCGroup(message, vector);
+        setMessageCommunity(message, vector1);
+        setMessagePM(message, k1, l1);
+    }
+
+    public void sent() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("UPDATE Message SET options=0 WHERE message=" + _nMessage);
+        } finally
+        {
+            db.close();
+        }
+        _cache.remove(new Integer(_nMessage));
+    }
+
+    public void trash(RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("UPDATE Message SET status=4 WHERE frmember=" + DbAdapter.cite(rv._strR) + " AND fvmember=" + DbAdapter.cite(rv._strV) + " AND message=" + _nMessage);
+            MessageReader.trash(_nMessage, rv);
+        } finally
+        {
+            db.close();
+        }
+        _cache.remove(new Integer(_nMessage));
+    }
+
+    public void delete(RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("UPDATE Message SET status=8 WHERE frmember=" + DbAdapter.cite(rv._strR) + " AND fvmember=" + DbAdapter.cite(rv._strV) + " AND message=" + _nMessage);
+            MessageReader.delete(_nMessage, rv);
+        } finally
+        {
+            db.close();
+        }
+        this._nStatus = 8;
+        // _cache.remove(new Integer(_nMessage));
+    }
+
+    public static void trashAll(String s, RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            if (s.equals("Sent"))
+            {
+                db.executeUpdate("UPDATE Message SET status=4 WHERE frmember=" + DbAdapter.cite(rv._strR) + " AND status=" + 0);
+            } else if (s.equals("Draft"))
+            {
+                db.executeUpdate("UPDATE Message SET status=4 WHERE frmember=" + DbAdapter.cite(rv._strR) + " AND status=" + 2);
+            }
+            MessageReader.trashAll(rv, s);
+        } finally
+        {
+            db.close();
+        }
+        _cache.clear();
+    }
+
+    public static void deleteAll(String s, RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            if (s.equals("Sent"))
+            {
+                db.executeUpdate("UPDATE Message SET status=8 WHERE frmember=" + DbAdapter.cite(rv._strR) + " AND status=" + 0);
+            } else if (s.equals("Draft"))
+            {
+                db.executeUpdate("UPDATE Message SET status=8 WHERE frmember=" + DbAdapter.cite(rv._strR) + " AND status=" + 2);
+            } else if (s.equals("Trash"))
+            {
+                db.executeUpdate("UPDATE Message SET status=8 WHERE frmember=" + DbAdapter.cite(rv._strR) + " AND status=" + 4);
+            }
+            MessageReader.deleteAll(rv, s);
+        } finally
+        {
+            db.close();
+        }
+        _cache.clear();
+    }
+
+    public static String getSql(String community, String folder, RV rv) throws SQLException
+    {
+        AdminUsrRole aur = AdminUsrRole.find(community, rv._strR);
+        boolean flag = rv.isSupport();
+        StringBuffer sql = new StringBuffer();
+        if (folder.equals("Inbox")) // 收件箱
+        {
+            sql.append(" FROM Message WHERE ");
+            sql.append("( ");
+            sql.append("  status<>2");
+            // sql.append(" AND (options&1 = 0) ");//oracle:bitand
+            sql.append("  AND ( type=1");
+            // /to
+            sql.append(" OR ( EXISTS (SELECT DISTINCT message FROM MessageTo WHERE Message.message=MessageTo.message AND rmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND vmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append("))");
+
+            // 部门
+            sql.append(" OR tounit LIKE ").append(DbAdapter.cite("%/" + aur.getUnit() + "/%"));
+
+            // 角色
+            String roles[] = aur.getRole().split("/");
+            for (int i = 1; i < roles.length; i++)
+            {
+                sql.append(" OR torole LIKE ").append(DbAdapter.cite("%/" + roles[i] + "/%"));
+            }
+
+            // CGroup
+            sql.append(" OR ( EXISTS (SELECT DISTINCT message FROM MessageCGroup, Contact WHERE Message.message=MessageCGroup.message AND Message.frmember=Contact.member AND MessageCGroup.cgroup=Contact.cgroup AND (Contact.rmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND Contact.vmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append(") ))");
+            // MessageCommunity
+            sql.append(" OR ( EXISTS (SELECT DISTINCT message FROM MessageCommunity, ").append(DbAdapter.citeTab("Subscriber")).append(" s WHERE Message.message=MessageCommunity.message AND MessageCommunity.community=s.community AND (s.rmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND s.vmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append(") )");
+
+            sql.append(" ) ) ");
+
+            // MessageReader
+            sql.append("  AND ");
+            sql.append("  message NOT IN ");
+            sql.append("  ( ");
+            sql.append("    SELECT Message.message FROM Message, MessageReader WHERE Message.message=MessageReader.message AND MessageReader.rmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND MessageReader.vmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append(" AND ( MessageReader.status=4 OR MessageReader.status=8 )  ) ");
+            sql.append(") ");
+        } else if (folder.equals("Trash")) // 垃圾桶
+        {
+            sql.append(" FROM Message WHERE ");
+            // 发送者是当前会员 && 状态==垃圾桶
+            sql.append(" ( frmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND fvmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append(" AND status=4 )");
+            // /
+            sql.append(" OR ( ");
+            sql.append("  status<>2");
+            // sql.append(" AND (options&1 = 0) ");//oracle:bitand
+            sql.append("  AND ( type=1");
+            // /to
+            sql.append(" OR ( EXISTS (SELECT DISTINCT message FROM MessageTo WHERE Message.message=MessageTo.message AND rmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND vmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append("))");
+
+            // 部门
+            sql.append(" OR tounit LIKE ").append(DbAdapter.cite("%/" + aur.getUnit() + "/%"));
+
+            // 角色
+            String roles[] = aur.getRole().split("/");
+            for (int i = 1; i < roles.length; i++)
+            {
+                sql.append(" OR torole LIKE ").append(DbAdapter.cite("%/" + roles[i] + "/%"));
+            }
+
+            // CGroup
+            sql.append(" OR ( EXISTS (SELECT DISTINCT message FROM MessageCGroup, Contact WHERE Message.message=MessageCGroup.message AND Message.frmember=Contact.member AND MessageCGroup.cgroup=Contact.cgroup AND (Contact.rmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND Contact.vmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append(") ))");
+            // MessageCommunity
+            sql.append(" OR ( EXISTS (SELECT DISTINCT message FROM MessageCommunity, ").append(DbAdapter.citeTab("Subscriber")).append(" s WHERE Message.message=MessageCommunity.message AND MessageCommunity.community=s.community AND (s.rmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND s.vmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append(") )");
+
+            sql.append(" ) ) ");
+
+            // MessageReader
+            sql.append("  AND ");
+            sql.append("  message NOT IN ");
+            sql.append("  ( ");
+            sql.append("    SELECT Message.message FROM Message, MessageReader WHERE ( Message.message=MessageReader.message AND MessageReader.rmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND MessageReader.vmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append(" AND ( MessageReader.status=0 OR MessageReader.status=8 ) ) OR Message.message<>MessageReader.message  ) ");
+            sql.append(") ");
+            // //
+            sql.append(" OR ");
+            sql.append(" ( ");
+            sql.append("   message IN ");
+            sql.append("   ( ");
+            sql.append("     SELECT Message.message FROM Message, MessageReader WHERE Message.message=MessageReader.message AND MessageReader.rmember=" + DbAdapter.cite(rv._strR) + (flag ? "" : " AND MessageReader.vmember=" + DbAdapter.cite(rv._strV)) + " AND MessageReader.status=" + 4);
+            sql.append("   ) ");
+            sql.append(" ) ");
+        } else if (folder.equals("Sent")) // 发件箱
+        {
+            sql.append(" FROM Message WHERE frmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND fvmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append(" AND status=0 ");
+        } else if (folder.equals("Draft")) // 草稿箱
+        {
+            sql.append(" FROM Message WHERE frmember=").append(DbAdapter.cite(rv._strR));
+            if (!flag)
+            {
+                sql.append(" AND fvmember=").append(DbAdapter.cite(rv._strV));
+            }
+            sql.append(" AND status=2 ");
+        }
+        return sql.toString();
+    }
+
+    public int findNext(String community, String s, RV rv) throws SQLException
+    {
+        int i = 0;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            i = db.getInt("SELECT message " + getSql(community, s, rv) + " AND message>" + _nMessage + " ORDER BY message ASC ");
+        } finally
+        {
+            db.close();
+        }
+        return i;
+    }
+
+    public int findPrev(String community, String s, RV rv) throws SQLException
+    {
+        int i = 0;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            i = db.getInt("SELECT  message " + getSql(community, s, rv) + " AND message<" + _nMessage + " ORDER BY message DESC ");
+        } finally
+        {
+            db.close();
+        }
+        return i;
+    }
+
+    public static int count(String community, String s, RV rv) throws SQLException
+    {
+        int i = 0;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            i = db.getInt("SELECT COUNT(message) " + getSql(community, s, rv));
+        } finally
+        {
+            db.close();
+        }
+        return i;
+    }
+
+    public static int countNew(String community, String s, RV rv, Date date) throws SQLException
+    {
+        int i = 0;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            i = db.getInt("SELECT COUNT(message) " + getSql(community, s, rv) + " AND time>" + db.cite(date));
+        } finally
+        {
+            db.close();
+        }
+        return i;
+    }
+
+    public static Enumeration find(String community, String s, RV rv) throws SQLException
+    {
+        Vector vector = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT message " + getSql(community, s, rv));
+            for (int i = 0; db.next(); i++)
+            {
+                vector.addElement(new Integer(db.getInt(1)));
+            }
+        } finally
+        {
+            db.close();
+        }
+        return vector.elements();
+    }
+
+    public static Enumeration find(String community, String s, RV rv, Date date) throws SQLException
+    {
+        Vector v = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT message " + getSql(community, s, rv) + " AND time > " + db.cite(date));
+            for (int i = 0; db.next(); i++)
+            {
+                v.addElement(new Integer(db.getInt(1)));
+            }
+        } finally
+        {
+            db.close();
+        }
+        return v.elements();
+    }
+
+    public static Enumeration find(String community, String action, RV rv, String order, boolean asc, int pos, int pagesize) throws SQLException
+    {
+        Vector v = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT message " + getSql(community, action, rv) + " ORDER BY " + order + " " + (asc ? "DESC" : "ASC"));
+            for (int k = 0; k < pos + pagesize && db.next(); k++)
+            {
+                if (k >= pos)
+                {
+                    v.addElement(new Integer(db.getInt(1)));
+                }
+            }
+        } finally
+        {
+            db.close();
+        }
+        return v.elements();
+    }
+
+    public static void createMessageTo(int i, String s, RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            for (StringTokenizer stringtokenizer = new StringTokenizer(s, ", "); stringtokenizer.hasMoreTokens(); )
+            {
+                String s1 = stringtokenizer.nextToken();
+                Object obj = null;
+                Object obj1 = null;
+                if (s1.indexOf("@") != -1)
+                {
+                    String s2 = s1;
+                    if (rv != null)
+                    {
+                        db.executeUpdate("INSERT INTO MessageTo(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv._strR) + ", " + DbAdapter.cite(rv._strV) + ", " + DbAdapter.cite(s2) + ")");
+                    } else
+                    {
+                        db.executeUpdate("INSERT INTO MessageTo(message, rmember, vmember, email) VALUES(" + i + ", " + null +", " + null +", " + DbAdapter.cite(s2) + ")");
+                    }
+                } else
+                {
+                    // RV rv1 = new RV(s1, rv._strC);
+                    // if (rv1.isExisted())
+                    {
+                        db.executeUpdate("INSERT INTO MessageTo(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(s1) + ", " + DbAdapter.cite(s1) + ", " + null +")");
+                    }
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public static void setMessageTo(int i, String s, RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM MessageTo WHERE message=" + i);
+            for (StringTokenizer stringtokenizer = new StringTokenizer(s, ", "); stringtokenizer.hasMoreTokens(); )
+            {
+                String s1 = stringtokenizer.nextToken();
+                Object obj = null;
+                Object obj1 = null;
+                if (s1.indexOf("@") != -1)
+                {
+                    String s2 = s1;
+                    if (rv != null)
+                    {
+                        db.executeUpdate("INSERT INTO MessageTo(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(((RV) (obj))._strR) + ", " + DbAdapter.cite(((RV) (obj))._strV) + ", " + DbAdapter.cite(s2) + ")");
+                    } else
+                    {
+                        db.executeUpdate("INSERT INTO MessageTo(message, rmember, vmember, email) VALUES(" + i + ", " + null +", " + null +", " + DbAdapter.cite(s2) + ")");
+                    }
+                } else
+                {
+                    RV rv1 = new RV(s1);
+                    if (rv1.isExisted())
+                    {
+                        db.executeUpdate("INSERT INTO MessageTo(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv1._strR) + ", " + DbAdapter.cite(rv1._strV) + ", " + null +")");
+                    }
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public String getMessageTo() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        StringBuffer to = new StringBuffer();
+        String s7 = "";
+        int i = 0;
+        try
+        {
+            db.executeQuery("SELECT rmember, vmember, email FROM MessageTo WHERE message=" + _nMessage);
+            for (int j = 0; db.next(); j++)
+            {
+                String s2 = db.getString(1);
+                String s4 = db.getString(2);
+                String s6 = db.getString(3);
+                if (s2.length() != 0 || s6.length() != 0)
+                {
+                    if (s6.length() != 0)
+                    {
+                        s7 = s6;
+                    } else if (s2.length() != 0)
+                    {
+                        if (s2.equals(s4))
+                        {
+                            s7 = s2;
+                            i++;
+                        } else
+                        {
+                            s7 = s2 + "/" + s4;
+                            i++;
+                        }
+                    }
+                    if (i == 1)
+                    {
+                        to.append(s7);
+                    } else
+                    {
+                        to.append(", " + s7);
+                    }
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return to.toString();
+    }
+
+    public static void createMessageCc(int i, String s, RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            for (StringTokenizer stringtokenizer = new StringTokenizer(s, ", "); stringtokenizer.hasMoreTokens(); )
+            {
+                String s1 = stringtokenizer.nextToken();
+                Object obj = null;
+                Object obj1 = null;
+                if (s1.indexOf("@") != -1)
+                {
+                    String s2 = s1;
+                    if (rv != null)
+                    {
+                        db.executeUpdate("INSERT INTO MessageCc(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv._strR) + ", " + DbAdapter.cite(rv._strV) + ", " + DbAdapter.cite(s2) + ")");
+                    } else
+                    {
+                        db.executeUpdate("INSERT INTO MessageCc(message, rmember, vmember, email) VALUES(" + i + ", " + null +", " + null +", " + DbAdapter.cite(s2) + ")");
+                    }
+                } else
+                {
+                    RV rv1 = new RV(s1);
+                    if (rv1.isExisted())
+                    {
+                        db.executeUpdate("INSERT INTO MessageCc(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv1._strR) + ", " + DbAdapter.cite(rv1._strV) + ", " + null +")");
+                    }
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public static void setMessageCc(int i, String s, RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM MessageCc WHERE message=" + i);
+            for (StringTokenizer stringtokenizer = new StringTokenizer(s, ", "); stringtokenizer.hasMoreTokens(); )
+            {
+                String s1 = stringtokenizer.nextToken();
+                Object obj = null;
+                Object obj1 = null;
+                if (s1.indexOf("@") != -1)
+                {
+                    String s2 = s1;
+                    if (rv != null)
+                    {
+                        db.executeUpdate("INSERT INTO MessageCc(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv._strR) + ", " + DbAdapter.cite(rv._strV) + ", " + DbAdapter.cite(s2) + ")");
+                    } else
+                    {
+                        db.executeUpdate("INSERT INTO MessageCc(message, rmember, vmember, email) VALUES(" + i + ", " + null +", " + null +", " + DbAdapter.cite(s2) + ")");
+                    }
+                } else
+                {
+                    RV rv1 = new RV(s1);
+                    if (rv1.isExisted())
+                    {
+                        db.executeUpdate("INSERT INTO MessageCc(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv1._strR) + ", " + DbAdapter.cite(rv1._strV) + ", " + null +")");
+                    }
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public String getMessageCc() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        String s = "";
+        String s1 = "";
+        String s3 = "";
+        String s5 = "";
+        String s7 = "";
+        int i = 0;
+        try
+        {
+            db.executeQuery("SELECT rmember, vmember, email FROM MessageCc WHERE message=" + _nMessage);
+            for (int j = 0; db.next(); j++)
+            {
+                String s2 = db.getString(1);
+                String s4 = db.getString(2);
+                String s6 = db.getString(3);
+                if (s2.length() != 0 || s6.length() != 0)
+                {
+                    if (s6.length() != 0)
+                    {
+                        s7 = s6;
+                        i++;
+                    } else if (s2.length() != 0)
+                    {
+                        if (s2.equals(s4))
+                        {
+                            s7 = s2;
+                            i++;
+                        } else
+                        {
+                            s7 = s2 + "/" + s4;
+                            i++;
+                        }
+                    }
+                    if (i == 1)
+                    {
+                        s = s + s7;
+                    } else
+                    {
+                        s = s + ", " + s7;
+                    }
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return s;
+    }
+
+    public static void createMessageBcc(int i, String s, RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            for (StringTokenizer stringtokenizer = new StringTokenizer(s, ", "); stringtokenizer.hasMoreTokens(); )
+            {
+                String s1 = stringtokenizer.nextToken();
+                Object obj = null;
+                Object obj1 = null;
+                if (s1.indexOf("@") != -1)
+                {
+                    String s2 = s1;
+                    if (rv != null)
+                    {
+                        db.executeUpdate("INSERT INTO MessageBcc(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv._strR) + ", " + DbAdapter.cite(rv._strV) + ", " + DbAdapter.cite(s2) + ")");
+                    } else
+                    {
+                        db.executeUpdate("INSERT INTO MessageBcc(message, rmember, vmember, email) VALUES(" + i + ", " + null +", " + null +", " + DbAdapter.cite(s2) + ")");
+                    }
+                } else
+                {
+                    RV rv1 = new RV(s1);
+                    if (rv1.isExisted())
+                    {
+                        db.executeUpdate("INSERT INTO MessageBcc(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv1._strR) + ", " + DbAdapter.cite(rv1._strV) + ", " + null +")");
+                    }
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public static void setMessageBcc(int i, String s, RV rv) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM MessageBcc WHERE message=" + i);
+            for (StringTokenizer stringtokenizer = new StringTokenizer(s, ", "); stringtokenizer.hasMoreTokens(); )
+            {
+                String s1 = stringtokenizer.nextToken();
+                Object obj = null;
+                Object obj1 = null;
+                if (s1.indexOf("@") != -1)
+                {
+                    String s2 = s1;
+                    if (rv != null)
+                    {
+                        db.executeUpdate("INSERT INTO MessageBcc(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv._strR) + ", " + DbAdapter.cite(rv._strV) + ", " + DbAdapter.cite(s2) + ")");
+                    } else
+                    {
+                        db.executeUpdate("INSERT INTO MessageBcc(message, rmember, vmember, email) VALUES(" + i + ", " + null +", " + null +", " + DbAdapter.cite(s2) + ")");
+                    }
+                } else
+                {
+                    RV rv1 = new RV(s1);
+                    if (rv1.isExisted())
+                    {
+                        db.executeUpdate("INSERT INTO MessageBcc(message, rmember, vmember, email) VALUES(" + i + ", " + DbAdapter.cite(rv1._strR) + ", " + DbAdapter.cite(rv1._strV) + ", " + null +")");
+                    }
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public String getMessageBcc() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        String s = "";
+        String s1 = "";
+        String s3 = "";
+        String s5 = "";
+        String s7 = "";
+        int i = 0;
+        try
+        {
+            db.executeQuery("SELECT rmember, vmember, email FROM MessageBcc WHERE message=" + _nMessage);
+            for (int j = 0; db.next(); j++)
+            {
+                String s2 = db.getString(1);
+                String s4 = db.getString(2);
+                String s6 = db.getString(3);
+                if (s2.length() != 0 || s6.length() != 0)
+                {
+                    if (s6.length() != 0)
+                    {
+                        s7 = s6;
+                        i++;
+                    } else if (s2.length() != 0)
+                    {
+                        if (s2.equals(s4))
+                        {
+                            s7 = s2;
+                            i++;
+                        } else
+                        {
+                            s7 = s2 + "/" + s4;
+                            i++;
+                        }
+                    }
+                    if (i == 1)
+                    {
+                        s = s + s7;
+                    } else
+                    {
+                        s = s + ", " + s7;
+                    }
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return s;
+    }
+
+    public static void createMessageCGroup(int i, Vector vector) throws SQLException
+    {
+        if (vector != null)
+        {
+            DbAdapter db = new DbAdapter();
+            try
+            {
+                for (int j = 0; j < vector.size(); j++)
+                {
+                    String s = (String) vector.elementAt(j);
+                    db.executeUpdate("INSERT INTO MessageCGroup(message, cgroup) VALUES(" + i + ", " + DbAdapter.cite(s) + ")");
+                }
+            } catch (Exception exception)
+            {
+                exception.printStackTrace();
+            } finally
+            {
+                db.close();
+            }
+        }
+    }
+
+    public static void setMessageCGroup(int i, Vector vector) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM MessageCGroup WHERE message=" + i);
+            for (int j = 0; j < vector.size(); j++)
+            {
+                String s = (String) vector.elementAt(j);
+                db.executeUpdate("INSERT INTO MessageCGroup(message, cgroup) VALUES(" + i + ", " + DbAdapter.cite(s) + ")");
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public String getMessageCGroup() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        String s = "";
+        String s1 = "";
+        try
+        {
+            db.executeQuery("SELECT cgroup FROM MessageCGroup WHERE message=" + _nMessage);
+            for (int i = 0; db.next(); i++)
+            {
+                String s2 = db.getString(1);
+                if (s2.length() != 0)
+                {
+                    s = s + s2 + ", ";
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return s;
+    }
+
+    public static void createMessageCommunity(int i, Vector vector) throws SQLException
+    {
+        if (vector != null)
+        {
+            DbAdapter db = new DbAdapter();
+            try
+            {
+                for (int j = 0; j < vector.size(); j++)
+                {
+                    String s = (String) vector.elementAt(j);
+                    db.executeUpdate("INSERT INTO MessageCommunity(message, community) VALUES(" + i + ", " + DbAdapter.cite(s) + ")");
+                }
+            } catch (Exception exception)
+            {
+                exception.printStackTrace();
+            } finally
+            {
+                db.close();
+            }
+        }
+    }
+
+    public static void setMessageCommunity(int i, Vector vector) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM MessageCommunity WHERE message=" + i);
+            if (vector != null)
+            {
+                for (int j = 0; j < vector.size(); j++)
+                {
+                    String s = (String) vector.elementAt(j);
+                    db.executeUpdate("INSERT INTO MessageCommunity(message, community) VALUES(" + i + ", " + DbAdapter.cite(s) + ")");
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public String getMessageCommunity() throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        String s = "";
+        String s1 = "";
+        try
+        {
+            db.executeQuery("SELECT community FROM MessageCommunity WHERE message=" + _nMessage);
+            for (int i = 0; db.next(); i++)
+            {
+                String s2 = db.getString(1);
+                if (s2.length() != 0)
+                {
+                    s = s + s2 + ", ";
+                }
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return s;
+    }
+
+    public boolean isSingleRVReceiver(RV rv) throws SQLException
+    {
+        boolean flag = false;
+        int j = 0;
+        int k = 0;
+        int l = 0;
+        boolean flag1 = false;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT COUNT(rmember) FROM MessageTo  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                j = db.getInt(1);
+            }
+            db.executeQuery("SELECT COUNT(rmember) FROM MessageCc  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                k = db.getInt(1);
+            }
+            db.executeQuery("SELECT COUNT(rmember) FROM MessageBcc WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                l = db.getInt(1);
+            }
+            int i = j + k + l;
+            if (i == 1)
+            {
+                flag1 = true;
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return flag1;
+    }
+
+    public boolean isSingleEmailReceiver(RV rv) throws SQLException
+    {
+        boolean flag = false;
+        int j = 0;
+        int k = 0;
+        int l = 0;
+        boolean flag1 = false;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT COUNT(email) FROM MessageTo  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                j = db.getInt(1);
+            }
+            db.executeQuery("SELECT COUNT(email) FROM MessageCc  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                k = db.getInt(1);
+            }
+            db.executeQuery("SELECT COUNT(email) FROM MessageBcc WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                l = db.getInt(1);
+            }
+            int i = j + k + l;
+            if (i == 1)
+            {
+                flag1 = true;
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return flag1;
+    }
+
+    public boolean isMultipleReceiver(RV rv) throws SQLException
+    {
+        boolean flag = false;
+        int j = 0;
+        int k = 0;
+        int l = 0;
+        boolean flag1 = false;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT COUNT(*) FROM MessageTo  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                j = db.getInt(1);
+            }
+            db.executeQuery("SELECT COUNT(*) FROM MessageCc  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                k = db.getInt(1);
+            }
+            db.executeQuery("SELECT COUNT(*) FROM MessageBcc WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                l = db.getInt(1);
+            }
+            int i = j + k + l;
+            if (i > 1)
+            {
+                flag1 = true;
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return flag1;
+    }
+
+    public RV findSingleRVReceiver(RV rv) throws SQLException
+    {
+        RV rv1 = null;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT rmember, vmember FROM MessageTo  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                rv1 = new RV(db.getString(1), db.getString(2));
+            }
+            db.executeQuery("SELECT rmember, vmember FROM MessageCc  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                rv1 = new RV(db.getString(1), db.getString(2));
+            }
+            db.executeQuery("SELECT rmember, vmember FROM MessageBcc WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                rv1 = new RV(db.getString(1), db.getString(2));
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return rv1;
+    }
+
+    public String findSingleEmailReceiver(RV rv) throws SQLException
+    {
+        String s = "";
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT email FROM MessageTo  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                s = db.getString(1);
+            }
+            db.executeQuery("SELECT email FROM MessageCc  WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                s = db.getString(1);
+            }
+            db.executeQuery("SELECT email FROM MessageBcc WHERE message=" + _nMessage + " AND ((rmember<>" + DbAdapter.cite(rv._strR) + " AND vmember<>" + DbAdapter.cite(rv._strV) + ")" + " OR " + "(rmember IS NULL AND vmember IS NULL))");
+            if (db.next())
+            {
+                s = db.getString(1);
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+        return s;
+    }
+
+    public static void createMessagePM(int message, int position, int manager) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            if (position != 0 || manager != 0)
+            {
+                db.executeUpdate("INSERT INTO MessagePM(message, position, manager) VALUES(" + message + ", " + position + ", " + manager + ")");
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public static void setMessagePM(int i, int j, int k) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM MessagePM WHERE message=" + i);
+            if (j != 0 || k != 0)
+            {
+                db.executeUpdate("INSERT INTO MessagePM(message, position, manager) VALUES(" + i + ", " + j + ", " + k + ")");
+            }
+        } catch (Exception exception)
+        {
+            exception.printStackTrace();
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    public static Enumeration findUnsentEmail() throws SQLException
+    {
+        Vector v = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT message FROM Message (NOLOCK) WHERE (options&2)!=0 AND status<>2");
+            while (db.next())
+            {
+                v.addElement(new Integer(db.getInt(1)));
+            }
+        } finally
+        {
+            db.close();
+        }
+        return v.elements();
+    }
+
+    public void setTime(Date date) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("UPDATE Message SET time=" + db.cite(date) + " WHERE message=" + _nMessage);
+        } finally
+        {
+            db.close();
+        }
+        _time = date;
+    }
+
+    public void set(int i, int j) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("UPDATE Message SET options=" + i + ", " + " status=" + j + " WHERE message=" + _nMessage);
+        } finally
+        {
+            db.close();
+        }
+        _nOptions = i;
+        _nStatus = j;
+    }
+
+    public void setContent(String s) throws SQLException
+    {
+        Object obj = null;
+        Object obj1 = null;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT content FROM Message WHERE message=" + _nMessage);
+            String s1;
+            if (db.next())
+            {
+                s1 = db.getText(1);
+            }
+        } finally
+        {
+            db.close();
+        }
+        DbAdapter db1 = new DbAdapter();
+        try
+        {
+            db1.executeUpdate("UPDATE Message SET content=" + DbAdapter.cite(s) + " WHERE message=" + _nMessage);
+        } catch (Exception exception2)
+        {
+            throw new SQLException(exception2.toString());
+        } finally
+        {
+            db1.close();
+        }
+    }
+
+    public void createAttachment(int i, String filename, String filepath) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("INSERT INTO MessageAttachment(message, part, filename, filepath) VALUES(" + _nMessage + ", " + i + ", " + DbAdapter.cite(filename) + ", " + DbAdapter.cite(filepath) + ")");
+        } finally
+        {
+            db.close();
+        }
+    }
+
+    private Attachment getAttachment(int part)
+    {
+        Attachment obj = (Attachment) _htAttachment.get(new Integer(part));
+        if (obj == null)
+        {
+            obj = new Attachment();
+            DbAdapter db = new DbAdapter();
+            try
+            {
+                db.executeQuery("SELECT filename,filepath FROM MessageAttachment WHERE message=" + _nMessage + " AND part=" + part);
+                if (db.next())
+                {
+                    obj.filename = db.getString(1);
+                    obj.filepath = db.getString(2);
+                }
+            } catch (Exception exception)
+            {
+            } finally
+            {
+                db.close();
+            }
+            _htAttachment.put(new Integer(part), obj);
+        }
+        return obj;
+    }
+
+    public String getAttachmentFilePath(int part) throws SQLException
+    {
+        return getAttachment(part).filepath;
+    }
+
+    public String getAttachmentFileName(int part, int j) throws SQLException
+    {
+        return Translator.getInstance().translate(getAttachment(part).filename, _nLanguage, j);
+    }
+
+    public int countAttachment() throws SQLException
+    {
+        int i = 0;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            i = db.getInt("SELECT COUNT(part) FROM MessageAttachment WHERE message=" + _nMessage);
+        } finally
+        {
+            db.close();
+        }
+        return i;
+    }
+
+    public Enumeration findAttachment() throws SQLException
+    {
+        Vector vector = new Vector();
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            // db.executeQuery("SELECT part FROM MessageAttachment (NOLOCK) WHERE message=" + _nMessage);
+            db.executeQuery("SELECT part FROM MessageAttachment WHERE message=" + _nMessage);
+            while (db.next())
+            {
+                vector.addElement(new Integer(db.getInt(1)));
+            }
+        } finally
+        {
+            db.close();
+        }
+        return vector.elements();
+    }
+
+    public int getMaxPart() throws SQLException
+    {
+        int i = 0;
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeQuery("SELECT part FROM MessageAttachment WHERE message=" + _nMessage + " ORDER BY part DESC");
+            if (db.next())
+            {
+                i = db.getInt(1);
+            }
+        } finally
+        {
+            db.close();
+        }
+        return i;
+    }
+
+    public void deleteAttachmentPart(int i) throws SQLException
+    {
+        DbAdapter db = new DbAdapter();
+        try
+        {
+            db.executeUpdate("DELETE FROM MessageAttachment WHERE message=" + _nMessage + " AND part=" + i);
+        } finally
+        {
+            db.close();
+        }
+    }
+}
